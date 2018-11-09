@@ -1,0 +1,8 @@
+This is a work of parody fiction. It is intended to be distributed through Hentai United and Oniartist's Patreon page, please do not redistribute through other sources. 
+
+As is noted in the game, this story takes place several years after the last episode of the TV series it is based on, and all characters involved are over the age of 18. The game references events of the TV series, but is not beholden to the canon of the series, and characters will behave differently or have different backstories. 
+
+I would like to thank Akabur for his help getting started with all this (definitely check out his games too), and the various documentation on the Renpy site for pointing me in the right directions. I've had a lot of fun coding this game, and look forward to continually improving on it. If you'd like to support my efforts, please sign up under my name at Hentai United, or join on to my Patreon page. I have some huge ambitions for where this project will end up. 
+
+http://oni.hentaiunited.com/
+http://www.patreon.com/OniArtist
