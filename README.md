@@ -80,5 +80,4 @@ It has several contributors and aims to add several new things to the game, such
 - [Grundle](https://f95zone.com/members/grundle.8956/)
 - [Hakunon](https://f95zone.com/members/hakunon.17790/)
 - [Syliar](https://f95zone.com/members/syliar.123758/)
-# Rogue-Like-Expanded
-"# Rogue-Like-Expanded" 
+
