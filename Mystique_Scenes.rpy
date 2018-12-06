@@ -5,9 +5,9 @@ label MystiqueMeet:
     $ newgirl["Mystique"].Outfit = "teacher"
     call CleartheRoom("Mystique",0,1)
     $ newgirl["Mystique"].Loc = "bg Mystique"  
-    $ newgirl["Mystique"].Love = 300        
+    $ newgirl["Mystique"].Love = 0        
     $ newgirl["Mystique"].Obed = 0            
-    $ newgirl["Mystique"].Inbt = 200 
+    $ newgirl["Mystique"].Inbt = 0 
     call Shift_Focus("Mystique")    
     call Set_The_Scene
     $ Mystique_SpriteLoc = StageRight
@@ -16,16 +16,16 @@ label MystiqueMeet:
     #$ newgirl["Mystique"].Petnames.append(_return)
     #$ newgirl["Mystique"].Petname = _return
         
-    "You enter the classroom and have a seat." 
-    "The bell to class rings, but Professor McCoy seems to be late."
+    "You enter the classroom and take a seat." 
+    "The bell rings to class, but Professor McCoy seems to be late."
     "A strange woman enters the room and heads to the podium with a regal stride."
     call NewGirl_Face("Mystique","normal")
     show Mystique_Sprite at SpriteLoc(Mystique_SpriteLoc) with easeinright     
     $ newgirl["Mystique"].Loc = "bg classroom" 
     $ newgirl["Mystique"].Girl_Arms = 1
-    ch_u "Good morning, students. My name is Raven Darkholme, and I have been invited to conduct the morning classes."
+    ch_u "Good morning, students. My name is Raven Darkholme, and I will be filling in for Professor McCoy in his absence."
     #ch_m "I hope that over my tenure here you will demonstrate talents and hard work worthy of my respect." 
-    "She scans her eyes over the room, passing over each student."    
+    "Her eyes scans the room, passing over each student."    
     call NewGirl_Face("Mystique","surprised")
     pause 1
     call NewGirl_Face("Mystique","sly")

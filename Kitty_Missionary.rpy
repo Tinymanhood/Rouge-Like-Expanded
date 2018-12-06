@@ -2,7 +2,7 @@
 # K_Sex_P //////////////////////////////////////////////////////////////////////
 
 label K_Sex_P:  
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_114
     if K_Sex >= 7: # She loves it
         $ Tempmod += 15
     elif K_Sex >= 3: #You've done it before several times
@@ -45,7 +45,7 @@ label K_Sex_P:
     
     if Situation == "Kitty":                                                                  #Kitty auto-starts   
                 if Approval > 2:                                                      # fix, add kitty auto stuff here
-                    call Kitty_Sex_Launch("L")   
+                    call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch   
                     if K_Legs == "skirt":
                         "Kitty slides onto her back and pulls you against her, sliding her skirt up as she does so."
                         $ K_Upskirt = 1
@@ -66,21 +66,21 @@ label K_Sex_P:
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
                             "Kitty slides it in."
                         "Praise her.":       
-                            call KittyFace("sexy, 1")                    
+                            call KittyFace("sexy, 1") from _call_KittyFace_287                    
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 3) 
                             ch_p "Oh yeah, [K_Pet], let's do this."
-                            call Kitty_Namecheck
+                            call Kitty_Namecheck from _call_Kitty_Namecheck
                             "Kitty slides it in."
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 85, 1)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
                         "Ask her to stop.":
-                            call KittyFace("surprised")       
+                            call KittyFace("surprised") from _call_KittyFace_288       
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
                             ch_p "Let's not do that right now, [K_Pet]."
-                            call Kitty_Namecheck
+                            call Kitty_Namecheck from _call_Kitty_Namecheck_1
                             "Kitty pulls back."
-                            call KittyOutfit
+                            call KittyOutfit from _call_KittyOutfit_26
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 1)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 2)
@@ -94,7 +94,7 @@ label K_Sex_P:
     #End Kitty's lead
     
     if Situation == "auto":   
-                call Kitty_Sex_Launch("L")   
+                call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_1   
                 if K_Legs == "skirt":
                     "You press Kitty down onto her back, sliding her skirt up as you go."
                     $ K_Upskirt = 1                
@@ -108,12 +108,12 @@ label K_Sex_P:
                     "You press Kitty down onto her back."
                 $ K_SeenPanties = 1
                 "You rub the tip of your cock against her moist slit."        
-                call KittyFace("surprised", 1)
+                call KittyFace("surprised", 1) from _call_KittyFace_289
                 
                 if (K_Sex and Approval) or (Approval > 1):
                     #this is not the first time you've had sex, or she's into it         
                     "Kitty is briefly startled, but melts into a sly smile."
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_290
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
@@ -126,7 +126,7 @@ label K_Sex_P:
                         ch_k "Um, what do you think you're doing?" 
                         "Sorry, sorry! Never mind.":
                             if Approval:     
-                                    call KittyFace("sexy", 1)
+                                    call KittyFace("sexy", 1) from _call_KittyFace_291
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
@@ -134,7 +134,7 @@ label K_Sex_P:
                                     jump K_SexPrep
                             else:
                                     "You pull back before you really get it in."                    
-                                    call KittyFace("bemused", 1)
+                                    call KittyFace("bemused", 1) from _call_KittyFace_292
                                     if K_Sex:
                                         ch_k "Maybe you could[K_like]warn me?" 
                                     else:
@@ -146,7 +146,7 @@ label K_Sex_P:
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                             if not ApprovalCheck("Kitty", 700, "O", TabM=1):   #Checks if Obed is 700+                          
-                                call KittyFace("angry")
+                                call KittyFace("angry") from _call_KittyFace_293
                                 "Kitty shoves you away and slaps you in the face."
                                 ch_k "Jerk!"
                                 ch_k "I am not putting up with that shit!"                                                  
@@ -155,11 +155,11 @@ label K_Sex_P:
                                 $ renpy.pop_call()
                                 if Situation:
                                     $ renpy.pop_call()
-                                call Kitty_Sex_Reset
+                                call Kitty_Sex_Reset from _call_Kitty_Sex_Reset
                                 $ K_RecentActions.append("angry")
                                 $ K_DailyActions.append("angry")                    
                             else:
-                                call KittyFace("sad")
+                                call KittyFace("sad") from _call_KittyFace_294
                                 "Kitty doesn't seem to be into this, you're lucky she's so obedient."                        
                                 jump K_SexPrep
                 return   
@@ -168,42 +168,42 @@ label K_Sex_P:
    
     if not K_Sex and "no sex" not in K_RecentActions:                           
             #first time    
-            call KittyFace("surprised", 1)
+            call KittyFace("surprised", 1) from _call_KittyFace_295
             $ K_Mouth = "kiss"
             ch_k "I haven't really had much experience with this. . . "    
             if K_Forced:
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_296
                 ch_k "You'd really do this when you have me over a barrel?"
             
             
     if not K_Sex and Approval:                                                  
             #First time dialog        
             if K_Forced: 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_297
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -30, 1)
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 20, -20, 1)
             elif K_Love >= (K_Obed + K_Inbt):
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_298
                 $ K_Brows = "sad"
                 $ K_Mouth = "smile" 
                 ch_k "I don't want you to think I'm some kind of slut. . ."            
             elif K_Obed >= K_Inbt:
-                call KittyFace("normal")
+                call KittyFace("normal") from _call_KittyFace_299
                 ch_k "I suppose if it's you, [K_Petname]. . ."            
             elif K_Addict >= 50:
-                call KittyFace("manic", 1)
+                call KittyFace("manic", 1) from _call_KittyFace_300
                 ch_k "I have kind of been hoping you might. . ."
             else: # Uninhibited 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_301
                 $ K_Mouth = "smile"             
                 ch_k "I can't say it hasn't crossed my mind. . ."   
             #End first time dialog
             
     elif Approval:                                                                      
             #Second time+ dialog        
-            call KittyFace("sexy", 1)
+            call KittyFace("sexy", 1) from _call_KittyFace_302
             if K_Forced: 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_303
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -3, 1)
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 20, -2, 1)
                 ch_k "Again? Why do you do this to me?" 
@@ -236,14 +236,14 @@ label K_Sex_P:
     if Approval >= 2:                                                                  
             #She's into it. . .               
             if K_Forced:
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_304
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 1)
                 ch_k "Ok, fiiiiine."  
             elif "no sex" in K_DailyActions:               
                 ch_k "You've made your case. . ."
             else:
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_305
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                 $ Line = renpy.random.choice(["Well. . . ok.",                 
@@ -260,7 +260,7 @@ label K_Sex_P:
     
     else:                                                                               
             #She's not into it, but maybe. . .    
-            call KittyFace("angry")       
+            call KittyFace("angry") from _call_KittyFace_306       
             if "no sex" in K_RecentActions:  
                 ch_k "I{i}just{/i}[K_like]told you \"no!\""
             elif Taboo and "tabno" in K_DailyActions and "no sex" in K_DailyActions:  
@@ -270,19 +270,19 @@ label K_Sex_P:
             elif Taboo and "tabno" in K_DailyActions:  
                 ch_k "I already told you this is too public!"     
             elif not K_Sex:
-                call KittyFace("bemused")
+                call KittyFace("bemused") from _call_KittyFace_307
                 ch_k "I don't know that I'm. . .[K_like]ready? . ."
             else:
-                call KittyFace("bemused")
+                call KittyFace("bemused") from _call_KittyFace_308
                 ch_k "Maybe[K_like]not right now? . ."
             menu:
                 extend ""
                 "Sorry, never mind." if "no sex" in K_DailyActions:
-                        call KittyFace("bemused")
+                        call KittyFace("bemused") from _call_KittyFace_309
                         ch_k "It's cool."
                         return
                 "Maybe later?" if "no sex" not in K_DailyActions:
-                        call KittyFace("sexy")  
+                        call KittyFace("sexy") from _call_KittyFace_310  
                         ch_k "Maybe, you never know."
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 2)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 2)   
@@ -294,7 +294,7 @@ label K_Sex_P:
                         return
                 "I think you'd enjoy it as much as I would. . .":             
                         if Approval:
-                            call KittyFace("sexy")     
+                            call KittyFace("sexy") from _call_KittyFace_311     
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 2)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 3) 
@@ -308,7 +308,7 @@ label K_Sex_P:
                 "Just deal with it.":                                               # Pressured into it
                         $ Approval = ApprovalCheck("Kitty", 1150, "OI", TabM = 3) # 115, 130, 145, -120(235)
                         if Approval > 1 or (Approval and K_Forced):
-                            call KittyFace("sad")
+                            call KittyFace("sad") from _call_KittyFace_312
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -5, 1)
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -5)                 
                             ch_k "Well! . .  ok, fine, stick it in."  
@@ -331,7 +331,7 @@ label K_Sex_P:
         $ K_RecentActions.append("angry")
         $ K_DailyActions.append("angry")   
     elif K_Forced:
-        call KittyFace("angry", 1)
+        call KittyFace("angry", 1) from _call_KittyFace_313
         ch_k "Not even."
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5)    
         $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -2) if K_Love > 300 else K_Love
@@ -339,17 +339,17 @@ label K_Sex_P:
         $ K_RecentActions.append("angry")
         $ K_DailyActions.append("angry")   
     elif Taboo:                             # she refuses and this is too public a place for her
-        call KittyFace("angry", 1)
+        call KittyFace("angry", 1) from _call_KittyFace_314
         $ K_RecentActions.append("tabno")                      
         $ K_DailyActions.append("tabno") 
         ch_k "I can't believe you'd even consider it around here!"      
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5)  
         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, -3)
     elif K_Sex:
-        call KittyFace("sad") 
+        call KittyFace("sad") from _call_KittyFace_315 
         ch_k "Maybe just[K_like]fuck yourself, huh?."       
     else:
-        call KittyFace("normal", 1)
+        call KittyFace("normal", 1) from _call_KittyFace_316
         ch_k "Nuhuh."     
     $ K_RecentActions.append("no sex")                      
     $ K_DailyActions.append("no sex") 
@@ -357,16 +357,23 @@ label K_Sex_P:
     return
 
 label K_SexPrep:
-    call Kitty_Sex_Launch("hotdog")
+    call Kitty_Sex_Launch("hotdog") from _call_Kitty_Sex_Launch_2
     
     if Situation != "auto":
-        call Kitty_Bottoms_Off       
+        call Kitty_Bottoms_Off from _call_Kitty_Bottoms_Off_6       
         
         
         if K_Panties or K_Legs or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to sex
             ch_k "We can't exactly do much like this, huh."
-            
-        if K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
+        
+        if K_Panties == "zipper panties":
+            "She pulls the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            ch_k "I'm ready"    
+        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
             "She quickly drops her pants and her [K_Panties]."
         elif K_Panties and K_Legs == "shorts":
             "She quickly drops her shorts and her [K_Panties]."
@@ -386,7 +393,7 @@ label K_SexPrep:
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
-        call Kitty_First_Bottomless
+        call Kitty_First_Bottomless from _call_Kitty_First_Bottomless_6
         
         if Taboo: # Kitty gets started. . .
             if not K_Sex:
@@ -412,17 +419,25 @@ label K_SexPrep:
                 "Kitty leans back and presses against you suggestively."
                 "You take careful aim and then ram your cock in."
                             
-    else:  #if Situation == "auto"         
-        if K_Legs == "pants" and K_Panties:
-            "You quickly pull down her pants and her [K_Panties] and press against her slit."
-        if K_Panties and K_Legs != "pants":
-            "You quickly pull down her [K_Panties] and press against her slit."  
+    else:  #if Situation == "auto"  
+        if K_Panties == "zipper panties":
+            "You quickly pull the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            "You get ready"    
+        else:     
+            if K_Legs == "pants" and K_Panties:
+                "You quickly pull down her pants and her [K_Panties] and press against her slit."
+            if K_Panties and K_Legs != "pants":
+                "You quickly pull down her [K_Panties] and press against her slit."  
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
-        call Kitty_First_Bottomless(1)
+        call Kitty_First_Bottomless(1) from _call_Kitty_First_Bottomless_7
         
-    call Seen_First_Peen(1)
+    call Seen_First_Peen(1) from _call_Seen_First_Peen_12
     
     if not K_Sex:        
         if K_Forced:
@@ -443,16 +458,16 @@ label K_SexPrep:
     $ Trigger = "sex"
     $ Speed = 1
     if Taboo:
-        call DrainWord("Kitty","tabno")
-    call DrainWord("Kitty","no sex")
+        call DrainWord("Kitty","tabno") from _call_DrainWord_96
+    call DrainWord("Kitty","no sex") from _call_DrainWord_97
     $ K_RecentActions.append("sex")                      
     $ K_DailyActions.append("sex") 
 
 label K_Sex_Cycle: #Repeating strokes
     while Round >=0:  
-        call Shift_Focus("Kitty")
-        call Kitty_Sex_Launch("sex") 
-        call KittyLust        
+        call Shift_Focus("Kitty") from _call_Shift_Focus_115
+        call Kitty_Sex_Launch("sex") from _call_Kitty_Sex_Launch_3 
+        call KittyLust from _call_KittyLust_11        
         $ P_Cock = "in"
         $ Trigger = "sex"
         $ K_Upskirt = 1
@@ -472,8 +487,8 @@ label K_Sex_Cycle: #Repeating strokes
                         ch_k "Can we. . . do something. . . else?"
                         "How about a BJ?" if K_Action and MultiAction:
                                 $ Situation = "shift"
-                                call K_SexAfter
-                                call K_Blowjob       
+                                call K_SexAfter from _call_K_SexAfter_1
+                                call K_Blowjob from _call_K_Blowjob       
                         "Finish up." if P_FocusX:
                                 "You release your concentration. . ."             
                                 $ P_FocusX = 0
@@ -483,7 +498,7 @@ label K_Sex_Cycle: #Repeating strokes
                                 jump K_Sex_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
-                                call Kitty_Sex_Reset
+                                call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_1
                                 $ Situation = "shift"
                                 jump K_SexAfter
                         "No, get back down there.":                                
@@ -493,8 +508,8 @@ label K_Sex_Cycle: #Repeating strokes
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)
                                     "She grumbles but keeps moving."
                                 else:
-                                    call KittyFace("angry", 1)   
-                                    call Kitty_Sex_Reset
+                                    call KittyFace("angry", 1) from _call_KittyFace_317   
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_2
                                     "She scowls at you and pulls out."
                                     ch_k "Not with that attitude, mister!"
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
@@ -529,8 +544,26 @@ label K_Sex_Cycle: #Repeating strokes
                                     pass
                             
                         "Slap her ass":                     
-                                    call K_Slap_Ass                                    
-                                    jump K_Sex_Cycle  
+                                    call K_Slap_Ass from _call_K_Slap_Ass_8                                    
+                                    jump K_Sex_Cycle 
+
+                        "Put her legs up" if not K_LegsUp:
+                                    $ K_LegsUp = 1
+                                    "You put her legs up."
+
+                        "Put her legs down" if K_LegsUp:
+                                    $ K_LegsUp = 0
+                                    "You put her legs down."
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) from _call_KittyFace_318 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) from _call_KittyFace_319 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -542,23 +575,23 @@ label K_Sex_Cycle: #Repeating strokes
                                     $ P_FocusX = 0
                                     
                         "Maybe lose some clothes. . .":
-                                    call K_Undress  
+                                    call K_Undress from _call_K_Undress_12  
                         
                         "Shift actions":
                             if K_Action and MultiAction:
                                 menu:
                                     "How about anal?":
                                             $ Situation = "shift"
-                                            call K_SexAfter
-                                            call K_Sex_A
+                                            call K_SexAfter from _call_K_SexAfter_2
+                                            call K_Sex_A from _call_K_Sex_A
                                     "Just stick it in her ass [[without asking].":
                                             $ Situation = "auto"
-                                            call K_SexAfter
-                                            call K_Sex_A
+                                            call K_SexAfter from _call_K_SexAfter_3
+                                            call K_Sex_A from _call_K_Sex_A_1
                                     "Pull back to hotdog her.":
                                             $ Situation = "pullback"
-                                            call K_SexAfter
-                                            call K_Sex_H
+                                            call K_SexAfter from _call_K_SexAfter_4
+                                            call K_Sex_H from _call_K_Sex_H
                                     "Never Mind":
                                             pass
                             else:
@@ -566,32 +599,32 @@ label K_Sex_Cycle: #Repeating strokes
                     
                         "I also want to. . . [[Offhand]":
                                 if K_Action and MultiAction:
-                                    call Kitty_Offhand_Set
+                                    call Kitty_Offhand_Set from _call_Kitty_Offhand_Set_16
                                     if Trigger2:
                                          $ K_Action -= 1
                                 else:
                                     ch_k "I'm[K_like]kinda tired here? Could we wrap it up?"  
                            
                         "Let's try something else." if MultiAction: 
-                                    call Kitty_Sex_Reset
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_3
                                     $ Situation = "shift"
                                     $ Line = 0
                                     jump K_SexAfter
                         "Let's stop for now." if not MultiAction: 
-                                    call Kitty_Sex_Reset
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_4
                                     $ Line = 0
                                     jump K_SexAfter
         #End menu (if Line)
         
-        call Sex_Dialog("Kitty",Partner)
+        call Sex_Dialog("Kitty",Partner) from _call_Sex_Dialog_27
         
         #If either of you could cum 
         if P_Focus >= 100 or K_Lust >= 100:                     
                     #If you can cum:
                     if P_Focus >= 100:                                                     
-                            call PK_Cumming
+                            call PK_Cumming from _call_PK_Cumming_8
                             if "angry" in K_RecentActions:  
-                                call Kitty_Sex_Reset
+                                call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_5
                                 return    
                             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
                             if 100 > K_Lust >= 70 and K_OCount < 2:             
@@ -605,7 +638,7 @@ label K_Sex_Cycle: #Repeating strokes
                     #If Kitty can cum
                     if renpy.showing("Kitty_SexSprite"):                    #If you're still going at it,
                         if K_Lust >= 100:                                               
-                            call K_Cumming
+                            call K_Cumming from _call_K_Cumming_9
                             if Situation == "shift" or "angry" in K_RecentActions:
                                 jump K_SexAfter
                        
@@ -615,7 +648,7 @@ label K_Sex_Cycle: #Repeating strokes
                             "She's emptied you out, you'll need to take a break."
                             jump K_SexAfter
                         elif "unsatisfied" in K_RecentActions:#And Kitty is unsatisfied,                    
-                            call Kitty_Sex_Launch(Trigger)
+                            call Kitty_Sex_Launch(Trigger) from _call_Kitty_Sex_Launch_4
                             $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
                                 "She is breathing heavily as your cock rubs inside her.", 
                                 "She slowly turns back towards you and smiles.",
@@ -641,7 +674,7 @@ label K_Sex_Cycle: #Repeating strokes
             ch_k "Seriously, it'll be time to stop soon."        
     
     #Round = 0 loop breaks
-    call KittyFace("bemused", 0)
+    call KittyFace("bemused", 0) from _call_KittyFace_320
     $ Line = 0
     ch_k "Ok, [K_Petname], that's enough of that for now."
     
@@ -652,9 +685,9 @@ label K_SexAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
         $ P_Sprite = 0
         $ P_Cock = "out"
-        call Kitty_Sex_Reset
+        call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_6
         
-    call KittyFace("sexy") 
+    call KittyFace("sexy") from _call_KittyFace_321 
     
     $ K_Sex += 1  
     $ K_Action -=1
@@ -674,7 +707,7 @@ label K_SexAfter:
         $ K_SEXP += 5
         $ Achievements.append("Kitty Sex Addict")
         if not Situation:
-            call KittyFace("smile", 1)
+            call KittyFace("smile", 1) from _call_KittyFace_322
             ch_k "I just can't seem to quit you."               
     elif K_Sex == 1:            
             $K_SEXP += 20        
@@ -688,17 +721,17 @@ label K_SexAfter:
             ch_k "Why did we not do this sooner?!"  
     elif not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback":       
         if "unsatisfied" in K_RecentActions:
-            call KittyFace("angry")
+            call KittyFace("angry") from _call_KittyFace_323
             $ K_Eyes = "side"
             ch_k "Could you have maybe paid more attention? . ."
         else:
-            call KittyFace("bemused")
+            call KittyFace("bemused") from _call_KittyFace_324
             ch_k "Hmm. . ."
      
     $ Tempmod = 0  
     if Situation == "shift":
         ch_k "Did you[K_like]want to try something else?"
-    call Checkout
+    call Checkout from _call_Checkout_50
     return   
 
 # End kitty sex //////////////////////////////////////////////////////////////////////////////////
@@ -707,7 +740,7 @@ label K_SexAfter:
 # Kitty anal //////////////////////////////////////////////////////////////////////
 
 label K_Sex_A:
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_116
     if K_Anal >= 7: # She loves it
         $ Tempmod += 20   
     elif K_Anal >= 3: #You've done it before several times
@@ -755,7 +788,7 @@ label K_Sex_A:
     if Situation == "Kitty":                                                                  
             #Kitty auto-starts   
             if Approval > 2:                                                      # fix, add kitty auto stuff here
-                call Kitty_Sex_Launch("L")   
+                call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_5   
                 if K_Legs == "skirt":
                     "Kitty slides onto her back and pulls you against her, sliding her skirt up as she does so."
                     $ K_Upskirt = 1
@@ -776,21 +809,21 @@ label K_Sex_A:
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
                         "Kitty slides it in."
                     "Praise her.":       
-                        call KittyFace("sexy, 1")                    
+                        call KittyFace("sexy, 1") from _call_KittyFace_325                    
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 3) 
                         ch_p "Ooo, dirty girl, [K_Pet], let's do this."
-                        call Kitty_Namecheck
+                        call Kitty_Namecheck from _call_Kitty_Namecheck_2
                         "Kitty slides it in."
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 85, 1)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
                     "Ask her to stop.":
-                        call KittyFace("surprised")       
+                        call KittyFace("surprised") from _call_KittyFace_326       
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
                         ch_p "Let's not do that right now, [K_Pet]."
-                        call Kitty_Namecheck
+                        call Kitty_Namecheck from _call_Kitty_Namecheck_3
                         "Kitty pulls back."
-                        call KittyOutfit
+                        call KittyOutfit from _call_KittyOutfit_27
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 1)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 2)                    
@@ -803,7 +836,7 @@ label K_Sex_A:
             #end if Kitty initiates
     
     if Situation == "auto":   
-            call Kitty_Sex_Launch("L")   
+            call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_6   
             if K_Legs == "skirt":
                 "You press Kitty down onto her back, sliding her skirt up as you go."
                 $ K_Upskirt = 1                
@@ -817,7 +850,7 @@ label K_Sex_A:
                 "You press Kitty down onto her back."
             $ K_SeenPanties = 1
             "You press the tip of your cock against her tight rim."        
-            call KittyFace("surprised", 1)
+            call KittyFace("surprised", 1) from _call_KittyFace_327
             
             if (K_Anal and Approval) or (Approval > 1):                                                                      
                 #this is not the first time you've had sex, or she's into it    
@@ -838,14 +871,14 @@ label K_Sex_A:
                     ch_k "Um[K_like]what are you doing back there?!" 
                     "Sorry, sorry! Never mind.":
                         if Approval:     
-                            call KittyFace("sexy", 1)
+                            call KittyFace("sexy", 1) from _call_KittyFace_328
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
                             ch_k "Well[K_like]just take it easy, ok? . ."
                             jump K_AnalPrep
                         "You pull back before you really get it in."                    
-                        call KittyFace("bemused", 1)
+                        call KittyFace("bemused", 1) from _call_KittyFace_329
                         
                         if K_Anal:
                             ch_k "Maybe you could[K_like]warn me?" 
@@ -858,7 +891,7 @@ label K_Sex_A:
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                         if not ApprovalCheck("Kitty", 700, "O", TabM=1):                        
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_330
                             "Kitty shoves you away and slaps you in the face."
                             ch_k "Asshole!"
                             ch_k "You need to ask nicer than that!"                                                  
@@ -867,11 +900,11 @@ label K_Sex_A:
                             $ renpy.pop_call()
                             if Situation:
                                 $ renpy.pop_call()
-                            call Kitty_Sex_Reset
+                            call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_7
                             $ K_RecentActions.append("angry")
                             $ K_DailyActions.append("angry")                        
                         else:
-                            call KittyFace("sad")
+                            call KittyFace("sad") from _call_KittyFace_331
                             "Kitty doesn't seem to be into this, you're lucky she's so obedient."                        
                             jump K_AnalPrep
             return  
@@ -880,20 +913,20 @@ label K_Sex_A:
    
     if not K_Anal and "no anal" not in K_RecentActions:                                                               
             #first time    
-            call KittyFace("surprised", 1)
+            call KittyFace("surprised", 1) from _call_KittyFace_332
             $ K_Mouth = "kiss"
             ch_k "You want to go in the \"out\" door?!"
       
             if K_Forced:
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_333
                 ch_k "Anal? Really?"
         
     if not K_Loose and ("dildo anal" in K_DailyActions or "anal" in K_DailyActions):
             #if she's done anal stuff today
-            call KittyFace("bemused", 1)
+            call KittyFace("bemused", 1) from _call_KittyFace_334
             ch_k "I'm not really over the last time."            
     elif "anal" in K_RecentActions:
-            call KittyFace("sexy", 1)
+            call KittyFace("sexy", 1) from _call_KittyFace_335
             ch_k "Again? K."
             jump K_AnalPrep
         
@@ -901,29 +934,29 @@ label K_Sex_A:
     if not K_Anal and Approval:                                                 
             #First time dialog        
             if K_Forced: 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_336
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -3, 1)
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 20, -2, 1)
             elif K_Love >= (K_Obed + K_Inbt):
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_337
                 $ K_Brows = "sad"
                 $ K_Mouth = "smile" 
                 ch_k "I guess? . ."           
             elif K_Obed >= K_Inbt:
-                call KittyFace("normal")
+                call KittyFace("normal") from _call_KittyFace_338
                 ch_k "Well. . ."
             elif K_Addict >= 50:
-                call KittyFace("manic", 1)
+                call KittyFace("manic", 1) from _call_KittyFace_339
                 ch_k "I. . . if that's how you want to do it. . . maybe?"
             else: # Uninhibited 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_340
                 $ K_Mouth = "smile"             
                 ch_k "Anything's worth a shot. . ."  
     
     elif Approval:                                                                       
             #Second time+ dialog
             if K_Forced: 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_341
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -3, 1)
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 20, -2, 1)
                 ch_k "You really ask a lot here. . ."
@@ -935,7 +968,7 @@ label K_Sex_A:
                 ch_k "I guess I'm warmed up. . ."
                 jump K_AnalPrep
             elif "anal" in K_DailyActions:
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_342
                 $ Line = renpy.random.choice(["Back again so soon?",                 
                     "So you'd like another round?",                 
                     "I'm still a little sore from earlier.", 
@@ -943,7 +976,7 @@ label K_Sex_A:
                     "You're wearing me out here!."]) 
                 ch_k "[Line]"    
             else:       
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_343
                 $ Kitty_Arms = 2
                 $ Line = renpy.random.choice(["Oooh, you want some of this?",                 
                     "So you'd like another round?",                 
@@ -956,14 +989,14 @@ label K_Sex_A:
     if Approval >= 2:                                                                   
             #She's into it. . .               
             if K_Forced:
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_344
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 1)
                 ch_k "Ok, fine."   
             elif "no anal" in K_DailyActions:               
                 ch_k "Well, ok, I've given it some thought, fine. . ." 
             else:
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_345
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                 $ Line = renpy.random.choice(["Well. . . ok.",                 
@@ -980,7 +1013,7 @@ label K_Sex_A:
                
     else:                                                                               
             #She's not into it, but maybe. . .            
-            call KittyFace("angry")
+            call KittyFace("angry") from _call_KittyFace_346
             if "no anal" in K_RecentActions:  
                 ch_k "I{i}just{/i}[K_like]told you \"no!\""
             elif Taboo and "tabno" in K_DailyActions and "no anal" in K_DailyActions:
@@ -990,22 +1023,22 @@ label K_Sex_A:
             elif Taboo and "tabno" in K_DailyActions:  
                 ch_k "I already told you this is too public!"      
             elif not K_Anal:
-                call KittyFace("bemused")
+                call KittyFace("bemused") from _call_KittyFace_347
                 ch_k "I don't know that I'm. . .[K_like]that kind of girl?"
             elif not K_Loose and "anal" not in K_DailyActions:
-                call KittyFace("perplexed")
+                call KittyFace("perplexed") from _call_KittyFace_348
                 ch_k "That was kind of. . . rough last time?"
             else:
-                call KittyFace("bemused")
+                call KittyFace("bemused") from _call_KittyFace_349
                 ch_k "Maybe[K_like]not right now? . ."
             menu:
                 extend ""
                 "Sorry, never mind." if "no anal" in K_DailyActions:
-                    call KittyFace("bemused")
+                    call KittyFace("bemused") from _call_KittyFace_350
                     ch_k "It's cool."              
                     return
                 "Maybe later?" if "no anal" not in K_DailyActions:
-                    call KittyFace("sexy")  
+                    call KittyFace("sexy") from _call_KittyFace_351  
                     ch_k "Maybe, you never know."
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 2)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 2)  
@@ -1017,7 +1050,7 @@ label K_Sex_A:
                     return
                 "I bet it would feel really good. . .":             
                     if Approval:
-                        call KittyFace("sexy")     
+                        call KittyFace("sexy") from _call_KittyFace_352     
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 2)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 3) 
@@ -1034,7 +1067,7 @@ label K_Sex_A:
                 "Just deal with it.":                                               # Pressured into it
                     $ Approval = ApprovalCheck("Kitty", 1250, "OI", TabM = 3) # 125, 140, 155, -120(245)
                     if Approval > 1 or (Approval and K_Forced):
-                        call KittyFace("sad")
+                        call KittyFace("sad") from _call_KittyFace_353
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -5, 1)
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -5)                 
                         ch_k "Well! . .  ok, fine, stick it in."  
@@ -1055,7 +1088,7 @@ label K_Sex_A:
         $ K_RecentActions.append("angry")
         $ K_DailyActions.append("angry")   
     elif K_Forced:
-        call KittyFace("angry", 1)
+        call KittyFace("angry", 1) from _call_KittyFace_354
         ch_k "That's a bit much, even for you."
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5)       
         $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -2) if K_Love > 300 else K_Love
@@ -1064,20 +1097,20 @@ label K_Sex_A:
         $ K_DailyActions.append("angry")   
     elif Taboo:                             
         # she refuses and this is too public a place for her
-        call KittyFace("angry", 1)
+        call KittyFace("angry", 1) from _call_KittyFace_355
         $ K_RecentActions.append("tabno")                      
         $ K_DailyActions.append("tabno") 
         ch_k "You're being ridiculous. That? Here?!"    
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5)  
         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, -3) 
     elif not K_Loose and "anal" in K_DailyActions:
-        call KittyFace("bemused")
+        call KittyFace("bemused") from _call_KittyFace_356
         ch_k "I'm[K_like]a little sore here?"    
     elif K_Anal:
-        call KittyFace("sad") 
+        call KittyFace("sad") from _call_KittyFace_357 
         ch_k "That's[K_like]totally off the table."
     else:
-        call KittyFace("normal", 1)
+        call KittyFace("normal", 1) from _call_KittyFace_358
         ch_k "Noooop."    
     $ K_RecentActions.append("no anal")                      
     $ K_DailyActions.append("no anal") 
@@ -1086,14 +1119,21 @@ label K_Sex_A:
 
 label K_AnalPrep:    
             
-    call Kitty_Sex_Launch("hotdog")
+    call Kitty_Sex_Launch("hotdog") from _call_Kitty_Sex_Launch_7
     
     if Situation != "auto":
-        call Kitty_Bottoms_Off        
+        call Kitty_Bottoms_Off from _call_Kitty_Bottoms_Off_7        
         if K_Panties or K_Legs or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_k "We can't exactly do much like this, huh."
-            
-        if K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
+
+        if K_Panties == "zipper panties":
+            "She pulls the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            ch_k "I'm ready"  
+        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
             "She quickly drops her pants and her [K_Panties]."
         elif K_Panties and K_Legs == "shorts":
             "She quickly drops her shorts and her [K_Panties]."
@@ -1113,7 +1153,7 @@ label K_AnalPrep:
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
-        call Kitty_First_Bottomless
+        call Kitty_First_Bottomless from _call_Kitty_First_Bottomless_8
         
         if Taboo: # Kitty gets started. . .
             if K_Anal:                
@@ -1141,16 +1181,24 @@ label K_AnalPrep:
                 "You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"       
-        if K_Legs == "pants" and K_Panties:
-            "You quickly pull down her pants and her [K_Panties] and press against her back door."
-        if K_Panties and K_Legs != "pants":
-            "You quickly pull down her [K_Panties] and press against her back door."  
+        if K_Panties == "zipper panties":
+            "You quickly pull the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            "You get ready"  
+        else: 
+            if K_Legs == "pants" and K_Panties:
+                "You quickly pull down her pants and her [K_Panties] and press against her back door."
+            if K_Panties and K_Legs != "pants":
+                "You quickly pull down her [K_Panties] and press against her back door."  
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
-        call Kitty_First_Bottomless(1)
+        call Kitty_First_Bottomless(1) from _call_Kitty_First_Bottomless_9
         
-    call Seen_First_Peen(1)
+    call Seen_First_Peen(1) from _call_Seen_First_Peen_13
     
     if not K_Anal:                                                      #First time stat buffs       
         if K_Forced:
@@ -1179,16 +1227,16 @@ label K_AnalPrep:
     $ Trigger = "anal"
     $ Speed = 1
     if Taboo:
-        call DrainWord("Kitty","tabno")
-    call DrainWord("Kitty","no anal")
+        call DrainWord("Kitty","tabno") from _call_DrainWord_98
+    call DrainWord("Kitty","no anal") from _call_DrainWord_99
     $ K_RecentActions.append("anal")                      
     $ K_DailyActions.append("anal") 
 
 label K_Anal_Cycle: #Repeating strokes
     while Round >=0:  
-        call Shift_Focus("Kitty")
-        call Kitty_Sex_Launch("anal") 
-        call KittyLust        
+        call Shift_Focus("Kitty") from _call_Shift_Focus_117
+        call Kitty_Sex_Launch("anal") from _call_Kitty_Sex_Launch_8 
+        call KittyLust from _call_KittyLust_12        
         $ P_Cock = "anal"
         $ Trigger = "anal"
         $ K_Upskirt = 1
@@ -1212,17 +1260,17 @@ label K_Anal_Cycle: #Repeating strokes
                         "How about a BJ?" if K_Action and MultiAction:
                                 if K_Anal >= 5 and K_Blow >= 10 and K_SEXP >= 50:
                                     $ Situation = "shift"
-                                    call K_AnalAfter
-                                    call K_Blowjob      
+                                    call K_AnalAfter from _call_K_AnalAfter_1
+                                    call K_Blowjob from _call_K_Blowjob_1      
                                 else:
                                     ch_k "No thanks, [K_Petname]. Maybe a Handy instead?"
                                     $ Situation = "shift"
-                                    call K_AnalAfter
-                                    call RHJ_Prep   
+                                    call K_AnalAfter from _call_K_AnalAfter_2
+                                    call KHJ_Prep from _call_KHJ_Prep   
                         "How about a Handy?" if K_Action and MultiAction:
                                 $ Situation = "shift"
-                                call K_AnalAfter
-                                call K_Handjob     
+                                call K_AnalAfter from _call_K_AnalAfter_3
+                                call K_Handjob from _call_K_Handjob     
                         "Finish up." if P_FocusX:
                                 "You release your concentration. . ."             
                                 $ P_FocusX = 0
@@ -1232,7 +1280,7 @@ label K_Anal_Cycle: #Repeating strokes
                                 jump K_Anal_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
-                                call Kitty_Sex_Reset
+                                call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_8
                                 $ Situation = "shift"
                                 jump K_AnalAfter
                         "No, get back down there.":                                
@@ -1242,8 +1290,8 @@ label K_Anal_Cycle: #Repeating strokes
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)
                                     "She grumbles but keeps moving."
                                 else:
-                                    call KittyFace("angry", 1)   
-                                    call Kitty_Sex_Reset
+                                    call KittyFace("angry", 1) from _call_KittyFace_359   
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_9
                                     "She scowls at you and pulls out."
                                     ch_k "Not with that attitude, mister!"                         
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
@@ -1278,8 +1326,26 @@ label K_Anal_Cycle: #Repeating strokes
                                     pass
                             
                         "Slap her ass":                     
-                                    call K_Slap_Ass                                    
+                                    call K_Slap_Ass from _call_K_Slap_Ass_9                                    
                                     jump K_Anal_Cycle  
+
+                        "Put her legs up" if not K_LegsUp:
+                                    $ K_LegsUp = 1
+                                    "You put her legs up."
+
+                        "Put her legs down" if K_LegsUp:
+                                    $ K_LegsUp = 0
+                                    "You put her legs down."
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) from _call_KittyFace_360 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) from _call_KittyFace_361 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1291,23 +1357,23 @@ label K_Anal_Cycle: #Repeating strokes
                                     $ P_FocusX = 0       
                                     
                         "Maybe lose some clothes. . .":
-                                    call K_Undress  
+                                    call K_Undress from _call_K_Undress_13  
                         
                         "Shift actions":
                             if K_Action and MultiAction:
                                 menu:
                                     "How about sex?":
                                             $ Situation = "shift"
-                                            call K_AnalAfter
-                                            call K_Sex_P
+                                            call K_AnalAfter from _call_K_AnalAfter_4
+                                            call K_Sex_P from _call_K_Sex_P
                                     "Just stick it in her pussy [[without asking].":
                                             $ Situation = "auto"
-                                            call K_AnalAfter
-                                            call K_Sex_P
+                                            call K_AnalAfter from _call_K_AnalAfter_5
+                                            call K_Sex_P from _call_K_Sex_P_1
                                     "Pull back to hotdog her.":
                                             $ Situation = "pullback"
-                                            call K_AnalAfter
-                                            call K_Sex_H
+                                            call K_AnalAfter from _call_K_AnalAfter_6
+                                            call K_Sex_H from _call_K_Sex_H_1
                                     "Never Mind":
                                             pass
                             else:
@@ -1315,32 +1381,32 @@ label K_Anal_Cycle: #Repeating strokes
                     
                         "I also want to. . . [[Offhand]":
                                 if K_Action and MultiAction:
-                                    call Kitty_Offhand_Set
+                                    call Kitty_Offhand_Set from _call_Kitty_Offhand_Set_17
                                     if Trigger2:
                                          $ K_Action -= 1
                                 else:
                                     ch_k "I'm[K_like]kinda tired here? Could we wrap it up?"  
                            
                         "Let's try something else." if MultiAction: 
-                                    call Kitty_Sex_Reset
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_10
                                     $ Situation = "shift"
                                     $ Line = 0
                                     jump K_AnalAfter
                         "Let's stop for now." if not MultiAction: 
-                                    call Kitty_Sex_Reset
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_11
                                     $ Line = 0
                                     jump K_AnalAfter
         #End menu (if Line)
         
-        call Sex_Dialog("Kitty",Partner)
+        call Sex_Dialog("Kitty",Partner) from _call_Sex_Dialog_28
                 
         #If either of you could cum 
         if P_Focus >= 100 or K_Lust >= 100:                        
                     #If you can cum:
                     if P_Focus >= 100:                                                     
-                            call PK_Cumming
+                            call PK_Cumming from _call_PK_Cumming_9
                             if "angry" in K_RecentActions:  
-                                call Kitty_Sex_Reset
+                                call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_12
                                 return    
                             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
                             if 100 > K_Lust >= 70 and K_OCount < 2:             
@@ -1354,7 +1420,7 @@ label K_Anal_Cycle: #Repeating strokes
                     #If Kitty can cum
                     if renpy.showing("Kitty_SexSprite"):                    #If you're still going at it,
                         if K_Lust >= 100:                                               
-                            call K_Cumming
+                            call K_Cumming from _call_K_Cumming_10
                             if Situation == "shift" or "angry" in K_RecentActions:
                                 jump K_AnalAfter
                        
@@ -1364,7 +1430,7 @@ label K_Anal_Cycle: #Repeating strokes
                             "She's emptied you out, you'll need to take a break."
                             jump K_SexAfter
                         elif "unsatisfied" in K_RecentActions:#And Kitty is unsatisfied,                    
-                            call Kitty_Sex_Launch(Trigger)
+                            call Kitty_Sex_Launch(Trigger) from _call_Kitty_Sex_Launch_9
                             $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
                                 "She is breathing heavily as your cock rubs inside her.", 
                                 "She slowly turns back towards you and smiles.",
@@ -1390,7 +1456,7 @@ label K_Anal_Cycle: #Repeating strokes
             ch_k "Seriously, it'll be time to stop soon."        
     
     #Round = 0 loop breaks
-    call KittyFace("bemused", 0)
+    call KittyFace("bemused", 0) from _call_KittyFace_362
     $ Line = 0
     ch_k "Ok, [K_Petname], that's enough of that for now."
     
@@ -1401,9 +1467,9 @@ label K_AnalAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
         $ P_Sprite = 0
         $ P_Cock = "out"
-        call Kitty_Sex_Reset
+        call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_13
         
-    call KittyFace("sexy") 
+    call KittyFace("sexy") from _call_KittyFace_363 
     
     $ K_Anal += 1  
     $ K_Action -=1
@@ -1423,7 +1489,7 @@ label K_AnalAfter:
         $ K_SEXP += 7
         $ Achievements.append("Kitty Anal Addict")
         if not Situation:
-            call KittyFace("bemused", 1)
+            call KittyFace("bemused", 1) from _call_KittyFace_364
             ch_k "I didn't think I'd love this so much!"                  
     elif K_Anal == 1:            
             $K_SEXP += 25        
@@ -1438,17 +1504,17 @@ label K_AnalAfter:
             ch_k "I'm really starting to love this."  
     elif not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback":       
         if "unsatisfied" in K_RecentActions:
-            call KittyFace("angry")
+            call KittyFace("angry") from _call_KittyFace_365
             $ K_Eyes = "side"
             ch_k  "Hmm, you seemed to get more out of that then me. . ."
         else:
-            call KittyFace("bemused")
+            call KittyFace("bemused") from _call_KittyFace_366
             ch_k "Ok, that was fun. . ."  
      
     $ Tempmod = 0  
     if Situation == "shift":
         ch_k "Mmm, so what else did you have in mind?"
-    call Checkout
+    call Checkout from _call_Checkout_51
     return   
 
 
@@ -1459,7 +1525,7 @@ label K_AnalAfter:
 # Kitty hotdog //////////////////////////////////////////////////////////////////////
 
 label K_Sex_H: 
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_118
     if K_Hotdog >= 3: #You've done it before several times
         $ Tempmod += 10
     elif K_Hotdog: #You've done it before
@@ -1492,7 +1558,7 @@ label K_Sex_H:
     if Situation == "Kitty":                                                                  
             #Kitty auto-starts   
             if Approval > 2:                                                      # fix, add kitty auto stuff here
-                call Kitty_Sex_Launch("L") 
+                call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_10 
                 "Kitty slides onto her back and pulls you against her, rubbing it against her mound."
                 menu:
                     "What do you do?"
@@ -1500,20 +1566,20 @@ label K_Sex_H:
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3)
                         "Kitty starts to grind against you."
                     "Praise her.":       
-                        call KittyFace("sexy, 1")                    
+                        call KittyFace("sexy, 1") from _call_KittyFace_367                    
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 2) 
                         ch_p "Hmmm, that's good, [K_Pet]."
-                        call Kitty_Namecheck
+                        call Kitty_Namecheck from _call_Kitty_Namecheck_4
                         "Kitty starts to grind against you."
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 85, 1)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 60, 2)
                     "Ask her to stop.":
-                        call KittyFace("surprised")       
+                        call KittyFace("surprised") from _call_KittyFace_368       
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
                         ch_p "Let's not do that right now, [K_Pet]."
-                        call Kitty_Namecheck
+                        call Kitty_Namecheck from _call_Kitty_Namecheck_5
                         "Kitty pulls back."
-                        call KittyOutfit
+                        call KittyOutfit from _call_KittyOutfit_28
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 1)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 2)                    
                         return            
@@ -1525,13 +1591,13 @@ label K_Sex_H:
             #end Kitty initates
     
     if Situation == "auto":   
-            call Kitty_Sex_Launch("L")   
+            call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_11   
             "You press Kitty down onto her back and press your cock against her."    
-            call KittyFace("surprised", 1)
+            call KittyFace("surprised", 1) from _call_KittyFace_369
             
             if (K_Hotdog and Approval) or (Approval > 1):                                                                      #this is not the first time you've had sex, or she's into it         
                 "Kitty is briefly startled, but melts into a sly smile."
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_370
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
@@ -1543,14 +1609,14 @@ label K_Sex_H:
                     ch_k "Hmm, kinda rude, [K_Petname]." 
                     "Sorry, sorry! Never mind.":
                         if Approval:     
-                            call KittyFace("sexy", 1)
+                            call KittyFace("sexy", 1) from _call_KittyFace_371
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
                             ch_k "I guess it doesn't feel so bad. . ."
                             jump K_HotdogPrep
                         "You pull back from her."                    
-                        call KittyFace("bemused", 1)
+                        call KittyFace("bemused", 1) from _call_KittyFace_372
                         ch_k "Thanks, not that it's {i}so{/i} bad, just maybe ask first?"                                             
                     "You'll see.":                    
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -10, 1)  
@@ -1559,7 +1625,7 @@ label K_Sex_H:
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3) 
                         if not ApprovalCheck("Kitty", 500, "O", TabM=1): #Checks if Obed is 700+  
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_373
                             "Kitty shoves you away."
                             ch_k "Jerk!"
                             ch_k "I'm not into that!"                                                  
@@ -1568,11 +1634,11 @@ label K_Sex_H:
                             $ renpy.pop_call()
                             if Situation:
                                 $ renpy.pop_call()
-                            call Kitty_Sex_Reset
+                            call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_14
                             $ K_RecentActions.append("angry")
                             $ K_DailyActions.append("angry")                       
                         else:
-                            call KittyFace("sad")
+                            call KittyFace("sad") from _call_KittyFace_374
                             "Kitty doesn't seem to be into this, but she's knows her place."                        
                             jump K_HotdogPrep
             return     
@@ -1581,59 +1647,59 @@ label K_Sex_H:
    
     if not K_Hotdog and "no hotdog" not in K_RecentActions:                                                               
             #first time    
-            call KittyFace("surprised", 1)
+            call KittyFace("surprised", 1) from _call_KittyFace_375
             $ K_Mouth = "kiss"
             ch_k "So, just grinding against me?"
       
             if K_Forced:
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_376
                 ch_k ". . . That's it?"
         
         
     if not K_Hotdog and Approval:                                                
             #First time dialog        
             if K_Forced: 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_377
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -3, 1)
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 20, -2, 1)
             elif K_Love >= (K_Obed + K_Inbt):
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_378
                 $ K_Brows = "sad"
                 $ K_Mouth = "smile" 
                 ch_k "It does look a bit swolen. . ."           
             elif K_Obed >= K_Inbt:
-                call KittyFace("normal")
+                call KittyFace("normal") from _call_KittyFace_379
                 ch_k "If you want. . ."
             elif K_Addict >= 50:
-                call KittyFace("manic", 1)
+                call KittyFace("manic", 1) from _call_KittyFace_380
                 ch_k "Hmmm. . ."
             else: # Uninhibited 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_381
                 $ K_Mouth = "smile"             
                 ch_k "Hmm, you look ready to go. . ."    
             
     elif Approval:                                                                      
             #Second time+ dialog
             if K_Forced: 
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_382
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -3, 1)
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 20, -2, 1)
                 ch_k "That's {i}all{/i} you want?"  
             elif not Taboo and "tabno" in K_DailyActions:        
                 ch_k "I guess this is a better location . ."   
             elif "hotdog" in K_RecentActions:
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_383
                 ch_k "Again? Ok."
                 jump K_HotdogPrep
             elif "hotdog" in K_DailyActions:
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_384
                 $ Line = renpy.random.choice(["Back again so soon?",                 
                     "So you'd like another round?",                 
                     "You're really digging this. . .", 
                     "Are you sure that's all you want?"]) 
                 ch_k "[Line]"    
             else:       
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_385
                 $ Kitty_Arms = 2
                 $ Line = renpy.random.choice(["Oooh, you want some of this?",                 
                     "So you'd like another round?",                       
@@ -1645,14 +1711,14 @@ label K_Sex_H:
     if Approval >= 2:                                                                  
             #She's into it. . .               
             if K_Forced:
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_386
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 1)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 1)
                 ch_k "Ok, fine."    
             elif "no hotdog" in K_DailyActions:               
                 ch_k "Well, I guess it's not so bad. . ."
             else:
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_387
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 1)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2) 
                 $ Line = renpy.random.choice(["Well, sure, give it a rub.",                 
@@ -1669,7 +1735,7 @@ label K_Sex_H:
     
     else:                                                                               
             #She's not into it, but maybe. . .            
-            call KittyFace("angry")
+            call KittyFace("angry") from _call_KittyFace_388
             if "no hotdog" in K_RecentActions:  
                 ch_k "I{i}just{/i}[K_like]told you \"no!\""
             elif Taboo and "tabno" in K_DailyActions and "no hotdog" in K_DailyActions: 
@@ -1679,19 +1745,19 @@ label K_Sex_H:
             elif Taboo and "tabno" in K_DailyActions:  
                 ch_k "I{i}just{/i}[K_like]told you, not in public!"  
             elif not K_Hotdog:
-                call KittyFace("bemused")
+                call KittyFace("bemused") from _call_KittyFace_389
                 ch_k "That's kinda hot, [K_Petname]. . ."
             else:
-                call KittyFace("bemused")
+                call KittyFace("bemused") from _call_KittyFace_390
                 ch_k "Not. . . now. . ."
             menu:
                 extend ""
                 "Sorry, never mind." if "no hotdog" in K_DailyActions:
-                    call KittyFace("bemused")
+                    call KittyFace("bemused") from _call_KittyFace_391
                     ch_k "No problem."              
                     return
                 "Maybe later?" if "no hotdog" not in K_DailyActions:
-                    call KittyFace("sexy")  
+                    call KittyFace("sexy") from _call_KittyFace_392  
                     ch_k "Yeah, maybe, [K_Petname]."
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 1)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)   
@@ -1703,7 +1769,7 @@ label K_Sex_H:
                     return
                 "You might like it. . .":             
                     if Approval:
-                        call KittyFace("sexy")     
+                        call KittyFace("sexy") from _call_KittyFace_393     
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 60, 2)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2) 
                         $ Line = renpy.random.choice(["Well, sure, ok.",     
@@ -1718,7 +1784,7 @@ label K_Sex_H:
                 "Just deal with it.":                                               # Pressured into it
                     $ Approval = ApprovalCheck("Kitty", 350, "OI", TabM = 3) # 35, 50, 65, -120(155)
                     if Approval > 1 or (Approval and K_Forced):
-                        call KittyFace("sad")
+                        call KittyFace("sad") from _call_KittyFace_394
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -2, 1)
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -2)                 
                         ch_k "Ok, fine. Whatever."  
@@ -1739,7 +1805,7 @@ label K_Sex_H:
         $ K_RecentActions.append("angry")
         $ K_DailyActions.append("angry")   
     if K_Forced:
-        call KittyFace("angry", 1)
+        call KittyFace("angry", 1) from _call_KittyFace_395
         ch_k "Yeah, not happening."
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5)  
         $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -1) if K_Love > 300 else K_Love
@@ -1747,17 +1813,17 @@ label K_Sex_H:
         $ K_RecentActions.append("angry")
         $ K_DailyActions.append("angry")   
     elif Taboo:                             # she refuses and this is too public a place for her
-        call KittyFace("angry", 1)        
+        call KittyFace("angry", 1) from _call_KittyFace_396        
         $ K_RecentActions.append("tabno")                      
         $ K_DailyActions.append("tabno") 
         ch_k "[K_Like]not here though?"  
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5)  
         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, -3)  
     elif K_Hotdog:
-        call KittyFace("sad") 
+        call KittyFace("sad") from _call_KittyFace_397 
         ch_k "Yeah, not again."
     else:
-        call KittyFace("normal", 1)
+        call KittyFace("normal", 1) from _call_KittyFace_398
         ch_k "Noooop."    
     $ K_RecentActions.append("no hotdog")                      
     $ K_DailyActions.append("no hotdog") 
@@ -1765,7 +1831,7 @@ label K_Sex_H:
     return
 
 label K_HotdogPrep:  
-    call Kitty_Sex_Launch("hotdog")
+    call Kitty_Sex_Launch("hotdog") from _call_Kitty_Sex_Launch_12
     
     if Situation != "auto":
 #        call Kitty_Bottoms_Off    
@@ -1791,7 +1857,7 @@ label K_HotdogPrep:
     else: #if Situation == "auto"       
         "You press yourself against her mound."
     
-    call Seen_First_Peen(1)
+    call Seen_First_Peen(1) from _call_Seen_First_Peen_14
     if not K_Hotdog:                                                      #First time stat buffs      
         if K_Forced:
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5)
@@ -1811,17 +1877,17 @@ label K_HotdogPrep:
     $ Trigger = "hotdog"
     $ Speed = 1
     if Taboo:
-        call DrainWord("Kitty","tabno")
-    call DrainWord("Kitty","no hotdog")
+        call DrainWord("Kitty","tabno") from _call_DrainWord_100
+    call DrainWord("Kitty","no hotdog") from _call_DrainWord_101
     $ K_RecentActions.append("hotdog")                      
     $ K_DailyActions.append("hotdog") 
 
 label K_Hotdog_Cycle: #Repeating strokes  
     
     while Round >=0:  
-        call Shift_Focus("Kitty")
-        call Kitty_Sex_Launch("hotdog") 
-        call KittyLust        
+        call Shift_Focus("Kitty") from _call_Shift_Focus_119
+        call Kitty_Sex_Launch("hotdog") from _call_Kitty_Sex_Launch_13 
+        call KittyLust from _call_KittyLust_13        
         $ P_Cock = "out"
         $ Trigger = "hotdog"
         
@@ -1838,8 +1904,8 @@ label K_Hotdog_Cycle: #Repeating strokes
                         ch_k "This is getting a bit dull."
                         "How about a BJ?" if K_Action and MultiAction:
                                 $ Situation = "shift"
-                                call K_HotdogAfter
-                                call K_Blowjob       
+                                call K_HotdogAfter from _call_K_HotdogAfter_1
+                                call K_Blowjob from _call_K_Blowjob_2       
                         "Finish up." if P_FocusX:
                                 "You release your concentration. . ."             
                                 $ P_FocusX = 0
@@ -1849,7 +1915,7 @@ label K_Hotdog_Cycle: #Repeating strokes
                                 jump K_Hotdog_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
-                                call Kitty_Sex_Reset
+                                call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_15
                                 $ Situation = "shift"
                                 jump K_HotdogAfter
                         "No, get back down there.":                                
@@ -1859,8 +1925,8 @@ label K_Hotdog_Cycle: #Repeating strokes
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)
                                     "She grumbles but keeps moving."
                                 else:
-                                    call KittyFace("angry", 1)   
-                                    call Kitty_Sex_Reset
+                                    call KittyFace("angry", 1) from _call_KittyFace_399   
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_16
                                     "She scowls at you and pulls away."
                                     ch_k "Not with that attitude, mister!"                         
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
@@ -1895,8 +1961,26 @@ label K_Hotdog_Cycle: #Repeating strokes
                                     pass
                             
                         "Slap her ass":                     
-                                    call K_Slap_Ass                                    
+                                    call K_Slap_Ass from _call_K_Slap_Ass_10                                    
                                     jump K_Hotdog_Cycle  
+
+                        "Put her legs up" if not K_LegsUp:
+                                    $ K_LegsUp = 1
+                                    "You put her legs up."
+
+                        "Put her legs down" if K_LegsUp:
+                                    $ K_LegsUp = 0
+                                    "You put her legs down."
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) from _call_KittyFace_400 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) from _call_KittyFace_401 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1908,27 +1992,27 @@ label K_Hotdog_Cycle: #Repeating strokes
                                     $ P_FocusX = 0
                                     
                         "Maybe lose some clothes. . .":
-                                    call K_Undress
+                                    call K_Undress from _call_K_Undress_14
                                     
                         "Shift actions":
                             if K_Action and MultiAction:
                                 menu:
                                     "How about sex?":
                                         $ Situation = "shift"
-                                        call K_HotdogAfter
-                                        call K_Sex_P
+                                        call K_HotdogAfter from _call_K_HotdogAfter_2
+                                        call K_Sex_P from _call_K_Sex_P_2
                                     "Just stick it in her pussy [[without asking].":
                                         $ Situation = "auto"
-                                        call K_HotdogAfter
-                                        call K_Sex_P
+                                        call K_HotdogAfter from _call_K_HotdogAfter_3
+                                        call K_Sex_P from _call_K_Sex_P_3
                                     "How about anal?":
                                         $ Situation = "shift"
-                                        call K_HotdogAfter
-                                        call K_Sex_A
+                                        call K_HotdogAfter from _call_K_HotdogAfter_4
+                                        call K_Sex_A from _call_K_Sex_A_2
                                     "Just stick it in her ass [[without asking].":
                                         $ Situation = "auto"
-                                        call K_HotdogAfter
-                                        call K_Sex_A
+                                        call K_HotdogAfter from _call_K_HotdogAfter_5
+                                        call K_Sex_A from _call_K_Sex_A_3
                                     "Never Mind":
                                         pass
                             else:
@@ -1936,32 +2020,32 @@ label K_Hotdog_Cycle: #Repeating strokes
                     
                         "I also want to. . .[[Offhand]":
                                 if K_Action and MultiAction:
-                                    call Kitty_Offhand_Set
+                                    call Kitty_Offhand_Set from _call_Kitty_Offhand_Set_18
                                     if Trigger2:
                                          $ K_Action -= 1
                                 else:
                                     ch_k "I'm[K_like]kinda tired here? Could we wrap it up?"  
                            
                         "Let's try something else." if MultiAction: 
-                                    call Kitty_Sex_Reset
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_17
                                     $ Situation = "shift"
                                     $ Line = 0
                                     jump K_HotdogAfter
                         "Let's stop for now." if not MultiAction: 
-                                    call Kitty_Sex_Reset
+                                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_18
                                     $ Line = 0
                                     jump K_HotdogAfter
         #End menu (if Line)
         
-        call Sex_Dialog("Kitty",Partner)
+        call Sex_Dialog("Kitty",Partner) from _call_Sex_Dialog_29
                 
         #If either of you could cum 
         if P_Focus >= 100 or K_Lust >= 100:                      
                     #If you can cum:
                     if P_Focus >= 100:                                                     
-                            call PK_Cumming
+                            call PK_Cumming from _call_PK_Cumming_10
                             if "angry" in K_RecentActions:  
-                                call Kitty_Sex_Reset
+                                call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_19
                                 return    
                             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
                             if 100 > K_Lust >= 70 and K_OCount < 2:             
@@ -1976,7 +2060,7 @@ label K_Hotdog_Cycle: #Repeating strokes
                     #If Kitty can cum
                     if renpy.showing("Kitty_SexSprite"):                    #If you're still going at it,
                         if K_Lust >= 100:                                               
-                            call K_Cumming
+                            call K_Cumming from _call_K_Cumming_11
                             if Situation == "shift" or "angry" in K_RecentActions:
                                 jump K_HotdogAfter
                        
@@ -1986,7 +2070,7 @@ label K_Hotdog_Cycle: #Repeating strokes
                             "She's emptied you out, you'll need to take a break."
                             jump K_SexAfter
                         elif "unsatisfied" in K_RecentActions:#And Kitty is unsatisfied,                    
-                            call Kitty_Sex_Launch("hotdog")
+                            call Kitty_Sex_Launch("hotdog") from _call_Kitty_Sex_Launch_14
                             $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
                                 "She is breathing heavily as your cock rubs against her.", 
                                 "She slowly turns back towards you and smiles.",
@@ -2013,7 +2097,7 @@ label K_Hotdog_Cycle: #Repeating strokes
             ch_k "Seriously, it'll be time to stop soon."        
     
     #Round = 0 loop breaks
-    call KittyFace("bemused", 0)
+    call KittyFace("bemused", 0) from _call_KittyFace_402
     $ Line = 0
     ch_k "Ok, [K_Petname], that's enough of that for now."
     
@@ -2024,9 +2108,9 @@ label K_HotdogAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
         $ P_Sprite = 0
         $ P_Cock = "out"
-        call Kitty_Sex_Reset
+        call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_20
         
-    call KittyFace("sexy") 
+    call KittyFace("sexy") from _call_KittyFace_403 
     
     $ K_Hotdog += 1  
     $ K_Action -=1
@@ -2053,17 +2137,17 @@ label K_HotdogAfter:
             ch_k "I'm surprised how much I enjoy this."  
     elif not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback":       
         if "unsatisfied" in K_RecentActions:
-            call KittyFace("angry")
+            call KittyFace("angry") from _call_KittyFace_404
             $ K_Eyes = "side"
             ch_k "I didn't get much out of that. . ."
         else:
-            call KittyFace("bemused")
+            call KittyFace("bemused") from _call_KittyFace_405
             ch_k "I could get into that. . ."  
      
     $ Tempmod = 0  
     if Situation == "shift":
         ch_k "Mmm, so what else did you have in mind?"
-    call Checkout
+    call Checkout from _call_Checkout_52
     return   
 
 # End Kitty hotdogging //////////////////////////////////////////////////////////////////////////////////

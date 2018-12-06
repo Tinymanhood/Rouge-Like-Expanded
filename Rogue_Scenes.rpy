@@ -37,7 +37,7 @@ label Prologue:
     ch_p "Why did you even bring me here, I don't have any \"super powers.\""
     ch_x "Nonsense, my boy. You have an incredibly useful ability. . ."
     ch_x "the power to negate other powers, even including my own."
-    call RogueFace("surprised")
+    call RogueFace("surprised") from _call_RogueFace_106
     $ R_SpriteLoc = StageFarRight
     show Rogue at SpriteLoc(R_SpriteLoc)
     with easeinright
@@ -49,7 +49,7 @@ label Prologue:
     ch_x "That is correct, Rogue, though currently, his powers are weak and uncontrolled."
     ch_x "One day, however, he may even be able to help you turn your powers off permanently."
     ch_r "! . . ."
-    call RogueFace("smile")
+    call RogueFace("smile") from _call_RogueFace_107
     ch_x "Since you're here, why don't you show our new guest around the mansion?"
     
     ch_x "This young lady is named Rogue, one of our veteran students."
@@ -66,7 +66,7 @@ label Prologue:
         ch_r "A pleasure ta meet ya, [R_Petname]. Let me give ya the lay of the place." 
         "It's nice to meet you too.":
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 20)
-            call RogueFace("smile", 1)
+            call RogueFace("smile", 1) from _call_RogueFace_108
             ch_r "Oh, a gentleman. I think we'll really get along."                          
             $ R_Blush = 0
             ch_r "Ok, so let me show ya around. . ."
@@ -77,24 +77,24 @@ label Prologue:
             $ R_Mouth = "smile"
             $ R_Blush = 1
             ch_r "Wha- what? N, no, that's not what I meant! I'm just giving you the campus tour!"
-            call RogueFace("bemused")
+            call RogueFace("bemused") from _call_RogueFace_109
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 20)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 20)
             ch_r "Hmm. . ."           
             $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 3)
-            call RogueFace("normal")
+            call RogueFace("normal") from _call_RogueFace_110
             $ R_Eyes = "surprised"
             ch_r "Anyways, let's get this back on track. . ."
-            call RogueFace("smile", 0)
+            call RogueFace("smile", 0) from _call_RogueFace_111
         "Whatever.":            
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 20)
-            call RogueFace("sad")
+            call RogueFace("sad") from _call_RogueFace_112
             $ R_Brows = "normal"
             ch_r "Tsk, well ok, let's get started."
         "Screw off.":
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -30)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 30)
-            call RogueFace("angry")
+            call RogueFace("angry") from _call_RogueFace_113
             show Rogue at SpriteLoc(R_SpriteLoc)  
             with vpunch
             ch_r "Well I never!"
@@ -106,14 +106,14 @@ label Prologue:
 # Tour //////////////////////////////////////////////////////////////////////
 label tour_start:
     $ bg_current = "bg campus"    
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_88
     show Rogue at SpriteLoc(R_SpriteLoc)  
     ch_r "This is the campus square. It links up to all the major locations on campus and you'll probably pass through here a lot."
 
 
 # Player's room
     $ bg_current = "bg player"    
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_89
     show Rogue at SpriteLoc(R_SpriteLoc)  
     ch_r "This will be your room, we each get private rooms now that the campus has been expanded."
     menu:
@@ -134,7 +134,7 @@ label tour_start:
     
 # Classrooms
     $ bg_current = "bg classroom"    
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_90
     show Rogue at SpriteLoc(R_SpriteLoc)  
     ch_r "And this is one of our state-of-the-art classrooms. They're multi-purpose so they can teach almost anything in them."
     ch_r "This used to just be an after school training facility, but over the past few years it's grown into a full service university."
@@ -142,7 +142,7 @@ label tour_start:
 
 # Danger Room
     $ bg_current = "bg dangerroom"   
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_91
     show Rogue at SpriteLoc(R_SpriteLoc)  
     ch_r "And this is the Danger Room. It's been upgraded to a fully holographic experience, allowing realistic battlefield simulations."
     $ Count = 0
@@ -163,7 +163,7 @@ label tour_start:
                 $ R_Inbt= Statupdate("Rogue", "Inbt", R_Inbt, 200, 30)
                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)
                 ch_r "Well. . . I suppose it could. . . if one were into such things."
-                call RogueFace (B = 0)
+                call RogueFace (B = 0) from _call_RogueFace_114
                 if Count == 1:
                     $ Count = 3
                 else:
@@ -175,7 +175,7 @@ label tour_start:
 
 label tour_end: 
     $ bg_current = "bg campus"   
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_92
     show Rogue at SpriteLoc(R_SpriteLoc)  
     ch_r "Well, that's the nickel tour, now you know where everything is. . ."
     $ R_Mouth = "normal"
@@ -194,7 +194,7 @@ label tour_end:
     $ Head = 0
     ch_r "Only, I still can't really control it. I can't touch people without hurting them, and I might even put them into a coma if I'm not careful."
     ch_r "So I was hoping that maybe with your power. . ."
-    call RogueFace("sexy")
+    call RogueFace("sexy") from _call_RogueFace_115
     $ R_Brows = "sad"    
     menu:
         ch_r "So I was hoping that maybe with your power. . . I could touch you?"
@@ -203,54 +203,54 @@ label tour_end:
                 $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 20)
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 30)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 20, 20)
-                call RogueFace("surprised", 1)
+                call RogueFace("surprised", 1) from _call_RogueFace_116
                 ch_r "Well, aren't you fresh." 
-                call RogueFace("sexy")
+                call RogueFace("sexy") from _call_RogueFace_117
                 $ R_Mouth = "smile"
                 ch_r "Just this once."
-                call RogueFace("kiss") 
+                call RogueFace("kiss") from _call_RogueFace_118 
                 "She gives you a little peck on the cheek."
-                call RogueFace("smile")
+                call RogueFace("smile") from _call_RogueFace_119
             else:
                 $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 30)
-                call RogueFace("bemused")
+                call RogueFace("bemused") from _call_RogueFace_120
                 ch_r "Heh, You'll have to earn that [R_Petname]."                
                 $ R_Arms = 0
                 $ Rogue_Arms = 2          
-                call RogueFace("sexy")
+                call RogueFace("sexy") from _call_RogueFace_121
                 $ R_Brows = "sad"
                 "She pulls off her glove and touches your face."      
         "Ok, be my guest.":        
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 30)
-            call RogueFace("smile")
+            call RogueFace("smile") from _call_RogueFace_122
             $ R_Arms = 0
             $ Rogue_Arms = 2
-            call RogueFace("sexy")
+            call RogueFace("sexy") from _call_RogueFace_123
             $ R_Brows = "sad"
             "She pulls off her glove and touches your face."
         "No, that's weird.":       
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -30)
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 30)
-            call RogueFace("sad")
+            call RogueFace("sad") from _call_RogueFace_124
             $ R_Brows = "normal"
             ch_r "Well I'm just too damned curious, sorry."
             $ R_Arms = 0
             $ Rogue_Arms = 2
             "She pulls off her glove and touches your face."
     
-    call RogueFace("surprised")
+    call RogueFace("surprised") from _call_RogueFace_125
     ch_r "Wow."
     ch_r "This is amazing! With anyone else I would have drained their powers and they'd be out by now."
-    call RogueFace("sexy")    
+    call RogueFace("sexy") from _call_RogueFace_126    
     menu:
         ch_r "Do you know how long it's been since I've felt human contact without hurting them?"
         "Glad I could help.":
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 10)
         "I'm guessing it's been quite a while.":
             $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)
-            call RogueFace("bemused", 1)
+            call RogueFace("bemused", 1) from _call_RogueFace_127
             ch_r ". . ."
-    call RogueFace("smile")   
+    call RogueFace("smile") from _call_RogueFace_128   
     ch_r "What a rush. I guess that's it then, I'm heading back to my room, you can head to yours."
     $ R_Blush = 0
     if R_Love >= 500:
@@ -270,10 +270,10 @@ label tour_parting:
             "You head back to your room."
         "Want to make out a little?":
             if R_Love >= 560:
-                call RogueFace("bemused", 1)
+                call RogueFace("bemused", 1) from _call_RogueFace_129
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 10, 20)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)
-                call R_Makeout
+                call R_Makeout from _call_R_Makeout
                 if "angry" in R_RecentActions:                    
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 30)
@@ -282,7 +282,7 @@ label tour_parting:
                     hide Rogue with easeoutright
                     "Rogue tears off and you head back to your room."
                 else:
-                    call RogueFace("bemused", 1)
+                    call RogueFace("bemused", 1) from _call_RogueFace_130
                     ch_r "That was real nice, [R_Petname]. I'll definitely be seeing you later."                
                     hide Rogue with easeoutright
                     "You head back to your room."
@@ -293,22 +293,22 @@ label tour_parting:
                     $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 10)
                     $ R_Kissed += 1
-                    call RogueFace("bemused", 1)
+                    call RogueFace("bemused", 1) from _call_RogueFace_131
                     ch_r "Well, maybe one kiss."
-                    call RogueFace("kiss")
+                    call RogueFace("kiss") from _call_RogueFace_132
                     "She gives you a quick kiss. No tongue."                    
                     jump tour_parting
                 else: 
-                    call RogueFace("bemused")
+                    call RogueFace("bemused") from _call_RogueFace_133
                     ch_r "Nah, I think you've had enough for today, [R_Petname]."
                     "You head back to your room."
                     hide Rogue
                     $ R_Emote = "normal"
-    call Wait            
+    call Wait from _call_Wait_23            
     $ bg_current = "bg player"  
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_93
     "This is a short tutorial on the game's features. Feel free to skip it, you can always view it later in this room."
-    call Tutorial    
+    call Tutorial from _call_Tutorial    
     jump Player_Room    
 return
 
@@ -321,7 +321,7 @@ return
 # Event Sleepover /////////////////////////////////////////////////////  
 label Rogue_Sleepover(sleepover = 0):
             #This event gets called from the Location menus when time passes in the Night timeframe.
-            call Shift_Focus("Rogue")
+            call Shift_Focus("Rogue") from _call_Shift_Focus_64
             if bg_current == "bg rogue":
                     ch_r "It's getting late and I'm turning in."
             else:
@@ -329,7 +329,7 @@ label Rogue_Sleepover(sleepover = 0):
             if Day <= 7:        
                 ch_r "You seem nice and all, but we've only just met, so I'll see you tomorrow."  
             else:      
-                call RogueFace("sexy", 1)
+                call RogueFace("sexy", 1) from _call_RogueFace_134
                 if R_Sleep >= 3 and ApprovalCheck("Rogue", 800):                                 #You've slept over several times and she still likes you
                         if bg_current == "bg rogue":
                                 ch_r "Are you staying over tonight?"
@@ -338,7 +338,7 @@ label Rogue_Sleepover(sleepover = 0):
                         $ sleepover = 1
                     
                 elif R_Sleep < 3 and ApprovalCheck("Rogue", 1100, "LI"):                        #You haven't slept over much, but she wants you to
-                        call RogueFace("bemused", 1)
+                        call RogueFace("bemused", 1) from _call_RogueFace_135
                         if bg_current == "bg rogue":
                             ch_r "I was thinking. . . maybe you wanted to stay the night?"  
                         else:
@@ -379,40 +379,40 @@ label Rogue_Sleepover(sleepover = 0):
                     "Ok, I'll head out. Good night." if not sleepover and bg_current == "bg rogue":                        
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 3)
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 25, 2)            
-                            call RogueFace("smile")
+                            call RogueFace("smile") from _call_RogueFace_136
                             ch_r "Yeah, good night, [R_Petname]. . ."
                     "Ok, see you later then. Good night." if not sleepover and bg_current != "bg rogue":                        
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 3)
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 25, 2)            
-                            call RogueFace("smile")
+                            call RogueFace("smile") from _call_RogueFace_137
                             ch_r "Yeah, good night, [R_Petname]. . ."
                         
                     "Are you sure I can't stay the night? . ." if not sleepover and not R_Sleep and bg_current == "bg rogue": 
                             if ApprovalCheck("Rogue", 1000) or ApprovalCheck("Rogue", 700, "L") or ApprovalCheck("Rogue", 500, "O"):
-                                call RogueFace("bemused", 1)                   
+                                call RogueFace("bemused", 1) from _call_RogueFace_138                   
                                 ch_r "Well. . . I suppose it would be alright."
                                 $ sleepover = 1 
                             else:                    
-                                call RogueFace("smile")
+                                call RogueFace("smile") from _call_RogueFace_139
                                 $ R_Brows = "confused"
                                 ch_r "I'm afraid not, [R_Petname]. Head home, I'll see you later." 
                     "Are you sure you can't stay? . ." if not sleepover and not R_Sleep and bg_current != "bg rogue": 
                             if ApprovalCheck("Rogue", 1000) or ApprovalCheck("Rogue", 700, "L") or ApprovalCheck("Rogue", 500, "O"):
-                                call RogueFace("bemused", 1)                   
+                                call RogueFace("bemused", 1) from _call_RogueFace_140                   
                                 ch_r "Well. . . I suppose it would be alright."
                                 $ sleepover = 1 
                             else:                    
-                                call RogueFace("smile")
+                                call RogueFace("smile") from _call_RogueFace_141
                                 $ R_Brows = "confused"
                                 ch_r "I'm afraid not, [R_Petname]. I'll head out, see you later." 
                                 
                     "That's not what you said the other night . ." if not sleepover and R_Sleep: #if she wants you gone  
                             if ApprovalCheck("Rogue", 900)or ApprovalCheck("Rogue", 700, "L") or ApprovalCheck("Rogue", 500, "O"):
-                                call RogueFace("bemused", 1)                  
+                                call RogueFace("bemused", 1) from _call_RogueFace_142                  
                                 ch_r "Well. . . that didn't turn out so bad, I suppose. . ." 
                                 $ sleepover = 1
                             else:                    
-                                call RogueFace("smile")
+                                call RogueFace("smile") from _call_RogueFace_143
                                 $ R_Brows = "confused"
                                 if bg_current == "bg rogue":
                                     ch_r "I'm afraid not this time, [R_Petname]. Head home, I'll see you later." 
@@ -438,22 +438,22 @@ label Return_Player:
             if bg_current != "bg player":
                     "You head back to your room."
             $ bg_current = "bg player"
-            call Set_The_Scene
+            call Set_The_Scene from _call_Set_The_Scene_94
             $ renpy.pop_call()
             jump Player_Room
             
 label Rogue_Morning:
             #This label is jumped too from Rogue Sleepover if you successfully stay the night
-            call Shift_Focus("Rogue")
-            call RogueOutfit("sleep")
+            call Shift_Focus("Rogue") from _call_Shift_Focus_65
+            call RogueOutfit("sleep") from _call_RogueOutfit_24
             "Rogue changes into her sleepwear."
             ch_r "Hmm, that's a bit more comfortable."
             ch_r "Let's turn in."                                               #fix add sex option here
             show blackscreen onlayer black   
             pause 2
-            call Wait(Lights = 0) 
+            call Wait(Lights = 0) from _call_Wait_24 
             $ R_Loc = bg_current
-            call RogueOutfit("sleep")
+            call RogueOutfit("sleep") from _call_RogueOutfit_25
             
             $ D20 = renpy.random.randint(40, 70)                                #This element sends player to the Morningwood event        
             if "hungry" in R_Traits and D20 > 50:
@@ -472,10 +472,10 @@ label Rogue_Morning:
                     $ Cnt = 0 
                     
             if Cnt:   
-                    call Rogue_SexAct("morningwood") 
+                    call Rogue_SexAct("morningwood") from _call_Rogue_SexAct_5 
                     ch_r "Not a bad way to start the day. . ." 
                                     
-            call RogueFace("smile")
+            call RogueFace("smile") from _call_RogueFace_144
             hide NightMask onlayer nightmask  
             hide blackscreen onlayer black
             ch_r "'Morning [R_Petname]. Sleep well?"
@@ -504,16 +504,16 @@ label Rogue_Morning:
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 35, 20)             
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 10)
                         if R_Love >= 800:
-                            call RogueFace("bemused")
+                            call RogueFace("bemused") from _call_RogueFace_145
                         else:
-                            call RogueFace("confused")
+                            call RogueFace("confused") from _call_RogueFace_146
                         ch_r "Ok, well glad I wasn't {i}too{/i} much bother."
                 "You were constantly tossing around.":            
                         $ R_Blush = 1
                         if ApprovalCheck("Rogue", 800, "L"):
-                            call RogueFace("bemused")
+                            call RogueFace("bemused") from _call_RogueFace_147
                         else:
-                            call RogueFace("angry")
+                            call RogueFace("angry") from _call_RogueFace_148
                         if R_Sleep < 5:
                             ch_r "Well! . . ."
                             ch_r "It's not like I've had much experience sleeping next to someone. . ."                       
@@ -527,23 +527,23 @@ label Rogue_Morning:
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -10) 
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 40)  
                         if ApprovalCheck("Rogue", 500, "O"):
-                            call RogueFace("normal")
+                            call RogueFace("normal") from _call_RogueFace_149
                             ch_r "Yes, [R_Petname], I'll try my best."
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 10) if R_Sleep < 5 else R_Obed
                         else:
-                            call RogueFace("angry")
+                            call RogueFace("angry") from _call_RogueFace_150
                             ch_r "Hmmph, you'll be sleeping alone, keep talk'in like that." 
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 35, 20) if R_Sleep < 5 else R_Inbt  
                         
             #fix add sex option here
             $ R_Blush = 0
             $ R_Sleep += 1    
-            call Rogue_Schedule
-            call RogueFace("normal")
+            call Rogue_Schedule from _call_Rogue_Schedule_2
+            call RogueFace("normal") from _call_RogueFace_151
             if R_Outfit != "sleep":
                 "Rogue changes out of her sleepwear."
-            call RogueOutfit
-            call Girls_Location
+            call RogueOutfit from _call_RogueOutfit_26
+            call Girls_Location from _call_Girls_Location_34
             return
     
 # end Event Sleepover /////////////////////////////////////////////////////
@@ -552,12 +552,12 @@ label Rogue_Morning:
 label Rogue_MorningWood:
             # this label is called from the Rogue_SexAct("morningwood"), 
             # which was called from Rogue_Sleepover, which was called from a Location.
-            call Shift_Focus("Rogue")
+            call Shift_Focus("Rogue") from _call_Shift_Focus_66
             $ P_Focus = 30
             ch_u "\"Slurp, slurp, slurp.\""
             $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 5)
             $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 80, 5)    
-            call Rogue_BJ_Launch
+            call Rogue_BJ_Launch from _call_Rogue_BJ_Launch
             "You feel a pleasant sensation. . ."
             ch_u "\"Slurp, slurp, slurp.\""
             $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 5)
@@ -574,7 +574,7 @@ label Rogue_MorningWood:
             $Speed = 3
             $ Count = 3
             $ Line = 0
-            call Rogue_First_Peen(1)
+            call Rogue_First_Peen(1) from _call_Rogue_First_Peen
             while Count > 0:
                     $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 10)
                     $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 80, 5)
@@ -602,14 +602,14 @@ label Rogue_MorningWood:
             $ R_Blush = 1
             "She pulls back with a pop."
             if Line == "question":
-                call RogueFace("smile")
+                call RogueFace("smile") from _call_RogueFace_152
                 ch_r "Well I ain't whistlin Dixie, [R_Petname]." 
             elif Line == "praise":
-                call RogueFace("smile")
+                call RogueFace("smile") from _call_RogueFace_153
                 ch_r "Mmm, you know it, [R_Petname]."
             elif Line == "no":
                 $ Speed = 0
-                call RogueFace("angry")
+                call RogueFace("angry") from _call_RogueFace_154
                 $R_Brows = "confused"
                 ch_r "Well that's a fine \"how d'ya do,\" when a girl goes to all this trouble!"
             else:
@@ -619,62 +619,62 @@ label Rogue_MorningWood:
                 extend ""
                 "So, um, you want to get back to it?":
                         if Line != "no":
-                            call RogueFace("smile")
+                            call RogueFace("smile") from _call_RogueFace_155
                             ch_r "My pleasure."
                         elif Line == "no" and ApprovalCheck("Rogue", 1750):
-                            call RogueFace("bemused")
+                            call RogueFace("bemused") from _call_RogueFace_156
                             ch_r "You're lucky I'm so into you. . ."
                             $ Line = "maybe"
                         else:
-                            call RogueFace("angry")
+                            call RogueFace("angry") from _call_RogueFace_157
                             ch_r "Well not when you're rude to me."                
                             ch_r "You can polish yourself off."
                 "Were you more interested in something else?":
                         if Line != "no":
-                            call RogueFace("sexy")
+                            call RogueFace("sexy") from _call_RogueFace_158
                             ch_r "Ooh, what did you have in mind?"
                             $ Line = "sex"
                         elif Line == "no" and ApprovalCheck("Rogue", 1650):
-                            call RogueFace("bemused")
+                            call RogueFace("bemused") from _call_RogueFace_159
                             ch_r "Well, you're a jerk, but you're a cute jerk."
                             ch_r "What were you thinking?"
                             $ Line = "sex"
                         else:
-                            call RogueFace("angry")
+                            call RogueFace("angry") from _call_RogueFace_160
                             ch_r "Well not when you're rude to me."                
                             ch_r "You can polish yourself off."
                 "Sorry, sorry, please continue." if Line == "no":
                         if (R_Love + R_Obed + R_Inbt) >= 1450:
-                            call RogueFace("bemused")
+                            call RogueFace("bemused") from _call_RogueFace_161
                             ch_r "Well, since you asked so nice. . ."
                             $ Line = "maybe"
                         else:
-                            call RogueFace("angry")
+                            call RogueFace("angry") from _call_RogueFace_162
                             ch_r "Pssht, maybe next time, [R_Petname]."
                 "Sorry, but we could do something else." if Line == "no":
                         if ApprovalCheck("Rogue", 1350):
-                            call RogueFace("sexy")
+                            call RogueFace("sexy") from _call_RogueFace_163
                             ch_r "Well, since you asked so nice. . ."
                             ch_r "What did you have in mind?"
                             $ Line = "sex"
                         else:
-                            call RogueFace("angry")
+                            call RogueFace("angry") from _call_RogueFace_164
                             ch_r "Pssht, maybe next time, [R_Petname]."
                 "Not when I'm just waking up.":
-                        call RogueFace("angry")
+                        call RogueFace("angry") from _call_RogueFace_165
                         ch_r "Fine, whatever!"
                         $R_Eyes = "side"
                         ch_r "[[mumbles] Girl tries to do a favor. . ."
                         $ Line = "no"
             if Line == "no":
-                    call Rogue_BJ_Reset
+                    call Rogue_BJ_Reset from _call_Rogue_BJ_Reset
                     ch_r "You should probably get out of here."
-                    call RogueOutfit
+                    call RogueOutfit from _call_RogueOutfit_27
         #            $ renpy.pop_call()
                     $ renpy.pop_call()
                     jump Return_Player
             elif Line == "sex":
-                    call Rogue_BJ_Reset
+                    call Rogue_BJ_Reset from _call_Rogue_BJ_Reset_1
                     $ Situation = "shift"
                     return
             else:
@@ -690,17 +690,17 @@ label Rogue_MorningWood:
 
 # Event Rogue_Caught_Masturbating  /////////////////////////////////////////////////////  
 label Rogue_Caught_Masturbating:
-            call Shift_Focus("Rogue")
+            call Shift_Focus("Rogue") from _call_Shift_Focus_67
             "You hear some odd noises coming from Rogue's room as you enter."                           #fix this scene, pants option
             show blackscreen onlayer black
             $ R_Outfit = "evo_green"
-            call RogueOutfit(Changed=1)    
+            call RogueOutfit(Changed=1) from _call_RogueOutfit_28    
             $ R_Upskirt = 1
             $ R_PantiesDown = 1 
             $ R_Loc = bg_current
-            call Set_The_Scene(0)
-            call Display_Rogue(0)
-            call RogueFace("sexy")
+            call Set_The_Scene(0) from _call_Set_The_Scene_95
+            call Display_Rogue(0) from _call_Display_Rogue_5
+            call RogueFace("sexy") from _call_RogueFace_166
             $ R_Eyes = "closed"
             $ Rogue_Arms = 2
             $ Count = 0    
@@ -708,7 +708,7 @@ label Rogue_Caught_Masturbating:
             hide blackscreen onlayer black
             $ R_DailyActions.append("unseen")
             $ R_RecentActions.append("unseen")    
-            call Rogue_SexAct("masturbate")
+            call Rogue_SexAct("masturbate") from _call_Rogue_SexAct_6
             if "angry" in R_RecentActions:
                 return
         
@@ -729,16 +729,16 @@ label Rogue_Caught_Masturbating:
             else:
                 ch_r "Fancy seeing you here again, [R_Petname]. Almost like it was intentional. . ."
             $ Rogue_Arms = 1  
-            call RogueOutfit      
+            call RogueOutfit from _call_RogueOutfit_29      
             return
             
 # end Rogue_Caught_Masturbating/////////////////////////////////////////////////////
 
 # Event Rogue_Key /////////////////////////////////////////////////////  
 label Rogue_Key:
-            call Shift_Focus("Rogue")
-            call Set_The_Scene
-            call RogueFace("bemused")
+            call Shift_Focus("Rogue") from _call_Shift_Focus_68
+            call Set_The_Scene from _call_Set_The_Scene_96
+            call RogueFace("bemused") from _call_RogueFace_167
             $ Rogue_Arms = 2
             ch_r "Hey, you've been sleeping over a lot, I figured you might want a key?"
             ch_p "Thanks."
@@ -751,8 +751,8 @@ label Rogue_Key:
 
 # Event Rogue_Caught /////////////////////////////////////////////////////  
 label Rogue_Caught:
-    call Shift_Focus("Rogue")
-    call Checkout
+    call Shift_Focus("Rogue") from _call_Shift_Focus_69
+    call Checkout from _call_Checkout_35
     ch_r "!!!"        
     $ Line = Trigger
     $ Trigger = 0
@@ -760,22 +760,22 @@ label Rogue_Caught:
     $ Trigger3 = 0
     $ Trigger4 = 0
     $ Trigger5 = 0
-    call RogueOutfit
+    call RogueOutfit from _call_RogueOutfit_30
     if K_Loc == bg_current:         
         $ K_Loc = "bg study"
     if E_Loc == bg_current:                
         $ E_Loc = "bg study"                
     $ bg_current = "bg study"  
     $ R_Loc = "bg study"
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_97
     show Professor at SpriteLoc(StageLeft)
     show Rogue at SpriteLoc(StageRight) with ease
     if E_Loc == bg_current:         
         show Emma_Sprite at SpriteLoc(StageFarRight) with ease
     if K_Loc == bg_current:         
         show Kitty_Sprite at SpriteLoc(StageFarRight) with ease
-    call XavierFace("shocked")
-    call RogueFace("sad")
+    call XavierFace("shocked") from _call_XavierFace
+    call RogueFace("sad") from _call_RogueFace_168
     ch_x "I'm very disappointed in your behavior, the both of you."
     
     if Line == "fondle thighs" or Line == "fondle breasts" or Line == "fondle pussy" or Line == "hotdog" or Line == "hand":
@@ -802,9 +802,9 @@ label Rogue_Caught:
         "And this isn't even the first time this has happened!"
     
     if K_Loc == bg_current:
-        call KittyFace("surprised",2)
+        call KittyFace("surprised",2) from _call_KittyFace_24
         ch_x "And Kitty, you were just watching this occur!"        
-        call KittyFace("bemused",1)
+        call KittyFace("bemused",1) from _call_KittyFace_25
         $ K_Eyes = "side"
         
     $ Count = R_Caught
@@ -816,7 +816,7 @@ label Rogue_Caught:
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, -20)            
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, -5)             
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
-            call XavierFace("happy")  
+            call XavierFace("happy") from _call_XavierFace_1  
             if R_Caught:
                 ch_x "But you know you've done this before. . . at least [R_Caught] times. . ."  
             elif K_Caught:
@@ -832,12 +832,12 @@ label Rogue_Caught:
             ch_x "Now return to your rooms and reflect on what you've done."
             
         "Just having a little fun, right [R_Pet]?":
-            call Rogue_Namecheck
-            call RogueFace("bemused")         
+            call Rogue_Namecheck from _call_Rogue_Namecheck
+            call RogueFace("bemused") from _call_RogueFace_169         
             $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5)
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 20)
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 10) 
-            call XavierFace("angry")
+            call XavierFace("angry") from _call_XavierFace_2
             $ Count += 10
             ch_x "If that's your attitude, harsher methods might be necessary."
             if PunishmentX:
@@ -854,11 +854,11 @@ label Rogue_Caught:
             jump Plan_Omega
             
         "You can suck it, old man.":
-            call RogueFace("surprised")
+            call RogueFace("surprised") from _call_RogueFace_170
             $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 10)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 20)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 40)  
-            call XavierFace("angry")
+            call XavierFace("angry") from _call_XavierFace_3
             $ Count += 20
             ch_x "If that's your attitude, harsher methods might be necessary."
             if PunishmentX:
@@ -873,7 +873,7 @@ label Rogue_Caught:
     $ R_Caught += 1
     $ R_RecentActions.append("caught")
     $ R_DailyActions.append("caught")     
-    call Remove_Girl("All")
+    call Remove_Girl("All") from _call_Remove_Girl_32
     "You return to your room"
     jump Player_Room
 #    $ bg_current = "bg player"
@@ -887,18 +887,18 @@ label Plan_Omega:
     $ R_Arms = 0
     $ Rogue_Arms = 2
     "You quickly approach Xavier and place your hands on his head."
-    call XavierFace("psychic")
+    call XavierFace("psychic") from _call_XavierFace_4
     ch_x ". . ."
-    call XavierFace("shocked")
+    call XavierFace("shocked") from _call_XavierFace_5
     "Xavier realizes with a shock that with your powers, his telepathy is useless."    
     show Rogue at SpriteLoc(StageLeft+100,85) zorder 24 with ease
     "Rogue moves in and also grabs his head, duplicating his powers as he watches helplessly."
     "Now that she posesses his full power, while his are negated, he has no defenses."
     if K_Loc == bg_current:        
-        call KittyFace("surprised")      
+        call KittyFace("surprised") from _call_KittyFace_26      
         "Kitty looks a bit caught off guard, but goes along with the idea."        
-        call KittyFace("sly")
-    call XavierFace("hypno")
+        call KittyFace("sly") from _call_KittyFace_27
+    call XavierFace("hypno") from _call_XavierFace_6
     
     $ Count = 3
     $ PunishmentX = 0    
@@ -914,10 +914,10 @@ label Plan_Omega:
         $ Count -= 1
         menu:
             ch_r "Well, [R_Petname], what would you like to do with this opportunity?"
-            "Don't bother us anymore when we're having fun." if Rules:
-                    $ Rules = 0
-            "You know, it's kinda fun dodging you, catch us if you can." if not Rules:
-                    $ Rules = 1
+            "Don't bother us anymore when we're having fun." if R_Rules:
+                    $ R_Rules = 0
+            "You know, it's kinda fun dodging you, catch us if you can." if not R_Rules:
+                    $ R_Rules = 1
             "Raise my stipend." if P_Income < 30 and "Omega" not in P_Traits:             
                     $ P_Income += 2
             "Raise my stipend. [[Used](locked)" if P_Income >= 30 or "Omega" in P_Traits:             
@@ -959,18 +959,18 @@ label Plan_Omega:
 
 # start Rogue_BF//////////////////////////////////////////////////////////
 label Rogue_BF:
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_70
     
     if R_Loc != bg_current and "Rogue" not in Party:
         "Suddenly, Rogue shows up and says she needs to talk to you."    
                 
     $ R_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Rogue
-    call CleartheRoom("Rogue")
-    call Taboo_Level
+    call Set_The_Scene(0) from _call_Set_The_Scene_98
+    call Display_Rogue from _call_Display_Rogue_6
+    call CleartheRoom("Rogue") from _call_CleartheRoom_5
+    call Taboo_Level from _call_Taboo_Level_23
     $ R_DailyActions.append("relationship")
-    call RogueFace("bemused", 1)
+    call RogueFace("bemused", 1) from _call_RogueFace_171
     ch_r "So, [R_Petname], we've been hanging out for a while now."
     ch_r ". . ."
     $R_Eyes = "sexy"
@@ -1011,7 +1011,7 @@ label Rogue_BF:
             $ R_Petnames.append("boyfriend")
             $ R_Traits.append("dating")
             "Rogue leaps in and kisses you deeply."
-            call RogueFace("kiss") 
+            call RogueFace("kiss") from _call_RogueFace_172 
             $ R_Kissed += 1
         "Um, ok.":
             $ R_Petnames.append("boyfriend")
@@ -1019,7 +1019,7 @@ label Rogue_BF:
             $R_Brows = "confused"
             "Rogue is a bit put off by your casual acceptence of reality, but takes it as a positive sign and hugs you."    
         "I'm with Kitty now." if "dating" in K_Traits:             
-            call RogueFace("sad",1)    
+            call RogueFace("sad",1) from _call_RogueFace_173    
             ch_r "I know, I know, i just thought maybe you could go out with me too?"
             menu:
                 extend ""
@@ -1028,7 +1028,7 @@ label Rogue_BF:
                     $ R_Petnames.append("boyfriend")
                     $ R_Traits.append("dating")
                     "Rogue leaps in and kisses you deeply."
-                    call RogueFace("kiss") 
+                    call RogueFace("kiss") from _call_RogueFace_174 
                     $ R_Kissed += 1
                 "No, sorry.":
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)
@@ -1037,29 +1037,46 @@ label Rogue_BF:
                     jump Rogue_BF_Jerk
         "Not really.":
             jump Rogue_BF_Jerk
-    call RogueFace("sexy")    
+    call RogueFace("sexy") from _call_RogueFace_175    
     ch_r "Now, . . . boyfriend. . . how would you like to celebrate?"
     $ Tempmod = 10
-    call Rogue_SexMenu
+    call Rogue_SexMenu from _call_Rogue_SexMenu_3
     $ Tempmod = 0
     return
     
 label Rogue_BF_Jerk:
-    call RogueFace("angry", 1)
+    call RogueFace("angry", 1) from _call_RogueFace_176
     ch_r "Well fine!" 
     $ Count = (20* R_Event[5])
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 40)
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, Count)
     if R_Event[5] >= 3:
-        call RogueFace("sad")
+        call RogueFace("sad") from _call_RogueFace_177
         ch_r "Hrmph. I don't care what you want, we're dating. Deal with it."   
-        $ R_Petnames.append("boyfriend")
-        $ R_Traits.append("dating")
-        $ Achievements.append("I am not your Boyfriend!")
-        ch_r "Now I need some alone time though."
+        menu:
+            "Whatever":
+                $ R_Petnames.append("boyfriend")
+                $ R_Traits.append("dating")
+                $ Achievements.append("I am not your Boyfriend!")
+                ch_r "Now I need some alone time though."
+            "No, and fuck off with that":
+                call RogueFace("surprised", 1) from _call_RogueFace_178
+                ch_r "You serious?"
+                call RogueFace("angry", 1) from _call_RogueFace_179
+                ch_r "You're such a jerk."
+                $ Achievements.append("I am not your Boyfriend!")
+            "No, and stop fucking asking me that":
+                call RogueFace("surprised", 1) from _call_RogueFace_180
+                ch_r "You serious?"
+                call RogueFace("angry", 1) from _call_RogueFace_181
+                $ R_Traits.append("stop asking")
+                ch_r "You're such a jerk."
+                call RogueFace("sad", 1) from _call_RogueFace_182
+                ch_r "I'll stop asking."
+                $ Achievements.append("I am not your Boyfriend!")
         $ bg_current = "bg player"          
-        call Remove_Girl("Rogue")
-        call Set_The_Scene
+        call Remove_Girl("Rogue") from _call_Remove_Girl_33
+        call Set_The_Scene from _call_Set_The_Scene_99
         return        
     if R_Event[5] > 1:
         ch_r "I don't know why I keep asking, I should know you haven't changed."          
@@ -1068,8 +1085,8 @@ label Rogue_BF_Jerk:
     ch_r "Jerk! Out!"
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"         
-    call Remove_Girl("Rogue")
-    call Set_The_Scene
+    call Remove_Girl("Rogue") from _call_Remove_Girl_34
+    call Set_The_Scene from _call_Set_The_Scene_100
     $ renpy.pop_call()
     jump Player_Room     
 
@@ -1077,7 +1094,7 @@ label Rogue_BF_Jerk:
 
 # start Rogue_Love//////////////////////////////////////////////////////////
 label Rogue_Love:
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_71
     
     if bg_current != "bg rogue":
         if R_Loc == bg_current or "Rogue" in Party:
@@ -1089,12 +1106,12 @@ label Rogue_Love:
     
     $ bg_current = "bg rogue"
     $ R_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Rogue
-    call CleartheRoom("Rogue")
-    call Taboo_Level
+    call Set_The_Scene(0) from _call_Set_The_Scene_101
+    call Display_Rogue from _call_Display_Rogue_7
+    call CleartheRoom("Rogue") from _call_CleartheRoom_6
+    call Taboo_Level from _call_Taboo_Level_24
     $ R_DailyActions.append("relationship")
-    call RogueFace("bemused", 1)       
+    call RogueFace("bemused", 1) from _call_RogueFace_183       
     if "dating" in R_Traits:
         ch_r "We've been dating for a while now, and I'm really feeling close to you."
     else:
@@ -1117,14 +1134,14 @@ label Rogue_Love:
         ch_r "Right, so I was thinking. . ."
         ch_r "I love you."
     elif R_Event[6] == 10:        
-        call RogueFace("confused")
+        call RogueFace("confused") from _call_RogueFace_184
         ch_r "So. . . wait, what?"
-        call RogueFace("smile")
+        call RogueFace("smile") from _call_RogueFace_185
         $R_Brows = "surprised"        
         ch_r "I love you too!"
-        call RogueFace("kiss")
+        call RogueFace("kiss") from _call_RogueFace_186
         "Rogue leaps into your arms and gives you a kiss." 
-        call RogueFace("sexy")
+        call RogueFace("sexy") from _call_RogueFace_187
         $ R_Kissed += 1
     else:        
         ch_r "Even though we've had our rough patches from time to time. . ."
@@ -1140,7 +1157,7 @@ label Rogue_Love:
                 $R_Brows = "confused"
                 "Rogue seems a bit perplexed, but takes it as a positive sign and hugs you."   
             "I know.":
-                call RogueFace("smile")
+                call RogueFace("smile") from _call_RogueFace_188
                 $R_Brows = "confused"                
                 "Rogue punches you in the arm and then gives you a huge hug."                         
             "So?":
@@ -1149,7 +1166,7 @@ label Rogue_Love:
                 $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -50)
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 50)
                 jump Rogue_Love_Jerk
-    call RogueFace("sexy")
+    call RogueFace("sexy") from _call_RogueFace_189
     $ R_Petnames.append("lover")
     if not R_Sex:
         ch_r "So. . . did you want to . . . consumate this?"
@@ -1159,7 +1176,7 @@ label Rogue_Love:
             "Yeah. . . [[have sex]":      
                 $ R_Inbt = Statupdate("Rogue", "R_Inbt", R_Inbt, 30, 30) 
                 ch_r "Hmm. . ."  
-                call Rogue_SexAct("sex")
+                call Rogue_SexAct("sex") from _call_Rogue_SexAct_7
                 return
             "I have something else in mind. . .[[choose another activity]":
                 $ R_Brows = "confused"
@@ -1169,7 +1186,7 @@ label Rogue_Love:
             "Ew. [[do nothing]":                
                 $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 40)                
-                call RogueFace("perplexed",1)
+                call RogueFace("perplexed",1) from _call_RogueFace_190
                 ch_r "Um, ok?"
                 ch_r "{size=-5}What the fuck was that?{/size}"          #fix test this      
                 return
@@ -1178,26 +1195,26 @@ label Rogue_Love:
     if "stockings and garterbelt" not in R_Inventory:
             $ R_Inventory.append("stockings and garterbelt")
     $ Tempmod = 20
-    call Rogue_SexMenu
+    call Rogue_SexMenu from _call_Rogue_SexMenu_4
     $ Tempmod = 0
     return
     
 label Rogue_Love_Jerk:    
     $ renpy.pop_call()
-    call RogueFace("angry", 1)
+    call RogueFace("angry", 1) from _call_RogueFace_191
     ch_r "Well fine!" 
     $ Count = (20* R_Event[6])
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 40)
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, Count)
     if R_Event[6] == 3:
-        call RogueFace("sad")
+        call RogueFace("sad") from _call_RogueFace_192
         ch_r "I. . . I don't care, I love you too much anyways."   
         $ R_Petnames.append("lover")
         $ Achievements.append("One Sided Love")
         ch_r "I need some time to myself though."
         $ R_Loc = "bg rogue"
         $ bg_current = "bg player"
-        call Remove_Girl("Rogue")
+        call Remove_Girl("Rogue") from _call_Remove_Girl_35
         jump Player_Room  
     if R_Event[6] > 1:
         ch_r "Fool me once, shame on you. . . I thought you'd grown." 
@@ -1206,7 +1223,7 @@ label Rogue_Love_Jerk:
     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -Count)
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"
-    call Remove_Girl("Rogue")
+    call Remove_Girl("Rogue") from _call_Remove_Girl_36
     jump Player_Room  
 
 # end Rogue_Love//////////////////////////////////////////////////////////
@@ -1214,17 +1231,17 @@ label Rogue_Love_Jerk:
 
 # start Rogue_Sub//////////////////////////////////////////////////////////
 label Rogue_Sub:  
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_72
     if R_Loc != bg_current and "Rogue" not in Party:
         "Suddenly, Rogue shows up and says she needs to talk to you."
     
     $ R_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Rogue
-    call CleartheRoom("Rogue")
-    call Taboo_Level
+    call Set_The_Scene(0) from _call_Set_The_Scene_102
+    call Display_Rogue from _call_Display_Rogue_8
+    call CleartheRoom("Rogue") from _call_CleartheRoom_7
+    call Taboo_Level from _call_Taboo_Level_25
     $ R_DailyActions.append("relationship")
-    call RogueFace("bemused", 1)
+    call RogueFace("bemused", 1) from _call_RogueFace_193
     ch_r ". . ."
     if "dating" in R_Traits:
         ch_r "We've been dating for a bit now."  
@@ -1268,7 +1285,7 @@ label Rogue_Sub:
             $ R_Petnames.append("sir")
             "Rogue nods obediently."            
         "What do you mean by that?": 
-            call RogueFace("bemused") 
+            call RogueFace("bemused") from _call_RogueFace_194 
             ch_r "When you. . . encourage me to try new things, it really turns me on."
             ch_r "I'd like you to continue to. . . encourage me."
             menu:
@@ -1283,26 +1300,26 @@ label Rogue_Sub:
             $ R_Petnames.append("sir")         
         "Nah, you can handle things yourself.":
             jump Rogue_Sub_Jerk
-    call RogueFace("sexy") 
+    call RogueFace("sexy") from _call_RogueFace_195 
     "She gives you a piece of paper with the password for her cellphone calender."
     "Apparently, whatever you enter into it, she intends to do. . . within reason."
     ch_r "Now, sir. . . was there anything else you wished me to do to celebrate?"
     if "stockings and garterbelt" not in R_Inventory:
             $ R_Inventory.append("stockings and garterbelt")
     $ Tempmod = 10
-    call Rogue_SexMenu
+    call Rogue_SexMenu from _call_Rogue_SexMenu_5
     $ Tempmod = 0
     return
     
 label Rogue_Sub_Jerk:
-    call RogueFace("sad", 1)
+    call RogueFace("sad", 1) from _call_RogueFace_196
     ch_r "Hrmph!"
     $ Count = (20* R_Event[7])
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 30)
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, Count)    
     $ renpy.pop_call()
     if R_Event[7] == 2:
-        call RogueFace("sad")
+        call RogueFace("sad") from _call_RogueFace_197
         ch_r "Well, maybe you'll change your mind. I'll just leave this here, sir."
         "She gives you a piece of paper with the password for her cellphone calender."
         "Apparently, whatever you enter into it, she intends to do. . . within reason."
@@ -1311,7 +1328,7 @@ label Rogue_Sub_Jerk:
         ch_r "I need some time to myself though."        
         $ bg_current = "bg player"        
         $ R_Loc = "bg rogue"
-        call Remove_Girl("Rogue")
+        call Remove_Girl("Rogue") from _call_Remove_Girl_37
         jump Player_Room  
     if R_Event[7] > 1:
         ch_r "I thought you may have learned to respect my needs by now." 
@@ -1320,7 +1337,7 @@ label Rogue_Sub_Jerk:
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, -Count)
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"
-    call Remove_Girl("Rogue")
+    call Remove_Girl("Rogue") from _call_Remove_Girl_38
     jump Player_Room  
 
 # end Rogue_Sub//////////////////////////////////////////////////////////
@@ -1328,17 +1345,17 @@ label Rogue_Sub_Jerk:
 
 # start Rogue_Slave//////////////////////////////////////////////////////////
 label Rogue_Slave:    
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_73
     if R_Loc != bg_current and "Rogue" not in Party:
         "Suddenly, Rogue shows up and says she needs to talk to you."
     
     $ R_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Rogue
-    call CleartheRoom("Rogue")
-    call Taboo_Level
+    call Set_The_Scene(0) from _call_Set_The_Scene_103
+    call Display_Rogue from _call_Display_Rogue_9
+    call CleartheRoom("Rogue") from _call_CleartheRoom_8
+    call Taboo_Level from _call_Taboo_Level_26
     $ R_DailyActions.append("relationship")
-    call RogueFace("bemused", 1)
+    call RogueFace("bemused", 1) from _call_RogueFace_198
     ch_r ". . ."
     
     if "dating" in R_Traits:
@@ -1383,7 +1400,7 @@ label Rogue_Slave:
         "What do you mean by that?":            
             $R_Brows = "confused"
             ch_r "Well, when you tell me what to do. . ."            
-            call RogueFace("bemused", 1)     
+            call RogueFace("bemused", 1) from _call_RogueFace_199     
             ch_r "I get really horny." 
             ch_r "I just really need for you to tell me what to do."
             menu:
@@ -1403,29 +1420,29 @@ label Rogue_Slave:
                     jump Rogue_Obed_Jerk                
         "Nah, take care of yourself.":
             jump Rogue_Obed_Jerk
-    call RogueFace("sexy")       
+    call RogueFace("sexy") from _call_RogueFace_200       
     ch_r "Now, master. . . was there anything else you wished me to do to celebrate?"
     $ Tempmod = 20
-    call Rogue_SexMenu
+    call Rogue_SexMenu from _call_Rogue_SexMenu_6
     $ Tempmod = 0
     return
     
 label Rogue_Obed_Jerk:
-    call RogueFace("sad", 1)
+    call RogueFace("sad", 1) from _call_RogueFace_201
     ch_r "Well fine!"
     $ Count = (20* R_Event[8])
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 30)
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, Count) 
     $ renpy.pop_call()   
     if R_Event[8] == 2:
-        call RogueFace("sad")
+        call RogueFace("sad") from _call_RogueFace_202
         ch_r "I don't care what you say, this is something I need. MASTER."   
         $ R_Petnames.append("master")
         $ Achievements.append("Heavy is the Head")
         ch_r "I need some time to myself though."        
         $ bg_current = "bg player"        
         $ R_Loc = "bg rogue"       
-        call Remove_Girl("Rogue")
+        call Remove_Girl("Rogue") from _call_Remove_Girl_39
         jump Player_Room  
     if R_Event[8] > 1:
         ch_r "I thought you may have learned to respect my needs by now." 
@@ -1434,7 +1451,7 @@ label Rogue_Obed_Jerk:
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, -Count)
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"       
-    call Remove_Girl("Rogue")
+    call Remove_Girl("Rogue") from _call_Remove_Girl_40
     jump Player_Room  
 
 # end Rogue_Slave//////////////////////////////////////////////////////////
@@ -1442,7 +1459,7 @@ label Rogue_Obed_Jerk:
 
 # start Rogue_Sexfriend//////////////////////////////////////////////////////////
 label Rogue_Sexfriend:  
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_74
     $ R_DailyActions.append("relationship")
     if "dating" in R_Traits:       
         if R_Loc != bg_current and "Rogue" not in Party:
@@ -1456,11 +1473,11 @@ label Rogue_Sexfriend:
         "Suddenly, Rogue shows up and says she needs to talk to you."
     
     $ R_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Rogue
-    call CleartheRoom("Rogue")
-    call Taboo_Level
-    call RogueFace("smile", 1)
+    call Set_The_Scene(0) from _call_Set_The_Scene_104
+    call Display_Rogue from _call_Display_Rogue_10
+    call CleartheRoom("Rogue") from _call_CleartheRoom_9
+    call Taboo_Level from _call_Taboo_Level_27
+    call RogueFace("smile", 1) from _call_RogueFace_203
     ch_r ". . ."
     ch_r "We've been having fun, right?"   
     if R_SEXP >= 40:
@@ -1507,17 +1524,17 @@ label Rogue_Sexfriend:
                     jump Rogue_Sexfriend_Jerk                
         "Nah, you're on your own.":
             jump Rogue_Sexfriend_Jerk
-    call RogueFace("sexy")  
+    call RogueFace("sexy") from _call_RogueFace_204  
     ch_r "Now, sex friend. . . how would you like to celebrate?"
     if "stockings and garterbelt" not in R_Inventory:
             $ R_Inventory.append("stockings and garterbelt")
     $ Tempmod = 25
-    call Rogue_SexMenu
+    call Rogue_SexMenu from _call_Rogue_SexMenu_7
     $ Tempmod = 0
     return
     
 label Rogue_Sexfriend_Jerk:    
-    call RogueFace("sad", 1)
+    call RogueFace("sad", 1) from _call_RogueFace_205
     $ R_DailyActions.append("relationship")
     ch_r "Your loss." 
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 30) 
@@ -1530,7 +1547,7 @@ label Rogue_Sexfriend_Jerk:
         ch_r "I need some alone time though."        
         $ bg_current = "bg player"        
         $ R_Loc = "bg rogue"
-        call Remove_Girl("Rogue")
+        call Remove_Girl("Rogue") from _call_Remove_Girl_41
         jump Player_Room  
     $ Count = (10 * R_Event[9])
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, -Count)
@@ -1540,7 +1557,7 @@ label Rogue_Sexfriend_Jerk:
     else:
         ch_r "Ok, I'm out."   
         $ R_Loc = "bg rogue"
-    call Remove_Girl("Rogue")
+    call Remove_Girl("Rogue") from _call_Remove_Girl_42
     jump Player_Room  
 
 # end Rogue_Sexfriend//////////////////////////////////////////////////////////
@@ -1548,7 +1565,7 @@ label Rogue_Sexfriend_Jerk:
 
 # start Rogue_Fuckbuddy//////////////////////////////////////////////////////////
 label Rogue_Fuckbuddy:    
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_75
     if "dating" in R_Traits:        
         if R_Loc != bg_current and "Rogue" not in Party:
             return
@@ -1561,11 +1578,11 @@ label Rogue_Fuckbuddy:
         "Suddenly, Rogue shows up and says she needs to talk to you."
     
     $ R_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Rogue
-    call CleartheRoom("Rogue")
-    call Taboo_Level
-    call RogueFace("bemused", 1)
+    call Set_The_Scene(0) from _call_Set_The_Scene_105
+    call Display_Rogue from _call_Display_Rogue_11
+    call CleartheRoom("Rogue") from _call_CleartheRoom_10
+    call Taboo_Level from _call_Taboo_Level_28
+    call RogueFace("bemused", 1) from _call_RogueFace_206
     ch_r ". . ."
     ch_r "I've been having a lot of fun with this \"sex friend\" thing."       
     if "exhibitionist" in R_Traits:
@@ -1597,40 +1614,40 @@ label Rogue_Fuckbuddy:
             ch_r "Whoo hoo!"
             $ R_Over = 0
             $ R_Chest = 0              
-            call Rogue_First_Topless(1)
-            call R_Breasts_Launch
+            call Rogue_First_Topless(1) from _call_Rogue_First_Topless_5
+            call R_Breasts_Launch from _call_R_Breasts_Launch
             "Rogue, throws her top off, grabs you and shoves your head into her cleavage."
-            call R_Pos_Reset
+            call R_Pos_Reset from _call_R_Pos_Reset
         "What do you mean by that?":            
             $R_Brows = "confused"
             menu:
                 ch_r "I mean, you know, we'd fuck. And be buddies. Both of those."
                 "Oh, ok, sure.":
-                    call R_Kissing_Launch
+                    call R_Kissing_Launch from _call_R_Kissing_Launch
                     "Rogue laughs and tackles you into a hug." 
-                    call R_Pos_Reset
+                    call R_Pos_Reset from _call_R_Pos_Reset_1
                     $ R_Petnames.append("fuck buddy")  
                 "Oh, no, not my style.":
                     jump Rogue_Fuckbuddy_Jerk                
         "No thanks.":
             jump Rogue_Fuckbuddy_Jerk
-    call RogueFace("sexy")      
+    call RogueFace("sexy") from _call_RogueFace_207      
     ch_r "Now, -heh-, fuck buddy. . . let's make this official!"
     $ Tempmod = 30
-    call Rogue_SexMenu
+    call Rogue_SexMenu from _call_Rogue_SexMenu_8
     $ Tempmod = 0
     return
     
 label Rogue_Fuckbuddy_Jerk:
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 30)   
-    call RogueFace("bemused", 1)
+    call RogueFace("bemused", 1) from _call_RogueFace_208
     if R_Event[10] > 1:
         $ Rogue_Arms = 2
         $ R_Over = 0
         $ R_Chest = 0
-        call Rogue_First_Topless(1)
+        call Rogue_First_Topless(1) from _call_Rogue_First_Topless_6
         ch_r "I offer these things on a silver platter, and nothing!" 
-        call RogueOutfit 
+        call RogueOutfit from _call_RogueOutfit_31 
         ch_r "Look, I don't care what you call it. Just let me know if you want a tumble."   
         $ R_Petnames.append("fuck buddy")
         $ Achievements.append("Stalwart as the mount")
@@ -1646,14 +1663,14 @@ label Rogue_Fuckbuddy_Jerk:
     else:
         ch_r "Ok, I'm out."   
         $ R_Loc = "bg rogue"    
-    call Remove_Girl("Rogue")
+    call Remove_Girl("Rogue") from _call_Remove_Girl_43
     jump Player_Room  
 # end Rogue_Fuckbuddy//////////////////////////////////////////////////////////
 
 # start Rogue_Daddy//////////////////////////////////////////////////////////
 label Rogue_Daddy:      
     $ R_DailyActions.append("relationship")
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_76
     ch_r ". . ."
     if "dating" in R_Traits:
         ch_r "You know, even though we've been dating,"  
@@ -1669,20 +1686,20 @@ label Rogue_Daddy:
     menu:
         extend ""
         "Ok, go right ahead?":            
-            call RogueFace("smile") 
+            call RogueFace("smile") from _call_RogueFace_209 
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 20)          
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 10)            
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 30) 
             ch_r "Squee!"   
             $ R_Petname = "daddy"
         "What do you mean by that?": 
-            call RogueFace("bemused") 
+            call RogueFace("bemused") from _call_RogueFace_210 
             ch_r "I just sort of get turned on by it, you know, being your baby girl. . ."
             ch_r "I'd like to call you that."
             menu:
                 extend ""
                 "Sounds interesting, fine by me.":     
-                    call RogueFace("smile") 
+                    call RogueFace("smile") from _call_RogueFace_211 
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 15)          
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 20)            
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 25) 
@@ -1692,20 +1709,20 @@ label Rogue_Daddy:
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 40)            
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 20)  
-                    call RogueFace("sad") 
+                    call RogueFace("sad") from _call_RogueFace_212 
                     ch_r "   . . .   "
                     ch_r "Well, ok."
                 "No, that creeps me out.":    
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -10)          
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 45)            
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 5)  
-                    call RogueFace("angry") 
+                    call RogueFace("angry") from _call_RogueFace_213 
                     ch_r "Hrmph." 
         "No, that creeps me out.":
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5)          
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 40)            
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 10) 
-            call RogueFace("angry") 
+            call RogueFace("angry") from _call_RogueFace_214 
             ch_r "Hrmph."  
     $ R_Petnames.append("daddy")
     return
@@ -1716,17 +1733,17 @@ label Rogue_Daddy:
 
 label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, you want this over 2 at least. B is the bonus modifier
     $ R_DailyActions.append("relationship")
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_77
     
-    call RogueFace("angry") 
+    call RogueFace("angry") from _call_RogueFace_215 
     if R_Loc != bg_current and "Rogue" not in Party:
         "Suddenly, Rogue shows up and says she needs to talk to you."   
     $ Rogue_Arms = 1        
     $ R_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Rogue
-    call CleartheRoom("Rogue")
-    call Taboo_Level
+    call Set_The_Scene(0) from _call_Set_The_Scene_106
+    call Display_Rogue from _call_Display_Rogue_12
+    call CleartheRoom("Rogue") from _call_CleartheRoom_11
+    call Taboo_Level from _call_Taboo_Level_29
     
     if "saw with kitty" in R_Traits:
         if R_LikeKitty >= 900:
@@ -1880,7 +1897,7 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
                 $ Resolution -= 2
                 
             "Have you considered maybe letting her join us?":
-                call RogueFace("oh")
+                call RogueFace("oh") from _call_RogueFace_216
                 if ApprovalCheck("Rogue", 2200, Bonus = B) or ApprovalCheck("Rogue", 950, "L", Bonus = (B/3)):
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 30)                  
                     $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 89, 10)
@@ -1895,7 +1912,7 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
                     
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 40) 
                 ch_r "I don't know what to do with that, you talk'in a three-way?"
-                call RogueFace("startled")
+                call RogueFace("startled") from _call_RogueFace_217
                 $ Line = "threeway"
     
     if Resolution >= 5 and Line == "threeway": #she agrees to a threeway
@@ -1967,7 +1984,7 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
         menu:
             extend ""
             "I'm glad we could work this out." if "dating" in R_Traits:
-                call RogueFace("sad") 
+                call RogueFace("sad") from _call_RogueFace_218 
                 if Resolution >= 3:            
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 10) 
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 5)    
@@ -1978,33 +1995,33 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
                     
             "Want to fool around a bit?" if "dating" in R_Traits and not Taboo:
                 if (R_Obed + R_Inbt) >= (1 * R_Love) or R_Lust >= 70:
-                    call RogueFace("sly")
+                    call RogueFace("sly") from _call_RogueFace_219
                     $ R_Eyes = "side"
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 20) 
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 10)
                     ch_r "Sure, whatever."
-                    call Rogue_SexMenu
+                    call Rogue_SexMenu from _call_Rogue_SexMenu_9
                 else:        
-                    call RogueFace("sad")             
+                    call RogueFace("sad") from _call_RogueFace_220             
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -10) 
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, -10)
                     ch_r "It's still too raw, [R_Petname]."
                     
             "I'm sorry it didn't work out." if "dating" not in R_Traits: 
-                    call RogueFace("sad") 
+                    call RogueFace("sad") from _call_RogueFace_221 
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 10) 
                     ch_r "I am too, [R_Petname]."
                     
             "Want to have some break-up sex?" if "dating" not in R_Traits and not Taboo:
-                call RogueFace("angry")
+                call RogueFace("angry") from _call_RogueFace_222
                 if (R_Obed + R_Inbt) >= (1.5 * R_Love) or R_Lust >= 70:
                     $ R_Eyes = "side"
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 10)
                     ch_r "Sure, whatever." 
-                    call DrainWord("Rogue","angry",0,1)
-                    call Rogue_SexMenu
+                    call DrainWord("Rogue","angry",0,1) from _call_DrainWord_48
+                    call Rogue_SexMenu from _call_Rogue_SexMenu_10
                     $ R_DailyActions.append("angry")
                 else:
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -20) 
@@ -2012,14 +2029,14 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
                     ch_r "You have got to be kidding me."
                     
             "Let me know if you change your mind." if "dating" not in R_Traits:
-                call RogueFace("angry")
+                call RogueFace("angry") from _call_RogueFace_223
                 $ R_Eyes = "side"
                 $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5) 
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
                 ch_r "Yeah, I'll get right on that."
                 
             "Ok, see you later then.":
-                call RogueFace("confused")
+                call RogueFace("confused") from _call_RogueFace_224
                 
                 
     if bg_current == "bg rogue":                                        #remove Rogue from the scene (or the player)
@@ -2029,7 +2046,7 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
         jump Player_Room
     else:
         ch_r "I need some time alone, [R_Petname]. I'll see you later."
-        call Remove_Girl("Rogue")
+        call Remove_Girl("Rogue") from _call_Remove_Girl_44
     return
 
 # end RogueBreakup //////////////////////////////////////////////////////////    
@@ -2175,27 +2192,49 @@ label SpecialMenu:
                         "Do you want to do this?"
                         "Yes":
                             $ renpy.pop_call()
-                            call Failsafe
+                            call Failsafe from _call_Failsafe
                             jump Player_Room
                         "Never mind.":
                             pass
             "Visit McCoy's lab to change things about myself.":
-                    call Hanks_Lab    
+                    call Hanks_Lab from _call_Hanks_Lab    
                    
             "Leveling Menu":
                 while P_Lvl:
                     menu:
                         "Level Yourself":
-                                call P_Level_Up
+                                call P_Level_Up from _call_P_Level_Up
                         "Level Rogue":
-                                call R_Level_Up 
+                                call R_Level_Up from _call_R_Level_Up 
                         "Level Kitty":
-                                call K_Level_Up 
+                                call K_Level_Up from _call_K_Level_Up 
                         "Level Emma":
-                                call E_Level_Up 
+                                call E_Level_Up from _call_E_Level_Up 
                         "Back":
                                 jump SpecialMenu
                 "You need to gain experience first by training or going to class."
+
+# Level Cheat ////////////////
+            "Level Cheat":
+                menu LevelCheat:
+                    "Raise my Level":
+                        $ P_Lvl += 1
+                        $ P_StatPoints += 1
+                        jump LevelCheat
+                    "Raise Rogue's Level":
+                        $ R_Lvl += 1
+                        $ R_StatPoints += 1
+                        jump LevelCheat
+                    "Raise Kitty's Level":
+                        $ K_Lvl += 1
+                        $ K_StatPoints += 1
+                        jump LevelCheat
+                    "Raise Emmma's Level":
+                        $ E_Lvl += 1
+                        $ E_StatPoints += 1
+                        jump LevelCheat
+                    "Back":
+                        jump SpecialMenu
                 
             "Activate Travel Mode" if not TravelMode:
                     "This mode causes you to travel directly to adjacent areas, but not directly to more distant ones."
@@ -2243,7 +2282,7 @@ label Hanks_Lab(Line=0):
                         "Nice try, smartass."
                         $ Playername = "Zero"  
                     $ K_Petname = Playername[:1]                      
-                    call LastNamer                         
+                    call LastNamer from _call_LastNamer_1                         
                     $ E_Petnames.append(_return)
                     $ E_Petname = _return
                     "That should do it, your name has been updated and an email has been sent out to everyne on campus about the change."
@@ -2268,6 +2307,9 @@ label Rogue_Frisky_Class:
         jump Rogue_Frisky_Class_End
         
     "Rogue opens her notebook and begins scratching out a note. She detaches the slip of paper from the binder, carefully folding it before sliding it in front of you."
+#    show image "images/Onirating.jpg"
+        #show text "This title is for ages 18 and up." with dissolve
+        #with Pause(2)
     "She watches you as you unfold the note. In looping penstrokes, it reads: {i}You like biology?{/i}"
     "You look back and see that she's blushing slightly. She slides her pen over to you so you can reply."
     menu:
@@ -2278,27 +2320,27 @@ label Rogue_Frisky_Class:
         "Naah. Not so much.":
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -3)
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, -3)   
-            call RogueFace("confused")    
+            call RogueFace("confused") from _call_RogueFace_225    
 
         "It's my favorite subject.":
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 5)   
-            call RogueFace("smile")    
+            call RogueFace("smile") from _call_RogueFace_226    
             "Rogue reads your note and starts to smile. She quickly dashes off another note, sliding it in front of you again."
             "You unfold the note, trying not to let the teacher see you. {i}\"Then maybe we could study together tonight?\"{/i}." 
             $ Line = "continue"
         
         "I do when it's about you.":
             if ApprovalCheck("Rogue", 500, "I") or R_SEXP >= 30:  
-                call RogueFace("sly")    
+                call RogueFace("sly") from _call_RogueFace_227    
                 "Rogue reads your note and smiles at you suggestively."
                 $ Line = "flirt"
             elif ApprovalCheck("Rogue", 900):  
-                call RogueFace("confused",2)    
+                call RogueFace("confused",2) from _call_RogueFace_228    
                 "Rogue reads your note and blushes furiously, looking down at her notes."
                 $ R_Blush = 1
                 $ Line = "flirt"                
             else: 
-                call RogueFace("perplexed",2)  
+                call RogueFace("perplexed",2) from _call_RogueFace_229  
                 "Rogue reads your note and blushes furiously. She quickly dashes off another note, sliding it in front of you again."
                 "You unfold the note, trying not to let the teacher see you. {i}\"I meant the class! Maybe we could study tonight?\"{/i}." 
                 $ R_Blush = 1
@@ -2314,34 +2356,34 @@ label Rogue_Frisky_Class:
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -3)
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 5)
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, -3)  
-                        call RogueFace("confused")
+                        call RogueFace("confused") from _call_RogueFace_230
                         $ Line = 0
                 "Naah. I've got better things to do.":
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -15)
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 5)
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, -3) 
                         $ Line = 0    
-                        call RogueFace("angry")
+                        call RogueFace("angry") from _call_RogueFace_231
                         $ R_DailyActions.append("angry")                          
                 "Count on it.":
                         "She smiles when she reads your reply, and throws you a wink."
                         $ R_DailyActions.append("studydate")  
-                        call RogueFace("smile")
+                        call RogueFace("smile") from _call_RogueFace_232
                         jump Rogue_Frisky_Class_End
                 "We could get some \"studying\" done right now.":
                         if ApprovalCheck("Rogue", 1200):
-                            call RogueFace("sly",1)
+                            call RogueFace("sly",1) from _call_RogueFace_233
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 3)
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3) 
                             "Rogue gets a mischevious grin on her face and leans towards you."
                             $ Line = "flirt"
                         elif ApprovalCheck("Rogue", 700):
-                            call RogueFace("smile",1)
+                            call RogueFace("smile",1) from _call_RogueFace_234
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 2) 
                             "Rogue blushes and smiles your way."
                             $ Line = "flirt"
                         else:
-                            call RogueFace("confused",1)
+                            call RogueFace("confused",1) from _call_RogueFace_235
                             "Rogue looks a bit surprised, then scowls at you."
                             jump Rogue_Frisky_Class_End
                         
@@ -2349,7 +2391,7 @@ label Rogue_Frisky_Class:
     
     if Line == "flirt":
             $ D20 = renpy.random.randint(1, 20)
-            call RogueFace("sly")                
+            call RogueFace("sly") from _call_RogueFace_236                
             "You notice one of Rogue's shoes slip from her foot beneath the desk. She tosses you a sly grin." 
             if R_Hose:
                 "You feel the smooth texture of her stockinged foot begin to slowly slide back and forth along the length of your calf."
@@ -2374,44 +2416,44 @@ label Rogue_Frisky_Class:
                             jump Rogue_Frisky_Class_End
                                 
                     "Look into her eyes and smile slightly." if Line == "flirt": 
-                            call RogueFace("smile")                
+                            call RogueFace("smile") from _call_RogueFace_237                
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 5)
                             "Rogue smiles back." 
                             "She looks back towards the front of the class, but her hand drifts across the top of the desk until she's holding yours."
                             $ Line = "handholding"                            
                     "Grasp her hand gently, stroking the top of it." if Line == "handholding":                         
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 5)
-                            call RogueFace("smile")                
+                            call RogueFace("smile") from _call_RogueFace_238                
                             "Rogue sighs contentedly and holds your hand for the remainder of class." 
                             jump Rogue_Frisky_Class_End
                                             
                     "Try and slip your hand to her lap." if Line != "fondle pussy":
                             $ Line = "fondle pussy"
                             if ApprovalCheck("Rogue", 1500) and R_FondleP and R_SEXP >= 40:
-                                    call RogueFace("sly")           
+                                    call RogueFace("sly") from _call_RogueFace_239           
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 5)
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 5)      
                                     "Rogue gets a mischievous grin and places her hand on your arm."
                             elif ApprovalCheck("Rogue", 1800) and R_FondleP:
-                                    call RogueFace("smile")                
+                                    call RogueFace("smile") from _call_RogueFace_240                
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 3)
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 7)
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)  
                                     "Rogue starts slightly as your hand travels up her thigh, but then she lets out a slight grin."
                             elif ApprovalCheck("Rogue", 2000):
-                                    call RogueFace("perplexed",2)     
+                                    call RogueFace("perplexed",2) from _call_RogueFace_241     
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 10)
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)             
                                     "Rogue glances at you in alarm, but then slowly calms down." 
-                                    call RogueFace("smile",1)                                           
+                                    call RogueFace("smile",1) from _call_RogueFace_242                                           
                                     $ D20 += 2
                             else:
                                     $ Line = "too far"
                                     
                             if Line == "fondle pussy":
-                                    call RogueFace("sly")    
-                                    if R_Legs == "skirt":
+                                    call RogueFace("sly") from _call_RogueFace_243    
+                                    if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak under the hem of her skirt, slowly tracing the soft contours of her mound." 
                                     elif R_Legs == "pants":
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak down her pants, slowly tracing the soft contours of her mound." 
@@ -2440,26 +2482,26 @@ label Rogue_Frisky_Class:
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 5)
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 5)
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)  
-                                    call RogueFace("sly")                
+                                    call RogueFace("sly") from _call_RogueFace_244                
                                     "Rogue closes her eyes and caresses your arm."
                             elif ApprovalCheck("Rogue", 1800) and R_FondleB:
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 3)
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 7)
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)  
-                                    call RogueFace("smile",1)                
+                                    call RogueFace("smile",1) from _call_RogueFace_245                
                                     "Rogue flinches as your hand travels up her ribcage, but she grins as you reach her breast."
                             elif ApprovalCheck("Rogue", 2000):
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 10)
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)  
-                                    call RogueFace("perplexed",2) 
+                                    call RogueFace("perplexed",2) from _call_RogueFace_246 
                                     "Rogue glances at you in alarm, but then slowly calms down." 
-                                    call RogueFace("smile",2) 
+                                    call RogueFace("smile",2) from _call_RogueFace_247 
                                     $ D20 += 5
                             else:
                                     $ Line = "too far"
                                     
                             if Line == "fondle breasts":  
-                                    call RogueFace("sly")                
+                                    call RogueFace("sly") from _call_RogueFace_248                
                                     "Rogue's sly eyes spakle as your hand cups her breast, giving it a casual caress." 
                                     "her nipples begin to firm up and she lets out a small moan of pleasure."
                                     $ D20 += 7
@@ -2470,12 +2512,12 @@ label Rogue_Frisky_Class:
                             $ D20 += 7
                                     
                 if Line == "too far":
-                        call RogueFace("surprised",2)   
+                        call RogueFace("surprised",2) from _call_RogueFace_249   
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -5)
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 7)
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, -3)               
                         "Rogue sits up straight in her seat and makes a little yelping noise." 
-                        call RogueFace("angry",1)                
+                        call RogueFace("angry",1) from _call_RogueFace_250                
                         "Between that and the icy glare she shoots you, it's enough to draw the attention of your fellow students in your direction."
                         $ D20 += 10
                 
@@ -2484,7 +2526,7 @@ label Rogue_Frisky_Class:
                 $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -10)
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, -5)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, -10)  
-                call RogueFace("surprised")      
+                call RogueFace("surprised") from _call_RogueFace_251      
                 if E_Loc == "bg teacher":                   
                         "[EmmaName] stops her lecture in mid-sentence when she notices that the whole class is looking at you and Rogue." 
                         ch_e "[E_Petname], Rogue, if you could perhaps pay more attention to the lecture, and less to each other's bodies?"                
@@ -2493,29 +2535,29 @@ label Rogue_Frisky_Class:
                         "Dr. McCoy stops his lecture in mid-sentence when he notices that the whole class is looking at you and Rogue." 
                         ch_b "Oh, my stars and garters!"                
                         ch_b "[Playername]!?! {b}WHAT ARE YOU DOING? BOTH OF YOU, TO THE PROFESSOR'S OFFICE, IMMEDIATELY!{/b}"
-                if Rules:
+                if R_Rules:
                         jump Rogue_Caught
                 else:
                         "Since Xavier isn't concerned with your activities, you both head back to your room instead."
                         $ R_Loc = "bg player"
-                        call CleartheRoom("Rogue",0,1)
+                        call CleartheRoom("Rogue",0,1) from _call_CleartheRoom_12
                         jump Player_Room
                     
     
 label Rogue_Frisky_Class_End:  
     if not Line:        
-            call RogueFace("confused")
+            call RogueFace("confused") from _call_RogueFace_252
             "She unfolds the note and quickly reads it over." 
-            call RogueFace("sad")
+            call RogueFace("sad") from _call_RogueFace_253
             "As she does, you immediately see disappointment come over her features." 
             "She scratches out a reply and slides it back in front of you." 
             "When you open it up, it reads: {i}Never mind.{/i}"   
     elif Line == "tease":        
-            call RogueFace("sly",1)
+            call RogueFace("sly",1) from _call_RogueFace_254
             "Rogue takes in a deep breath and exhales it in a sigh, leaning in to whisper." 
             ch_r "Tonight's \"study session\" just got a whole lot more interesting." # attempt smaller text?
     elif Line == "rejected":
-            call RogueFace("sadside")
+            call RogueFace("sadside") from _call_RogueFace_255
             "Rogue looks surprised and hurt. For the rest of the class, she says nothing." 
             "It seems like she has a hard time looking you in the eye."
     

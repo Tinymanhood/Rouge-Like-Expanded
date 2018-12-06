@@ -1,7 +1,7 @@
 ﻿# Start You Cumming //////////////////////////////////////////////////////////////////////////////////
 
 label PK_Cumming:    
-    call Shift_Focus("Kitty")    
+    call Shift_Focus("Kitty") from _call_Shift_Focus_131    
     if Trigger == "blow":
             $ Tempmod += 5
         
@@ -36,7 +36,7 @@ label PK_Cumming:
     else:        
             $ Line = "You start to feel about to come. . ."    
     
-    call KittyFace("sexy") 
+    call KittyFace("sexy") from _call_KittyFace_406 
     
     menu:
         "[Line]"
@@ -66,9 +66,13 @@ label PK_Cumming:
             jump K_Creampie_A
             
         "Cum on her face":
-            jump K_Facial                
-        "Cum on her belly" if Trigger in ("sex","anal","hotdog","foot"):
-            jump K_SpunkBelly
+            jump K_Facial    
+
+        "Cum on her ass" if Trigger in ("sex","anal","hotdog") and renpy.showing("Kitty_Doggy"):
+                jump K_SpunkBack
+
+        "Cum on her belly" if Trigger in ("sex","anal","hotdog","foot") and renpy.showing("Kitty_SexSprite"):
+                jump K_SpunkBelly
                 
         "Pull back":
             if renpy.showing("Kitty_BJ_Animation"):
@@ -78,23 +82,23 @@ label PK_Cumming:
                             if renpy.showing("Kitty_BJ_Animation"):
                                 "You pull out of her mouth with a pop, and her eyes widen in surprise."
                             else:
-                                call Kitty_BJ_Launch("cum")
+                                call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch
                             $ K_Spunk.append("mouth")
                             $ Speed = 5
                             "She leaps at your cock and sucks it deep, draining your fluids hungrily." 
                             $ Speed = 0
                             $ K_Mouth = "lipbite"
                             "When she finishes, she licks her lips."
-                            call KittyFace("bemused")
+                            call KittyFace("bemused") from _call_KittyFace_407
                             ch_k "Sorry, that's just[K_like]sooooo good."
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -5)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 10)
                             jump K_Swallowed                           
-                    call Kitty_BJ_Reset                
+                    call Kitty_BJ_Reset from _call_Kitty_BJ_Reset                
             elif renpy.showing("Kitty_HJ_Animation"):
-                    call Kitty_HJ_Reset                
+                    call Kitty_HJ_Reset from _call_Kitty_HJ_Reset                
             elif renpy.showing("Kitty_SexSprite"):
-                    call Kitty_Sex_Reset  
+                    call Kitty_Sex_Reset from _call_Kitty_Sex_Reset_21  
             # End reset state
                     
             if ApprovalCheck("Kitty", 500, "I", Bonus = ((K_Addict*10)- K_Obed)) and K_Addict > 50 and K_Swallow: #If addict + Inbt is > obedience + 50. . .
@@ -108,15 +112,15 @@ label PK_Cumming:
                         extend ""
                         "Ok, if you'll swallow it.":
                                         if not renpy.showing("Kitty_BJ_Animation"):
-                                            call Kitty_BJ_Launch("cum")
-                                        call KittyFace("sucking") 
+                                            call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_1
+                                        call KittyFace("sucking") from _call_KittyFace_408 
                                         $ Speed = 5 
                                         $ K_Spunk.append("mouth")
                                         "She nods and puts the tip into her mouth. As you release she gulps it down hungrily."
-                                        call KittyFace("sexy")     
+                                        call KittyFace("sexy") from _call_KittyFace_409     
                                         ". . ."
                                         $ Speed = 0
-                                        call KittyFace("sad")                       
+                                        call KittyFace("sad") from _call_KittyFace_410                       
                                         $ K_Mouth = "lipbite"
                                         ch_k "You know I like my milk."   
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
@@ -131,7 +135,7 @@ label PK_Cumming:
                                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 2)
                                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 3)
                                         if not renpy.showing("Kitty_BJ_Animation"):
-                                            call Kitty_BJ_Launch("cum")
+                                            call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_2
                                         $ Speed = 5
                                         "She dives down on you and you can't resist filling her throat."
                                         $ Speed = 0
@@ -140,7 +144,7 @@ label PK_Cumming:
                                 else:                         
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 3)
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 5)
-                                        call KittyFace("sad")
+                                        call KittyFace("sad") from _call_KittyFace_411
                                         $ K_Brows = "confused"
                                         ch_k "Whatever."
                                         $ Line = 0
@@ -148,7 +152,7 @@ label PK_Cumming:
                                         return      
                     #manic, wanted to swallow
                         
-            call KittyFace("sexy", 1)
+            call KittyFace("sexy", 1) from _call_KittyFace_412
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
             "You pull pull back away from her. She looks up at you and licks her lips." 
             ch_k "Oh? So what did you want to do?"
@@ -165,10 +169,10 @@ label K_Warn_Her:
     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 5) if K_Obed >= 500 else K_Obed   
     if "hungry" in K_Traits and D20 >= 5:
             if renpy.showing("Kitty_SexSprite"):
-                call Kitty_HJ_Launch("cum")   
+                call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch   
                 "She grins and pulls out with a pop, and begins to stroke you off."
             $ Speed = 2
-            call KittyFace("sucking")       
+            call KittyFace("sucking") from _call_KittyFace_413       
             ". . ."
             $ Speed = 0
             $ K_Spunk.append("mouth")
@@ -176,7 +180,7 @@ label K_Warn_Her:
                 "She smiles and then puts your tip in her mouth. When you finish filling her mouth, she quickly gulps it down and wipes her lips."
             else:                
                 "She makes a little squeak, but keeps sucking. When you finish filling her mouth, she quickly gulps it down and wipes her lips."        
-            call KittyFace("sexy")
+            call KittyFace("sexy") from _call_KittyFace_414
             $ K_Mouth = "smile"
             ch_k "Hmmm, thanks for the warning."        
             jump K_Swallowed
@@ -185,27 +189,27 @@ label K_Warn_Her:
     if Trigger == "sex":
             if K_CreamP and (K_CreamP + D20) >= 10:   
                     # She's Creampied a few times 
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_415
                     $ P_Cock = "in"
                     $ K_Spunk.append("in")
                     $ P_Spunk = "in"
                     $ Speed = 0
                     "She smiles and speeds up her actions, causing you to erupt inside her."   
                     if K_Lust >= 85: 
-                            call K_Cumming  
+                            call K_Cumming from _call_K_Cumming_12  
                     jump K_Creampied
             
     elif Trigger == "anal":
             if K_CreamA >= 5 and (K_CreamA + D20) >= 10: 
                     # She's Anal Creampied a few times
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_416
                     $ P_Cock = "anal"
                     $ K_Spunk.append("anal")
                     $ P_Spunk = "anal"
                     $ Speed = 0
                     "She grims at you and speeds up, you burst inside her."         
                     if K_Lust >= 85: 
-                        call K_Cumming  
+                        call K_Cumming from _call_K_Cumming_13  
                     jump K_Creampied
             
     if (K_Swallow + D20) >= 10:        
@@ -213,7 +217,7 @@ label K_Warn_Her:
                     # If she's swallowed and decides to swallow            
                     if renpy.showing("Kitty_BJ_Animation"):       
                             #If it's already showing the BJ animation
-                            call KittyFace("sucking")
+                            call KittyFace("sucking") from _call_KittyFace_417
                             if K_Blow >= 10 or Speed >= 4:
                                 $ Speed = 6 #deep animation
                             else:
@@ -222,15 +226,15 @@ label K_Warn_Her:
                             "She makes a little squeak, but keeps sucking." 
                     else:
                             #If some other animation is playing
-                            call Kitty_BJ_Launch("cum")
+                            call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_3
                             $ Speed = 5
-                            call KittyFace("sucking")
+                            call KittyFace("sucking") from _call_KittyFace_418
                             "She grins and then puts your tip in her mouth."     
                     $ K_Spunk.append("mouth")   
                     ch_k "Hmm. . ."
                     $ Speed = 0
                     "When you finish filling her mouth, she quickly gulps it down and wipes her lips."  
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_419
                     $ K_Mouth = "smile"
                     if K_Swallow < 5:
                             ch_k "Thats. . . thick."
@@ -256,6 +260,10 @@ label K_Warn_Her:
                     if Trigger != "hotdog":
                         "She gently pushes you back off of her."
                     jump K_SpunkBelly
+            elif renpy.showing("Kitty_Doggy"):
+                    if Trigger != "hotdog":
+                        "She gently pushes you back off of her."
+                    jump K_SpunkBack
     
     # Else. . . not experienced or she's not a huge fan, 
     if renpy.showing("Kitty_BJ_Animation"):
@@ -285,7 +293,7 @@ label K_In_Mouth:
     if Situation == "auto":
                 $ Situation = 0
                 if not renpy.showing("Kitty_BJ_Animation"):
-                        call Kitty_BJ_Launch("cum")
+                        call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_4
                         $ Speed = 2
                 "You grab her head and cum in her mouth"  
                 $ K_Eyes = "closed"        
@@ -294,7 +302,7 @@ label K_In_Mouth:
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
                 if "full" in K_RecentActions:
                         #if she's had enough                    
-                        call KittyFace("bemused")
+                        call KittyFace("bemused") from _call_KittyFace_420
                         $ K_Spunk.append("mouth")
                         $ Speed = 0
                         "She gags a little, but manages to swallow it."
@@ -303,24 +311,24 @@ label K_In_Mouth:
                         ch_k ". . . is there anywhere else we could put this?"
                 elif K_Swallow >= 5 or "hungry" in K_Traits:
                         #if she likes to swallow
-                        call KittyFace("sexy")
+                        call KittyFace("sexy") from _call_KittyFace_421
                         $ K_Mouth = "smile"
                         $ K_Spunk.append("mouth")
                         "She quickly gulps it down and wipes her mouth."
                         $ Speed = 0
                         $ K_Spunk.remove("mouth")
                         ch_k "Mmmm, Kitty likes her milk."
-                        call KittyFace
+                        call KittyFace from _call_KittyFace_422
                 elif K_Swallow:
-                        call KittyFace("bemused")
+                        call KittyFace("bemused") from _call_KittyFace_423
                         $ K_Spunk.append("mouth")
                         "She gags a little, but manages to swallow it."
                         $ Speed = 0
                         $ K_Spunk.remove("mouth")
                         ch_k "That[K_like]takes some getting used to."
-                        call KittyFace
+                        call KittyFace from _call_KittyFace_424
                 elif not K_Swallow and K_Addict >= 50 and K_Inbt < 500 and K_Blow < 10:
-                        call KittyFace("bemused", 1)
+                        call KittyFace("bemused", 1) from _call_KittyFace_425
                         $ K_Spunk.append("mouth")
                         ". . ."            
                         $ K_Spunk.remove("mouth")
@@ -332,10 +340,10 @@ label K_In_Mouth:
                         $ K_Addictionrate += 1
                         if "addictive" in P_Traits:
                             $ K_Addictionrate += 1
-                        call KittyFace
+                        call KittyFace from _call_KittyFace_426
                         jump K_Orgasm_After
                 elif not K_Swallow and K_Addict >= 50:
-                        call KittyFace("sexy")
+                        call KittyFace("sexy") from _call_KittyFace_427
                         $ K_Mouth = "tongue"
                         $ K_Spunk.append("mouth")
                         ". . ."
@@ -345,15 +353,15 @@ label K_In_Mouth:
                         "She gags and spits it into her palm. Then she licks her lips, looks down, and drinks up what's in her palm."
                         $ K_Spunk.remove("hand")
                         ch_k "You coulda warned me." 
-                        call KittyFace
+                        call KittyFace from _call_KittyFace_428
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 2)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
                 elif not K_Swallow:
                         if ApprovalCheck("Kitty", 700, "LO") and ApprovalCheck("Kitty", 300, "I"):
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_429
                             $ K_Spunk.append("mouth")
                         else:
-                            call KittyFace("bemused")
+                            call KittyFace("bemused") from _call_KittyFace_430
                             $ K_Mouth = "tongue"
                             $ K_Spunk.append("mouth")
                         ". . ."
@@ -367,7 +375,7 @@ label K_In_Mouth:
                                     $ K_Addictionrate += 1
                                     if "addictive" in P_Traits:
                                         $ K_Addictionrate += 1
-                                    call KittyFace("smile", 1)
+                                    call KittyFace("smile", 1) from _call_KittyFace_431
                                     ch_k "Well, just[K_like]let me know next time?"
                                     jump K_Orgasm_After
                                 
@@ -375,13 +383,13 @@ label K_In_Mouth:
                                     if ApprovalCheck("Kitty", 1300):
                                         "She tentatively licks her hand, and then gulps it down."
                                         $ K_Spunk.remove("hand")                          
-                                        call KittyFace("sexy", 1)
+                                        call KittyFace("sexy", 1) from _call_KittyFace_432
                                         $ K_Spunk.append("mouth")
                                         ch_k "Hmm, creamy. . ."
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 12)
                                         $ K_Spunk.remove("mouth")                            
                                     elif ApprovalCheck("Kitty", 1000, "OI", Bonus = (K_Addict*10)):
-                                        call KittyFace("bemused", 1)
+                                        call KittyFace("bemused", 1) from _call_KittyFace_433
                                         $ K_Brows = "normal" 
                                         $ K_Mouth = "sad"
                                         $ K_Spunk.append("mouth")
@@ -400,7 +408,7 @@ label K_In_Mouth:
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -1, 1)                    
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -1, 1)
                                     if ApprovalCheck("Kitty", 1200, "OI") or K_Addict >= 50:                            
-                                        call KittyFace("sad", 1)
+                                        call KittyFace("sad", 1) from _call_KittyFace_434
                                         $ K_Spunk.append("mouth")
                                         $ K_Spunk.remove("hand")  
                                         "She scowls a bit, but licks her hand clean as she does so, and swallows it down."
@@ -420,16 +428,16 @@ label K_In_Mouth:
     $ Situation = 0
     "You ask if you can cum in her mouth."
     if renpy.showing("Kitty_SexSprite"):
-            call Kitty_HJ_Launch("cum")    
+            call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_1    
     
     if "full" in K_RecentActions:
             pass
         
     elif K_Swallow >= 5 or "hungry" in K_Traits:  
             # If she's swallowed 5 times, 
-            call KittyFace("sucking")
+            call KittyFace("sucking") from _call_KittyFace_435
             if not renpy.showing("Kitty_BJ_Animation"):
-                call Kitty_BJ_Launch("cum")            
+                call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_5            
                 $ Speed = 2
                 "She nods and bends down to put the tip between her lips."
             else:            
@@ -437,7 +445,7 @@ label K_In_Mouth:
             $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
             $ K_Spunk.append("mouth")
             ". . ."
-            call KittyFace("sexy")            
+            call KittyFace("sexy") from _call_KittyFace_436            
             $ Speed = 0
             ch_k "Mmm, creamy."
             $ K_Spunk.remove("mouth")  
@@ -448,7 +456,7 @@ label K_In_Mouth:
             $ K_Brows = "confused"
             $ K_Eyes = "manic"
             if not renpy.showing("Kitty_BJ_Animation"):
-                call Kitty_BJ_Launch("cum")            
+                call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_6            
                 $ Speed = 2    
                 "She looks a bit confused, but gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
             else:            
@@ -457,7 +465,7 @@ label K_In_Mouth:
             $ K_Spunk.append("mouth")
             ". . ."
             $ Speed = 0
-            call KittyFace("sexy")
+            call KittyFace("sexy") from _call_KittyFace_437
             $ K_Mouth = "smile"
             ch_k "You coulda warned me first."
             $ K_Spunk.remove("mouth")  
@@ -468,7 +476,7 @@ label K_In_Mouth:
             if ApprovalCheck("Kitty", 900):
                 $ K_Brows = "confused"
                 if not renpy.showing("Kitty_BJ_Animation"):
-                    call Kitty_BJ_Launch("cum")            
+                    call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_7            
                     $ Speed = 2    
                     "She looks a bit confused, but gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
                 else:            
@@ -480,7 +488,7 @@ label K_In_Mouth:
                 $ K_Eyes = "sexy"
                 ". . ."
                 $ Speed = 0
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_438
                 $ K_Spunk.append("mouth")
                 ch_k "Yech, that's still kinda nasty."
                 $ K_Spunk.remove("mouth")  
@@ -489,10 +497,10 @@ label K_In_Mouth:
     #If she hasn't swallowed or doesn't automatically want to. . .  
     
     if  ApprovalCheck("Kitty", 500, "LI") or ApprovalCheck("Kitty", 400, "OI"): 
-        call KittyFace("bemused")
+        call KittyFace("bemused") from _call_KittyFace_439
         $ K_Eyes = "sexy"
     else:
-        call KittyFace("angry")
+        call KittyFace("angry") from _call_KittyFace_440
         
     $ Speed = 0    
     
@@ -508,12 +516,12 @@ label K_In_Mouth:
                 $ K_Addictionrate += 1
                 if "addictive" in P_Traits:
                     $ K_Addictionrate += 1
-                call KittyFace("smile", 1)
+                call KittyFace("smile", 1) from _call_KittyFace_441
                 ch_k "Can't hurt to ask, right?"
                 if ApprovalCheck("Kitty", 1300, TabM=1) and "full" not in K_RecentActions:
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 3)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 2)  
-                    call KittyFace("sexy", 1)
+                    call KittyFace("sexy", 1) from _call_KittyFace_442
                     ch_k "It's[K_like]worth a shot."
                 else:
                     jump K_Handy_Finish                
@@ -535,15 +543,15 @@ label K_In_Mouth:
                         
         "Seriously, put it in your mouth.":
                 if ApprovalCheck("Kitty", 1500, "LI", TabM=1) or ApprovalCheck("Kitty", 1200, "OI", TabM=1):
-                        call KittyFace("sucking", 1)
+                        call KittyFace("sucking", 1) from _call_KittyFace_443
                 elif ApprovalCheck("Kitty", 1000, "OI", Bonus = (K_Addict*10)): #Mild addiction included                
-                        call KittyFace("angry", 1)
+                        call KittyFace("angry", 1) from _call_KittyFace_444
                 else: 
                         #You insisted, she refused. 
-                        call KittyFace("angry", 1)
+                        call KittyFace("angry", 1) from _call_KittyFace_445
                         "She scowls at you, drops you cock and pulls back."
-                        call Kitty_HJ_Launch("cum")
-                        call Kitty_HJ_Reset                
+                        call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_2
+                        call Kitty_HJ_Reset from _call_Kitty_HJ_Reset_1                
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -4, 1)
                         ch_k "You can handle it yourself then."
@@ -557,27 +565,27 @@ label K_In_Mouth:
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 5)
         
     if not renpy.showing("Kitty_BJ_Animation"):
-        call Kitty_BJ_Launch("cum")            
+        call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_8            
     $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
     if ApprovalCheck("Kitty", 1200):                  
             "She gently puts the tip to her lips, just as you blow." 
             "She gags a little, but quickly swallows it." 
     else:
             "She tentatively places the tip in her mouth, and you blast inside it. She quickly gulps it down."                    
-            call KittyFace("sexy")
+            call KittyFace("sexy") from _call_KittyFace_446
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -4, 1)    
     $ K_Spunk.append("mouth")
     ". . ."   
     $ Speed = 0            
-    call KittyFace("sexy") 
+    call KittyFace("sexy") from _call_KittyFace_447 
     
     if ApprovalCheck("Kitty", 1100) and K_Swallow >= 3:
             ch_k "I'm starting to get used to that."    
     elif ApprovalCheck("Kitty", 800):                
         ch_k "I guess that isn't too bad."
     else:
-        call KittyFace("sad")
+        call KittyFace("sad") from _call_KittyFace_448
         ch_k "Kinda nasty, [K_Petname]."   
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 3)
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)            
@@ -595,27 +603,27 @@ label K_Creampie_P:                                                             
                 $ P_Spunk = "in"
                 $ Speed = 0
                 if ApprovalCheck("Kitty", 1300) or K_CreamP:              
-                    call KittyFace("surprised")
+                    call KittyFace("surprised") from _call_KittyFace_449
                     "You come in her pussy. Her eyes widen in surprise, but she takes it in stride."  
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_450
                     if K_Lust >= 85: 
-                        call K_Cumming
+                        call K_Cumming from _call_K_Cumming_14
                 else:
                     if K_Lust >= 85: 
                         "You come in her pussy. Her eyes widen in surprise and she shakes a bit."
-                        call K_Cumming                
+                        call K_Cumming from _call_K_Cumming_15                
                     else:
                         "You come in her pussy. Her eyes widen in surprise and she pulls out."
                     $ P_Cock = "out"
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_451
                     ch_k "You coulda[K_like]warned me or something!"
-                    call KittyFace("bemused")
+                    call KittyFace("bemused") from _call_KittyFace_452
                     ch_k "It was pretty warm though. . ."                    
                 jump K_Creampied
         
         #else (You ask her if it's ok):
         if ApprovalCheck("Kitty", 1200) or K_CreamP:        
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_453
                 if K_CreamP >= 3:
                     "She smiles and speeds up her actions, causing you to erupt inside her."  
                 elif K_CreamP:
@@ -627,12 +635,12 @@ label K_Creampie_P:                                                             
                 $ P_Spunk = "in"
                 $ Speed = 0
                 if K_Lust >= 85: 
-                    call K_Cumming  
+                    call K_Cumming from _call_K_Cumming_16  
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1) 
                 ch_k "Hmm, cozy. . ."
                 jump K_Creampied
         else:
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_454
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 2) 
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 2) 
                 ch_k "Thanks for the warning, but maybe not this time?"
@@ -647,27 +655,27 @@ label K_Creampie_A:
                 $ P_Spunk = "anal"
                 $ Speed = 0
                 if ApprovalCheck("Kitty", 1200) or K_CreamP:              
-                    call KittyFace("surprised", 1)
+                    call KittyFace("surprised", 1) from _call_KittyFace_455
                     "You come in her ass. Her eyes widen in surprise, but she takes it in stride."  
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_456
                     if K_Lust >= 85: 
-                        call K_Cumming
+                        call K_Cumming from _call_K_Cumming_17
                 else:
                     if K_Lust >= 85: 
                         "You come in her ass. Her eyes widen in surprise and she shakes a bit."
-                        call K_Cumming                
+                        call K_Cumming from _call_K_Cumming_18                
                     else:
                         "You come in her ass. Her eyes widen in surprise and she pulls out."
                     $ P_Cock = "out"
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_457
                     ch_k "Maybe a little warning next time?"
-                    call KittyFace("bemused")
+                    call KittyFace("bemused") from _call_KittyFace_458
                     ch_k "that was pretty warm though. . ."
                 jump K_Creampied
             
         #else (You ask her if it's ok):
         if ApprovalCheck("Kitty", 1200) or K_CreamP:        
-                call KittyFace("sexy")
+                call KittyFace("sexy") from _call_KittyFace_459
                 if K_CreamP >= 3:
                     "She smiles and speeds up her actions, causing you to erupt inside her."  
                 elif K_CreamP:
@@ -679,12 +687,12 @@ label K_Creampie_A:
                 $ P_Spunk = "anal"
                 $ Speed = 0
                 if K_Lust >= 85: 
-                    call K_Cumming  
+                    call K_Cumming from _call_K_Cumming_19  
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1) 
                 ch_k "Wow, I feel so full. . ."
                 jump K_Creampied
         else:
-                call KittyFace("sexy")     
+                call KittyFace("sexy") from _call_KittyFace_460     
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 2) 
                 ch_k "Thanks for the warning, but maybe not this time?"
         jump K_SpunkBelly
@@ -703,13 +711,13 @@ label K_Facial:                                                                 
                 $ K_Mouth = "lipbite"
                 $ Speed = 0
                 "When she finishes, she licks her lips."
-                call KittyFace("bemused")
+                call KittyFace("bemused") from _call_KittyFace_461
                 $ K_Spunk.remove("mouth")  
                 ch_k "Sorry, that's just[K_like]sooooo good."
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, -5)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 10)
                 jump K_Swallowed
-            call Kitty_HJ_Launch("cum")
+            call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_3
             $ Speed = 2
             $ K_Spunk.append("facial")
             "You pull out of her mouth with a pop, and she strokes you off. You spray all over her face."
@@ -731,7 +739,7 @@ label K_Facial:                                                                 
                 "As you're about to finish, you aim squarely at her face, and spray all over it."  
             $ Speed = 0
     else:        
-            call Kitty_HJ_Launch("cum")
+            call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_4
             $ Speed = 2
             $ K_Spunk.append("facial")
             "As you're about to finish, you pull out, aim squarely at her face, and spray all over it."
@@ -747,12 +755,12 @@ label K_Facial:                                                                 
 
 # Start Spunk Belly / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label K_SpunkBelly:
-    call Kitty_Sex_Launch("hotdog")
+    call Kitty_Sex_Launch("hotdog") from _call_Kitty_Sex_Launch_15
     $ Speed = 0
     if K_Addict >= 60 and ApprovalCheck("Kitty", 1000, "I", Bonus = ((K_Addict*10)- K_Obed)) and K_Swallow:
             $ K_Eyes = "manic"
             $ K_Blush = 1
-            call Kitty_BJ_Launch("cum")
+            call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_9
             if Trigger == "sex":
                 "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
             elif Trigger == "anal":                
@@ -760,7 +768,7 @@ label K_SpunkBelly:
             $ K_Mouth = "lipbite"
             $ K_Spunk.append("mouth")
             "When she finishes, she licks her lips."
-            call KittyFace("bemused")
+            call KittyFace("bemused") from _call_KittyFace_462
             $ K_Spunk.remove("mouth")  
             ch_k "Sorry, that's just[K_like]sooooo good."
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, -5)
@@ -782,7 +790,7 @@ label K_SpunkBelly:
             $ K_Eyes = "manic"
             $ K_Blush = 1        
             "Kitty's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
-            call KittyFace("manic", 1)
+            call KittyFace("manic", 1) from _call_KittyFace_463
             $ K_Spunk.append("mouth")
             $ K_Mouth = "smile"
             ch_k "Sorry, that's just[K_like]sooooo good."
@@ -792,27 +800,78 @@ label K_SpunkBelly:
           
         
     #else . . .
-    call KittyFace("sexy", 1)    
+    call KittyFace("sexy", 1) from _call_KittyFace_464    
     ch_k "Mmmm, all over the place. . ."
-    call Kitty_Sex_Reset
+    #call Kitty_Sex_Reset
     jump K_Orgasm_After
     
+# Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+label K_SpunkBack: 
+    call Kitty_Doggy_Launch("hotdog") from _call_Kitty_Doggy_Launch
+    $ Speed = 0
+    if K_Addict >= 60 and ApprovalCheck("Kitty", 1000, "I", Bonus = ((K_Addict*10)- K_Obed))  and K_Swallow:
+            $ K_Eyes = "manic"
+            $ K_Blush = 1
+            call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_10
+            if Trigger == "sex":
+                "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            elif Trigger == "anal":                
+                "You pull out of her ass with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            $ K_Mouth = "lipbite"
+            $ K_Spunk.append("mouth")
+            "When she finishes, she licks her lips."
+            call KittyFace("bemused") from _call_KittyFace_465
+            $ K_Spunk.remove("mouth")
+            ch_k "Sorry, [K_Petname], I just couldn't let that go to waste."
+            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, -5)
+            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 10)
+            jump K_Swallowed
+    $ P_Cock = "out"
+    $ P_Spunk = "out"
+    $ K_Spunk.append("back")
+    if Trigger == "sex":
+            "You pull out of her pussy with a pop and spray all over her backside."
+    elif Trigger == "anal":
+            "You pull out of her ass with a pop and spray all over her backside."
+    else:
+            "You pick up the pace and with a grunt you spray all over her backside."
+        
+                  
+    if K_Addict >= 60 and ApprovalCheck("Kitty", 800, "I", Bonus = ((K_Addict*10)- K_Obed)) and K_Swallow: 
+            #if she's manic and has swallowed
+            $ K_Eyes = "manic"
+            $ K_Blush = 1        
+            "Kitty's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
+            call KittyFace("manic", 1) from _call_KittyFace_466
+            $ K_Spunk.append("mouth")
+            $ K_Mouth = "smile"
+            ch_k "Well, [K_Petname], I just couldn't let that go to waste."
+            $ K_Spunk.remove("mouth")
+            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3)
+            jump K_Swallowed
+          
+        
+    #else . . .
+    call KittyFace("sexy", 1) from _call_KittyFace_467
+    ch_k "Thanks for the courtesy, [K_Petname]. Such a mess though. . ." 
+    #call Kitty_Doggy_Reset
+    jump K_Orgasm_After
 
 #Start Handy finish  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label K_Handy_Finish:                                                                                                                       #Handy start
     if renpy.showing("Kitty_SexSprite"):
-            call Kitty_HJ_Launch("cum")  
+            call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_5  
             if Trigger == "hotdog":
                 "She bends down and begins to stroke you off."
             else:
                 "She grins and pulls out with a pop, and begins to stroke you off."
             $ Speed = 2   
     elif renpy.showing("Kitty_BJ_Animation"):         
-            call Kitty_HJ_Launch("cum")  
+            call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_6  
             $ Speed = 2   
             "She slides her lips off your cock, and begins to stroke you off."        
     else:    
-            call Kitty_HJ_Launch("cum")
+            call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_7
             $ Speed = 2        
     $ K_Spunk.append("hand")  
     if renpy.showing("Kitty_HJ_Animation"):                                  
@@ -830,7 +889,7 @@ label K_Handy_Finish:                                                           
         $ K_Spunk.remove("mouth")                    
         ch_k "Hmmm. . ."
     else:
-        call KittyFace("bemused")
+        call KittyFace("bemused") from _call_KittyFace_468
         "She wipes her hands off, but takes a quick sniff when she's done and smiles."
         $ K_Spunk.remove("hand")  
         ch_k "Hmm, sticky."  
@@ -846,9 +905,9 @@ label K_Swallowed:                                                              
             $ K_Spunk.remove("mouth")
     if "full" not in R_RecentActions and Action_Check("Kitty", "recent", "swallowed") >= 5:
             $ R_RecentActions.append("full")    
-            call KittyFace("surprised", 1)
+            call KittyFace("surprised", 1) from _call_KittyFace_469
             ch_k "-buurp-"
-            call KittyFace("sexy", 1)
+            call KittyFace("sexy", 1) from _call_KittyFace_470
             ch_k "I. . . might have to cut back a bit."
     $ K_RecentActions.append("swallowed")                      
     $ K_DailyActions.append("swallowed") 
@@ -883,24 +942,39 @@ label K_Creampied:
     if K_CreamP == 1:
             $K_SEXP += 10
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 5)
-    call Kitty_Sex_Reset
+    #call Kitty_Sex_Reset
 
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label K_Orgasm_After:
-    $ Line = 0
+        $ Line = "What next?"
+        $ Kitty_Arms = 1
+        $ P_Semen -= 1
+        $ P_Focus = 0
+        $ Speed = 0  
+        menu:
+                "Want her to clean you off?"
+                "Yes":
+                    call K_CleanCock from _call_K_CleanCock
+                "No":
+                    pass
+        if K_Spunk:
+                call Kitty_Cleanup from _call_Kitty_Cleanup
+        $ Situation = 0
+        return
+        
+        
+label K_CleanCock:
+    $ Line = "What next?"
     $ Kitty_Arms = 1
-    $ P_Semen -= 1
-    $ P_Focus = 0
     $ P_Cock = "out"
-    $ P_Spunk = 0
     $ Speed = 0
     if Trigger == "anal" and not ApprovalCheck("Kitty", 1600, TabM=1) and not K_Addict >= 80:
             "She wipes your cock clean."
     elif K_Blow > 3 or K_Swallow: 
             if ApprovalCheck("Kitty", 1200, TabM=1) or K_Addict >= 60:
-                    call Kitty_BJ_Launch("cum")
+                    call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_11
                     $ Speed = 1
-                    call KittyFace("sucking", 1) 
+                    call KittyFace("sucking", 1) from _call_KittyFace_471 
                     if ApprovalCheck("Kitty", 1700, TabM=1):
                         if K_Love > K_Inbt and K_Love > K_Obed:
                             $ K_Eyes = "sly"
@@ -915,29 +989,19 @@ label K_Orgasm_After:
                             "She hungrily and thoroughly licks your cock clean."   
                     else:
                         "She licks you cock clean." 
-                    call KittyFace("sexy") 
-                    call Kitty_BJ_Reset
+                    call KittyFace("sexy") from _call_KittyFace_472 
+                    call Kitty_BJ_Reset from _call_Kitty_BJ_Reset_1
             else:
                     if not renpy.showing("Kitty_HJ_Animation"):
-                        call Kitty_HJ_Launch("cum") 
+                        call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_8 
                     "She wipes your cock clean."  
     else:
                 if not renpy.showing("Kitty_HJ_Animation"):
-                    call Kitty_HJ_Launch("cum") 
+                    call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_9 
                 "She wipes your cock clean."          
-    call KittyFace("sexy") 
-    call Kitty_HJ_Reset 
-    if K_Spunk and not ApprovalCheck("Kitty", 400, "I"):
-            call Kitty_Cleanup
-    elif K_Spunk:   
-        menu:
-            extend""
-            "And maybe clean yourself up too?":            
-                call Kitty_Cleanup
-            "[[Say nothing.]":         
-                call Kitty_Cleanup    
-    $ Speed = 0
-    $ Situation = 0
+    $ P_Spunk = 0
+    call KittyFace("sexy") from _call_KittyFace_473 
+    call Kitty_HJ_Reset from _call_Kitty_HJ_Reset_2 
     return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////
@@ -1073,7 +1137,7 @@ label K_Cumming:
         $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1)
         if "unsatisfied" in K_DailyActions:
             ch_k "You know how to take care of me."
-        call DrainWord("Kitty","unsatisfied")
+        call DrainWord("Kitty","unsatisfied") from _call_DrainWord_113
     $ K_Org += 1
     $ Line = 0
       
@@ -1120,7 +1184,7 @@ label K_Cumming:
                                     $ K_Eyes = "stunned"
                                     "She drifts off into incoherent moans."
                                 else:
-                                    call KittyFace("angry", 1)
+                                    call KittyFace("angry", 1) from _call_KittyFace_474
                                     "She scowls at you, pulls out with a pop, and wipes herself off."
                                     ch_k "Looks like you're going to have to. . ."
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
@@ -1158,7 +1222,7 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
     elif ApprovalCheck("Kitty", 1200, "LO"):  
         $ Line = "ask"            
     elif not ApprovalCheck("Kitty", 400, "I"):
-        call KittyFace("bemused") 
+        call KittyFace("bemused") from _call_KittyFace_475 
         $ Line = "clean"   
     else:
         $ Line = "random"      
@@ -1178,19 +1242,19 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 90, 5) 
                             $ Line = "leave"  
-                            call KittyFace("sly") 
+                            call KittyFace("sly") from _call_KittyFace_476 
                             ch_k "Ooh, I like where your head is at. . "
                     elif ApprovalCheck("Kitty", 650, "I") and ApprovalCheck("Kitty", 1200, "LO"):
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 1) 
                             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 90, 5) 
                             $ Line = "leave"  
-                            call KittyFace("surprised",2) 
+                            call KittyFace("surprised",2) from _call_KittyFace_477 
                             ch_k "Well, I guess I could. . ."
-                            call KittyFace("sly",1)      
+                            call KittyFace("sly",1) from _call_KittyFace_478      
                             
                     else:
-                        call KittyFace("angry") 
+                        call KittyFace("angry") from _call_KittyFace_479 
                         menu:
                             ch_k "Now you're just being ridiculous!" 
                             "Please?":
@@ -1203,7 +1267,7 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                     ch_k "Oh, fine!"
                                     $ Line = "leave"  
                                 elif Cleaned:
-                                    call KittyFace("angry") 
+                                    call KittyFace("angry") from _call_KittyFace_480 
                                     ch_k "Seriously, stop bugging me about this."
                                 elif ApprovalCheck("Kitty", 800):
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1) 
@@ -1212,10 +1276,10 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 75, -5)
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 40, -10)
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 2)
-                                    call KittyFace("angry") 
+                                    call KittyFace("angry") from _call_KittyFace_481 
                                     ch_k "Don't be an asshole."
                             "I insist.":
-                                call KittyFace("sad") 
+                                call KittyFace("sad") from _call_KittyFace_482 
                                 if ApprovalCheck("Kitty", 400, "I") and ApprovalCheck("Kitty", 1200, "LO"):
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 3)
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 2)
@@ -1231,17 +1295,17 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 elif Cleaned:
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -5)
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -1)
-                                    call KittyFace("angry") 
+                                    call KittyFace("angry") from _call_KittyFace_483 
                                     ch_k "Seriously, stop bugging me about this."
                                 elif ApprovalCheck("Kitty", 800):
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3)
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -1)
-                                    call KittyFace("sad") 
+                                    call KittyFace("sad") from _call_KittyFace_484 
                                     ch_k "Sorry, that's just a bridge too far." 
                                 else:
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -10)
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -5)
-                                    call KittyFace("angry") 
+                                    call KittyFace("angry") from _call_KittyFace_485 
                                     ch_k "Well {i}I{/i} insist you don't know how to talk to a lady!"
                                     
                             "Never mind then.":
@@ -1249,7 +1313,7 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                         #end "leave it"
                         
                 "You should just eat it.":
-                        call KittyFace("sly") 
+                        call KittyFace("sly") from _call_KittyFace_486 
                         if "hungry" in K_Traits or (K_Swallow >= 5 and ApprovalCheck("Kitty", 800)): 
                                 #lots of swallows
                                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
@@ -1277,19 +1341,19 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 ch_k "I suppose I could give it a go. . ."
                         elif ApprovalCheck("Kitty", 400): 
                                 #Likes you well enough, but won't
-                                call KittyFace("sad") 
+                                call KittyFace("sad") from _call_KittyFace_487 
                                 ch_k "Sorry, I just don't think I could."
                         else: 
                                 #doesn't like you.
                                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -5)
                                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -3)
-                                call KittyFace("angry") 
+                                call KittyFace("angry") from _call_KittyFace_488 
                                 ch_k "No."
                         #end eat it
                               
                 "You should just clean it up.":
                         if ApprovalCheck("Kitty", 600, "I") and not ApprovalCheck("Kitty", 1500, "LO"): #rebellious
-                                call KittyFace("sly") 
+                                call KittyFace("sly") from _call_KittyFace_489 
                                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, -3)
                                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 10) 
                                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 5) 
@@ -1299,17 +1363,17 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 menu:
                                         extend ""
                                         "Ok, fine.":
-                                            call KittyFace("smile") 
+                                            call KittyFace("smile") from _call_KittyFace_490 
                                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, 5)
                                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)
                                         "No, clean it up.": 
                                             if ApprovalCheck("Kitty", 500, "O"):
-                                                call RogueFace("sad") 
+                                                call RogueFace("sad") from _call_RogueFace_387 
                                                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 10)
                                                 ch_k "If that's what you really want. . ."
                                                 $ Line = "clean"  
                                             elif ApprovalCheck("Kitty", 1100, "LO"):
-                                                call KittyFace("sad") 
+                                                call KittyFace("sad") from _call_KittyFace_491 
                                                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, -3)
                                                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)
                                                 ch_k "You take the fun out of this. . ."
@@ -1320,7 +1384,7 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                                 ch_k "I {i}said{/i} it's stay'in."
                                                 
                         else: #agrees                           
-                                call KittyFace("bemused") 
+                                call KittyFace("bemused") from _call_KittyFace_492 
                                 $ Line = "clean"   
                                 ch_k "Ok, I guess. . ."
                         #end clean it up
@@ -1409,6 +1473,13 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
             else:
                 "She wipes the spunk inside her pussy,"     
             $ Cnt += 1 
+    if "back" in K_Spunk:
+            $ K_Spunk.remove("back")
+            if Cnt:
+                "then she wipes the spunk off of her back,"   
+            else:
+                "She wipes the spunk off her lower back," 
+            $ Cnt += 1  
     if "anal" in K_Spunk and (ApprovalCheck("Kitty", 800, "I") or Line != "eat"):
             while "anal" in K_Spunk:
                 $ K_Spunk.remove("anal")

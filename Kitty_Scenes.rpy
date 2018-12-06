@@ -2,13 +2,13 @@
 
 label KittyMeet:    
     $ bg_current = "bg campus"   
-    call CleartheRoom("All",0,1)
+    call CleartheRoom("All",0,1) from _call_CleartheRoom_46
     $ K_Loc = "bg kitty"  
     $ K_Love = 400        
     $ K_Obed = 100            
     $ K_Inbt = 0  
-    call Shift_Focus("Kitty")    
-    call Set_The_Scene(0)
+    call Shift_Focus("Kitty") from _call_Shift_Focus_244    
+    call Set_The_Scene(0) from _call_Set_The_Scene_158
     $ K_SpriteLoc = StageCenter
     $ K_Petname = Playername[:1]     
         
@@ -19,7 +19,7 @@ label KittyMeet:
     show Kitty_Sprite at SpriteLoc(K_SpriteLoc) with vpunch       
     $ K_Loc = "bg campus" 
     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -25) 
-    call KittyFace("surprised")
+    call KittyFace("surprised") from _call_KittyFace_965
     $ K_Arms = 1
     ch_u "Hey!"
     $ K_Brows = "angry"
@@ -29,78 +29,78 @@ label KittyMeet:
     menu:
         extend ""
         "You crashed into me!":
-            call KittyFace("confused", 2)   
+            call KittyFace("confused", 2) from _call_KittyFace_966   
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 5)          
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 20)         
             ch_u "Wha! Well, yeah. . ."
             $ K_Blush = 1
             $ Cnt = 0
         "Sorry about that.":
-            call KittyFace("bemused", 1) 
+            call KittyFace("bemused", 1) from _call_KittyFace_967 
             $ K_Eyes = "side"
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 25) 
             ch_u "Well, I guess it[K_like]wasn't entirely your fault. . ."
         "A meet-cute?":
-            call KittyFace("surprised", 2) 
+            call KittyFace("surprised", 2) from _call_KittyFace_968 
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 15)           
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 10) 
             ch_u "  !  "
-            call KittyFace("bemused", 1) 
+            call KittyFace("bemused", 1) from _call_KittyFace_969 
             ch_u "Hmm. . . maybe. . ."
     
     
     ch_p "My name's [Playername], by the way." 
     if Cnt:
-        call KittyFace("smile", 1)
+        call KittyFace("smile", 1) from _call_KittyFace_970
         ch_k "Mine's Kitty! Kitty Pryde. Nice to meet you!"
     else:
-        call KittyFace("sadside", 1)
+        call KittyFace("sadside", 1) from _call_KittyFace_971
         ch_k "Um, mine's Kitty." 
-    call KittyFace("normal", 1)
+    call KittyFace("normal", 1) from _call_KittyFace_972
     $ K_Mouth = "sad"
     ch_k "I just[K_like]didn't expect to bounce off you like that. Normally I can phase through things." 
     
     menu:                                                               # + 5-10
         extend ""
         "Losing your touch?":
-            call KittyFace("confused", 0)           
+            call KittyFace("confused", 0) from _call_KittyFace_973           
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 5) 
             ch_k "I don't {i}think{/i} that's it. . ." 
             ch_p "Just kidding. . ."
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 5) 
         "Was I too distracting?":
-            call KittyFace("angry", 1, Brows = "normal")
+            call KittyFace("angry", 1, Brows = "normal") from _call_KittyFace_974
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -2)          
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 8)            
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 4) 
             ch_k "Like, no."
             ch_p "Heh, I guess not."
         "It must be my powers." :
-            call KittyFace("confused", 0) 
+            call KittyFace("confused", 0) from _call_KittyFace_975 
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 5) 
             ch_k "Oh?"
             
     ch_p "I have the ability to negate mutant powers, so you can't phase through me." 
-    call KittyFace("perplexed", 0)    
+    call KittyFace("perplexed", 0) from _call_KittyFace_976    
     ch_k "Oh! Wow, that's an interesting power. So if you grab me, I can't get away?"
     
     menu:                                                               # +10
         extend ""
         "Want to give it a try?":
-            call KittyFace("perplexed", 0) 
+            call KittyFace("perplexed", 0) from _call_KittyFace_977 
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 5)            
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 5) 
             ch_k "I'm definitely curious."
         "I guess so.":
-            call KittyFace("sadside", 0, Mouth = "lipbite")         
+            call KittyFace("sadside", 0, Mouth = "lipbite") from _call_KittyFace_978         
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 3)            
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 7) 
             ch_k "I'd like to give it a try."
         "Does that turn you on?":            
-            call KittyFace("surprised", 2)         
+            call KittyFace("surprised", 2) from _call_KittyFace_979         
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 5) 
             ch_k "What?! No! . ."   
-            call KittyFace("bemused", 1)          
+            call KittyFace("bemused", 1) from _call_KittyFace_980          
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 5) 
             $ K_Eyes = "side"
             ch_k ". . . no."
@@ -109,7 +109,7 @@ label KittyMeet:
             
     ch_p "Ok, let's give it a shot."
     "You reach out and grab her wrist."
-    call KittyFace("angry", 1, Eyes = "down")
+    call KittyFace("angry", 1, Eyes = "down") from _call_KittyFace_981
     "She struggles for a few moments to shake you free, but you hold firm."
     $ Cnt = 0
     while Cnt < 3:
@@ -145,9 +145,9 @@ label KittyMeet:
                 $ Cnt += 1
             "Pull her in for a hug.":
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5) 
-                call KittyFace("surprised", 2)
+                call KittyFace("surprised", 2) from _call_KittyFace_982
                 ch_k "Hey! Like, not cool!"                
-                call KittyFace("angry", 1)
+                call KittyFace("angry", 1) from _call_KittyFace_983
                 show Kitty_Sprite at SpriteLoc(K_SpriteLoc) with vpunch   
                 "She elbows you in the ribs and shoves herself back a few steps."          
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 10) 
@@ -160,7 +160,7 @@ label KittyMeet:
         $ K_Eyes = "side"  
         ch_k "Still though, that was an interesting experience. . ."
     else:
-        call KittyFace("bemused", 1, Eyes = "side")
+        call KittyFace("bemused", 1, Eyes = "side") from _call_KittyFace_984
         ch_k "That was an interesting experience. . ."   
     $ K_Eyes = "sexy"  
     $ K_Mouth = "lipbite"
@@ -168,23 +168,23 @@ label KittyMeet:
     #$ K_Addictionrate = 5 #fix, add this back in once fully functional addiction
     
     $ Cnt = 0
-    call KittyFace("surprised", Mouth = "kiss")
+    call KittyFace("surprised", Mouth = "kiss") from _call_KittyFace_985
     ch_k "Oh! I[K_like]totally forgot, I have to get to a briefing!"
     if Cnt < 5:
-        call KittyFace("smile")
+        call KittyFace("smile") from _call_KittyFace_986
         ch_k "I'll see you later though! Like, bye!"
     else:
-        call KittyFace("normal")
+        call KittyFace("normal") from _call_KittyFace_987
         ch_k "I'll see you around I guess. Like, bye!"        
     
     $ K_Loc = "bg kitty"         
-    call Set_The_Scene
+    call Set_The_Scene from _call_Set_The_Scene_159
     
     "She jogs off down the path, and you continue on to class."
     $ K_History.append("met")
     $ bg_current = "bg classroom"            
     $ Round -= 10      
-    call Shift_Focus("Rogue")
+    call Shift_Focus("Rogue") from _call_Shift_Focus_245
     return
             
 # end KittyMeet //////////////////////////////////////////////////////////            
@@ -192,7 +192,7 @@ label KittyMeet:
 # Event Kitty Sleepover /////////////////////////////////////////////////////  
 label Kitty_Sleepover(sleepover = 0):
             #This event gets called from the Location menus when time passes in the Night timeframe.
-            call Shift_Focus("Kitty")
+            call Shift_Focus("Kitty") from _call_Shift_Focus_246
             if bg_current == "bg kitty":
                     ch_k "I'm getting kinda tired. . ."
             else:
@@ -200,7 +200,7 @@ label Kitty_Sleepover(sleepover = 0):
             if Day <= 14:        
                 ch_k "It's nice hanging out, but we've just met, so, see you tomorrow."  
             else:      
-                call KittyFace("sexy", 1)
+                call KittyFace("sexy", 1) from _call_KittyFace_988
                 if K_Sleep >= 3 and ApprovalCheck("Kitty", 800):                                 #You've slept over several times and she still likes you
                         if bg_current == "bg kitty":
                                 ch_k "So, you staying over?"
@@ -209,7 +209,7 @@ label Kitty_Sleepover(sleepover = 0):
                         $ sleepover = 1
                     
                 elif K_Sleep < 3 and ApprovalCheck("Kitty", 1100, "LI"):                        #You haven't slept over much, but she wants you to
-                        call KittyFace("bemused", 1)
+                        call KittyFace("bemused", 1) from _call_KittyFace_989
                         if bg_current == "bg kitty":
                             ch_k "So[K_like]did you want to stay over?"  
                         else:
@@ -250,40 +250,40 @@ label Kitty_Sleepover(sleepover = 0):
                     "Ok, I'll head out. Good night." if not sleepover and bg_current == "bg kitty":                        
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 3)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 25, 2)            
-                            call KittyFace("smile")
+                            call KittyFace("smile") from _call_KittyFace_990
                             ch_k "Ok, good night. . ."
                     "Ok, see you later then. Good night." if not sleepover and bg_current != "bg kitty":                        
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 3)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 25, 2)            
-                            call KittyFace("smile")
+                            call KittyFace("smile") from _call_KittyFace_991
                             ch_k "Yeah, 'night, [K_Petname]. . ."
                         
                     "Are you sure I can't stay the night? . ." if not sleepover and not K_Sleep and bg_current == "bg kitty": 
                             if ApprovalCheck("Kitty", 1000) or ApprovalCheck("Kitty", 700, "L") or ApprovalCheck("Kitty", 500, "O"):
-                                call KittyFace("bemused", 1)                   
+                                call KittyFace("bemused", 1) from _call_KittyFace_992                   
                                 ch_k "Well, Maaaybeee. . ."
                                 $ sleepover = 1 
                             else:                    
-                                call KittyFace("smile")
+                                call KittyFace("smile") from _call_KittyFace_993
                                 $ K_Brows = "confused"
                                 ch_k "Ehhhh. . . no, not tonight, [K_Petname]. Sorry." 
                     "Are you sure you can't stay? . ." if not sleepover and not K_Sleep and bg_current != "bg kitty": 
                             if ApprovalCheck("Kitty", 1000) or ApprovalCheck("Kitty", 700, "L") or ApprovalCheck("Kitty", 500, "O"):
-                                call KittyFace("bemused", 1)                   
+                                call KittyFace("bemused", 1) from _call_KittyFace_994                   
                                 ch_k "Well, Maaaybeee. . ."
                                 $ sleepover = 1 
                             else:                    
-                                call KittyFace("smile")
+                                call KittyFace("smile") from _call_KittyFace_995
                                 $ K_Brows = "confused"
                                 ch_k "Ehhhh. . . no, not tonight, [K_Petname]. Sorry." 
                                 
                     "That's not what you said the other night . ." if not sleepover and K_Sleep: #if she wants you gone  
                             if ApprovalCheck("Kitty", 900)or ApprovalCheck("Kitty", 700, "L") or ApprovalCheck("Kitty", 500, "O"):
-                                call KittyFace("bemused", 1)                  
+                                call KittyFace("bemused", 1) from _call_KittyFace_996                  
                                 ch_k "and that went pretty well. . ."
                                 $ sleepover = 1
                             else:                    
-                                call KittyFace("smile")
+                                call KittyFace("smile") from _call_KittyFace_997
                                 $ K_Brows = "confused"
                                 if bg_current == "bg kitty":
                                     ch_k "Um, no, 'fraid not. Scoot." 
@@ -298,16 +298,16 @@ label Kitty_Sleepover(sleepover = 0):
     
 label Kitty_Morning:
             #This label is jumped too from Kitty Sleepover if you successfully stay the night
-            call Shift_Focus("Kitty")
-            call KittyOutfit("sleep")
+            call Shift_Focus("Kitty") from _call_Shift_Focus_247
+            call KittyOutfit("sleep") from _call_KittyOutfit_39
             "Kitty changes into her sleepwear."
             ch_k "Ah, that's better."
             ch_k "Night, [K_Petname]"                                               #fix add sex option here
             show blackscreen onlayer black    
             pause 2
-            call Wait(Lights = 0) 
+            call Wait(Lights = 0) from _call_Wait_37 
             $ K_Loc = bg_current
-            call KittyOutfit("sleep")
+            call KittyOutfit("sleep") from _call_KittyOutfit_40
             
             $ D20 = renpy.random.randint(40, 70)                                #This element sends player to the Morningwood event        
             if "hungry" in K_Traits and D20 > 50:
@@ -326,10 +326,10 @@ label Kitty_Morning:
                     $ Cnt = 0 
                  
             if Cnt:   
-                    call Kitty_SexAct("morningwood") 
+                    call Kitty_SexAct("morningwood") from _call_Kitty_SexAct_5 
                     ch_k "Hmmm. . ."
                                     
-            call KittyFace("smile")
+            call KittyFace("smile") from _call_KittyFace_998
             hide NightMask onlayer nightmask  
             hide blackscreen onlayer black
             ch_k "G'morning . . ."
@@ -367,16 +367,16 @@ label Kitty_Morning:
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 35, 8)             
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 8)
                         if K_Love >= 800:
-                            call KittyFace("bemused")
+                            call KittyFace("bemused") from _call_KittyFace_999
                         else:
-                            call KittyFace("confused")
+                            call KittyFace("confused") from _call_KittyFace_1000
                         ch_k "Yeah, I mean I guess it was. . ."
                 "You were constantly tossing around.":            
                         $ K_Blush = 1
                         if ApprovalCheck("Kitty", 800, "L"):
-                            call KittyFace("bemused")
+                            call KittyFace("bemused") from _call_KittyFace_1001
                         else:
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1002
                         if K_Sleep < 5:
                             ch_k "!"
                             ch_k "I don't make a habit out of it. . ."                       
@@ -390,23 +390,23 @@ label Kitty_Morning:
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -8) 
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 40)  
                         if ApprovalCheck("Kitty", 500, "O"):
-                            call KittyFace("normal")
+                            call KittyFace("normal") from _call_KittyFace_1003
                             ch_k "Fine, whatever."
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 8) if K_Sleep < 5 else K_Obed
                         else:
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1004
                             ch_k "That's not how you get me to come back." 
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 35, 20) if K_Sleep < 5 else K_Inbt  
                         
             #fix add sex option here
             $ K_Blush = 0
             $ K_Sleep += 1    
-            call Kitty_Schedule
-            call RogueFace("normal")
+            call Kitty_Schedule from _call_Kitty_Schedule_2
+            call RogueFace("normal") from _call_RogueFace_1075
             if K_Outfit != "sleep":
                 "Kitty changes out of her sleepwear."
-            call KittyOutfit
-            call Girls_Location
+            call KittyOutfit from _call_KittyOutfit_41
+            call Girls_Location from _call_Girls_Location_36
             return
     
 # end Event Sleepover /////////////////////////////////////////////////////
@@ -415,13 +415,13 @@ label Kitty_Morning:
 label Kitty_MorningWood:
             # this label is called from the Kitty_SexAct("morningwood"), 
             # which was called from Kitty_Sleepover, which was called from a Location.
-            call Shift_Focus("Kitty")
+            call Shift_Focus("Kitty") from _call_Shift_Focus_248
             $ P_Focus = 30
             ch_u "\"Slurp, slurp, slurp.\""
             $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 5)
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 80, 5) 
             $ K_RecentActions.append("blanket")           
-            call Kitty_BJ_Launch
+            call Kitty_BJ_Launch from _call_Kitty_BJ_Launch_14
             "You feel a pleasant sensation. . ."
             ch_u "\"Slurp, slurp, slurp.\""
             $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 5)
@@ -438,7 +438,7 @@ label Kitty_MorningWood:
             $ Speed = 3
             $ Count = 3
             $ Line = 0
-            call Kitty_First_Peen(1)
+            call Kitty_First_Peen(1) from _call_Kitty_First_Peen_3
             while Count > 0:
                     #Looping portion
                     $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 10)
@@ -467,14 +467,14 @@ label Kitty_MorningWood:
             $ K_Blush = 1
             "She pulls back with a pop."
             if Line == "question":
-                    call KittyFace("smile")
+                    call KittyFace("smile") from _call_KittyFace_1005
                     ch_k "I wasn't[K_like]being subtle about it, [K_Petname]." 
             elif Line == "praise":
-                    call KittyFace("smile")
+                    call KittyFace("smile") from _call_KittyFace_1006
                     ch_k "Mmm, hehe."
             elif Line == "no":
                     $ Speed = 0
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_1007
                     $K_Brows = "confused"
                     ch_k "{i}That's{/i} the thanks I get?!"
             else:
@@ -485,49 +485,49 @@ label Kitty_MorningWood:
                 extend ""
                 "So, um, you want to get back to it?":
                         if Line != "no":
-                            call KittyFace("smile")
+                            call KittyFace("smile") from _call_KittyFace_1008
                             ch_k "Hehe, mmmm. . ."
                         elif Line == "no" and ApprovalCheck("Kitty", 1750):
-                            call KittyFace("bemused")
+                            call KittyFace("bemused") from _call_KittyFace_1009
                             ch_k "Wha? Well. . . I guess. . ."
                             $ Line = "maybe"
                         else:
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1010
                             ch_k "You can't walk that one back!"
                             ch_k "You can take care of that yourself."
                 "Were you more interested in something else?":
                         if Line != "no":
-                            call KittyFace("sexy")
+                            call KittyFace("sexy") from _call_KittyFace_1011
                             ch_k "Maaaybee. . . like what?"
                             $ Line = "sex"
                         elif Line == "no" and ApprovalCheck("Kitty", 1650):
-                            call KittyFace("bemused")
+                            call KittyFace("bemused") from _call_KittyFace_1012
                             ch_k "Oh, so you had something {i}else{/i} in mind. . ."
                             ch_k "Like what?"
                             $ Line = "sex"
                         else:
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1013
                             ch_k "Well not anymore!"   
                             ch_k "You can take care of that yourself."
                 "Sorry, sorry, please continue." if Line == "no":
                         if (K_Love + K_Obed + K_Inbt) >= 1450:
-                            call KittyFace("bemused")
+                            call KittyFace("bemused") from _call_KittyFace_1014
                             ch_k "I guess I can forgive you. . ."
                             $ Line = "maybe"
                         else:
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1015
                             ch_k "As if."
                 "Sorry, but we could do something else." if Line == "no":
                         if ApprovalCheck("Kitty", 1350):
-                            call KittyFace("sexy")
+                            call KittyFace("sexy") from _call_KittyFace_1016
                             ch_k "I guess, maybe. . ."
                             ch_k "Like what?"
                             $ Line = "sex"
                         else:
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1017
                             ch_k "As if."
                 "Not when I'm just waking up.":
-                        call KittyFace("angry")
+                        call KittyFace("angry") from _call_KittyFace_1018
                         ch_k "Aw. . ."
                         $K_Eyes = "side"
                         ch_k "Last time I do you a favor. . ."
@@ -535,16 +535,16 @@ label Kitty_MorningWood:
                         
             $ K_RecentActions.remove("blanket") 
             if Line == "no":
-                    call Kitty_BJ_Reset
+                    call Kitty_BJ_Reset from _call_Kitty_BJ_Reset_8
                     if bg_current == "bg player":  
                         ch_k "I'm out of here."
                     else:
                         ch_k "Get out of my face."
-                    call KittyOutfit
+                    call KittyOutfit from _call_KittyOutfit_42
                     $ renpy.pop_call()
                     jump Return_Player
             elif Line == "sex":
-                    call Kitty_BJ_Reset
+                    call Kitty_BJ_Reset from _call_Kitty_BJ_Reset_9
                     $ Situation = "shift"
                     return
             else:
@@ -565,16 +565,16 @@ label Kitty_MorningWood:
 
 label Kitty_Caught_Masturbating:
             #This label is called from a Location
-            call Shift_Focus("Kitty")
+            call Shift_Focus("Kitty") from _call_Shift_Focus_249
             "You hear some odd noises coming from Kitty's room as you enter."                           #fix this scene, pants option    
             show blackscreen onlayer black
-            call KittyOutfit(Changed=1)    
+            call KittyOutfit(Changed=1) from _call_KittyOutfit_43    
             $ K_Upskirt = 1
             $ K_PantiesDown = 1
             $ K_Loc = bg_current
-            call Set_The_Scene(0)
-            call Display_Kitty(0)
-            call KittyFace("sexy")
+            call Set_The_Scene(0) from _call_Set_The_Scene_160
+            call Display_Kitty(0) from _call_Display_Kitty_6
+            call KittyFace("sexy") from _call_KittyFace_1019
             $ K_Eyes = "closed"
             $ Kitty_Arms = 2
             $ Count = 0   
@@ -582,7 +582,7 @@ label Kitty_Caught_Masturbating:
             $ Trigger = "masturbation"
             $ K_DailyActions.append("unseen")
             $ K_RecentActions.append("unseen")    
-            call Kitty_SexAct("masturbate")
+            call Kitty_SexAct("masturbate") from _call_Kitty_SexAct_6
             if "angry" in K_RecentActions:
                 return
         
@@ -603,7 +603,7 @@ label Kitty_Caught_Masturbating:
             else:
                     ch_k "You seem to be making a habit of dropping in."            
             $ Kitty_Arms = 1  
-            call KittyOutfit      
+            call KittyOutfit from _call_KittyOutfit_44      
             return
     
 # end Kitty_Caught_Masturbating/////////////////////////////////////////////////////
@@ -613,9 +613,9 @@ label Kitty_Caught_Masturbating:
 #Not updated
 
 label Kitty_Key:
-            call Shift_Focus("Kitty")
-            call Set_The_Scene
-            call KittyFace("bemused")
+            call Shift_Focus("Kitty") from _call_Shift_Focus_250
+            call Set_The_Scene from _call_Set_The_Scene_161
+            call KittyFace("bemused") from _call_KittyFace_1020
             $ Kitty_Arms = 2
             ch_k "So you've[K_like]been dropping by a lot lately, I figured you might want a key. . ."
             ch_p "Thanks."
@@ -631,8 +631,8 @@ label Kitty_Key:
 #Not updated
 
 label Kitty_Caught:
-    call Shift_Focus("Kitty")
-    call Checkout
+    call Shift_Focus("Kitty") from _call_Shift_Focus_251
+    call Checkout from _call_Checkout_96
     ch_k "!!!"        
     $ Line = Trigger
     $ Trigger = 0
@@ -640,22 +640,22 @@ label Kitty_Caught:
     $ Trigger3 = 0
     $ Trigger4 = 0
     $ Trigger5 = 0
-    call KittyOutfit
+    call KittyOutfit from _call_KittyOutfit_45
     if R_Loc == bg_current:         
         $ R_Loc = "bg study"
     if E_Loc == bg_current:                
         $ E_Loc = "bg study"        
     $ bg_current = "bg study"  
     $ K_Loc = "bg study"
-    call Set_The_Scene(0)
+    call Set_The_Scene(0) from _call_Set_The_Scene_162
     show Professor at SpriteLoc(StageLeft)    
     show Kitty_Sprite at SpriteLoc(StageRight) with ease
     if E_Loc == bg_current:         
         show Emma_Sprite at SpriteLoc(StageFarRight) with ease
     if R_Loc == bg_current:         
         show Rogue at SpriteLoc(StageFarRight) with ease
-    call XavierFace("shocked")
-    call KittyFace("sad")
+    call XavierFace("shocked") from _call_XavierFace_15
+    call KittyFace("sad") from _call_KittyFace_1021
     ch_x "I'm very disappointed in your behavior, the both of you."
     
     if Line == "fondle thighs" or Line == "fondle breasts" or Line == "fondle pussy" or Line == "hotdog" or Line == "hand":
@@ -682,9 +682,9 @@ label Kitty_Caught:
         "And this isn't even the first time this has happened!"
     
     if R_Loc == bg_current:             #fix, might not currently work?
-        call RogueFace("surprised",2)
+        call RogueFace("surprised",2) from _call_RogueFace_1076
         ch_x "And Rogue, you were just watching this occur!"        
-        call RogueFace("bemused",1)
+        call RogueFace("bemused",1) from _call_RogueFace_1077
         $ R_Eyes = "side"
         
     $ Count = K_Caught
@@ -695,7 +695,7 @@ label Kitty_Caught:
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, 10)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, -25)            
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, -10) 
-            call XavierFace("happy")  
+            call XavierFace("happy") from _call_XavierFace_16  
             if K_Caught:
                 ch_x "But you know you've done this before. . . at least [K_Caught] times. . ." 
             elif R_Caught:
@@ -711,12 +711,12 @@ label Kitty_Caught:
             ch_x "Now return to your rooms and reflect on what you've done."
             
         "Just having a little fun, right [K_Pet]?":
-            call Kitty_Namecheck
-            call KittyFace("bemused")         
+            call Kitty_Namecheck from _call_Kitty_Namecheck_22
+            call KittyFace("bemused") from _call_KittyFace_1022         
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 90, 5)
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 90, 10)   
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 10) 
-            call XavierFace("angry")
+            call XavierFace("angry") from _call_XavierFace_17
             $ Count += 10
             ch_x "If that's your attitude, harsher methods might be necessary."
             if PunishmentX:
@@ -732,25 +732,25 @@ label Kitty_Caught:
             if ApprovalCheck("Kitty", 1500, TabM=1, Loc="No"):                   
                     jump Plan_Kappa
             elif ApprovalCheck("Kitty", 1000, TabM=1, Loc="No"):
-                    call KittyFace("perplexed") 
+                    call KittyFace("perplexed") from _call_KittyFace_1023 
                     $ K_Brows = "sad"
                     ch_k "You know. . . I really don't think that's a good idea. . ."
                     menu:
                         "Dammit Kitty. . .":
-                                call KittyFace("angry")
+                                call KittyFace("angry") from _call_KittyFace_1024
                                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 5)
                                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5) 
                         "Yeah, I guess you're right. . .":
-                                call KittyFace("bemused") 
+                                call KittyFace("bemused") from _call_KittyFace_1025 
                                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 5) 
             else:
-                    call KittyFace("confused") 
+                    call KittyFace("confused") from _call_KittyFace_1026 
                     ch_k "Wait, Plan what??"
                     ch_p "Plan {i}Kappa!{/i} . . you know. . ."
                     ch_k "I have no {i}idea{/i} what you're talking about."
                     ch_p "oh, yeah, I guess I haven't mentioned that. . ."
-                    call KittyFace("bemused") 
-            call XavierFace("angry")
+                    call KittyFace("bemused") from _call_KittyFace_1027 
+            call XavierFace("angry") from _call_XavierFace_18
             $ Count += 10
             ch_x "I have no idea what that was about, but it sounds like you haven't learned."
             if PunishmentX:
@@ -765,11 +765,11 @@ label Kitty_Caught:
                         
             
         "You can suck it, old man.":
-            call KittyFace("surprised")
+            call KittyFace("surprised") from _call_KittyFace_1028
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 90, 10)
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 25)
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 40)  
-            call XavierFace("angry")
+            call XavierFace("angry") from _call_XavierFace_19
             $ Count += 20
             ch_x "If that's your attitude, harsher methods might be necessary."
             if PunishmentX:
@@ -786,31 +786,31 @@ label Kitty_Caught:
     $ K_Caught += 1
     $ K_RecentActions.append("caught")
     $ K_DailyActions.append("caught") 
-    call Remove_Girl("All")  
+    call Remove_Girl("All") from _call_Remove_Girl_77  
     "You return to your room"
     jump Player_Room
 #    $ bg_current = "bg player"
 #    return
     
 label Plan_Kappa:
-    call KittyFace("sly")         
+    call KittyFace("sly") from _call_KittyFace_1029         
     "As you say this, a sly grin crosses Kitty's face."
     $ K_Arms = 0
     $ Kitty_Arms = 2
     "You quickly approach Xavier and place your hands on his head."
-    call XavierFace("psychic")
+    call XavierFace("psychic") from _call_XavierFace_20
     ch_x ". . ."
-    call XavierFace("shocked")
+    call XavierFace("shocked") from _call_XavierFace_21
     "Xavier realizes with a shock that with your powers, his telepathy is useless."    
     $ K_Arms = 2
     show Kitty_Sprite at SpriteLoc(StageLeft+100,150) with ease
     $ K_SpriteLoc = StageCenter
     "Kitty moves in sits on his lap, pinning his arms to the chair."
     if R_Loc == bg_current and "Omega" not in P_Traits:        
-        call RogueFace("surprised")      
+        call RogueFace("surprised") from _call_RogueFace_1078      
         "Rogue looks a bit caught off guard, but goes along with the idea."        
-        call RogueFace("sly")
-    call XavierFace("angry")
+        call RogueFace("sly") from _call_RogueFace_1079
+    call XavierFace("angry") from _call_XavierFace_22
     
     if "Kappa" in P_Traits:
             ch_x "Oh, not again."
@@ -835,12 +835,12 @@ label Plan_Kappa:
         $ Count -= 1
         menu:
             ch_k "Well, [K_Petname], what should we ask for?"
-            "Don't bother us anymore when we're having fun." if Rules:
+            "Don't bother us anymore when we're having fun." if K_Rules:
                     ch_x "Very well. . . I could offer you some. . . discretion. . ."
-                    $ Rules = 0
-            "You know, it's kinda fun dodging you, catch us if you can." if not Rules:
+                    $ K_Rules = 0
+            "You know, it's kinda fun dodging you, catch us if you can." if not K_Rules:
                     ch_x "If you. . . want me to, I suppose. . ."
-                    $ Rules = 1
+                    $ K_Rules = 1
             "Raise my stipend." if P_Income < 30 and "Kappa" not in P_Traits:    
                     ch_x "Very well. . . but I can only raise it by so much. . ."        
                     $ P_Income += 2
@@ -887,19 +887,19 @@ label Plan_Kappa:
 
 #Not updated
 label Kitty_BF:
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_252
     
     if K_Loc != bg_current and "Kitty" not in Party:
         "Kitty approaches you and asks if the two of you can talk."
         "A little blush on her cheeks, you can tell she's a bit anxious about whatever she has to say."    
                 
     $ K_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Kitty
-    call Taboo_Level
-    call CleartheRoom("Kitty")
+    call Set_The_Scene(0) from _call_Set_The_Scene_163
+    call Display_Kitty from _call_Display_Kitty_7
+    call Taboo_Level from _call_Taboo_Level_40
+    call CleartheRoom("Kitty") from _call_CleartheRoom_47
     $ K_DailyActions.append("relationship")
-    call KittyFace("bemused", 1)
+    call KittyFace("bemused", 1) from _call_KittyFace_1030
     ch_k "So, [K_Petname], we've[K_like]been hanging for a while, right?"
     ch_k ". . ."
     $ K_Eyes = "sexy"
@@ -941,7 +941,7 @@ label Kitty_BF:
             $ K_Petnames.append("boyfriend")
             $ K_Traits.append("dating")
             "Kitty wraps her arms around you and starts kissing you passionately."
-            call KittyFace("kiss") 
+            call KittyFace("kiss") from _call_KittyFace_1031 
             $ K_Kissed += 1
         "Uhm[K_like]okay.":
             $ K_Petnames.append("boyfriend")
@@ -950,7 +950,7 @@ label Kitty_BF:
             "Kitty seems a little put off by how casually you’re taking all this."
             "Still, she must think it’s a good first step, at least, because she leans into you and gives you a hug."    
         "I'm with Rogue now." if "dating" in R_Traits:             
-            call KittyFace("sad",1)    
+            call KittyFace("sad",1) from _call_KittyFace_1032    
             ch_k "I know.  I just[K_like]. . . I thought maybe you could go out with me, too, maybe?"
             menu:
                 extend ""
@@ -959,7 +959,7 @@ label Kitty_BF:
                     $ K_Petnames.append("boyfriend")
                     $ K_Traits.append("dating")
                     "Kitty wraps her arms around you and starts kissing you passionately."
-                    call KittyFace("kiss") 
+                    call KittyFace("kiss") from _call_KittyFace_1033 
                     $ K_Kissed += 1
                 "I'm sorry, but. .  .no.":
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
@@ -968,29 +968,29 @@ label Kitty_BF:
                     jump Kitty_BF_Jerk
         "Not really.":
             jump Kitty_BF_Jerk
-    call KittyFace("sexy")    
+    call KittyFace("sexy") from _call_KittyFace_1034    
     ch_k "Now. . . boyfriend. . . how about you and I[K_like]celebrate, huh?"
     $ Tempmod = 10
-    call Kitty_SexMenu
+    call Kitty_SexMenu from _call_Kitty_SexMenu_2
     $ Tempmod = 0
     return
     
 label Kitty_BF_Jerk:
-    call KittyFace("angry", 1)
+    call KittyFace("angry", 1) from _call_KittyFace_1035
     ch_k "Fine![K_Like]. . .be that way!" 
     $ Count = (20* K_Event[5])
     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 40)
     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, Count)
     if K_Event[5] >= 3:
-        call KittyFace("sad")
+        call KittyFace("sad") from _call_KittyFace_1036
         ch_k "Yeah?  Well. . .[K_like]I don’t care what you want!  We’re dating!  Deal."   
         $ K_Petnames.append("boyfriend")
         $ K_Traits.append("dating")
         $ Achievements.append("I am not your Boyfriend!")
         ch_k "I. . .uhm. . .think I need to[K_like]be alone for a little while."
         $ bg_current = "bg player"  
-        call Remove_Girl("Kitty")   
-        call Set_The_Scene
+        call Remove_Girl("Kitty") from _call_Remove_Girl_78   
+        call Set_The_Scene from _call_Set_The_Scene_164
         return        
     if K_Event[5] > 1:
         ch_k "It was such a mistake asking you again.  You’re[K_like]still such a jerk!"          
@@ -998,7 +998,7 @@ label Kitty_BF_Jerk:
     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -Count)
     ch_k "Get out, you big jerk!"
     $ bg_current = "bg player"  
-    call Remove_Girl("Kitty")  
+    call Remove_Girl("Kitty") from _call_Remove_Girl_79  
     $ renpy.pop_call()
     jump Player_Room
     
@@ -1006,7 +1006,7 @@ label Kitty_BF_Jerk:
 
 ## start Kitty_Love//////////////////////////////////////////////////////////
 label Kitty_Love:
-    call Shift_Focus("Kitty")  
+    call Shift_Focus("Kitty") from _call_Shift_Focus_253  
     if K_Event[6]:
             #on repeat attempts
             "Kitty seems kind of shy and shuffles up to you, as if working up her nerve."
@@ -1020,12 +1020,12 @@ label Kitty_Love:
             "Kitty suddenly stares at you very intently."
         
     $ K_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Kitty
-    call CleartheRoom("Kitty")
-    call Taboo_Level
+    call Set_The_Scene(0) from _call_Set_The_Scene_165
+    call Display_Kitty from _call_Display_Kitty_8
+    call CleartheRoom("Kitty") from _call_CleartheRoom_48
+    call Taboo_Level from _call_Taboo_Level_41
     $ K_DailyActions.append("relationship")
-    call KittyFace("bemused", 1)
+    call KittyFace("bemused", 1) from _call_KittyFace_1037
     $ K_Eyes = "side"    
     $ Line = 0
     $ K_Event[6] += 1
@@ -1041,12 +1041,12 @@ label Kitty_Love:
             ch_k "I just feel like sometimes you. . ."
             $ K_Eyes = "side"
             ch_k "and me[K_like] . ."
-            call KittyFace("perplexed", 2)
+            call KittyFace("perplexed", 2) from _call_KittyFace_1038
             $ K_Eyes = "surprised"
             ch_k "Never mind!"
             "Kitty dashes off and phases through the nearest wall."
             hide Kitty_Sprite with easeoutright
-            call Remove_Girl("Kitty")
+            call Remove_Girl("Kitty") from _call_Remove_Girl_80
             return
     if K_Event[6] == 2:
         ch_k "Sorry about before, I don't think I was ready maybe. . ."
@@ -1065,7 +1065,7 @@ label Kitty_Love:
             menu:
                 "She turns and makes a break for the nearest wall."
                 "Catch her":
-                    call KittyFace("perplexed", 2)
+                    call KittyFace("perplexed", 2) from _call_KittyFace_1039
                     $ K_Eyes = "surprised"
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 10) 
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 95, 15) 
@@ -1077,7 +1077,7 @@ label Kitty_Love:
             menu:
                 extend ""
                 "Pull her close":
-                    call KittyFace("smile", 1)
+                    call KittyFace("smile", 1) from _call_KittyFace_1040
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 20) 
                     "You draw her into an embrace, arms wrapped tightly around her waist."
                     $ Line = "hug"
@@ -1110,12 +1110,12 @@ label Kitty_Love:
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 10)  
                     "She melts into your arms."
                 "I'd always catch you.":
-                    call KittyFace("smile")
+                    call KittyFace("smile") from _call_KittyFace_1041
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 20) 
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 15)
                     "She smiles and shifts a bit uncomfortably."
                 "Yeah, you should watch out for that.":
-                    call KittyFace("angry", 1)
+                    call KittyFace("angry", 1) from _call_KittyFace_1042
                     $ K_RecentActions.append("angry")
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -20) 
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 10)
@@ -1124,7 +1124,7 @@ label Kitty_Love:
                     jump Kitty_Love_End
                     
                 "So get going. [[Give her a shove]":
-                    call KittyFace("surprised", 1)
+                    call KittyFace("surprised", 1) from _call_KittyFace_1043
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -50) 
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 10)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 10)  
@@ -1140,15 +1140,15 @@ label Kitty_Love:
             "I love you too.":
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 40) 
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 50)  
-                        call KittyFace("smile")
+                        call KittyFace("smile") from _call_KittyFace_1044
             "You love me?":
-                call KittyFace("confused", 2)
+                call KittyFace("confused", 2) from _call_KittyFace_1045
                 menu:
                     ch_k "But you don't love me?"
                     "Yeah, of course I do!":
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 30)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 60)  
-                        call KittyFace("smile")
+                        call KittyFace("smile") from _call_KittyFace_1046
                     "I mean, a little?": 
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 20)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -10)  
@@ -1158,7 +1158,7 @@ label Kitty_Love:
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -30) 
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 30)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -30)  
-                        call KittyFace("angry", 2)
+                        call KittyFace("angry", 2) from _call_KittyFace_1047
                         ch_k "Huh?!"
                         $ Line = "awkward"
             "Huh.":
@@ -1170,19 +1170,19 @@ label Kitty_Love:
                     "I mean, I love you too!":
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 30) 
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 10)  
-                        call KittyFace("smile")
+                        call KittyFace("smile") from _call_KittyFace_1048
                         ch_k "Way to pull out a last minute save there. . ."
                     "Well that's awkward.":
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -20) 
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 30)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -20)  
-                        call KittyFace("angry", 2)
+                        call KittyFace("angry", 2) from _call_KittyFace_1049
                         $ Line = "awkward"
             "Well that's awkward.":
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -30) 
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 40)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -20)  
-                        call KittyFace("perplexed", 2)
+                        call KittyFace("perplexed", 2) from _call_KittyFace_1050
                         $ Line = "awkward"
     else:
         menu:
@@ -1190,20 +1190,20 @@ label Kitty_Love:
             "I love you, Kitty.":
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 50) 
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 30)  
-                        call KittyFace("smile")
+                        call KittyFace("smile") from _call_KittyFace_1051
                         $ Line = "love"
             "I think you're pretty great.":
-                call KittyFace("confused")
+                call KittyFace("confused") from _call_KittyFace_1052
                 menu:
                     ch_k "But you don't love me?"
                     "Yeah, of course I do!":
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 30) 
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 10)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 20)  
-                        call KittyFace("smile")
+                        call KittyFace("smile") from _call_KittyFace_1053
                     "I mean, a little?":
                         if ApprovalCheck("Kitty", 1200, "OI"):
-                            call KittyFace("sad")
+                            call KittyFace("sad") from _call_KittyFace_1054
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -30) 
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 20)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 10)  
@@ -1211,7 +1211,7 @@ label Kitty_Love:
                         else:
                             $ Line = "awkward"
                     "Not really.":     
-                        call KittyFace("sad")                   
+                        call KittyFace("sad") from _call_KittyFace_1055                   
                         if ApprovalCheck("Kitty", 1500, "OI"):
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -30) 
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 30)
@@ -1219,7 +1219,7 @@ label Kitty_Love:
                         else:
                             $ Line = "awkward"
             "I was thinking something more casual. . .":
-                        call KittyFace("sad")
+                        call KittyFace("sad") from _call_KittyFace_1056
                         if ApprovalCheck("Kitty", 1200, "OI") or ApprovalCheck("Kitty", 700, "I"):
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -30) 
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 20)
@@ -1258,7 +1258,7 @@ label Kitty_Love:
 label Kitty_Love_End:    
     if Line == "awkward" or "lover" not in K_Petnames:
             hide Kitty_Sprite with easeoutright
-            call Remove_Girl("Kitty")
+            call Remove_Girl("Kitty") from _call_Remove_Girl_81
             return
     if not K_Sex:
         ch_k "So I was thinking. . . did you want to . . ."
@@ -1266,9 +1266,9 @@ label Kitty_Love_End:
                 ch_k "Wait, let's take this someplace more private. . ."
                 $ bg_current = "bg kitty"
                 $ K_Loc = bg_current
-                call Set_The_Scene
-                call CleartheRoom("Kitty")
-                call Taboo_Level
+                call Set_The_Scene from _call_Set_The_Scene_166
+                call CleartheRoom("Kitty") from _call_CleartheRoom_49
+                call Taboo_Level from _call_Taboo_Level_42
                 ch_k "Ok, so like I was saying. . ."
         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 10)
         menu:
@@ -1276,13 +1276,13 @@ label Kitty_Love_End:
             "Yeah, let's do this. . . [[have sex]":      
                 $ K_Inbt = Statupdate("Kitty", "K_Inbt", K_Inbt, 30, 30) 
                 ch_k "Hmm. . ."  
-                call Kitty_SexAct("sex")
+                call Kitty_SexAct("sex") from _call_Kitty_SexAct_7
             "I have something else in mind. . .[[choose another activity]":
                 $ K_Brows = "confused"
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 20)
                 ch_k "Something like. . ."    
                 $ Tempmod = 20
-                call Kitty_SexMenu     
+                call Kitty_SexMenu from _call_Kitty_SexMenu_3     
     return
     
 label Kitty_Love_Redux:
@@ -1296,12 +1296,12 @@ label Kitty_Love_Redux:
             if ApprovalCheck("Kitty", 950, "L"):
                 $ Line = "love"
             else:
-                call KittyFace("sad")   
+                call KittyFace("sad") from _call_KittyFace_1057   
                 ch_k "You've dug too deep a hole, [K_Petname]."
                 ch_k "Keep trying though." 
     else:
             ch_p "Remember when I told you that I didn't love you?"
-            call KittyFace("perplexed",1)   
+            call KittyFace("perplexed",1) from _call_KittyFace_1058   
             ch_k "Um, YEAH?!"
             menu:
                 "I'm sorry, I didn't mean it.":
@@ -1312,7 +1312,7 @@ label Kitty_Love_Redux:
                     if ApprovalCheck("Kitty", 950, "L"):
                         $ Line = "love"
                     else:
-                        call KittyFace("sadside")   
+                        call KittyFace("sadside") from _call_KittyFace_1059   
                         ch_k "Well, I don't know how I feel at this point. . ."                        
                 "I've changed my mind, so. . .":
                     if ApprovalCheck("Kitty", 950, "L"):
@@ -1323,22 +1323,22 @@ label Kitty_Love_Redux:
                         $ K_Mouth = "sad"
                         ch_k "Oh, you've changed your mind. Wonderful."
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 90, 10) 
-                        call KittyFace("sadside")    
+                        call KittyFace("sadside") from _call_KittyFace_1060    
                         ch_k "Maybe I have too. . ."
                 "Um, never mind.":
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -30) 
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 10)  
-                    call KittyFace("angry")   
+                    call KittyFace("angry") from _call_KittyFace_1061   
                     ch_k "Seriously?"
                     $ K_RecentActions.append("angry")
     if Line == "love":
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 40) 
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 10)
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 90, 10) 
-            call KittyFace("smile")    
+            call KittyFace("smile") from _call_KittyFace_1062    
             ch_k "I[K_like]love you too!"
             if K_Event[6] < 25:             
-                call KittyFace("sly")   
+                call KittyFace("sly") from _call_KittyFace_1063   
                 "She slugs you in the arm"
                 ch_k "Took you long enough."
             $ K_Petnames.append("lover")                
@@ -1350,17 +1350,17 @@ label Kitty_Love_Redux:
 # start Kitty_Sub//////////////////////////////////////////////////////////
 
 label Kitty_Sub:    
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_254
     if K_Loc != bg_current and "Kitty" not in Party:
         "Suddenly, Kitty shows up and says she needs to talk to you."
     
     $ K_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Kitty
-    call CleartheRoom("Kitty")
-    call Taboo_Level
+    call Set_The_Scene(0) from _call_Set_The_Scene_167
+    call Display_Kitty from _call_Display_Kitty_9
+    call CleartheRoom("Kitty") from _call_CleartheRoom_50
+    call Taboo_Level from _call_Taboo_Level_43
     $ K_DailyActions.append("relationship")
-    call KittyFace("bemused", 1)
+    call KittyFace("bemused", 1) from _call_KittyFace_1064
     
     $ Line = 0
     ch_k "So, uhm. . .you've really kinda[K_like]taken control in our relationship lately."
@@ -1370,7 +1370,7 @@ label Kitty_Sub:
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 10)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)
         "Sorry. I didn't mean to come off like that.":
-                call KittyFace("startled", 2)
+                call KittyFace("startled", 2) from _call_KittyFace_1065
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 5)
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -5)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, -5)
@@ -1384,7 +1384,7 @@ label Kitty_Sub:
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 10)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)
-                        call KittyFace("angry")
+                        call KittyFace("angry") from _call_KittyFace_1066
                         ch_k "I {i}was{/i} going to tell you I kinda liked it.  But I didn't think you'd be[K_like]a {i}jerk{/i} about it!" #(Loss of points)
                         menu:        
                             extend ""
@@ -1392,7 +1392,7 @@ label Kitty_Sub:
                                     ch_k "I guess not."
                                     $ Line = "rude"
                             "Sorry.  I kind of thought you were getting into me being like that.": 
-                                    call KittyFace("sexy", 2)
+                                    call KittyFace("sexy", 2) from _call_KittyFace_1067
                                     $ K_Eyes = "side"
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 5)
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 5)
@@ -1403,9 +1403,9 @@ label Kitty_Sub:
     if not Line:
             # She's advancing to the next stage            
             ch_k "Well, I've, uhm. . . never had a guy be like that with me before. . ."
-            call KittyFace("sly", 2)
+            call KittyFace("sly", 2) from _call_KittyFace_1068
             ch_k "I think I kinda like it."
-            call KittyFace("smile", 1)
+            call KittyFace("smile", 1) from _call_KittyFace_1069
             menu:
                 extend ""
                 "Good. If you wanna be with me, that's how it'll be.":
@@ -1414,20 +1414,20 @@ label Kitty_Sub:
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 10)
                             ch_k "I guess I walked into that one. . ."                        
                         else:
-                            call KittyFace("sadside", 1)
+                            call KittyFace("sadside", 1) from _call_KittyFace_1070
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -5)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 10)                      
                             ch_k "You don't have to do it[K_like]{i}all{/i} the time.  You could still be nice once in a while."
                             menu:      
                                 extend ""
                                 "Whatever.  That's how it is.  Take it or leave it.":
-                                        call KittyFace("angry")
+                                        call KittyFace("angry") from _call_KittyFace_1071
                                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 5)
                                         ch_k "Y'know, you're such a jerk, [Playername]!" 
                                         $ Line = "rude"
                                 "I think I could maybe do that." : 
-                                        call KittyFace("bemused", 2)
+                                        call KittyFace("bemused", 2) from _call_KittyFace_1072
                                         $ K_Eyes = "side"
                                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 5)
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 3)
@@ -1435,19 +1435,19 @@ label Kitty_Sub:
                                         ch_k "Uhm. . .yeah.  It's[K_like]. . kinda hot."
                                 
                 "Yeah?  You think it's sexy?":
-                            call KittyFace("bemused", 2)
+                            call KittyFace("bemused", 2) from _call_KittyFace_1073
                             $ K_Eyes = "side"
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 5)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 10)
                             ch_k "Uhm. . .yeah.  It's[K_like]. . kinda hot."
                         
                 "You sure you don't want me to back off a little?":  
-                        call KittyFace("startled", 1)
+                        call KittyFace("startled", 1) from _call_KittyFace_1074
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -5)
                         menu:
                             ch_k "Only if you think it might be[K_Like]weird. But I think it's kinda hot."
                             "Only if you're okay with it.":
-                                call KittyFace("bemused", 2)
+                                call KittyFace("bemused", 2) from _call_KittyFace_1075
                                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 10)
                                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 10)
                                 $ Line = 0
@@ -1460,12 +1460,12 @@ label Kitty_Sub:
                 "I don't really care what you like.  I do what I want.":
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 15)
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1076
                             ch_k "Y'know, you're such a jerk, [Playername]!" 
                             $ Line = "rude"
                                         
     if not Line:
-        call KittyFace("bemused", 1)
+        call KittyFace("bemused", 1) from _call_KittyFace_1077
         $ K_Eyes = "down"
         ch_k "Cool.  So. . .just so you know. . .I don't mind[K_like]you being in control."
         if "256 Shades of Grey" in K_Inventory:
@@ -1479,11 +1479,11 @@ label Kitty_Sub:
             "I think I could get used to that kinda thing.":
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 5)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)
-                    call KittyFace("smile", 1)
+                    call KittyFace("smile", 1) from _call_KittyFace_1078
                     $ Line = 0
             "You actually {i}read{/i} that?" if "256 Shades of Grey" in K_Inventory and Line != "grey":
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 5)
-                    call KittyFace("sly", 1)
+                    call KittyFace("sly", 1) from _call_KittyFace_1079
                     ch_k "You think I wouldn't read something you bought me?  I think you {i}maybe{/i} don't realize how much I like you."
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)
                     ch_k "Well, I {i}did{/i} read it.  And. . .it turns out it kinda[K_like]. . {i}really{/i} turned me on."
@@ -1492,9 +1492,9 @@ label Kitty_Sub:
                     jump Kitty_Sub_Choice
 
     if not Line:
-        call KittyFace("smile", 1)
+        call KittyFace("smile", 1) from _call_KittyFace_1080
         ch_k "Awesome.  So. . .if you wanted me to, I could[K_like]call you {i}sir{/i} or something."
-        call KittyFace("sly", 2)
+        call KittyFace("sly", 2) from _call_KittyFace_1081
         ch_k "Think you'd like that?"        
         $ K_Blush = 1  
         menu:
@@ -1506,15 +1506,15 @@ label Kitty_Sub:
                     ch_k "Okay, then. . .{i}sir{/i}."              
                     $ K_Petname = "sir"
             "I think I'd rather stick with what we've got going.":
-                call KittyFace("startled", 2)
+                call KittyFace("startled", 2) from _call_KittyFace_1082
                 ch_k "Oh!"
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, -5)
-                call KittyFace("sadside", 1)
+                call KittyFace("sadside", 1) from _call_KittyFace_1083
                 menu:
                     ch_k ". . . Well. . . maybe you can still kinda[K_Like]be in control, anyway?"
                     "I like that idea.":
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 10)
-                            call KittyFace("smile", 1)
+                            call KittyFace("smile", 1) from _call_KittyFace_1084
                             ch_k "You're so awesome, [K_Petname]."
                     "This is getting really weird.":
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
@@ -1532,25 +1532,25 @@ label Kitty_Sub:
             #put in stuff that happens if this succeeds
     elif Line == "rude":        
             hide Kitty_Sprite with easeoutbottom                     
-            call Remove_Girl("Kitty")
+            call Remove_Girl("Kitty") from _call_Remove_Girl_82
             $ renpy.pop_call()
             "Kitty phases through the floor in a huff, leaving you alone."
     elif Line == "embarrassed":
-            call KittyFace("sadside", 2)
+            call KittyFace("sadside", 2) from _call_KittyFace_1085
             ch_k "Oh!  Uhm, yeah! [K_Like]I mean. . .."
             $ K_Mouth = "smile"
             ch_k "I was just kidding.  I[K_like]. . yeah.  That's kinda weird."
             ch_k "I should go.  I think I hear Professor Xavier calling me."
             $ K_Blush = 1            
             hide Kitty_Sprite with easeoutbottom                     
-            call Remove_Girl("Kitty")
+            call Remove_Girl("Kitty") from _call_Remove_Girl_83
             $ renpy.pop_call()
             "Kitty phases through the floor, leaving you alone. It didn't look like she could get away fast enough."
     return
 
 label Kitty_Sub_Asked:
     $ Line = 0
-    call KittyFace("sadside", 1)
+    call KittyFace("sadside", 1) from _call_KittyFace_1086
     ch_k "Yeah.  And I also[K_like]remember what a {i}jerk{/i} you were to me about it."
     menu:
         extend ""
@@ -1567,20 +1567,20 @@ label Kitty_Sub_Asked:
                         
                 if Line != "rude":    
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 10)
-                        call KittyFace("sly", 1)
+                        call KittyFace("sly", 1) from _call_KittyFace_1087
                         ch_k "Well. . .okay.  I {i}did{/i} think that was pretty hot.  Also, you're super-cute when you apologize." 
                         #Blushing expression.  Kitty kisses player and big addition of points
                         ch_k "Okay.  We can[K_like]try again." 
 
         "Listen. . .I know it's what you want.  Do you want to try again, or not?":
-                call KittyFace("bemused", 1)
+                call KittyFace("bemused", 1) from _call_KittyFace_1088
                 if "sir" in K_Petnames and ApprovalCheck("Kitty", 850, "O"): 
                         ch_k "Ok, fine."
                 elif ApprovalCheck("Kitty", 600, "O"): 
                         ch_k "Um, ok."
                 else: 
                         #if it's instead about earning the "sir" title, and her approval is over 500
-                        call KittyFace("sadside", 1) 
+                        call KittyFace("sadside", 1) from _call_KittyFace_1089 
                         ch_k "You're[K_like]totally impossible."
                         $ K_Eyes = "squint"
                         ch_k "Maybe you're right.  But I still think you should[K_like] apologize for being a jerk to me."
@@ -1589,7 +1589,7 @@ label Kitty_Sub_Asked:
                             "Okay, I'm sorry I was mean about it.":
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 15)
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 10)
-                                    call KittyFace("bemused", 1)
+                                    call KittyFace("bemused", 1) from _call_KittyFace_1090
                                     $ K_Eyes = "side"
                                     ch_k "That's all you had to say."
                             "Not gonna happen.":
@@ -1607,12 +1607,12 @@ label Kitty_Sub_Asked:
                                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -10)
                                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, -15)                       
                                             "Kitty sighs and rolls her eyes."
-                                            call KittyFace("angry", 1)
+                                            call KittyFace("angry", 1) from _call_KittyFace_1091
                                             $ K_Eyes = "side"
                                             ch_k "You really don't learn, do you?"    
                                             $ Line = "rude"
                             "Ok, never mind then.":    
-                                    call KittyFace("angry", 1)
+                                    call KittyFace("angry", 1) from _call_KittyFace_1092
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, -10)
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -10)
@@ -1626,7 +1626,7 @@ label Kitty_Sub_Asked:
     if Line == "rude":            
             #If line hasn't been set to "rude" by something above, then it skips right past this
             hide Kitty_Sprite with easeoutbottom                     
-            call Remove_Girl("Kitty")
+            call Remove_Girl("Kitty") from _call_Remove_Girl_84
             $ K_RecentActions.append("angry")
             $ renpy.pop_call()
             "Kitty phases through the floor, leaving you alone.  She looked pretty upset."
@@ -1652,29 +1652,29 @@ label Kitty_Sub_Asked:
 # start Kitty_Master//////////////////////////////////////////////////////////
 
 label Kitty_Master: 
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_255
     if K_Loc != bg_current and "Kitty" not in Party:
         "Suddenly, Kitty shows up and says she needs to talk to you."
     
     $ K_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Kitty
-    call CleartheRoom("Kitty")
+    call Set_The_Scene(0) from _call_Set_The_Scene_168
+    call Display_Kitty from _call_Display_Kitty_10
+    call CleartheRoom("Kitty") from _call_CleartheRoom_51
     $ K_DailyActions.append("relationship")
-    call Taboo_Level
+    call Taboo_Level from _call_Taboo_Level_44
     $ Line = 0
-    call KittyFace("bemused", 1)
+    call KittyFace("bemused", 1) from _call_KittyFace_1093
     ch_k "[K_Petname], if you don't mind me saying so. . ."
     ch_k "I think having you be[K_like]in control of our relationship is working out pretty awesome."
     menu:
         extend ""
         "I like it too.":
-                call KittyFace("sly", 1)
+                call KittyFace("sly", 1) from _call_KittyFace_1094
                 ch_k "Cool.  Maybe we could[K_like]kick it up a notch?"
                 menu:
                     extend ""
                     "Nah.  This is just about perfect.":
-                            call KittyFace("sad", 1)
+                            call KittyFace("sad", 1) from _call_KittyFace_1095
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -15)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 10)
                             ch_k "Oh.  Well, okay, I guess."     
@@ -1689,14 +1689,14 @@ label Kitty_Master:
                                 "Oh, yeah.  I'd like that.":
                                         ch_k "Cool. . ."
                                 "Uhm. . .nah.  That's too much.":
-                                        call KittyFace("sad", 1)
+                                        call KittyFace("sad", 1) from _call_KittyFace_1096
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -15)
                                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)
                                         ch_k "Oh.  Well, okay, I guess."
                                         $ Line = "fail"
 
                     "Actually, I'd prefer we stopped doing it. I don't want to be too controlling.":
-                            call KittyFace("sly", 1)
+                            call KittyFace("sly", 1) from _call_KittyFace_1097
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 15)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -10)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 10)
@@ -1704,7 +1704,7 @@ label Kitty_Master:
                             $ Line = "fail"
                             
                     "Actually, let's stop that. It's creeping me out.":
-                            call KittyFace("perplexed", 2)
+                            call KittyFace("perplexed", 2) from _call_KittyFace_1098
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -50)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, -15)
@@ -1713,7 +1713,7 @@ label Kitty_Master:
                             $ Line = "embarrassed"
                             
         "As if I care what you think, slut.":
-                call KittyFace("sad", 1)
+                call KittyFace("sad", 1) from _call_KittyFace_1099
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -20)
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 10)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, -10)
@@ -1723,7 +1723,7 @@ label Kitty_Master:
                             if ApprovalCheck("Kitty", 1400, "LO"): 
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 10)
                                     ch_k "That's so. . ." 
-                                    call KittyFace("sly", 1)
+                                    call KittyFace("sly", 1) from _call_KittyFace_1100
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 20)
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 15)
                                     ch_k ". . .{i}mean!{/i}" 
@@ -1731,7 +1731,7 @@ label Kitty_Master:
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -15)
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -10)
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)
-                                    call KittyFace("angry", 1)
+                                    call KittyFace("angry", 1) from _call_KittyFace_1101
                                     ch_k "!!!"
                                     $ Line = "rude"
 
@@ -1742,7 +1742,7 @@ label Kitty_Master:
                             ch_k "Oh, okay.  Just. . .try not to be so[K_like]mean about it, 'kay?" 
 
         "Not me.  It's kind of creepy.":
-                    call KittyFace("sad", 2)
+                    call KittyFace("sad", 2) from _call_KittyFace_1102
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10)
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, -20)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, -25)
@@ -1753,12 +1753,12 @@ label Kitty_Master:
     if Line == "rude":
             $ K_RecentActions.append("angry")
             hide Kitty_Sprite with easeoutbottom                     
-            call Remove_Girl("Kitty")
+            call Remove_Girl("Kitty") from _call_Remove_Girl_85
             $ renpy.pop_call()
             "Kitty phases through the floor in a huff.  She might have been crying."
     elif Line == "embarrassed":    
             hide Kitty_Sprite with easeoutbottom                     
-            call Remove_Girl("Kitty")
+            call Remove_Girl("Kitty") from _call_Remove_Girl_86
             $ renpy.pop_call()
             "Kitty phases through the floor, leaving you alone.  She looked really embarrassed."
     elif Line != "fail":
@@ -1775,25 +1775,25 @@ label Kitty_Master:
 
 label Kitty_Sexfriend:  
     $ K_Loc = bg_current
-    call Set_The_Scene(0)
-    call Display_Kitty
-    call CleartheRoom("Kitty")
+    call Set_The_Scene(0) from _call_Set_The_Scene_169
+    call Display_Kitty from _call_Display_Kitty_11
+    call CleartheRoom("Kitty") from _call_CleartheRoom_52
     $ K_DailyActions.append("relationship")
-    call Taboo_Level
+    call Taboo_Level from _call_Taboo_Level_45
     $ Line = 0
-    call KittyFace("bemused", 1)
+    call KittyFace("bemused", 1) from _call_KittyFace_1103
     ch_k "So, [K_Petname]. . .you[K_like]got a second?" #blushing expression
     menu:
             extend ""
             "Not really.":
-                call KittyFace("angry", 1)
+                call KittyFace("angry", 1) from _call_KittyFace_1104
                 ch_k "You're such a jerk, [Playername]!" #Angry expression.  Loss of points                
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -20) 
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)           
                 $ Line = "rude"
 
             "This doesn't sound good.":
-                call KittyFace("perplexed", 1)
+                call KittyFace("perplexed", 1) from _call_KittyFace_1105
                 ch_k "I promise.  It's nothing[K_like]bad." 
                     
             "Yeah.  What's up?":
@@ -1801,12 +1801,12 @@ label Kitty_Sexfriend:
                 
     if not Line: #all this gets skipped if the "rude" response was procced above
             if ApprovalCheck("Kitty", 850, "L"):                  
-                    call KittyFace("bemused", 1)
+                    call KittyFace("bemused", 1) from _call_KittyFace_1106
                     ch_k "Well. . . I really like you.  You know that, right?" #Sexy expression.  This is Kitty's "High Like" response
                     menu:
                         extend ""
                         "I was kinda hoping.":
-                            call KittyFace("sexy", 1)
+                            call KittyFace("sexy", 1) from _call_KittyFace_1107
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 10) 
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 5)    
                             ch_k "I was {i}really{/i} hoping you'd say that [K_Petname]." #Blushing expression
@@ -1815,7 +1815,7 @@ label Kitty_Sexfriend:
                             ch_k "Uhm. . . [K_like]yeah.  I really do." #Blushing expression
 
                         "Ugh.  Gross":
-                            call KittyFace("angry", 1)
+                            call KittyFace("angry", 1) from _call_KittyFace_1108
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10) 
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 5)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -5)   
@@ -1823,7 +1823,7 @@ label Kitty_Sexfriend:
                             $ Line = "rude"
                             
             elif ApprovalCheck("Kitty", 1000, "LI"): 
-                    call KittyFace("sexy", 1)
+                    call KittyFace("sexy", 1) from _call_KittyFace_1109
                     ch_k "I just wanted to tell you. . .I think you're[K_like]kinda cute." 
                     menu:
                         extend ""
@@ -1836,7 +1836,7 @@ label Kitty_Sexfriend:
                             ch_k "Yeah.  I {i}really{/i} do." #Blushing expression
                 
                         "Are you going somewhere with this?":
-                            call KittyFace("angry")
+                            call KittyFace("angry") from _call_KittyFace_1110
                             ch_k "Well not anymore, I'm not!" #Angry expression.  Loss of points
                             $ Line = "rude"
                             
@@ -1852,7 +1852,7 @@ label Kitty_Sexfriend:
                             menu:
                                 extend ""
                                 "Kitty. . . I really like you.  I promise.":
-                                    call KittyFace("smile")
+                                    call KittyFace("smile") from _call_KittyFace_1111
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 10) 
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 5)    
                                     ch_k "Well. . . okay."  #Blushing expression.  Gain of points.
@@ -1861,13 +1861,13 @@ label Kitty_Sexfriend:
                                     ch_k "Well. .  ." #Nervous expression
 
                                 "No promises.":
-                                    call KittyFace("perplexed",2)
+                                    call KittyFace("perplexed",2) from _call_KittyFace_1112
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -5)  
                                     ch_k "Uhm. . . never mind, then."  #Embarrassed expression.  Minor loss of points
                                     $ Line = "embarrassed"
 
                         "Uhm, I think I've had my fill of {i}weird{/i}, thanks":
-                            call KittyFace("angry",1)
+                            call KittyFace("angry",1) from _call_KittyFace_1113
                             ch_k "Fine. [K_Like]whatever."
                             $ Line = "rude"
                                 
@@ -1878,7 +1878,7 @@ label Kitty_Sexfriend:
                 "Right. . . ":
                         pass
                 "Okay.  Just stop.  You're creeping me out.":
-                        call KittyFace("perplexed",2)
+                        call KittyFace("perplexed",2) from _call_KittyFace_1114
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10) 
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -10)  
                         ch_k "Sorry.  I knew this was a mistake." #Embarrassed expression.  Minor loss of points
@@ -1891,7 +1891,7 @@ label Kitty_Sexfriend:
                 "Right. . . ":
                         pass
                 "Okay.  Just stop.  You're creeping me out.":
-                        call KittyFace("perplexed",2)
+                        call KittyFace("perplexed",2) from _call_KittyFace_1115
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10) 
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -10)  
                         ch_k "Sorry.  I knew this was a mistake." 
@@ -1905,7 +1905,7 @@ label Kitty_Sexfriend:
                         menu:
                             extend ""
                             "Sounds amazing!  Count me in.":
-                                    call KittyFace("smile",1)
+                                    call KittyFace("smile",1) from _call_KittyFace_1116
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 10) 
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 10)
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 50)             
@@ -1914,7 +1914,7 @@ label Kitty_Sexfriend:
                                     ch_k "I can't wait to get started, [K_Petname]."
 
                             "That may be the sluttiest thing I've ever heard in my life.":
-                                    call KittyFace("angry",1)
+                                    call KittyFace("angry",1) from _call_KittyFace_1117
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -30) 
                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 10)
                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -40)  
@@ -1922,7 +1922,7 @@ label Kitty_Sexfriend:
                                     $ Line = "rude"
 
                 "Uhm, to be honest, I'd rather not.":
-                        call KittyFace("sadside",2)
+                        call KittyFace("sadside",2) from _call_KittyFace_1118
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 15)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -15)  
                         ch_k "Oh.  Okay."  #Sad expression
@@ -1930,7 +1930,7 @@ label Kitty_Sexfriend:
                         $ Line = "sad"
 
     if Line == "rude":    
-            call KittyFace("angry",1)
+            call KittyFace("angry",1) from _call_KittyFace_1119
             $ K_RecentActions.append("angry")
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -20) 
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 5)
@@ -1939,7 +1939,7 @@ label Kitty_Sexfriend:
             $ K_RecentActions.append("angry")
             "Kitty storms off in a huff.  She seemed pretty mad at you."
     elif Line == "embarrassed":
-            call KittyFace("perplexed",1)
+            call KittyFace("perplexed",1) from _call_KittyFace_1120
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10) 
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 5)
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -20)   
@@ -1950,7 +1950,7 @@ label Kitty_Sexfriend:
             "Kitty phases through the floor leaving you alone.  You think you may have hurt her feelings."
     else: #if you kept Line unused throughout, then you passed all the checks, so. . .
             $ K_Petnames.append("sex friend")             
-            call KittyFace("sly",2)
+            call KittyFace("sly",2) from _call_KittyFace_1121
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 10)             
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 80, 10)   
             "Kitty leans in and passes her hand across body."
@@ -1959,7 +1959,7 @@ label Kitty_Sexfriend:
             ch_k "I'll definitely be seeing {i}you{/i} later, [K_Petname]."  
             hide Kitty_Sprite with easeoutright
             "She passes through a nearby wall. "            
-    call Remove_Girl("Kitty")
+    call Remove_Girl("Kitty") from _call_Remove_Girl_87
     return
     
 # end Kitty_Sexfriend//////////////////////////////////////////////////////////
@@ -1990,7 +1990,7 @@ label Kitty_Fuckbuddy:
 
 label Kitty_Daddy:      
     $ K_DailyActions.append("relationship")
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_256
     ch_k ". . ."
     if "dating" in K_Traits:
         ch_k "You know, even though we've been dating,"  
@@ -2006,19 +2006,19 @@ label Kitty_Daddy:
     menu:
         extend ""
         "Ok, go right ahead?":            
-            call KittyFace("smile") 
+            call KittyFace("smile") from _call_KittyFace_1122 
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 20)          
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 60, 10)            
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 30) 
             ch_k "Squee!"            
         "What do you mean by that?": 
-            call KittyFace("bemused") 
+            call KittyFace("bemused") from _call_KittyFace_1123 
             ch_k "I just sort of get turned on by it, you know, being your baby girl. . ."
             ch_k "I'd like to call you that."
             menu:
                 extend ""
                 "Sounds interesting, fine by me.":     
-                    call KittyFace("smile") 
+                    call KittyFace("smile") from _call_KittyFace_1124 
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 15)          
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 60, 20)            
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 25) 
@@ -2027,20 +2027,20 @@ label Kitty_Daddy:
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 5)
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 40)            
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 20)  
-                    call KittyFace("sad") 
+                    call KittyFace("sad") from _call_KittyFace_1125 
                     ch_k "   . . .   "
                     ch_k "Well, ok."
                 "No, that creeps me out.":    
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -10)          
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 45)            
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 5)  
-                    call KittyFace("angry") 
+                    call KittyFace("angry") from _call_KittyFace_1126 
                     ch_k "Hrmph." 
         "No, that creeps me out.":
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5)          
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 40)            
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 10) 
-            call KittyFace("angry") 
+            call KittyFace("angry") from _call_KittyFace_1127 
             ch_k "Hrmph."  
     $ K_Petnames.append("daddy")
     return
@@ -2053,7 +2053,7 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
     #Scene for if Kitty catches you with Rogue and confronts you about it. 
     $ K_DailyActions.append("relationship")
     $ Line = 0
-    call KittyFace("angry")
+    call KittyFace("angry") from _call_KittyFace_1128
     
     if Other == "Rogue":
         if K_LikeRogue >= 900:
@@ -2094,7 +2094,7 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                     $ Resolution -= 2
                     $ Line = "angry"
         "Could you chill out and tell me what you mean?":
-                call KittyFace("sad",2)                
+                call KittyFace("sad",2) from _call_KittyFace_1129                
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -10) 
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 5, 1) 
                 ch_k "I didn't like what happened already. How much[K_like]worse can it get?"
@@ -2109,7 +2109,7 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                     
     if not Line:
             #this section only triggers if you didn't trigger the "angry" response in the previous section
-            call KittyFace("angry",2)
+            call KittyFace("angry",2) from _call_KittyFace_1130
             if Other == "Rogue":
                 ch_k "I {i}saw{/i} you and Rogue! I can't[K_like]believe you'd do that, [K_Petname]."
             else:
@@ -2125,9 +2125,9 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                                 #if love is less than 900
                                 $ Line = "sad"
                         else:
-                                call KittyFace("sad")
+                                call KittyFace("sad") from _call_KittyFace_1131
                                 ch_k "Me too. I thought you. . . "
-                                call KittyFace("sadside")
+                                call KittyFace("sadside") from _call_KittyFace_1132
                                 ch_k ". . . I thought you maybe loved me."
                                 menu:
                                     extend ""
@@ -2135,12 +2135,12 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                                             $ Resolution += 1                                            
                                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 5) 
                                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)   
-                                            call KittyFace("embarrassed")
+                                            call KittyFace("embarrassed") from _call_KittyFace_1133
                                             ch_k "[K_Like]. . . really?"
                                             menu:
                                                 extend ""
                                                 "[K_Like]really.":
-                                                        call KittyFace("embarrassed")
+                                                        call KittyFace("embarrassed") from _call_KittyFace_1134
                                                         if Other == "Rogue":
                                                             ch_k "Then. . .[K_like]why did you do that with {i}Rogue?{/i} You had to know that would[K_like]hurt me."
                                                         else:
@@ -2151,12 +2151,12 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                                                                     $ Resolution += 2                                                                    
                                                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 5)
                                                                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 5)   
-                                                                    call KittyFace("happy",2)
+                                                                    call KittyFace("happy",2) from _call_KittyFace_1135
                                                                     ch_k "Okay. I understand. Just. . .[K_like]remember how much I care about you, 'kay?"
                                                                     ch_k "I can forgive you[K_like]this time."
                                                                     ch_k "Because I'm[K_like]in love with you, too."
-                                                                    call K_Kissing_Launch("kissing")
-                                                                    call K_Pos_Reset
+                                                                    call K_Kissing_Launch("kissing") from _call_K_Kissing_Launch_2
+                                                                    call K_Pos_Reset from _call_K_Pos_Reset_60
                                                             "I was trying to maybe include her in what we have going.":
                                                                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 5)
                                                                     $ Line = "maybe"
@@ -2195,7 +2195,7 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
     if Line == "maybe":
             # Maybe threesome?            
             if ApprovalCheck("Kitty", 1250):
-                    call KittyFace("confused")
+                    call KittyFace("confused") from _call_KittyFace_1136
                     ch_k "What're you even[K_like]{i}talking{/i} about?"
                     if Other == "Rogue":
                         ch_p "Look. . .be totally honest with me for a second. Rogue's your best friend, right?"
@@ -2203,19 +2203,19 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                         ch_p "Look. . .be totally honest with me for a second. She's kinda hot, right?"
                     ch_k "Yeah. . ."
                     ch_p "Right. And when you saw us together. . . you have to admit, you thought it was pretty hot on some level, right?"
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_1137
                     ch_k "No. It pissed me off is what it did."
                     ch_p "C'mon, [K_Pet]. Haven't you ever thought about it?"
-                    call KittyFace("confused")
+                    call KittyFace("confused") from _call_KittyFace_1138
                     ch_k "Thought about what?"
                     if Other == "Rogue":
                         ch_p "Thought about what it might be like if we invited Rogue into what we have together."
                     else:
                         ch_p "Thought about what it might be like if we invited her into what we have together."                    
                     if ApprovalCheck("Kitty", 1500) and Resolution >= 3:
-                            call KittyFace("embarrassed")
+                            call KittyFace("embarrassed") from _call_KittyFace_1139
                             ch_k "You mean[K_like]. . .a {i}threesome{/i}?"
-                            call KittyFace("sly")
+                            call KittyFace("sly") from _call_KittyFace_1140
                             ch_k "I can't believe I'm saying this but. . . I'm[K_like]vaguely intrigued."
                             if Other == "Rogue":
                                 ch_k "Assuming I'm interested. . . how're you going to convince Rogue?"
@@ -2223,11 +2223,11 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                                 ch_k "Assuming I'm interested. . . how're you going to convince her?"
                             ch_p "If you see us together again, just play it cool."
                             ch_p "Make sure she notices that you're watching us, but don't give her the impression it puts you off."
-                            call KittyFace("sly",1)
+                            call KittyFace("sly",1) from _call_KittyFace_1141
                             ch_k ". . . which should[K_like]make her wonder what's up."
                             ch_p "Right. Eventually, she'll ask me what our arrangement is."
                             ch_k "By then, with any luck, she'll be comfortable enough with me that I can ask her how she feels about it."
-                            call KittyFace("sly",2)
+                            call KittyFace("sly",2) from _call_KittyFace_1142
                             ch_k "Gotta admit, [K_Petname]. . . you're pretty smooth."
                             ch_k "Consider me[K_like]on board with that plan."
                             ch_k "Just be sure to be careful with her. She's still my friend."
@@ -2240,7 +2240,7 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
                     #this section will only trigger if the "maybe" line above triggered BUT both of the stat checks above failed. 
                     #If you don't even ask about a threesome then this check gets skipped, and if you ask, but succeed both checks,
                     #then this section gets skipped. 
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_1143
                     if Other == "Rogue":
                         ch_k "So, you're telling me[K_like]you being with Rogue like that was your way of seeing if I'd be up for a threesome?"
                     else:
@@ -2268,7 +2268,7 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
             pass                
     elif Line == "angry":
             #Angry ending
-            call KittyFace("angry",2)
+            call KittyFace("angry",2) from _call_KittyFace_1144
             ch_k "You are {b}SUCH{/b} an asshole, [K_Petname]!"
             ch_k "I never wanna see you again, as long as I live!"
             "Kitty phases through the floor leaving you standing alone."
@@ -2279,7 +2279,7 @@ label Kitty_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the othe
             $ K_Traits.append("ex")         
     elif Line == "sad":
             # Sad ending
-            call KittyFace("sad",2)
+            call KittyFace("sad",2) from _call_KittyFace_1145
             "Kitty phases through the floor leaving you standing alone."
             "You're pretty sure she was crying as she left."
             "You're also pretty sure you seriously damaged your relationship with her."

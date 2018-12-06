@@ -3,65 +3,65 @@
 # Count2 = tempmod
 
 label Kitty_Date_Night:
-    call Shift_Focus("Kitty")
+    call Shift_Focus("Kitty") from _call_Shift_Focus_265
     if "askeddate" in K_RecentActions:  
-        call KittyFace("angry")
+        call KittyFace("angry") from _call_KittyFace_1146
         ch_k "Geez, stop bothering me already!"  
         return 
     $ K_RecentActions.append("askeddate")    
     
     if K_Break[0] and "ex" in K_Traits:
-        call KittyFace("angry")
+        call KittyFace("angry") from _call_KittyFace_1147
         ch_k "You can't just pretend that nothing happened!"  
         return     
     elif ApprovalCheck("Kitty", 1200) and "ex" in K_Traits:
-        call KittyFace("bemused")
+        call KittyFace("bemused") from _call_KittyFace_1148
         $ K_Brows = "sad"        
         if "no summon" in K_RecentActions:  
             ch_k "Well, I was doing something, but I guess if we're going out. . ."              
         else:
             ch_k "I don't know, we used to have fun. I guess so."          
         if "deadbeat" in K_History:  
-            call KittyFace("angry")
+            call KittyFace("angry") from _call_KittyFace_1149
             $ K_Mouth = "grimace"
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)
             ch_k "But you're definitely paying this time!"
-            call KittyFace("bemused")            
+            call KittyFace("bemused") from _call_KittyFace_1150            
     elif "ex" in K_Traits:
-        call KittyFace("angry")
+        call KittyFace("angry") from _call_KittyFace_1151
         $ K_Eyes = "side"                
         ch_k "I[K_like]don't think so." 
         return 
     elif "deadbeat" in K_History:  
-        call KittyFace("angry")             
+        call KittyFace("angry") from _call_KittyFace_1152             
         menu:
             ch_k "Last time we went out, you[K_like]left me with the check!" 
             "Sorry about that, I'll take care of the check this time.":
                 if ApprovalCheck("Kitty", 650):
-                    call KittyFace("sad")
+                    call KittyFace("sad") from _call_KittyFace_1153
                     ch_k "Well, I guess I can give you another chance, just don't disappoint me again."
                 else:
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_1154
                     "Yeah[K_like]fool me once. . . no thanks, [K_Petname]." 
                     return
             "Yeah, so?":
                 if ApprovalCheck("Kitty", 1400):
-                    call KittyFace("angry")                    
+                    call KittyFace("angry") from _call_KittyFace_1155                    
                     $ K_Mouth = "grimace"
                     ch_k "Why do I[K_like]put up with you?"
-                    call KittyFace("bemused")        
+                    call KittyFace("bemused") from _call_KittyFace_1156        
                 elif ApprovalCheck("Rogue", 500, "O"):
-                    call KittyFace("sad")
+                    call KittyFace("sad") from _call_KittyFace_1157
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 3)
                     ch_k "Well, I guess we can still have fun. . ."
                 elif ApprovalCheck("Kitty", 650):
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_1158
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -5)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 2) 
                     ch_k "Yeah[K_like]I'm going out with {i}you,{/i} dick."  
                     return 
                 else:
-                    call KittyFace("angry")
+                    call KittyFace("angry") from _call_KittyFace_1159
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -10)
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, -3)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 2) 
@@ -70,24 +70,24 @@ label Kitty_Date_Night:
         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 3)
         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)
     elif ApprovalCheck("Kitty", 650):
-        call KittyFace("smile")
+        call KittyFace("smile") from _call_KittyFace_1160
         if "no summon" in K_RecentActions:  
             ch_k "Well, I was doing something, but I guess if we're going out. . ." 
         else:
             ch_k "Sure, where to?"
     elif ApprovalCheck("Kitty", 500):
-        call KittyFace("perplexed")
+        call KittyFace("perplexed") from _call_KittyFace_1161
         if "no summon" in K_RecentActions:  
             ch_k "Sorry, I told you I was busy." 
         else:
             ch_k "Um[K_like]I guess we could. . ."
     elif ApprovalCheck("Kitty", 400):                
-        call KittyFace("angry")
+        call KittyFace("angry") from _call_KittyFace_1162
         $ K_Eyes = "side"
         ch_k "I've[K_like]got better things to do. . ."
         return
     else:
-        call KittyFace("angry")
+        call KittyFace("angry") from _call_KittyFace_1163
         ch_r "[K_Like]no way."
         return              
     $ renpy.pop_call()
@@ -105,21 +105,33 @@ label Kitty_Date_Night:
             $ K_Outfit = "custom2"
         elif K_Schedule[7] == 6:
             $ K_Outfit = "custom3"
+        elif K_Schedule[7] == 11:
+            $ K_Outfit = "custom4"
+        elif K_Schedule[7] == 12:
+            $ K_Outfit = "custom5"
+        elif K_Schedule[7] == 13:
+            $ K_Outfit = "custom6"
+        elif K_Schedule[7] == 14:
+            $ K_Outfit = "custom7"
         else:
             $ K_Outfit = "pink outfit"
     else:
-        $ Options = ["pink outfit", "red outfit"]
+        $ Options = ["red outfit", "black dress"]
         $ Options.append("custom1") if K_Custom[0] == 2 else Options
         $ Options.append("custom2") if K_Custom2[0] == 2 else Options
         $ Options.append("custom3") if K_Custom3[0] == 2 else Options
+        $ Options.append("custom4") if K_Custom4[0] == 2 else Options
+        $ Options.append("custom5") if K_Custom5[0] == 2 else Options
+        $ Options.append("custom6") if K_Custom6[0] == 2 else Options
+        $ Options.append("custom7") if K_Custom7[0] == 2 else Options
         $ renpy.random.shuffle(Options) 
         $ K_Outfit = Options[0]
         $ del Options[:]  
-    call CleartheRoom("Kitty",0,1)   
+    call CleartheRoom("Kitty",0,1) from _call_CleartheRoom_53   
     $ K_Loc = "date"
     $ bg_current = "date"  
-    call KittyOutfit(Changed=1)
-    call Set_The_Scene    
+    call KittyOutfit(Changed=1) from _call_KittyOutfit_46
+    call Set_The_Scene from _call_Set_The_Scene_170    
     menu:
         ch_k "So[K_like]where would you like to go?"
         "To the movies.":
@@ -134,9 +146,9 @@ label Kitty_Date_Night:
             $ K_RecentActions.append("dinner")                      
             $ K_DailyActions.append("dinner") 
         "Never Mind.":
-            call KittyFace("sad")
+            call KittyFace("sad") from _call_KittyFace_1164
             ch_k "Oh, ok. Maybe later?"
-            call KittyFace
+            call KittyFace from _call_KittyFace_1165
             jump Kitty_Chat            
     ch_k "K, let's get going then."
     show blackscreen onlayer black with dissolve
@@ -152,29 +164,29 @@ label K_Date_Dinner:
     "You go to one of the nicer restaurants in town. The food is quality but reasonably affordable." 
     $ bg_current = "bg restaurant"
     $ K_Loc = "bg restaurant"
-    call Set_The_Scene
+    call Set_The_Scene from _call_Set_The_Scene_171
     
     menu:
         "You order. . ."
         "Surf and turf for you and Kitty. ($20 each)":
-            call KittyFace("sad")
+            call KittyFace("sad") from _call_KittyFace_1166
             $ K_Brows = "surprised"
             ch_k "Um, I[K_like]don't really eat shellfish. . ."  
-            call KittyFace
+            call KittyFace from _call_KittyFace_1167
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -5)
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -2)
             $ Count = 20
             $ Count2 -= 11
             $ Line = "steak and a juicy lobster"
         "Steak for the both of you. ($15 each)":  
-            call KittyFace("smile")
+            call KittyFace("smile") from _call_KittyFace_1168
             ch_k "Sounds delish."
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 5)
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 2)
             $ Count = 15
             $ Line = "medium rare ribeye"
         "Chicken for both of you. ($10 each)":
-            call KittyFace("smile")
+            call KittyFace("smile") from _call_KittyFace_1169
             ch_k "Chicken's fine."
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, 1)
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 3)
@@ -190,7 +202,7 @@ label K_Date_Dinner:
             $ Count = 5
             $ Line = "fresh garden salad"
         "Why don't you choose, Kitty?":
-            call KittyFace("smile")
+            call KittyFace("smile") from _call_KittyFace_1170
             ch_k "Well thanks, [K_Petname]. I think we'll have the steak."            
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 7)   
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, 2) 
@@ -203,7 +215,7 @@ label K_Date_Dinner:
     else:
         $ Line = "You eat your "+ Line + ", and have a pleasant conversation over the meal."
     "[Line]"    
-    call KittyFace("sexy", 1)
+    call KittyFace("sexy", 1) from _call_KittyFace_1171
     
     $ del Options[:]  
     $ Options = ["nothing"]
@@ -301,11 +313,11 @@ label K_Date_Dinner:
         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 3)
      
     $ del Options[:]       
-    call KittyFace(B = 0)
+    call KittyFace(B = 0) from _call_KittyFace_1172
     
     $ Count = 20 if Count == 4 else Count #resets price of the meal if you picked surf and turf
     
-    call K_Date_Paying 
+    call K_Date_Paying from _call_K_Date_Paying 
     if Count2 >= 30:
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 50, 15)   
     elif Count2 >= 20:
@@ -323,13 +335,13 @@ label K_Date_Dinner:
 label K_Date_Movies:    
     $ bg_current = "bg movies"
     $ K_Loc = "bg movies"
-    call Set_The_Scene 
+    call Set_The_Scene from _call_Set_The_Scene_172 
     $ Count = 10
     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
     menu:
         "What would you like to see?"
         "A romantic comedy.":
-            call KittyFace("smile")
+            call KittyFace("smile") from _call_KittyFace_1173
             $ K_Eyes = "surprised"
             ch_k "Aw, how cuuuute!"   
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, 2)
@@ -337,14 +349,14 @@ label K_Date_Movies:
             $ Count2 += 5
             $ K_RecentActions.append("romcom") 
         "An action movie.":
-            call KittyFace("sexy")
+            call KittyFace("sexy") from _call_KittyFace_1174
             ch_k "Action movies are kind of fun." 
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 4)
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
             $ Count2 += 5
             $ K_RecentActions.append("action") 
         "A horror movie.":
-            call KittyFace("sad")
+            call KittyFace("sad") from _call_KittyFace_1175
             $ K_Eyes = "surprised"
             ch_k "It won't be {i}too{/i} scary, right?."                
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5)
@@ -353,14 +365,14 @@ label K_Date_Movies:
             $ Count2 += 15
             $ K_RecentActions.append("horror") 
         "An acclaimed drama.":
-            call KittyFace("bemused")
+            call KittyFace("bemused") from _call_KittyFace_1176
             ch_k "I heard this was a good one!"   
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 3)
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
             $ Count2 += 20
             $ K_RecentActions.append("drama") 
         "Let Kitty pick.":
-            call KittyFace("smile")
+            call KittyFace("smile") from _call_KittyFace_1177
             ch_k "How sweet, [K_Petname]. Let's see the drama."            
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 4)
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, -2)
@@ -368,7 +380,7 @@ label K_Date_Movies:
             $ Count2 += 20
             $ K_RecentActions.append("drama") 
             
-    call K_Date_Paying      
+    call K_Date_Paying from _call_K_Date_Paying_1      
     if Count2 >= 50:
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 50, 25) 
     elif Count2 >= 40:
@@ -415,7 +427,7 @@ label K_Date_Movies:
     $ D20 = renpy.random.randint(1, 20)
     $ Line = 0
     if (D20 + Count) >= 10 and ApprovalCheck("Kitty", 500, Bonus=(10*Count2)):
-        call KittyFace("kiss", 1)
+        call KittyFace("kiss", 1) from _call_KittyFace_1178
         if "romcom" in K_RecentActions: 
             "Halfway through the movie, inspired by the action on screen, Kitty turns to you and starts to make out with you."
         elif "action" in K_RecentActions:        
@@ -428,7 +440,7 @@ label K_Date_Movies:
         $ K_DailyActions.append("kissing") 
     
         if K_Anal and ApprovalCheck("Kitty", 2000, Bonus=(10*Count2)) and K_Legs != "pants":
-                    call KittyFace("sexy", 1)
+                    call KittyFace("sexy", 1) from _call_KittyFace_1179
                     if K_Panties:
                         "As you make out, Kitty reaches down and undoes your fly. She pulls her panties aside and shifts into your lap."
                     else:
@@ -462,7 +474,7 @@ label K_Date_Movies:
                     $ K_RecentActions.append("anal")                      
                     $ K_DailyActions.append("anal")  
         elif K_Sex and ApprovalCheck("Kitty", 2000, Bonus=(10*Count2)) and K_Legs != "pants":
-                    call KittyFace("sexy", 1)
+                    call KittyFace("sexy", 1) from _call_KittyFace_1180
                     if K_Panties:
                         "As you make out, Kitty reaches down and undoes your fly. She pulls her panties aside and shifts into your lap."
                     else:
@@ -496,13 +508,13 @@ label K_Date_Movies:
                     $ K_RecentActions.append("sex")                      
                     $ K_DailyActions.append("sex")             
         elif K_Blow and ApprovalCheck("Kitty", 1300, Bonus=(10*Count2)):
-                    call KittyFace("sucking", 1)
+                    call KittyFace("sucking", 1) from _call_KittyFace_1181
                     "As you make out, Kitty reaches down and undoes your fly. She then bends down and wraps her lips around it."
                     "She sucks on it contentedly for several minutes before you finally cum."            
                     $ K_Spunk.append("mouth")  
                     if K_Swallow:
                         "Kitty wipes her mouth as she shifts back into her seat and washes it down with some soda."
-                        call KittyFace("sexy")
+                        call KittyFace("sexy") from _call_KittyFace_1182
                         ch_k "Mmmm, that hit the spot. . ."
                         $ K_Addict -= 20
                         $ K_Swallow += 1
@@ -519,9 +531,9 @@ label K_Date_Movies:
                     $ K_RecentActions.append("blow")                      
                     $ K_DailyActions.append("blow") 
         elif K_Hand and K_FondleP and ApprovalCheck("Kitty", 1000, Bonus=(10*Count2)):
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_1183
                     "As you make out, Kitty reaches down and pulls out your cock. She then leans over and begins to stroke it."  
-                    call KittyFace("surprised")
+                    call KittyFace("surprised") from _call_KittyFace_1184
                     if K_Legs:
                             "You also lean over, reach into her [K_Legs], and begin to stroke her pussy."
                     elif K_Hose:
@@ -530,7 +542,7 @@ label K_Date_Movies:
                             "You also lean in, reach under her panties, and begin to stroke her pussy."
                     else:
                             "You also lean over, notice she isn't wearing anything down there, and begin to stroke her pussy."
-                    call KittyFace("sexy", 1)
+                    call KittyFace("sexy", 1) from _call_KittyFace_1185
                     $ K_Eyes = "closed"
                     "After several minutes of this, she shudders in orgasm, which sets you off as well. She catches the jiz in the popcorn bucket."
                     $ K_Eyes = "sexy"
@@ -555,7 +567,7 @@ label K_Date_Movies:
                     $ K_RecentActions.append("hand")                      
                     $ K_DailyActions.append("hand") 
         elif K_Hand and ApprovalCheck("Kitty", 1000, Bonus=(10*Count2)):
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_1186
                     "As you make out, Kitty reaches down and pulls out your cock. She then leans over and begins to stroke it."
                     "After several minutes of this, you begin to feel it rising up, and she catches the jiz in the popcorn bucket."
                     if K_Swallow:
@@ -577,7 +589,7 @@ label K_Date_Movies:
                     $ K_RecentActions.append("hand")                      
                     $ K_DailyActions.append("hand") 
         elif K_FondleP and ApprovalCheck("Kitty", 900, Bonus=(10*Count2)):
-                    call KittyFace("sexy")                    
+                    call KittyFace("sexy") from _call_KittyFace_1187                    
                     if K_Legs:
                             "You also lean over, reach into her [K_Legs], and begin to stroke her pussy."
                     elif K_Hose:
@@ -598,7 +610,7 @@ label K_Date_Movies:
                     $ K_RecentActions.append("fondle pussy")                      
                     $ K_DailyActions.append("fondle pussy") 
         elif ApprovalCheck("Kitty", 1200, Bonus=(5*Count2)) and K_Panties:
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_1188
                     "After making out for a few minutes, Kitty gets a sly look on her face and reaches into her pocket."
                     "After a a second, she hands you a cloth lump, apparently her panties." 
                     $ K_DailyActions.append("pantyless") 
@@ -606,7 +618,7 @@ label K_Date_Movies:
                     $ K_Panties = 0
                     ch_k "[K_Like]hold on to those for me, uh?"
         elif ApprovalCheck("Kitty", 1200, Bonus=(5*Count2)):
-                    call KittyFace("sexy")
+                    call KittyFace("sexy") from _call_KittyFace_1189
                     "After making out for a few minutes, Kitty gets a sly look on her face, then shifts a bit lower in her seat."
                     if K_Legs == "pants":
                         "Looking down, you notice she's pulled down her pants enough that you can see her bare pussy, lit by the movie screen."  
@@ -615,18 +627,18 @@ label K_Date_Movies:
                     else:
                         "Looking down, you notice she's hiked up her skirt enough that you can see her bare pussy, lit by the movie screen."            
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 2)
-                    call Kitty_First_Bottomless(1)
+                    call Kitty_First_Bottomless(1) from _call_Kitty_First_Bottomless_32
                     ch_k "Just giving you a little taste. . ."
         #End sex options
     
-    call KittyOutfit
+    call KittyOutfit from _call_KittyOutfit_47
     "After the movie, you head back to the dorms and escort Kitty to her room."
 
 label K_Date_End:   
     $ Taboo = 0
     $ bg_current = "bg kitty"
     $ K_Loc = "bg kitty"
-    call Set_The_Scene
+    call Set_The_Scene from _call_Set_The_Scene_173
     
     if "romcom" in K_RecentActions:
         $ Count2 += 5
@@ -634,9 +646,9 @@ label K_Date_End:
         $ Count2 -= 10
     elif "drama" in K_RecentActions: 
         $ Count2 -= 15         
-    call Wait(Outfit = 0)
+    call Wait(Outfit = 0) from _call_Wait_38
     if Count2 < 0:      
-        call KittyFace("angry", 0)
+        call KittyFace("angry", 0) from _call_KittyFace_1190
         $ K_Eyes = "side"
         ch_k "You[K_like]really need to get your shit together, [Playername]."
         "You return to your room."        
@@ -646,10 +658,10 @@ label K_Date_End:
     else: 
         $ K_DailyActions.append("dated") 
         if Count2 > 20:
-            call KittyFace("sexy", 1)
+            call KittyFace("sexy", 1) from _call_KittyFace_1191
             ch_k "That was fun, [K_Petname]. Do you have to go . . ."            
         else:
-            call KittyFace("smile", 1)
+            call KittyFace("smile", 1) from _call_KittyFace_1192
             ch_k "Well that was fun, [K_Petname]. Text me later."
         
         $ K_Date += 1
@@ -660,14 +672,14 @@ label K_Date_End:
                     $ K_Mouth = "smile"
                     ch_k "Heh, I guess so. . ."
                     $ MultiAction = 0
-                    call K_KissPrep 
+                    call K_KissPrep from _call_K_KissPrep_1 
                     $ MultiAction = 1
                 if ApprovalCheck("Kitty", 900, Bonus=(10*Count2)):
-                    call KittyFace("sexy", 1)
+                    call KittyFace("sexy", 1) from _call_KittyFace_1193
                     ch_k "Hmmm . . ."   
                     ch_k "Maybe. . . come inside for a minute?"
                 else:
-                    call KittyFace("smile", 1)
+                    call KittyFace("smile", 1) from _call_KittyFace_1194
                     ch_k "That was nice, text you later!"  
                     "You return to your room."
                     $ bg_current = "bg player"  
@@ -675,10 +687,10 @@ label K_Date_End:
                     jump Player_Room
             "Could I come in for a bit?":
                 if ApprovalCheck("Kitty", 800, Bonus=(10*Count2)):
-                    call KittyFace("sexy", 1)
+                    call KittyFace("sexy", 1) from _call_KittyFace_1195
                     ch_k "Heh, I guess so. . ."
             "Ok, good night then.":
-                call KittyFace("confused", 1)
+                call KittyFace("confused", 1) from _call_KittyFace_1196
                 "Kitty looks a little confused, but you head back to your room."
                 $ bg_current = "bg player"  
                 $ Count2 = 0
@@ -687,11 +699,11 @@ label K_Date_End:
                 
     # Kitty lets you into her room:
     $ bg_current = "bg kitty"  
-    call Set_The_Scene
-    call KittyFace("sexy", 1)
+    call Set_The_Scene from _call_Set_The_Scene_174
+    call KittyFace("sexy", 1) from _call_KittyFace_1197
     ch_k "So[K_like]here we are. . . "
     $ Tempmod = Count2
-    call Kitty_SexMenu                       # You have what sex you can get away with
+    call Kitty_SexMenu from _call_Kitty_SexMenu_4                       # You have what sex you can get away with
     
     if "angry" in K_RecentActions:         
         "Kitty shoves you out into the hall. You head back to your room."
@@ -705,12 +717,12 @@ label K_Date_End:
         $ Count2 = 0
         jump Player_Room
         
-    call Kitty_Sleepover 
+    call Kitty_Sleepover from _call_Kitty_Sleepover_2 
     jump Kitty_Room #should never be reached
 
 label Kitty_Date_Over:
     $ K_RecentActions.append("angry")   
-    call KittyFace("angry")
+    call KittyFace("angry") from _call_KittyFace_1198
     ch_k "You know what?" 
     ch_k "[Playername]'s a Jerk!" 
     "Kitty storms out, and you head back to the dorms alone."
@@ -723,7 +735,7 @@ label K_Date_Paying:
     menu:
         "Who's paying?"
         "I've got it." if P_Cash >= (2*Count):
-            call KittyFace("sexy", 1)
+            call KittyFace("sexy", 1) from _call_KittyFace_1199
             ch_k "[K_Like]that's really nice of you."
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, 2)
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, 2) 
@@ -739,13 +751,13 @@ label K_Date_Paying:
             if Count >= 15:
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -6)
             if ApprovalCheck("Kitty", 800):
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_1200
                 ch_k "Huh? I mean I guess I can. . ."
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 3)
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)
             else:
                 "As if! You're paying for yourself, [K_Petname]." 
-                call KittyFace("angry")
+                call KittyFace("angry") from _call_KittyFace_1201
                 if P_Cash >= Count: 
                     "You split the check."
                     $ P_Cash -= Count
@@ -755,7 +767,7 @@ label K_Date_Paying:
                     $ P_Cash = 0
                     $ Count2 -= Count
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -3)
-                    call KittyFace("sad")
+                    call KittyFace("sad") from _call_KittyFace_1202
                     ch_k "Geez, I guess I can cover it."
                 if "deadbeat" not in K_History:  
                     $ K_History.append("deadbeat") 
@@ -767,12 +779,12 @@ label K_Date_Paying:
             if Count >= 15:
                 $ Count2  -= 10
             if ApprovalCheck("Kitty", 600):
-                call KittyFace("sad")
+                call KittyFace("sad") from _call_KittyFace_1203
                 $ K_Mouth = "normal"
                 ch_k "Yeah[K_like]ok."
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
             else:
-                call KittyFace("angry")
+                call KittyFace("angry") from _call_KittyFace_1204
                 $ K_Eyes = "side"
                 ch_k "Jerk."                
                 if Count >= 15:
@@ -785,7 +797,7 @@ label K_Date_Paying:
             if Count >= 15:
                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -4)
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, -2)
-            call KittyFace("sad")
+            call KittyFace("sad") from _call_KittyFace_1205
             if ApprovalCheck("Kitty", 800):
                 ch_k "That's so[K_like]sad."                
             else:

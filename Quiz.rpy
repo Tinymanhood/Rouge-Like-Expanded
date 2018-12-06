@@ -8,13 +8,13 @@
     ch_r "Get three wrong, and we're done for the night. Good luck."
     while Count2:        
         "Question [Count2],"
-        call Quiz_Question_Rogue
+        call Quiz_Question_Rogue from _call_Quiz_Question_Rogue
         $ Count2 += 1
         if _return:
-            call Rogue_Strip_Study_Right
+            call Rogue_Strip_Study_Right from _call_Rogue_Strip_Study_Right
         else:
             $ Count += 1
-            call Rogue_Strip_Study_Wrong        
+            call Rogue_Strip_Study_Wrong from _call_Rogue_Strip_Study_Wrong        
     return
             
 label Rogue_Strip_Study_Right:
@@ -71,7 +71,7 @@ label Rogue_Strip_Study_Right:
             if not R_SeenChest:   
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 3)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 1)  
-                call Rogue_First_Topless(1)
+                call Rogue_First_Topless(1) from _call_Rogue_First_Topless_17
             $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 15)
         else:
              ch_r "I know a deal's a deal, but I'd like to keep my top on, ok [R_Petname]? Sorry about that."
@@ -88,7 +88,7 @@ label Rogue_Strip_Study_Right:
             if not R_SeenPussy:
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 4)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 4)
-                call Rogue_First_Bottomless(1)
+                call Rogue_First_Bottomless(1) from _call_Rogue_First_Bottomless_21
             $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 75, 20)
         else:
              ch_r "Look, this has gone a bit far, [R_Petname]. I'd like to call it a night."
@@ -98,7 +98,7 @@ label Rogue_Strip_Study_Right:
     ch_r "Well, that's another right answer, but I don't have a stitch left to take off. . ."     
     $ Count2 = 0
     $ Tempmod = 50
-    call Rogue_SexMenu    
+    call Rogue_SexMenu from _call_Rogue_SexMenu_17    
     ch_r "Well I sure enjoyed that."
     return
     
@@ -197,19 +197,19 @@ label Kitty_Strip_Study:
     $ Count2 = 1
     $ QuizOrder = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]  # The entire list of objects. . .
     $ renpy.random.shuffle(QuizOrder)  # . . .shuffled randomly. . .   
-    call KittyFace("perplexed", 2)
+    call KittyFace("perplexed", 2) from _call_KittyFace_628
     ch_k "Ok, so[K_like]if you get a question right. . . I'll take off a piece of clothing. . ."
     ch_k "But you only get three tries." 
-    call KittyFace("sly", 1)
+    call KittyFace("sly", 1) from _call_KittyFace_629
     while Count2:        
         "Question [Count2],"
-        call Quiz_Question_Kitty
+        call Quiz_Question_Kitty from _call_Quiz_Question_Kitty
         $ Count2 += 1
         if _return:
-            call Kitty_Strip_Study_Right
+            call Kitty_Strip_Study_Right from _call_Kitty_Strip_Study_Right
         else:
             $ Count += 1
-            call Kitty_Strip_Study_Wrong        
+            call Kitty_Strip_Study_Wrong from _call_Kitty_Strip_Study_Wrong        
     return
             
 label Kitty_Strip_Study_Right:
@@ -227,9 +227,9 @@ label Kitty_Strip_Study_Right:
             $ K_Over = 0
             
         else:  
-            call KittyFace("perplexed", 2)
+            call KittyFace("perplexed", 2) from _call_KittyFace_630
             ch_k "Sorry, don't mean to be a tease, but I just can't handle this yet."  
-            call KittyFace("bemused", 1)
+            call KittyFace("bemused", 1) from _call_KittyFace_631
             $ Count2 = 0
         return   
         
@@ -266,7 +266,7 @@ label Kitty_Strip_Study_Right:
             if not K_SeenChest:   
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 3)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)  
-                call Kitty_First_Topless(1)
+                call Kitty_First_Topless(1) from _call_Kitty_First_Topless_5
             $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)
         else:
              ch_k "So. . . I know this is a bit late to mention it, but I'd like to keep my top on?"
@@ -283,28 +283,28 @@ label Kitty_Strip_Study_Right:
             if not K_SeenPussy:
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 4)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 4)
-                call Kitty_First_Bottomless(1)
+                call Kitty_First_Bottomless(1) from _call_Kitty_First_Bottomless_12
             $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 75, 20)
         else:
-            call KittyFace("perplexed", 2)
+            call KittyFace("perplexed", 2) from _call_KittyFace_632
             ch_k "Wow, I. . . I'm not really ready for this sort of thing, I'm sorry!"
-            call KittyFace("perplexed", 1)
+            call KittyFace("perplexed", 1) from _call_KittyFace_633
             $ Count2 = 0
         return  
             
-    call KittyFace("sly", 1)
+    call KittyFace("sly", 1) from _call_KittyFace_634
     ch_k "So. . . you got that one right. . ."
     $ K_Eyes = "down"
     ch_k ". . . but I'm not[K_like]wearing anything else. . ."     
-    call KittyFace("sly", 1)
+    call KittyFace("sly", 1) from _call_KittyFace_635
     $ Count2 = 0
     $ Tempmod = 50
-    call Kitty_SexMenu    
+    call Kitty_SexMenu from _call_Kitty_SexMenu_1    
     ch_k "I think I learned a few things there. . ."
     return
     
 label Kitty_Strip_Study_Wrong:
-    call KittyFace("sly", 1)
+    call KittyFace("sly", 1) from _call_KittyFace_636
     if Count == 1:
         ch_k "Nope."
     elif Count == 2:

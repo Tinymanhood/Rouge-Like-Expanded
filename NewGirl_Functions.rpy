@@ -245,6 +245,14 @@ label NewGirl_Face(Girl_ = "Mystique", Emote = "normal", B = 0, M = 0, Mouth = 0
                 $ newgirl[Girl_].Mouth = "smirk"
                 $ newgirl[Girl_].Brows = "normal"
                 $ newgirl[Girl_].Eyes = "squint"
+        elif Emote == "grimace":
+                $ newgirl[Girl_].Mouth = "grimace"
+                $ newgirl[Girl_].Brows = "normal"
+                $ newgirl[Girl_].Eyes = "squint"
+        elif Emote == "laugh":
+                $ newgirl[Girl_].Mouth = "grimace"
+                $ newgirl[Girl_].Brows = "sad"
+                $ newgirl[Girl_].Eyes = "closed"
             
         if M:
                 $ newgirl[Girl_].Eyes = "surprised"        
@@ -342,6 +350,14 @@ label NewGirl_FaceSpecial(Girl_ = "Mystique", Emote = "normal", B = 0, M = 0, Mo
                 $ newgirl[Girl_].Mouth = "smirk"
                 $ newgirl[Girl_].Brows = "normal"
                 $ newgirl[Girl_].Eyes = "squint"
+        elif Emote == "grimace":
+                $ newgirl[Girl_].Mouth = "grimace"
+                $ newgirl[Girl_].Brows = "normal"
+                $ newgirl[Girl_].Eyes = "squint"
+        elif Emote == "laugh":
+                $ newgirl[Girl_].Mouth = "grimace"
+                $ newgirl[Girl_].Brows = "sad"
+                $ newgirl[Girl_].Eyes = "closed"
             
         if M:
                 $ newgirl[Girl_].Eyes = "surprised"        

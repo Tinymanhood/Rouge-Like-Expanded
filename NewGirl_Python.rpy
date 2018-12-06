@@ -7,23 +7,23 @@
             #self.money = money
             #self.girl = {   
             self.name = name
-            self.Petname = "boy"       #What Emma calls the player
+            self.Petname = "boy"       #What Mystique calls the player
             self.Petnames = ["boy"]
-            self.Pet = "Mystique"           #What you call Emma
+            self.Pet = "Mystique"           #What you call Mystique
             self.Pets = ["Mystique"]
             self.Rules = 1
             self.GirlName = "Raven"
             self.Loc = "bg Mystique"
-            self.Love = 300
+            self.Love = 0
             self.Obed = 0
-            self.Inbt = 200
-            self.Lust = 10
-            self.LikeRogue = 500
-            self.LikeEmma = 500
-            self.LikeKitty = 500
+            self.Inbt = 0
+            self.Lust = 0
+            self.LikeRogue = 0
+            self.LikeEmma = 0
+            self.LikeKitty = 0
             self.LikeOtherGirl = {}
             self.Addict = 0 #how addicted she is
-            self.Addictionrate = 0 #How faster her addiciton rises
+            self.Addictionrate = 0 #How fast her addiciton rises
             self.Resistance = 0 #how fast her rate falls
             self.Inventory = []    
             self.OCount = 0                #Orgasm counter
@@ -43,7 +43,7 @@
             self.Event = [0,0,0,0,0,0,0,0,0,0,0]  
             self.Todo = []
             self.PubeC = 0    
-            # #Sprite Variables
+            ## Sprite Variables
             self.Outfit = "regular"
             self.OutfitDay = "regular"
             self.Emote = "normal"
@@ -85,7 +85,7 @@
             self.Schedule = [0,0,0,0,0,0,0,0,4,0]                      #chooses when she wears what
             self.GirlLayer = 101
             self.SpriteLoc = 550                        #Sets Emma to default to the center
-            # # Sexual Encounters
+            ## Sexual Encounters
             self.History = []
             self.RecentActions = []
             self.DailyActions = []
@@ -107,7 +107,7 @@
             self.FondleB = 0
             self.FondleT = 0
             self.FondleP = 0
-            self.FondleA = 0
+            self.FondleA = 0 
             self.DildoP = 0
             self.DildoA = 0
             self.Vib = 0
@@ -116,23 +116,23 @@
             self.Plugged = 0
             self.SuckB = 0
             self.InsertP = 0
-            self.InsertA = 0
+            self.InsertA = 0 
             self.LickP = 0    
-            self.LickA = 0
-            self.Blow = 0
-            self.Swallow = 0
-            self.CreamP = 0
-            self.CreamA = 0
-            self.Les = 0    
-            self.LesWatch = 0
-            self.SexRogue = 0
-            self.SexKitty = 0
-            self.SexEmma = 0
-            self.SexOtherGirl = {}
+            self.LickA = 0 
+            self.Blow = 0 
+            self.Swallow = 0 
+            self.CreamP = 0 
+            self.CreamA = 0 
+            self.Les = 0     
+            self.LesWatch = 0  
+            self.SexRogue = 0   
+            self.SexKitty = 0   
+            self.SexEmma = 0  
+            self.SexOtherGirl = {} 
             self.SEXP = 0
-            self.ShameLevel = 0
-            self.PlayerFav = 0                     #The player's favorite activity with her
-            self.Favorite = 0                      #her favorite activity
+            self.ShameLevel = 0  
+            self.PlayerFav = 0                     #The player's favorite activity with her  
+            self.Favorite = 0                      #her favorite activity   
             self.SeenChest = 0
             self.SeenPanties = 0
             self.SeenPussy = 0   
@@ -299,4 +299,26 @@
             if newgirl[xkk].Loc == bg_current and Girl_ != xkk:
                 OtherGirlsAround.append(xkk)
         return OtherGirlsAround
+        
+## Blinking eyes start      
+    def eyewarp(x):     
+        return x**1.33      
+    eye_open = ImageDissolve("eye.png", .5, ramplen=128, reverse=False, time_warp=eyewarp)      
+    eye_shut = ImageDissolve("eye.png", .5, ramplen=128, reverse=True, time_warp=eyewarp)   
+        
+image blackblink:   
+    Solid("#000")   
+image whiteblink:   
+    Solid("#FFF")   
     
+label BlinkEyes:      
+    scene blackblink    
+    ## Closed   
+    scene whiteblink    
+    with eye_open   
+    ## Open     
+    scene blackblink    
+    with eye_shut   
+    ## Closed   
+    return      
+## Blinking eyes end        
