@@ -3,6 +3,7 @@
 
 label LauraMeet(Topics=[],Loop=1):
     $ newgirl["Laura"].Legs = "mesh pants"
+    $ newgirl["Laura"].Pubes = 1
 
     $ newgirl["Laura"].GirlName = "???"
     
