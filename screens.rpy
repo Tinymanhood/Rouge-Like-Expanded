@@ -887,7 +887,7 @@ screen R_Status_screen:
                 imagebutton idle "images/iconaddictrate.png" hover "images/iconaddictrate.png" action NullAction() hovered tt.Action("Addiciton Rate: " + str(newgirl["Mystique"].Addictionrate))
                 bar range 100 value VariableValue2("Addictionrate", Ch_Focus, 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0        
         showif not Trigger:
-            imagebutton auto "images/Button_Rogue_%s.png" action ui.callsinnewcontext("Shift_Focus", "Laura") xpos 690 ypos 5 focus_mask True
+            imagebutton auto "images/Button_Laura_%s.png" action ui.callsinnewcontext("Shift_Focus", "Laura") xpos 690 ypos 5 focus_mask True
         showif config.developer: #nothing here
             imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
 
