@@ -45,6 +45,7 @@ define ch_u = Character('???', color="#85bb65", image = "arrow", show_two_window
 define ch_usher = Character('Usher', color="#DF0174", show_two_window=True)
 #define e = Character("Eileen", what_color="#c8ffc8") #this sets the chat text color, handy
 
+define ch_l = Character('[newgirl[Laura].GirlName]', color="#646dbb", image = "arrow", show_two_window=True)
 
 
 label splashscreen:
@@ -70,11 +71,12 @@ init -1:
     #default Mystique = NewGirl("Mystique", 51, "pants")
 
     #default newgirl = Girlnew("Mystique")
-    default ModdedGirls = ["Mystique"] #List with all modded girls
+    default ModdedGirls = ["Mystique", "Laura"] #List with all modded girls
     #default ModdedGirls = ["Mystique", "Jean"] #List with all modded girls
     default MystiqueName = "Mystique"
+    default LauraName = "Mystique"
     default newgirl = {"Mystique" : Girlnew("Mystique"),    #The LikeOtherGirl attribute should be set for each new girl
-                       #"Jean" : Girlnew("Jean")
+                       "Laura" : Girlnew("Laura")
                         }
     
     #default newgirl["Jean"] = Girlnew("Jean")
@@ -194,6 +196,7 @@ init -1:
     default R_LikeKitty = 600
     default R_LikeEmma = 500
     default R_LikeNewGirl = {"Mystique" : 200,
+                             "Laura" : 500,
                             }
     default R_Addict = 0                #how addicted she is
     default R_Addictionrate = 0         #How faster her addiciton rises
@@ -331,6 +334,7 @@ init -1:
     default K_LikeRogue = 700
     default K_LikeEmma = 400
     default K_LikeNewGirl = {"Mystique" : 200,
+                             "Laura" : 500,
                             }
     default K_Addict = 0 #how addicted she is
     default K_Addictionrate = 0 #How faster her addiciton rises
@@ -466,6 +470,7 @@ init -1:
     default E_LikeRogue = 500
     default E_LikeKitty = 500
     default E_LikeNewGirl = {"Mystique" : 200,
+                             "Laura" : 500,
                             }
     default E_Addict = 0 #how addicted she is
     default E_Addictionrate = 0 #How faster her addiciton rises
@@ -605,38 +610,38 @@ label start:
     show screen R_Status_screen    
     show screen Inventorybutton            
         
-    if config.developer:
-#        show screen roguebutton
-#        show screen statbutton
-            # Testing settings
-        $ P_Cash = 200
-        $ Cheat = 1
-        $ R_Kissed = 5
-        $ Digits.append("Rogue") 
-        $ Keys.append("Rogue") 
-        $ K_Kissed = 5      
-        $ Digits.append("Kitty")
-        $ Keys.append("Kitty")
-        $ K_History.append("met")
-        $ E_Kissed = 5      
-        $ E_Petname = "Mr. Zero"
-        $ Digits.append("Emma")
-        $ Keys.append("Emma")
-        $ E_History.append("met")
-        $ E_History.append("classcaught") 
-        $ P_Traits.append("focus")
-        $ R_Event[1] = 1 
-        $ R_Addictionrate = 10
-        #$ R_Resistance = 1 #how fast her rate falls
-        $ Day = 16
-        $ Time_Options = ["Morning", "Midday", "Evening", "Night"]
-        $ Time_Count = 4
-        $ Current_Time = "Midday"   
-        $ Week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        $ Weekday = 6
-        $ DayofWeek = Week[Weekday]
-        #call Wait
-        #jump Rogue_Room_Test             
+#     if config.developer:
+# #        show screen roguebutton
+# #        show screen statbutton
+#             # Testing settings
+#         $ P_Cash = 200
+#         $ Cheat = 1
+#         $ R_Kissed = 5
+#         $ Digits.append("Rogue") 
+#         $ Keys.append("Rogue") 
+#         $ K_Kissed = 5      
+#         $ Digits.append("Kitty")
+#         $ Keys.append("Kitty")
+#         $ K_History.append("met")
+#         $ E_Kissed = 5      
+#         $ E_Petname = "Mr. Zero"
+#         $ Digits.append("Emma")
+#         $ Keys.append("Emma")
+#         $ E_History.append("met")
+#         $ E_History.append("classcaught") 
+#         $ P_Traits.append("focus")
+#         $ R_Event[1] = 1 
+#         $ R_Addictionrate = 10
+#         #$ R_Resistance = 1 #how fast her rate falls
+#         $ Day = 16
+#         $ Time_Options = ["Morning", "Midday", "Evening", "Night"]
+#         $ Time_Count = 4
+#         $ Current_Time = "Midday"   
+#         $ Week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+#         $ Weekday = 6
+#         $ DayofWeek = Week[Weekday]
+#         #call Wait
+#         #jump Rogue_Room_Test             
         
     jump Prologue
 
@@ -650,6 +655,10 @@ label VersionNumber:
     # if SaveVersion < 978:
     # if "Jean" not in newgirl.keys():
     #     $ newgirl["Jean"] = Girlnew("Jean")
+
+    if "boy" in newgirl["Laura"].Petnames:
+        call Mod_Laura_Values
+
     if newgirl["Mystique"].XP == (0,):
         $ newgirl["Mystique"].XP = 0
 
@@ -1030,6 +1039,12 @@ label EventCalls:
         if "traveling" in P_RecentActions and "met" not in K_History and bg_current == "bg classroom": 
                     jump KittyMeet
                     return
+
+        #Activates Laura meet    
+        if "traveling" in P_RecentActions and "met" not in newgirl["Laura"].History and bg_current == "bg dangerroom":
+                if Day >= 5:
+                    call LauraMeet
+                    return  
 
         if "traveling" in P_RecentActions and bg_current == "bg classroom" and Weekday < 5:
             if "met" not in E_History:     
@@ -3515,6 +3530,350 @@ label Mystique_Todo:
                 $ newgirl["Mystique"].Pierce = "barbell"
                 $ newgirl["Mystique"].Todo.remove("barbell")            
         return
+
+# Laura's Outfit //////////////////////////////////////////////
+label LauraOutfit(L_OutfitTemp = newgirl["Laura"].Outfit, Spunk = 0, Undressed = 0, Changed = 0):   
+        # L_OutfitTemp is the chosen new outfit, Spunk removes sperm on her, Undressed determines whether she is under dressed  
+        
+        if L_OutfitTemp == 5: #this sets it to default if using AnyOutfit
+                $ L_OutfitTemp = newgirl["Laura"].Outfit
+        elif L_OutfitTemp == 6: #this sets it to default if using AnyOutfit
+                $ L_OutfitTemp = newgirl["Laura"].OutfitDay
+                
+        if renpy.showing("NightMask", layer='nightmask') and Current_Time == "Morning":
+                #Skips theis check if it's a sleepover
+                return
+        
+        if L_OutfitTemp != newgirl["Laura"].Outfit:
+                #if her new outfit is not what she was wearing before,
+                #don't flag the undressed mechanic
+                $ Changed = 1    
+        if "Laura" in Party and L_OutfitTemp == newgirl["Laura"].OutfitDay:
+                #this ignores her daily outfit if she's in a party
+                $ L_OutfitTemp = newgirl["Laura"].Outfit
+        if newgirl["Laura"].Loc == "bg showerroom" and "Laura" not in Party and L_OutfitTemp != "nude":
+                #Automatically puts her in the towel while in the shower
+                $ L_OutfitTemp = "towel"                                  
+        elif newgirl["Laura"].Loc != "bg showerroom":
+                #Dries her off
+                $ newgirl["Laura"].Water = 0
+                
+        if newgirl["Laura"].Spunk:
+                if "painted" not in newgirl["Laura"].DailyActions or "cleaned" not in newgirl["Laura"].DailyActions:        
+                    $ del newgirl["Laura"].Spunk[:] 
+                
+        $ newgirl["Laura"].Upskirt = 0
+        $ newgirl["Laura"].Uptop = 0
+        $ newgirl["Laura"].PantiesDown = 0
+        if L_OutfitTemp == "mission":
+                    if 0 in (newgirl["Laura"].Legs,newgirl["Laura"].Over,newgirl["Laura"].Chest):
+                            $ Undressed = 1
+                    elif newgirl["Laura"].Panties == 0 and "pantyless" not in newgirl["Laura"].DailyActions:                        
+                            $ Undressed = 1   
+                    $ newgirl["Laura"].Arms = "wrists"
+                    $ newgirl["Laura"].Legs = "leather pants"
+                    $ newgirl["Laura"].Over = 0
+                    $ newgirl["Laura"].Chest = "leather bra"
+                    $ newgirl["Laura"].Panties = "leather panties"        
+                    $ newgirl["Laura"].Neck = "leash choker"                 
+                    $ newgirl["Laura"].Boots = 0
+                    $ newgirl["Laura"].Hair = "long"
+                    $ newgirl["Laura"].Hose = 0  
+                    $ newgirl["Laura"].Shame = 0
+        elif L_OutfitTemp == "towel":
+                    if newgirl["Laura"].Over == 0:
+                            $ Undressed = 2
+                    $ newgirl["Laura"].Arms = 0
+                    $ newgirl["Laura"].Legs = 0
+                    $ newgirl["Laura"].Chest = 0
+                    $ newgirl["Laura"].Over = "towel"
+                    $ newgirl["Laura"].Panties = 0        
+                    $ newgirl["Laura"].Hose = 0          
+                    $ newgirl["Laura"].Neck = 0                   
+                    $ newgirl["Laura"].Boots = 0
+                    $ newgirl["Laura"].Hair = "wet" 
+                    $ newgirl["Laura"].Shame = 35
+        elif L_OutfitTemp == "nude":
+                    $ newgirl["Laura"].Arms = 0
+                    $ newgirl["Laura"].Legs = 0
+                    $ newgirl["Laura"].Chest = 0
+                    $ newgirl["Laura"].Over = 0
+                    $ newgirl["Laura"].Panties = 0              
+                    $ newgirl["Laura"].Neck = 0                    
+                    $ newgirl["Laura"].Boots = 0
+                    $ newgirl["Laura"].Hose = 0   
+                    $ newgirl["Laura"].Shame = 50
+        elif L_OutfitTemp == "custom1":
+                    if not newgirl["Laura"].Legs and newgirl["Laura"].Custom[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Over and newgirl["Laura"].Custom[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Chest and newgirl["Laura"].Custom[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Panties and newgirl["Laura"].Custom[6] and "pantyless" not in newgirl["Laura"].DailyActions:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Hose and newgirl["Laura"].Custom[9]:          
+                            $ Undressed = 1
+                    
+                    $ newgirl["Laura"].Arms = newgirl["Laura"].Custom[1]
+                    $ newgirl["Laura"].Legs = newgirl["Laura"].Custom[2]
+                    $ newgirl["Laura"].Over = newgirl["Laura"].Custom[3]    
+                    $ newgirl["Laura"].Neck = newgirl["Laura"].Custom[4]
+                    $ newgirl["Laura"].Chest = newgirl["Laura"].Custom[5]
+                    $ newgirl["Laura"].Panties = newgirl["Laura"].Custom[6]  
+                    $ newgirl["Laura"].Boots = newgirl["Laura"].Custom[7] 
+                    $ newgirl["Laura"].Hair = newgirl["Laura"].Custom[8] if newgirl["Laura"].Custom[8] else newgirl["Laura"].Hair 
+                    $ newgirl["Laura"].Hose = newgirl["Laura"].Custom[9]                     
+                    $ newgirl["Laura"].Shame = newgirl["Laura"].OutfitShame[3]
+        elif L_OutfitTemp == "custom2":
+                    if not newgirl["Laura"].Legs and newgirl["Laura"].Custom2[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Over and newgirl["Laura"].Custom2[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Chest and newgirl["Laura"].Custom2[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Panties and newgirl["Laura"].Custom2[6] and "pantyless" not in newgirl["Laura"].DailyActions:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Hose and newgirl["Laura"].Custom2[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Laura"].Arms = newgirl["Laura"].Custom2[1]
+                    $ newgirl["Laura"].Legs = newgirl["Laura"].Custom2[2]
+                    $ newgirl["Laura"].Over = newgirl["Laura"].Custom2[3]   
+                    $ newgirl["Laura"].Neck = newgirl["Laura"].Custom2[4]
+                    $ newgirl["Laura"].Chest = newgirl["Laura"].Custom2[5]
+                    $ newgirl["Laura"].Panties = newgirl["Laura"].Custom2[6] 
+                    $ newgirl["Laura"].Boots = newgirl["Laura"].Custom2[7] 
+                    $ newgirl["Laura"].Hair = newgirl["Laura"].Custom2[8] if newgirl["Laura"].Custom2[8] else newgirl["Laura"].Hair
+                    $ newgirl["Laura"].Hose = newgirl["Laura"].Custom2[9]                      
+                    $ newgirl["Laura"].Shame = newgirl["Laura"].OutfitShame[5]
+        elif L_OutfitTemp == "custom3":
+                    if not newgirl["Laura"].Legs and newgirl["Laura"].Custom3[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Over and newgirl["Laura"].Custom3[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Chest and newgirl["Laura"].Custom3[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Panties and newgirl["Laura"].Custom3[6] and "pantyless" not in newgirl["Laura"].DailyActions:         
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Hose and newgirl["Laura"].Custom3[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Laura"].Arms = newgirl["Laura"].Custom3[1]
+                    $ newgirl["Laura"].Legs = newgirl["Laura"].Custom3[2]
+                    $ newgirl["Laura"].Over = newgirl["Laura"].Custom3[3]
+                    $ newgirl["Laura"].Neck = newgirl["Laura"].Custom3[4]
+                    $ newgirl["Laura"].Chest = newgirl["Laura"].Custom3[5]
+                    $ newgirl["Laura"].Panties = newgirl["Laura"].Custom3[6] 
+                    $ newgirl["Laura"].Boots = newgirl["Laura"].Custom3[7]  
+                    $ newgirl["Laura"].Hair = newgirl["Laura"].Custom3[8] if newgirl["Laura"].Custom3[8] else newgirl["Laura"].Hair  
+                    $ newgirl["Laura"].Hose = newgirl["Laura"].Custom3[9]                         
+                    $ newgirl["Laura"].Shame = newgirl["Laura"].OutfitShame[6]
+        elif L_OutfitTemp == "temporary":
+                    if not newgirl["Laura"].Legs and newgirl["Laura"].TempClothes[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Over and newgirl["Laura"].TempClothes[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Chest and newgirl["Laura"].TempClothes[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Panties and newgirl["Laura"].TempClothes[6] and "pantyless" not in newgirl["Laura"].DailyActions:         
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Hose and newgirl["Laura"].TempClothes[9]:          
+                            $ Undressed = 1
+                            
+                    $ newgirl["Laura"].Arms = newgirl["Laura"].TempClothes[1]
+                    $ newgirl["Laura"].Legs = newgirl["Laura"].TempClothes[2]
+                    $ newgirl["Laura"].Over = newgirl["Laura"].TempClothes[3]
+                    $ newgirl["Laura"].Neck = newgirl["Laura"].TempClothes[4]
+                    $ newgirl["Laura"].Chest = newgirl["Laura"].TempClothes[5]
+                    $ newgirl["Laura"].Panties = newgirl["Laura"].TempClothes[6] 
+                    $ newgirl["Laura"].Boots = newgirl["Laura"].TempClothes[7]  
+                    $ newgirl["Laura"].Hair = newgirl["Laura"].TempClothes[8] if newgirl["Laura"].TempClothes[8] else newgirl["Laura"].Hair  
+                    $ newgirl["Laura"].Hose = newgirl["Laura"].TempClothes[9]                         
+                    $ newgirl["Laura"].Shame = newgirl["Laura"].OutfitShame[8]
+        elif L_OutfitTemp == "sleep":  
+                    if not newgirl["Laura"].Legs and newgirl["Laura"].Sleepwear[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Over and newgirl["Laura"].Sleepwear[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Chest and newgirl["Laura"].Sleepwear[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Panties and newgirl["Laura"].Sleepwear[6] and "pantyless" not in newgirl["Laura"].DailyActions:        
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Hose and newgirl["Laura"].Sleepwear[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Laura"].Arms = newgirl["Laura"].Sleepwear[1] #0
+                    $ newgirl["Laura"].Legs = newgirl["Laura"].Sleepwear[2] #shorts
+                    $ newgirl["Laura"].Over = newgirl["Laura"].Sleepwear[3] #nighty
+                    $ newgirl["Laura"].Neck = newgirl["Laura"].Sleepwear[4] #0
+                    $ newgirl["Laura"].Chest = newgirl["Laura"].Sleepwear[5] #corset
+                    $ newgirl["Laura"].Panties = newgirl["Laura"].Sleepwear[6] #"white panties"
+                    $ newgirl["Laura"].Boots = newgirl["Laura"].Sleepwear[7] 
+                    $ newgirl["Laura"].Hair = newgirl["Laura"].Sleepwear[8] if newgirl["Laura"].Sleepwear[8] else newgirl["Laura"].Hair 
+                    $ newgirl["Laura"].Hose = newgirl["Laura"].Sleepwear[9] #0  
+                    
+                    $ newgirl["Laura"].Shame = newgirl["Laura"].OutfitShame[4]                    
+        elif L_OutfitTemp == "gym":
+                    if not newgirl["Laura"].Legs and newgirl["Laura"].Gym[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Over and newgirl["Laura"].Gym[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Chest and newgirl["Laura"].Gym[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Panties and newgirl["Laura"].Gym[6] and "pantyless" not in newgirl["Laura"].DailyActions:        
+                            $ Undressed = 1
+                    elif not newgirl["Laura"].Hose and newgirl["Laura"].Gym[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Laura"].Arms = newgirl["Laura"].Gym[1]
+                    $ newgirl["Laura"].Legs = newgirl["Laura"].Gym[2]
+                    $ newgirl["Laura"].Over = newgirl["Laura"].Gym[3] 
+                    $ newgirl["Laura"].Neck = newgirl["Laura"].Gym[4]
+                    $ newgirl["Laura"].Chest = newgirl["Laura"].Gym[5]
+                    $ newgirl["Laura"].Panties = newgirl["Laura"].Gym[6]  
+                    $ newgirl["Laura"].Boots = newgirl["Laura"].Gym[7]  
+                    $ newgirl["Laura"].Hair = newgirl["Laura"].Gym[8] if newgirl["Laura"].Gym[8] else newgirl["Laura"].Hair 
+                    $ newgirl["Laura"].Hose = newgirl["Laura"].Gym[9]     
+                    $ newgirl["Laura"].Shame = newgirl["Laura"].OutfitShame[7]   
+                
+        if newgirl["Laura"].Panties and "pantyless" in newgirl["Laura"].DailyActions:       
+                # This checks the pantyless state from flirting 
+                if L_OutfitTemp != "sleep" and L_OutfitTemp != "gym":
+                        if newgirl["Laura"].Legs == "leather pants" or HoseNum("Laura") >= 10:
+                            $ newgirl["Laura"].Shame -= 5    
+                        elif newgirl["Laura"].Legs:
+                            $ newgirl["Laura"].Shame -= 10  
+                        elif newgirl["Laura"].Panties == "leather panties":
+                            $ newgirl["Laura"].Shame -= 20   
+                        elif newgirl["Laura"].Panties == "lace panties":
+                            $ newgirl["Laura"].Shame -= 25            
+                        else:
+                            $ newgirl["Laura"].Shame -= 23  
+                        
+                        $ newgirl["Laura"].Panties = 0        
+                        $ newgirl["Laura"].Shame = 0 if newgirl["Laura"].Shame < 0 else newgirl["Laura"].Shame
+                    
+        if not Changed and L_OutfitTemp == newgirl["Laura"].Outfit and newgirl["Laura"].Loc == bg_current:
+                #If she was partially dressed then it says she gets dressed
+                if Undressed == 2:
+                        "She throws on a towel."
+                elif Undressed:
+                        "She throws her clothes back on."  
+        return
+#End Laura's Outfits
+      
+label Laura_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Laura"].Loc): 
+        #Laura's natural movements   
+        # If not Clothes, don't bother with her outfit in the scheduel
+        # Clothes 2 is ordered to change regardless of time of day
+        # If not Location, don't bother with the location portion of the schedule
+        
+        if "met" not in newgirl["Laura"].History or ("Laura" in Party and Clothes != 2): 
+                #if she's in a party, never mind
+                return  
+        if "sleepover" in newgirl["Laura"].Traits and Current_Time == "morning":
+                #she slept over, so just forget this for now  
+                return             
+        
+        $ D20 = renpy.random.randint(1, 20) 
+        
+        if (Current_Time == "Morning" and Clothes and Round >= 90) or Clothes == 2:
+                #Pick clothes for the day
+                if newgirl["Laura"].Schedule[Weekday] == 1:
+                        $ newgirl["Laura"].OutfitDay = "mission"
+                elif newgirl["Laura"].Schedule[Weekday] == 2:
+                        $ newgirl["Laura"].OutfitDay = "mission"               # fix, make this second costume
+                elif newgirl["Laura"].Schedule[Weekday] == 3 and newgirl["Laura"].Custom[0]:
+                        $ newgirl["Laura"].OutfitDay = "custom1"
+                elif newgirl["Laura"].Schedule[Weekday] == 4:
+                        $ newgirl["Laura"].OutfitDay = "gym"
+                elif newgirl["Laura"].Schedule[Weekday] == 5 and newgirl["Laura"].Custom2[0]:
+                        $ newgirl["Laura"].OutfitDay = "custom2"
+                elif newgirl["Laura"].Schedule[Weekday] == 6 and newgirl["Laura"].Custom3[0]: 
+                        $ newgirl["Laura"].OutfitDay = "custom3"
+                else: # random
+                        $ Options = ["mission"]
+                        $ Options.append("custom1") if newgirl["Laura"].Custom[0] == 2 else Options
+                        $ Options.append("custom2") if newgirl["Laura"].Custom2[0] == 2 else Options
+                        $ Options.append("custom3") if newgirl["Laura"].Custom3[0] == 2 else Options
+                        $ renpy.random.shuffle(Options) 
+                        $ newgirl["Laura"].OutfitDay = Options[0]
+                        $ del Options[:]  
+                $ newgirl["Laura"].Outfit = newgirl["Laura"].OutfitDay 
+        #End clothing portion
+        
+        #Location portion  
+        if "Laura" in Party or newgirl["Laura"].Loc == "hold" or not Location:
+                pass    
+        elif True:
+                pass #remove this after she's fully available
+        elif Weekday == 0 or Weekday == 2 or Weekday == 4:
+        #MoWeFr   
+                if Current_Time == "Morning":
+                        $ newgirl["Laura"].Loc = "bg dangerroom"
+                elif Current_Time == "Midday": 
+                        $ newgirl["Laura"].Loc = "bg classroom"
+                elif Current_Time == "Evening":
+                        $ newgirl["Laura"].Loc = "bg dangerroom"
+                else:
+                        $ newgirl["Laura"].Loc = "bg laura"
+        elif Weekday == 1 or Weekday == 3:
+        #TuThu      
+                if Current_Time == "Morning":
+                        $ newgirl["Laura"].Loc = "bg dangerroom"
+                elif Current_Time == "Midday":
+                        $ newgirl["Laura"].Loc = "bg classroom"
+                else:
+                        $ newgirl["Laura"].Loc = "bg laura"
+        else:
+        #Weekend                               
+                if Current_Time == "Morning":
+                        $ newgirl["Laura"].Loc = "bg campus"
+                elif Current_Time == "Midday":
+                        $ newgirl["Laura"].Loc = "bg laura"
+                elif Current_Time == "Evening":
+                        $ newgirl["Laura"].Loc = "bg dangerroom"
+                else:
+                        $ newgirl["Laura"].Loc = "bg laura"
+        
+        #If Laura has moved from where she started this action. . .   
+        if newgirl["Laura"].Loc != LocTemp and "Laura" not in Party:    
+                if LocTemp == bg_current: #If she was where you were
+                    $ newgirl["Laura"].RecentActions.append("leaving") 
+                elif newgirl["Laura"].Loc == bg_current: #If she's showed up
+                    $ newgirl["Laura"].RecentActions.append("arriving") 
+        if "Laura" in Nearby:
+                $ Nearby.remove("Laura")
+        return
+#End Laura's Schedule
+
+
+label Laura_Todo:                       
+        #Actions checked each night  
+        #causes her to grow her pubes out over a week
+        if "pubes" in newgirl["Laura"].Todo:
+                $ newgirl["Laura"].PubeC -= 1
+                if newgirl["Laura"].PubeC >= 1:
+                        pass
+                else:            
+                        $ newgirl["Laura"].Pubes = 1
+                        $ newgirl["Laura"].Todo.remove("pubes") 
+                        
+        #causes her to wax her pubes
+        if "shave" in newgirl["Laura"].Todo:               
+                $ newgirl["Laura"].Pubes = 0
+                $ newgirl["Laura"].Todo.remove("shave")
+                
+        #causes her to put in piercings     
+        if "ring" in newgirl["Laura"].Todo:                
+                $ newgirl["Laura"].Pierce = "ring"
+                $ newgirl["Laura"].Todo.remove("ring")
+        if "barbell" in newgirl["Laura"].Todo:
+                $ newgirl["Laura"].Pierce = "barbell"
+                $ newgirl["Laura"].Todo.remove("barbell")            
+        return
+
 # Xavier Faces ///////////////////////////////
 
 label XavierFace (Face = X_Emote):
@@ -4347,6 +4706,12 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                 elif newgirl["Mystique"].Loc == bg_current:       
                                 $ Grils += 1
                                 $ TheGirls.append("Mystique")
+
+                if "Laura" in Party: 
+                    $ newgirl["Laura"].Loc = bg_current
+                elif newgirl["Laura"].Loc == bg_current:       
+                                $ Grils += 1
+                                $ TheGirls.append("Laura")
                 # "[Grils]"
                 # "[TheGirls] 1"
 
@@ -4373,6 +4738,12 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                         $ newgirl["Mystique"].GirlLayer = 100 
                         if "Mystique" in TheGirls:
                             $ TheGirls.remove("Mystique")
+
+                elif Ch_Focus == "Laura" and newgirl["Laura"].Loc == bg_current: 
+                        $ newgirl["Laura"].SpriteLoc = StageCenter
+                        $ newgirl["Laura"].GirlLayer = 100 
+                        if "Laura" in TheGirls:
+                            $ TheGirls.remove("Laura")
 
                 # "[TheGirls] 2"
 
@@ -4412,7 +4783,16 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                         if TheGirls[1] == "Mystique" and newgirl["Mystique"].Loc == bg_current:
                             $ newgirl["Mystique"].SpriteLoc = StageFarRight
                             $ newgirl["Mystique"].GirlLayer = 50
+
+                    if TheGirls[0] == "Laura" and newgirl["Laura"].Loc == bg_current:
+                        $ newgirl["Laura"].SpriteLoc = StageRight
+                        $ newgirl["Laura"].GirlLayer = 70
+                    elif len(TheGirls) > 1:
+                        if TheGirls[1] == "Laura" and newgirl["Laura"].Loc == bg_current:
+                            $ newgirl["Laura"].SpriteLoc = StageFarRight
+                            $ newgirl["Laura"].GirlLayer = 50
     
+                call Display_Laura(Dress) from _call_Display_Laura
                 call Display_Mystique(Dress) from _call_Display_Mystique
                 call Display_Emma(Dress) from _call_Display_Emma
                 call Display_Kitty(Dress) from _call_Display_Kitty
@@ -4668,8 +5048,8 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                     #If Rogue was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Rogue"
-        else: #if Chr == "Mystique":
-                if newgirl["Mystique"].Loc == bg_current:
+        else: #if Chr == newgirl:
+                if newgirl[Chr].Loc == bg_current:
                         #If Mystique is where you're at. . .
                         if K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
@@ -4696,18 +5076,18 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 $ R_SpriteLoc = StageRight
                                 $ RogueLayer = 75
                         #and move Mystique to first position
-                        $ newgirl["Mystique"].SpriteLoc = StageCenter
-                        $ newgirl["Mystique"].GirlLayer = 100
+                        $ newgirl[Chr].SpriteLoc = StageCenter
+                        $ newgirl[Chr].GirlLayer = 100
                         
-                if Ch_Focus == "Mystique": 
+                if Ch_Focus == Chr: 
                     #If Mystique was already the focal character, return
                     pass
                 elif Second:
                     $ Partner = Second
-                elif Partner == "Mystique": 
+                elif Partner == Chr: 
                     #If Mystique was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
-                $ Ch_Focus = "Mystique"
+                $ Ch_Focus = Chr
         $ renpy.restart_interaction() 
         return
 
@@ -5055,6 +5435,74 @@ label Display_Mystique(Dress = 1, DLoc = newgirl["Mystique"].SpriteLoc, Location
             #call Mystique_Hide
     return
     
+
+label Display_Laura(Dress = 1, TrigReset = 1, DLoc = newgirl["Laura"].SpriteLoc, YLoc=50):
+   # If Dress, then check whether the character is underdressed when displaying her
+    
+    if "Laura" not in Party and newgirl["Laura"].Loc != bg_current:  
+            # If Laura isn't there, put her away
+            hide Laura_Sprite
+            call Laura_Hide 
+            return
+            
+    if Taboo and Dress: #If not in the showers, get dressed and dry off        
+#            call LauraOutfit
+            $ newgirl["Laura"].Wet = 0
+              
+    if newgirl["Laura"].Loc != "bg showerroom":
+            $ newgirl["Laura"].Water = 0
+    
+    $ newgirl["Laura"].SpriteLoc = DLoc
+    
+    if TrigReset:
+            # resets triggers
+            $ Trigger = 0    
+            $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin"
+            $ Trigger3 = 0
+            $ Trigger4 = 0
+            $ Trigger5 = 0
+    
+    if Partner == "Laura":
+        $DLoc = StageFarRight #Moves Kitty over if she's secondary
+      
+    call Laura_Hide         
+    #displays Laura if present, Sets her as local if in a party
+    $ newgirl["Laura"].Loc = bg_current 
+    
+#            if Dress:                       
+#                #If in public, check to see if clothes are too sexy, and change them if necessary
+#                call Laura_OutfitShame
+    
+    if bg_current == "bg movies" or bg_current == "bg restaurant":
+        #shifts them downward if on a date
+        $ YLoc = 250
+        
+    #Display Laura    
+    if not renpy.showing('Laura_Sprite'):
+        show Laura_Sprite at SpriteLoc(1000,YLoc) zorder newgirl["Laura"].GirlLayerLayer:
+                offset (0,0)
+                anchor (0.5, 0.0)  
+                pos (1000,YLoc)
+    show Laura_Sprite:
+            alpha 1
+            zoom 1
+            offset (0,0)
+            anchor (0.5, 0.0)  
+            easeout .5 pos (DLoc,YLoc)    
+    show Laura_Sprite:
+            alpha 1
+            zoom 1
+            offset (0,0)
+            anchor (0.5, 0.0)  
+            pos (DLoc,YLoc)    
+#    show Laura_Sprite at SpriteLoc(DLoc,YLoc) zorder newgirl["Laura"].GirlLayerLayer:
+#            alpha 1
+#            zoom 1
+#            offset (0,0)
+#            anchor (0.5, 0.0)  
+#    with easeinright
+            
+    return
 # end Scene Setting ///////////////////////////////////////////////////////////////////////
 
 
