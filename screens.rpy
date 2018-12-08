@@ -764,7 +764,7 @@ screen R_Status_screen:
                 imagebutton idle "images/iconaddictrate.png" hover "images/iconaddictrate.png" action NullAction() hovered tt.Action("Addiction Rate: [R_Addictionrate]")
                 bar range 100 value VariableValue("R_Addictionrate", 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0        
         showif not Trigger:
-            imagebutton auto "images/Button_Kitty_%s.png" action ui.callsinnewcontext("Shift_Focus", "Kitty") xpos 690 ypos 5 focus_mask True
+            imagebutton auto "images/Button_Rogue_%s.png" action ShowTransient("Test_Focus_Map") xpos 690 ypos 5 focus_mask True #xpos 690 ypos 5 
         showif config.developer:
             imagebutton auto "images/Button_Rogue_%s.png" action ui.callsinnewcontext("RogueStats") xpos 730 ypos 5 focus
 
@@ -806,7 +806,7 @@ screen R_Status_screen:
                 imagebutton idle "images/iconaddictrate.png" hover "images/iconaddictrate.png" action NullAction() hovered tt.Action("Addiciton Rate: [K_Addictionrate]")
                 bar range 100 value VariableValue("K_Addictionrate", 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0
         showif not Trigger:
-            imagebutton auto "images/Button_Emma_%s.png" action ui.callsinnewcontext("Shift_Focus", "Emma") xpos 690 ypos 5 focus_mask True
+            imagebutton auto "images/Button_Kitty_%s.png" action ShowTransient("Test_Focus_Map") xpos 690 ypos 5 focus_mask True #xpos 690 ypos 5 
         showif config.developer:
             imagebutton auto "images/Button_Kitty_%s.png" action ui.callsinnewcontext("KittyStats") xpos 730 ypos 5 focus
     #Emma's Stats
@@ -846,7 +846,7 @@ screen R_Status_screen:
                 imagebutton idle "images/iconaddictrate.png" hover "images/iconaddictrate.png" action NullAction() hovered tt.Action("Addiction Rate: [E_Addictionrate]")
                 bar range 100 value VariableValue("E_Addictionrate", 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0        
         showif not Trigger:
-            imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("Shift_Focus", "Mystique") xpos 690 ypos 5 focus_mask True
+            imagebutton auto "images/Button_Emma_%s.png" action ShowTransient("Test_Focus_Map") xpos 690 ypos 5 focus_mask True #xpos 690 ypos 5 
         showif config.developer:
             imagebutton auto "images/Button_Emma_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
                             
@@ -887,7 +887,7 @@ screen R_Status_screen:
                 imagebutton idle "images/iconaddictrate.png" hover "images/iconaddictrate.png" action NullAction() hovered tt.Action("Addiciton Rate: " + str(newgirl["Mystique"].Addictionrate))
                 bar range 100 value VariableValue2("Addictionrate", Ch_Focus, 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0        
         showif not Trigger:
-            imagebutton auto "images/Button_Laura_%s.png" action ui.callsinnewcontext("Shift_Focus", "Laura") xpos 690 ypos 5 focus_mask True
+            imagebutton auto "images/Button_Mystique_%s.png" action ShowTransient("Test_Focus_Map") xpos 690 ypos 5 focus_mask True #xpos 690 ypos 5 
         showif config.developer: #nothing here
             imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
 
@@ -928,7 +928,7 @@ screen R_Status_screen:
                 imagebutton idle "images/iconaddictrate.png" hover "images/iconaddictrate.png" action NullAction() hovered tt.Action("Addiciton Rate: " + str(newgirl["Laura"].Addictionrate))
                 bar range 100 value VariableValue2("Addictionrate", Ch_Focus, 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0        
         showif not Trigger:
-            imagebutton auto "images/Button_Rogue_%s.png" action ui.callsinnewcontext("Shift_Focus", "Rogue") xpos 690 ypos 5 focus_mask True
+            imagebutton auto "images/Button_Laura_%s.png" action ShowTransient("Test_Focus_Map") xpos 690 ypos 5 focus_mask True #xpos 690 ypos 5 
         showif config.developer: #nothing here
             imagebutton auto "images/Button_Laura_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
                             
@@ -1040,6 +1040,28 @@ screen R_Status_screen:
             xpos 500 ypos 60
             has vbox:
                 text tt.value 
+
+screen Test_Focus_Map:
+    imagebutton auto "images/Button_X_%s.png" action Hide("Test_Focus_Map") xpos 690 ypos 5 focus_mask True
+    frame:            
+        xpos 684 
+        ypos 44
+        hbox:
+            vbox:
+                imagebutton auto "images/Button_Rogue_%s.png" action ui.callsinnewcontext("Shift_Focus", "Rogue") focus_mask True
+                if "met" in K_History:
+                    imagebutton auto "images/Button_Kitty_%s.png" action ui.callsinnewcontext("Shift_Focus", "Kitty") focus_mask True
+                 
+            vbox:
+                if "met" in E_History:
+                    imagebutton auto "images/Button_Emma_%s.png" action ui.callsinnewcontext("Shift_Focus", "Emma") focus_mask True
+                if "met" in newgirl["Laura"].History:
+                    imagebutton auto "images/Button_Laura_%s.png" action ui.callsinnewcontext("Shift_Focus", "Laura") focus_mask True
+
+            vbox:
+                if "met" in newgirl["Mystique"].History:
+                    imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("Shift_Focus", "Mystique") focus_mask True
+
 
 transform rotate_white(x):
     rotate -(int(x *3.6))
