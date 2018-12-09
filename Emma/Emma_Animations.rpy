@@ -63,7 +63,7 @@ image Emma_Sprite:
         (0,0), ConditionSwitch(
             #boots
             "not E_Hose", Null(),
-            "E_Boots == 'boots'", "images/EmmaSprite/EmmaSprite_Boots.png", 
+            "E_Hose == 'boots'", "images/EmmaSprite/EmmaSprite_Boots.png", 
             "E_Hose == 'white thigh high'", "images/EmmaSprite/Emma_Sprite_ThighHighsWhite.png", 
             "E_Hose == 'black thigh high'", "images/EmmaSprite/Emma_Sprite_ThighHighsBlack.png", 
             "True", Null(), 
