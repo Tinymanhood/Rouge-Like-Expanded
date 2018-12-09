@@ -2770,7 +2770,7 @@ label Check_Outfit_Event:
 
     if K_Loc == "bg pool":
         #"Kitty's here"
-        if "exhibitionist" in K_Traits and K_Outfit == "naked pool" and "exhibitionist pool" not in K_History:
+        if "exhibitionist" in K_Traits and K_Outfit == "swimsuit3" and "exhibitionist pool" not in K_History:
             $ K_History.append("exhibitionist pool")
             if Current_Time != "Night":
                 "You notice that Kitty is wearing a very see-through swimsuit, even though the pool is packed with students."

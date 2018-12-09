@@ -85,6 +85,8 @@ label E_Massage_Cycle:
     $ E_RecentActions.append("massage")                      
     $ E_DailyActions.append("massage") 
         
+    call Emma_Doggy_Launch("massage")
+    
     "You massage her back and shoulders."
     if not E_Over:
         $ D20 = renpy.random.randint(10, 20)
