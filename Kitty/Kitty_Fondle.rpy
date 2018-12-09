@@ -85,6 +85,8 @@ label K_Massage_Cycle:
     $ K_RecentActions.append("massage")                      
     $ K_DailyActions.append("massage") 
         
+    call Kitty_Doggy_Launch("massage")
+    
     "You massage her back and shoulders."
     if not K_Over:
         $ D20 = renpy.random.randint(10, 20)
