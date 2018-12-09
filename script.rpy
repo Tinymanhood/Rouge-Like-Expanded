@@ -304,6 +304,7 @@ init -1:
     default R_Sperm = []
     default R_Pubes = 1
     default R_Nudes = 1
+    default R_SelfieOverlay = 0
     default R_Tan = 0
     default R_LegsUp = 0
     default R_Wet = 0
