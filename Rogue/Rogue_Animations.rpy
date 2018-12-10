@@ -550,7 +550,15 @@ image Rogue_Selfie:
         #    pos (-60, 200)
 
         #LiveComposite(    
-        #(787,913),     
+        #(787,913),    
+        contains:
+            ConditionSwitch(
+                "R_SelfieOverlay","images/Selfie/Selfie_overlay_01.png",
+                "True", Null(),
+                ),
+            pos (320, 320)
+            zoom .4
+
         contains:
             "images/KittySelfie/Kitty_selfie_cellphone.png",
             pos (300, 200)

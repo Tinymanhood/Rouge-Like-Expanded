@@ -3956,11 +3956,12 @@ label Rogue_Sent_Selfie(test=0):
                     call Rogue_First_Topless(1) from _call_Rogue_First_Topless_4        
                 #else: 
                 #    "She pulls her [Line] over her head, tossing it to the ground." 
+                $ R_SelfieOverlay = renpy.random.randint(0, 1)
                 call Set_The_Scene from _call_Set_The_Scene_78
                 show Rogue_Selfie at SpriteLoc(-2,-46) zorder 200
                 "Rogue sent you a picture"
                 ch_r "It's hot huh, [R_Petname]?" 
-    
+
         hide Rogue_Selfie 
 
     return
