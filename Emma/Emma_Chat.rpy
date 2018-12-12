@@ -537,7 +537,7 @@ label Emma_Relationship:
                             ch_r "Well maybe she did, but I don't want to share."  
                     
                     "I could ask if she'd be ok with me dating you both." if "poly rogue" not in E_Traits:
-                        if ApprovalCheck("Rogue", 1800, Bonus = Cnt) or :
+                        if ApprovalCheck("Rogue", 1800, Bonus = Cnt):
                             call RogueFace("smile", 1) from _call_RogueFace_847
                             if R_Love >= R_Obed:
                                 ch_r "Just so long as we can be together, I can share."
