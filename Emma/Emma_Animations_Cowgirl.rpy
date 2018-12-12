@@ -224,6 +224,7 @@ image Emma_Arms:
             # Arm clothing Over
         ConditionSwitch(    
             "E_Over == 'jacket'", "images/EmmaCowgirl/Emma_Cowgirl_Arms_Jacket.png",   # E_TitsUp = 1
+            "E_Arms", "images/EmmaCowgirl/Emma_Cowgirl_Gloves.png",           
             "True", Null(),
             )
 
@@ -257,6 +258,37 @@ image Emma_Cowgirl_Legs_S:
             # pubes
         ConditionSwitch(    
             "E_Pubes", "images/EmmaCowgirl/Emma_Pubes_Sex.png", 
+            "True", Null(),
+            )
+    contains:
+            # panties
+        ConditionSwitch(    
+            "E_PantiesDown", Null(),
+            "E_Panties == 'sports panties' and E_Wet", "images/EmmaCowgirl/Emma_Cowgirl_Panties_Sport_SW.png", 
+            "E_Panties == 'sports panties'", "images/EmmaCowgirl/Emma_Cowgirl_Panties_Sport_S.png", 
+            "E_Panties and E_Wet", "images/EmmaCowgirl/Emma_Cowgirl_Panties_SW.png", 
+            "E_Panties", "images/EmmaCowgirl/Emma_Cowgirl_Panties_S.png", 
+            "True", Null(),
+            )         
+    contains:
+            # boots
+        ConditionSwitch(    
+            "E_Hose == 'thigh boots'", "images/EmmaCowgirl/Emma_Cowgirl_Boots_Pussy.png", 
+            "True", Null(),
+            )              
+    contains:
+            # legs
+        ConditionSwitch(    
+            "E_Legs == 'skirt'", "images/EmmaCowgirl/Emma_Cowgirl_Skirt_Pussy.png", 
+            "E_Upskirt", Null(),
+            "E_Legs == 'pants' and E_Wet >= 2", "images/EmmaCowgirl/Emma_Cowgirl_Pants_SW.png", 
+            "E_Legs == 'pants'", "images/EmmaCowgirl/Emma_Cowgirl_Pants_S.png", 
+            "True", Null(),
+            )
+    contains:
+            # Over
+        ConditionSwitch(    
+            "E_Over == 'nighty'", "images/EmmaCowgirl/Emma_Cowgirl_Nighty_Pussy.png", 
             "True", Null(),
             )
     contains:
@@ -305,9 +337,40 @@ image Emma_Cowgirl_Legs_A:
             "True", Null(), 
             )
     contains:
+            # panties
+        ConditionSwitch(    
+            "E_PantiesDown", Null(),
+            "E_Panties == 'sports panties' and E_Wet", "images/EmmaCowgirl/Emma_Cowgirl_Panties_Sport_AW.png", 
+            "E_Panties == 'sports panties'", "images/EmmaCowgirl/Emma_Cowgirl_Panties_Sport_A.png", 
+            "E_Panties and E_Wet", "images/EmmaCowgirl/Emma_Cowgirl_Panties_AW.png", 
+            "E_Panties", "images/EmmaCowgirl/Emma_Cowgirl_Panties_A.png", 
+            "True", Null(),
+            )
+    contains:
             # pussy spunk
         ConditionSwitch(    
             "'in' in E_Spunk", "images/EmmaCowgirl/Emma_Spunk_Anal_Pussy.png", 
+            "True", Null(),
+            )
+    contains:
+            # boots
+        ConditionSwitch(    
+            "E_Hose == 'thigh boots'", "images/EmmaCowgirl/Emma_Cowgirl_Boots_Anal.png", 
+            "True", Null(),
+            ) 
+    contains:
+            # legs
+        ConditionSwitch(    
+            "E_Legs == 'skirt'", "images/EmmaCowgirl/Emma_Cowgirl_Skirt_Anal.png", 
+            "E_Upskirt", Null(),
+            "E_Legs == 'pants' and E_Wet >= 2", "images/EmmaCowgirl/Emma_Cowgirl_Pants_AW.png", 
+            "E_Legs == 'pants'", "images/EmmaCowgirl/Emma_Cowgirl_Pants_A.png", 
+            "True", Null(),
+            )
+    contains:
+            # Over
+        ConditionSwitch(    
+            "E_Over == 'nighty'", "images/EmmaCowgirl/Emma_Cowgirl_Nighty_Anal.png", 
             "True", Null(),
             )
     contains:
@@ -1178,10 +1241,10 @@ label Emma_Cowgirl_Launch(Line = "solo"):
     if renpy.showing("Emma_TJ_Animation"):
         hide Emma_TJ_Animation
     
-    if E_Legs:          #temporary, change or remove when other clothing options are available
-        $ E_Upskirt = 1
-    if E_Panties:       #temporary, change or remove when other clothing options are available
-        $ E_PantiesDown = 1
+    # if E_Legs:          #temporary, change or remove when other clothing options are available
+    #     $ E_Upskirt = 1
+    # if E_Panties:       #temporary, change or remove when other clothing options are available
+    #     $ E_PantiesDown = 1
                 
     show Emma_Cowgirl zorder 150:
         pos (575,470)
