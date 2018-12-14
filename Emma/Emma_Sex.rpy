@@ -747,7 +747,7 @@ label E_Slap_Ass:
             show Emma_Doggy #fix, test this
             with vpunch
     if renpy.showing("Emma_Cowgirl"):
-            show Emma_Doggy #fix, test this
+            show Emma_Cowgirl #fix, test this
             with vpunch
     elif renpy.showing("Emma_BJ_Animation"):           #fix, make this animation work better when paused for this effect.
             show Emma_BJ_Animation

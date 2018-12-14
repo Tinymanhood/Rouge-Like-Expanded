@@ -1,9 +1,10 @@
-# Rogue-Like: Evolution - Expanded Mod
-ATTENTION: If you want to try out the experimental build, you will have to download [this build](https://mega.nz/#F!wXp1Ca6C!v7wZ6Ei4iSoCjkdWI__gBw) which contains a new .rpa file and new image files. Then download the repository and overwrite with the new files (to keep it updated). 
-
-## Overview:
+# Overview:
 [Expanded Mod](https://f95zone.com/threads/rogue-like-evolution-expanded-mod-v24-08.14865/) is a collection of mods for the game Rogue-Like: Evolution, which is being developed by [Oni](https://www.patreon.com/OniArtist).
 It has several contributors and aims to add several new things to the game, such as clothes, characters, events/locations and new features.
+
+## How to play the Github version:
+- Simply download the build for your OS [here](https://mega.nz/#F!wbo0nSgZ!yLJsXW-eW5nGrciFOZSv0A), extract it and play. It  will be updated regularly. 
+
 
 ## Features:
 **New hair colors**:
