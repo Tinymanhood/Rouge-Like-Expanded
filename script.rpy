@@ -1056,7 +1056,7 @@ label EventCalls:
                     jump MystiqueMeet
                     return  
             elif Current_Time == "Morning":
-                if "met" in newgirl["Mystique"].History and newgirl["Mystique"].Loc = "bg classroom":
+                if "met" in newgirl["Mystique"].History and newgirl["Mystique"].Loc == "bg classroom":
                     jump MystiqueMedLabStart
                     return 
             elif Current_Time == "Evening" and not Party:
