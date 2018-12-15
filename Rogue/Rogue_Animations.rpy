@@ -644,6 +644,7 @@ image setting = LiveComposite(
         "bg_current == 'bg movies'", "images/Movies.jpg",               
         "bg_current == 'bg restaurant'", "images/Restaurant.jpg",
         "bg_current == 'bg kitty'", "images/kittyroom.png",          
+        "bg_current == 'bg emma'", "images/emmaroom.png",            
 #        "bg_current == 'bg classroom'", "images/ClassroomLit.jpg",        
         # if bg_current == 'bg campus' or anything else        
         "Current_Time == 'Evening'",    "images/Crossroads_Evening.jpg",
@@ -662,7 +663,9 @@ label Display_Background(Entry = 0):
         elif bg_current == "bg rogue":        
                                 scene bg_rogue onlayer backdrop   
         elif bg_current == "bg kitty":        
-                                scene bg_kitty onlayer backdrop  
+                                scene bg_kitty onlayer backdrop 
+        elif bg_current == "bg emma":        
+                                scene bg_emma onlayer backdrop  
         elif bg_current == "bg classroom":        
                                 scene bg_class onlayer backdrop 
         elif bg_current == "bg dangerroom":        
@@ -718,6 +721,17 @@ image bg_kitty:
                 )   
         contains: 
                 "images/kittyroom.png"
+
+image bg_emma:
+        contains: #see if this works, if not remove it
+            ConditionSwitch(
+                "Current_Time == 'Evening'", "images/sky_sunset.jpg",
+                "Current_Time == 'Night'", "images/sky_night.jpg",        
+                "True", "images/sky_day.jpg",
+                )   
+        contains: 
+                "images/emmaroom.png"
+                
 image bg_campus:
         contains: #see if this works, if not remove it
             ConditionSwitch(

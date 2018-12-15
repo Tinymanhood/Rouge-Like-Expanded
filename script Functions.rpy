@@ -1179,10 +1179,8 @@ label TaketoRoom(Girl = "Rogue"):
                 $ bg_current = "bg kitty"
                 $ K_Loc = "bg kitty"
         elif Girl == "Emma":                    
-#                $ bg_current = "bg emma"
-#                $ E_Loc = "bg emma"           
-                $ bg_current = "bg playerroom"
-                $ E_Loc = "bg playerroom"
+               $ bg_current = "bg emma"
+               $ E_Loc = "bg emma"           
         elif Girl in ModdedGirls:                    
 #                $ bg_current = "bg Mystique"
 #                $ E_Loc = "bg Mystique"           
@@ -1352,7 +1350,26 @@ label Round10(Options = ["none"]):
                                         ch_k "It's getting late [K_Petname]. You should get some sleep." 
                                         $ renpy.pop_call()
                                         jump Campus_Map   
-                            #end Kitty's room            
+                            #end Kitty's room    
+                    elif bg_current == "bg emma":
+                            if E_Loc == bg_current:
+                                ch_e "You can stay for a while, if you'd like."     
+                            else:
+                                "You wait for Emma to return."
+                            call Wait
+                            if Current_Time == "Night" and E_Loc == bg_current:               
+                                if E_Sleep or E_SEXP >= 30:                                                         
+                                        #It's late but she really likes you
+                                        ch_e "It's getting a bit late, [E_Petname], but I'd like you to stay. . ."   
+                                elif ApprovalCheck("Emma", 1000, "LI") or ApprovalCheck("Emma", 600, "OI"):           
+                                        #It's late but she really likes you
+                                        ch_e "It's getting a bit late, [E_Petname], but you can stay."     
+                                else:                                                                                   
+                                        #she likes you well enough but it's late so you should go
+                                        ch_e "It's getting late, [E_Petname]. I need to get some sleep." 
+                                        $ renpy.pop_call()
+                                        jump Campus_Map   
+                            #end Emma's room           
                     else:
                         call Wait from _call_Wait_32       
         return
@@ -3347,8 +3364,96 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 ch_m "I didn't expect to run into you here."
                 #end girls showed up to Kitty's room.
     elif bg_current == "bg emma": 
-            #add room content here
-            pass
+                if Secondary:  
+                        #if there's a second girl
+                        "[Primary] and [Secondary] just entered the room."
+                else:
+                        #if there's no second girl,
+                        "[Primary] just entered the room."         
+                if Primary == "Emma" or Secondary == "Emma":
+                                if "angry" in E_DailyActions:
+                                        call EmmaFace("angry") 
+                                        ch_e "I don't think you should be here." 
+                                elif Current_Time == "Night" and ApprovalCheck("Emma", 1000, "LI") and ApprovalCheck("Emma", 600, "OI"):
+                                        ch_e "Oh, it's a bit late, but you're welcome."  
+                                        $ Line = "stay"                     
+                                elif ApprovalCheck("Emma", 1300) or ApprovalCheck("Emma", 500, "O"):
+                                        ch_e "Oh, nice to see you."
+                                        $ Line = "stay"
+                                elif Current_Time == "Night":
+                                        ch_e "Oh, hello, [E_Petname]. It's a bit late, could you come back tomorrow?" 
+                                elif ApprovalCheck("Emma", 600, "LI") or ApprovalCheck("Emma", 300, "OI"):
+                                        ch_e "Oh, hello, [E_Petname], can I help you with anything?"
+                                        $ Line = "stay"
+                                else: 
+                                        call EmmaFace("confused") 
+                                        ch_e "Oh, hello, [E_Petname]?"
+                                        ch_e "Did you have a reason to be visiting me?"  
+                                if Line != "stay":
+                                    menu:
+                                        extend ""
+                                        "Sure, ok. [[you go]":
+                                                    $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 1)
+                                                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                                                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 2)  
+                                                    ch_e "Appreciated."
+                                                    "You head back to your room."
+                                        "Sorry, I'll go.":
+                                                    $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 2)
+                                                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3) 
+                                                    call EmmaFace("smile") 
+                                                    ch_e "Thank you."
+                                                    "You head back to your room."
+                                        "Are you sure I can't stay?":
+                                                    if "angry" in E_DailyActions:
+                                                            call EmmaFace("angry") 
+                                                            ch_e "I believe I said {i}no.{/i}"                  
+                                                    elif Current_Time == "Night" and ApprovalCheck("Emma", 800, "LI") and ApprovalCheck("Emma", 400, "OI"):
+                                                            call EmmaFace("sadside") 
+                                                            ch_e "Perhaps just this once. . ." 
+                                                            $ Line = "stay"
+                                                    elif Current_Time == "Night":
+                                                            ch_e "I'm afraid not. Try again tomorrow."                                                 
+                                                    elif ApprovalCheck("Emma", 750):
+                                                            ch_e "Oh, very well. . ."
+                                                            ch_e "Just for a little bit."
+                                                            $ Line = "stay"
+                                                    else: 
+                                                            ch_e "Definitely not."    
+                                                    if Line != "stay":
+                                                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -1)
+                                                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3) 
+                                                            "Emma kicks you out of the room."                                                    
+                                        "I'm sticking around, thanks.":   
+                                                    if "angry" in E_DailyActions:
+                                                            call EmmaFace("angry") 
+                                                            ch_e "You must be joking."
+                                                    elif not ApprovalCheck("Emma", 1800) and not ApprovalCheck("Emma", 500, "O"):
+                                                            call EmmaFace("angry") 
+                                                            ch_e "No, get out."
+                                                    else:
+                                                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                                                            call EmmaFace("sad") 
+                                                            ch_e ". . ." 
+                                                            ch_e "Fine."
+                                                            $ Line = "stay"
+                                                    if Line != "stay":
+                                                            $ E_Love = Statupdate("Emma", "Love", E_Love, 60, -5, 1)
+                                                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -5)
+                                                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                                                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 5) 
+                                                            "Emma kicks you out of the room."
+                                if Line != "stay":
+                                        $ bg_current = "bg player"  
+                                        jump Player_Room
+                                        #End Emma tells you to leave. 
+                elif Primary == "Rogue":                       
+                                ch_r "Sorry, I wasn't expecting to bump into you here."
+                elif Primary == "Kitty":                       
+                                ch_k "Hey[K_like]funny meeting you here."
+                elif Primary == "Mystique":                       
+                                ch_m "I didn't expect to run into you here."
+                #end girls showed up to Emma's room.
     elif bg_current == "bg Mystique": 
             #add room content here
             pass
