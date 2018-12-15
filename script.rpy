@@ -1274,6 +1274,58 @@ label EventCalls:
                         call Kitty_Fuckbuddy from _call_Kitty_Fuckbuddy
                         return  
         #End Kitty relationsip stuff
+
+        
+        #Emma relationship stuff, not finished
+        if "relationship" not in E_DailyActions and "angry" not in E_DailyActions: 
+                if "stoodup" in E_Traits: #you stood her up
+                            call Emma_Date_Stood_Up
+                            return                    
+                if "boyfriend" not in E_Petnames and E_Love >= 800 and E_Event[5] != 20 and "EmmaNo" not in P_Traits: # E_Event[5]
+                        if P_Harem and "EmmaYes" not in P_Traits:
+                            call Poly_Start("Emma")    
+                            return
+                        elif bg_current == "bg emma" or bg_current == "bg player":
+                            call Emma_BF
+                            return
+                        else:
+                            call AskedMeet("Emma","bemused") 
+                elif "lover" not in E_Petnames and E_Love >= 950 and E_Event[6] != 20: # E_Event[6]   
+                        if bg_current == "bg emma" or bg_current == "bg player":
+                            call Emma_Love
+                            return
+                        else:
+                            call AskedMeet("Emma","bemused") 
+                elif "sir" not in E_Petnames and E_Obed >= 500 and "sir" not in E_History: # E_Event[7]
+                        if bg_current == "bg emma" or bg_current == "bg player":
+                            call Emma_Sub
+                            return 
+                        else:
+                            call AskedMeet("Emma","bemused")
+                elif "master" not in E_Petnames and E_Obed >= 800 and "sir" in E_Petnames and "master" not in E_History: # E_Event[8]
+                        if bg_current == "bg emma" or bg_current == "bg player":
+                            call Emma_Master
+                            return 
+                        else:
+                            call AskedMeet("Emma","bemused")
+                elif "daddy" not in E_Petnames and ApprovalCheck("Emma", 750, "L") and ApprovalCheck("Emma", 500, "O") and ApprovalCheck("Emma", 500, "I"): # E_Event[5]
+                        if bg_current == "bg emma" or bg_current == "bg player" and E_Loc == bg_current:
+                            call Emma_Daddy
+                            return 
+                        else:
+                            call AskedMeet("Emma","bemused")
+                elif "sex friend" not in E_Petnames and E_Inbt >= 500: # E_Event[9]  Fix this one
+                        if bg_current == "bg emma" or bg_current == "bg player":
+                            call Emma_Sexfriend
+                            return 
+                        else:
+                            call AskedMeet("Emma","bemused")
+                           
+                elif "fuck buddy" not in E_Petnames and E_Inbt >= 800 and bg_current != E_Loc: # E_Event[10]  Fix this one
+                        #if she's not a fuckbuddy yet, and is not around at the time
+                        call Emma_Fuckbuddy
+                        return  
+        #End Emma relationsip stuff
                             
 #End primary events
         

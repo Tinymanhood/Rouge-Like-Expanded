@@ -2890,11 +2890,8 @@ label Emma_Summon(Tempmod=Tempmod):
                     ch_e "I'll try to save some for you."
                     jump Danger_Room
             elif E_Loc == "bg emma": 
-                    ch_e "I'll just meet you in your room instead."
-                    $ E_Loc = "bg player"
-                    jump Player_Room    
-        #            ch_e "I'll clean up a few things."
-        #            jump Emma_Room
+                   ch_e "I'll clean up a few things."
+                   jump Emma_Room
             elif E_Loc == "bg player": 
                     ch_e "I'll be waiting for you."
                     jump Player_Room                
@@ -2905,12 +2902,9 @@ label Emma_Summon(Tempmod=Tempmod):
                     ch_e "I've got a nice location picked out."
                     jump Campus
             else:
-                    ch_e "I'll just meet you in your room instead."
-                    $ E_Loc = "bg player"
-                    jump Player_Room    
-        #            ch_e "You know, I'll just meet you in my room."
-        #            $ E_Loc = "bg emma"
-        #            jump Emma_Room
+                   ch_e "You know, I'll just meet you in my room."
+                   $ E_Loc = "bg emma"
+                   jump Emma_Room
             
     #She's agreed to come over    
     elif Line == "lonely":
@@ -3104,18 +3098,18 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
             else:
                 ch_e "I'm sorry, I'm just much too busy at the moment."         
             hide Emma_Sprite
-            call Gym_Clothes("auto", "Emma") from _call_Gym_Clothes_24         
-            call Pool_Clothes("auto", "Emma") from _call_Pool_Clothes_18         
+            call Gym_Clothes("auto", "Emma")
+            call Pool_Clothes("auto", "Emma")
             return
         
     elif Line == "go to":                                                                 
             #You agreed to go to her instead  
             $ Tempmod = 0
-            call DrainWord("All","leaving") from _call_DrainWord_135  
-            call DrainWord("All","arriving") from _call_DrainWord_136        
+            call DrainWord("All","leaving")
+            call DrainWord("All","arriving")
             hide Emma_Sprite
-            call Gym_Clothes("auto", "Emma") from _call_Gym_Clothes_25
-            call Pool_Clothes("auto", "Emma") from _call_Pool_Clothes_19
+            call Gym_Clothes("auto", "Emma")
+            call Pool_Clothes("auto", "Emma")
             if E_Loc == "bg teacher":
                 ch_e "I'll see you there."            
                 jump Class_Room_Entry
@@ -3126,11 +3120,8 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
                 ch_e "I'll try to leave some for you."
                 jump Danger_Room_Entry
             elif E_Loc == "bg emma": 
-                $ E_Loc = "bg player"
-                ch_e "Let's meet in your room instead."
-                jump Player_Room     
-#                ch_e "I'll be waiting."
-#                jump Emma_Room
+               ch_e "I'll be waiting."
+               jump Emma_Room
             elif E_Loc == "bg player": 
                 ch_e "I'll be waiting."
                 jump Player_Room                
@@ -3144,12 +3135,9 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
                 ch_e "Ok, let's."
                 jump Pool_Entry
             else:     
-                $ E_Loc = "bg player"
-                ch_e "Let's meet in your room instead."
-                jump Player_Room       
-#                ch_e "You know, I'll just meet you in my room."
-#                $ E_Loc = "bg emma"
-#                jump Emma_Room
+               ch_e "You know, I'll just meet you in my room."
+               $ E_Loc = "bg emma"
+               jump Emma_Room
             #End "goto" where she's at
             
     #She's agreed to come over    

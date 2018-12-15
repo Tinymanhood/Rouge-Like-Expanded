@@ -17,15 +17,22 @@ label Worldmap:
         "Testbed" if config.developer:          
                     $ renpy.pop_call() 
                     #jump Rogue_Room_Test
-        "Rogue's Room":   
-                    $ renpy.pop_call() 
-                    jump Rogue_Room_Entry 
-        "Kitty's Room" if "met" in K_History:   
-                    $ renpy.pop_call() 
-                    jump Kitty_Room_Entry   
-        "Mystique's Room" if "metgym" in newgirl["Mystique"].History:
-                    $ renpy.pop_call() 
-                    jump Mystique_Room_Entry            
+        "Girl's Rooms":
+            menu:
+                "Rogue's Room":   
+                            $ renpy.pop_call() 
+                            jump Rogue_Room_Entry 
+                "Kitty's Room" if "met" in K_History:   
+                            $ renpy.pop_call() 
+                            jump Kitty_Room_Entry   
+                "Emma's Room" if "met" in E_History:   
+                            $ renpy.pop_call() 
+                            jump Emma_Room_Entry  
+                "Mystique's Room" if "metgym" in newgirl["Mystique"].History:
+                            $ renpy.pop_call() 
+                            jump Mystique_Room_Entry            
+                "Back":
+                            jump Worldmap
         "University Square":
                     $ renpy.pop_call() 
                     jump Campus_Entry 
@@ -99,7 +106,11 @@ label Misplaced:
         if bg_current == "bg rogue":
                 jump Rogue_Room 
         if bg_current == "bg kitty":
-                jump Kitty_Room 
+                jump Kitty_Room
+        if bg_current == "bg emma":
+                jump Emma_Room 
+        if bg_current == "bg mystique":
+                jump Mystique_Room  
         if bg_current == "bg dangerroom":
                 jump Danger_Room 
         if bg_current == "bg classroom":
@@ -170,12 +181,18 @@ label Player_Room:
         "Special Options":
                     call SpecialMenu from _call_SpecialMenu
         
-        "Go to Rogue's Room" if TravelMode:           
-                    jump Rogue_Room_Entry
-        "Go to Kitty's Room" if TravelMode and "met" in K_History:           
-                    jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:  
-                    jump Mystique_Room_Entry
+        "Girl's Rooms" if TravelMode:
+            menu:
+                "Rogue's Room":   
+                            jump Rogue_Room_Entry 
+                "Kitty's Room" if "met" in K_History:   
+                            jump Kitty_Room_Entry   
+                "Emma's Room" if "met" in E_History:   
+                            jump Emma_Room_Entry  
+                "Mystique's Room" if "metgym" in newgirl["Mystique"].History:  
+                            jump Mystique_Room_Entry
+                "Back":
+                            pass
         "Go to the Showers" if TravelMode:         
                     jump Shower_Room_Entry
         "Leave [[Go to Campus Square]":
@@ -548,10 +565,16 @@ label Rogue_Room:
                     
         "Return to Your Room" if TravelMode:            
                     jump Player_Room_Entry         
-        "Go to Kitty's Room" if TravelMode and "met" in K_History:             
-                jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:  
-                jump Mystique_Room_Entry
+        "Other Girl's Rooms" if TravelMode:
+            menu:
+                "Kitty's Room" if "met" in K_History:   
+                            jump Kitty_Room_Entry   
+                "Emma's Room" if "met" in E_History:   
+                            jump Emma_Room_Entry  
+                "Go to Mystique's Room" if "metgym" in newgirl["Mystique"].History:  
+                            jump Mystique_Room_Entry
+                "Back":
+                            pass     
         "Go to the Showers" if TravelMode:            
                     jump Shower_Room_Entry
         "Leave [[Go to Campus Square]":
@@ -812,12 +835,18 @@ label Campus:
             
         "Go to my Room" if TravelMode:
                     jump Player_Room_Entry  
-        "Go to Rogue's Room" if TravelMode: 
-                    jump Rogue_Room_Entry 
-        "Go to Kitty's Room" if TravelMode and "met" in K_History:
-                    jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:
-                    jump Mystique_Room_Entry
+        "Girl's Rooms" if TravelMode:
+            menu:
+                "Rogue's Room":   
+                            jump Rogue_Room_Entry 
+                "Kitty's Room" if "met" in K_History:   
+                            jump Kitty_Room_Entry   
+                "Emma's Room" if "met" in E_History:   
+                            jump Emma_Room_Entry  
+                "Mystique's Room" if "metgym" in newgirl["Mystique"].History:
+                            jump Mystique_Room_Entry
+                "Back":
+                            pass
         "Go to the classroom" if TravelMode: 
                     if Current_Time != "Night":
                         jump Class_Room_Entry 
@@ -2330,12 +2359,18 @@ label Shower_Room:
                 jump Danger_Room_Entry 
         "Return to Your Room" if TravelMode:  
                 jump Player_Room_Entry   
-        "Go to Rogue's Room" if TravelMode:  
-                jump Rogue_Room_Entry   
-        "Go to Kitty's Room" if TravelMode and "met" in K_History:  
-                jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:
-                jump Mystique_Room_Entry        
+        "Girl's Rooms" if TravelMode:
+            menu:
+                "Rogue's Room":   
+                            jump Rogue_Room_Entry 
+                "Kitty's Room" if "met" in K_History:   
+                            jump Kitty_Room_Entry   
+                "Emma's Room" if "met" in E_History:   
+                            jump Emma_Room_Entry  
+                "Mystique's Room" if "metgym" in newgirl["Mystique"].History:
+                            jump Mystique_Room_Entry        
+                "Back":
+                            pass 
         "Leave [[Go to Campus Square]":
                 if TravelMode:
                     jump Campus_Entry
@@ -3589,6 +3624,387 @@ label Kitty_Caught_Changing:
             return
             #End Kitty Caught Changing
 # end Kitty's Room Interface //////////////////////////////////////////////////////////////////////
+
+
+# Emma's Room Interface //////////////////////////////////////////////////////////////////////
+label Emma_Room_Entry:   
+    $ Nearby = []     
+    call Shift_Focus("Emma")
+    $ bg_current = "bg emma"           
+    call Gym_Clothes
+    call Set_The_Scene(Entry = 1)    
+    call Taboo_Level
+    $ P_RecentActions.append("traveling")
+    $ D20 = renpy.random.randint(1, 20)
+    
+    if "Emma" in Party:
+                    if Current_Time == "Night" or (Current_Time == "Evening" and Round <= 10):                         
+                        if ApprovalCheck("Emma", 1000, "LI") or ApprovalCheck("Emma", 600, "OI"):     #It's late but she really likes you
+                                ch_e "It's rather late, [E_Petname], but I can spare you some time." 
+                        elif ApprovalCheck("Emma", 500, "LI") or ApprovalCheck("Emma", 300, "OI"):      #she likes you well enough but it's late
+                                ch_e "It's late [E_Petname]. I'll see you tomorrow."
+                                $ E_RecentActions.append("noentry")                      
+                                $ E_DailyActions.append("noentry")  
+                                if "Emma" in Party:
+                                        $ Party.remove("Emma")   
+                                "She heads inside and closes the door behind her."
+                                jump Campus_Map         
+                    else: #If Emma is in the party and it's not late in the day        
+                                ch_e "Don't just stand at the door."
+                    call EventCalls
+                    jump Emma_Room   
+    #End if Emma in Party
+    
+                    
+    if Round >= 10 and E_Loc == "bg emma" and (D20 >=15 and E_Lust >= 70): #Emma caught fapping      
+                "As you approach her room, you hear soft moaning from inside, and notice that the door is slightly ajar."
+                menu:
+                    extend ""
+                    "Knock politely":
+                        $ Line = "knock"
+                    "Peek inside":
+                        call Set_The_Scene
+                        "You see Emma, eyes closed and stroking herself vigorously."
+                        menu:
+                            extend ""
+                            "Enter Quietly":
+                                    call Emma_Caught_Masturbating
+                            "Pull back and knock":                        
+                                    $ Line = "knock"
+                            "Leave quietly":
+                                    "You leave Emma to her business and slip out."
+                                    $ E_Lust = 20
+                                    jump Campus_Map
+                    "Enter quietly":
+                            call Emma_Caught_Masturbating
+                    "Leave quietly":
+                            "You leave Emma to her business and slip out."
+                            $ E_Lust = 20
+                            jump Campus_Map
+                if Line == "knock":
+                        "You hear some soft moans, followed by some shuffling around as items tumble to the ground."
+                        "After several seconds and some more shuffling of clothing, Emma comes to the door."
+                        call EmmaFace("sexy", 1)     
+                        call Set_The_Scene
+                        ch_e "Well, I suppose you could tell I was a bit. . . occupied."
+                        $ Tempmod += 10
+    # End Emma caught Fapping
+    
+    else: #not auto-caught fapping
+            if "Emma" in Keys:
+                menu:
+                    "You have a key, what do you do?"
+                    "Knock politely":
+                            $ Line = "knock"
+                            
+                    "Use the key to enter.":
+                            $ bg_current = "bg emma"
+                            call Set_The_Scene
+                        
+            if Line != "knock" and "Emma" in Keys: 
+                if E_Loc == "bg emma":
+                        if Round <= 10:        
+                                if E_RecentActions in ("noentry", "angry"):
+                                        call EmmaFace("angry")
+                                        ch_e "Out!"    
+                                        "Emma shoves you back into the hall."
+                                        jump Campus_Map   
+                                if Current_Time == "Night" :    
+                                        "She's asleep in bed. You slip out quietly." #fix add options here.                            
+                                        jump Campus_Map   
+                        elif (D20 >=19 and E_Lust >= 50) or (D20 >=15 and E_Lust >= 70) or (D20 >=10 and E_Lust >= 80):     
+                                #Emma caught fapping
+                                call Emma_Caught_Masturbating 
+                        elif D20 >=15 and (Current_Time == "Night" or Current_Time == "Morning"):                           
+                                #Emma caught changing
+                                call Emma_Caught_Changing
+            #End "if you enter without knocking"
+                
+            else:#You knocked
+                        $ Round -= 10 
+                        "You knock on Emma's door."        
+                        if E_Loc != "bg emma":
+                                "Looks like she's not home right now."
+                                jump Campus_Map
+                            
+                        if Round <= 10:
+                                if Current_Time == "Night" :
+                                    "There's no answer, she's probably asleep."  
+                                    jump Campus_Map    
+                    
+                        if (D20 >=19 and E_Lust >= 50) or (D20 >=15 and E_Lust >= 70) or (D20 >=10 and E_Lust >= 80):    
+                                #Emma caught fapping
+                                "You hear some soft moans, followed by some shuffling around as items tumble to the ground."
+                                "After several seconds and some more shuffling of clothing, Emma comes to the door." 
+                                call EmmaFace("perplexed")
+                                call Set_The_Scene
+                                ch_e "Well, I suppose you could tell I was a bit. . . occupied."
+                                $ Tempmod += 10
+                        elif D20 >=15 and (Current_Time == "Night" or Current_Time == "Morning"):                          
+                                #Emma caught changing
+                                "You hear the rustling of fabric and some knocking around, but after a few seconds Emma comes to the door."
+                                call Set_The_Scene
+                                ch_e "Oh, do come in [E_Petname], don't mind that I was just getting changed."   
+                        elif "angry" in E_RecentActions:
+                                ch_e "I haven't any time for this."
+                                "Emma pushes you back into the hall and slams the door."
+                                $ Trigger = 0
+                                jump Campus_Map    
+                        else:
+                                call Set_The_Scene
+                                "Emma opens the door and leans out."
+                                "You ask if you can come inside."
+            #End "if you knocked"
+                    
+            #if you reach this point then you've asked to enter.               
+            if E_Loc != "bg emma":
+                    "Looks like she's not home right now."                
+                    if "Emma" in Keys:
+                            menu:
+                                "Go in and wait for her?"
+                                "Yes":
+                                        $ Line = 0
+                                        jump Emma_Room
+                                "No":
+                                        pass
+                    "You head back."
+                    jump Campus_Map 
+                    
+            elif E_RecentActions in ("noentry", "angry"):
+                    call EmmaFace("angry")
+                    ch_e "I believe I've made myself clear."  
+                    jump Campus_Map    
+                    
+            elif Current_Time == "Night" and "noentry" in E_RecentActions:
+                    ch_e "Later, [E_Petname]."  
+                    jump Campus_Map 
+                    
+            elif "noentry" in E_RecentActions:
+                    call EmmaFace("angry")
+                    ch_e "Out."
+                    $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5)
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -2)
+                    $ E_RecentActions.append("angry")                      
+                    $ E_DailyActions.append("angry") 
+                    jump Campus_Map  
+            
+            elif Current_Time == "Night" and (E_Sleep or E_SEXP >= 30):                                                   
+                    #It's late but she really likes you
+                    ch_e "It is getting late, [E_Petname]."
+                    ch_e "but you are so adorable."                   
+            elif Current_Time == "Night" and (ApprovalCheck("Emma", 1000, "LI") or ApprovalCheck("Emma", 600, "OI")):     
+                    #It's late but she really likes you
+                    ch_e "It is getting late, [E_Petname], but I could make some time."    
+                    
+            elif Current_Time == "Night" and (ApprovalCheck("Emma", 500, "LI") or ApprovalCheck("Emma", 300, "OI")):     
+                    #she likes you well enough but it's late
+                    ch_e "It's late [E_Petname]. I'll see you tomorrow."
+                    $ E_RecentActions.append("noentry")                      
+                    $ E_DailyActions.append("noentry")  
+                    jump Campus_Map    
+                    
+            elif ApprovalCheck("Emma", 600, "LI") or ApprovalCheck("Emma", 300, "OI"):                                    
+                    #She quite likes you and lets you in   
+                    ch_e "Come in, [E_Petname]."        
+            else:                                                                                                          
+                    #She doesn't like you      
+                    ch_e "I don't think that would be appropriate."
+                    $ E_RecentActions.append("noentry")                      
+                    $ E_DailyActions.append("noentry")  
+                    jump Campus_Map
+    
+    # If you get this far, she's allowed you in
+    $ bg_current = "bg emma"         
+    call EventCalls
+    if E_Loc == "bg emma" and "angry" in E_RecentActions:
+        "Emma pushes you back into the hall and slams the door. You head back to your room."
+        $ Line = 0
+        $ Trigger = 0
+        jump Player_Room
+    if bg_current != "bg emma":
+        jump Misplaced
+            
+label Emma_Room:
+    $ bg_current = "bg emma"
+    if "traveling" in P_RecentActions:
+        $ P_RecentActions.remove("traveling")
+    call Set_The_Scene
+    call Taboo_Level
+    call QuickEvents
+    call Checkout(1)
+    if Round <= 10: 
+                call Round10
+                call Girls_Location
+                call EventCalls 
+    call GirlsAngry        
+    
+# Emma's Room Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    if E_Loc == bg_current:
+        $ Line = "You are in Emma's room. What would you like to do?"
+    else:
+        $ Line = "You are in Emma's room, but she isn't here. What would you like to do?"
+    menu:
+        "[Line]"
+        
+        "Chat":
+                    call Chat
+        
+        "Would you like to study?":                
+                    call Emma_Study
+            
+        "Sleep." if Current_Time == "Night" and E_Loc == bg_current:
+                    call Round10
+                    call Girls_Location
+                    call EventCalls 
+                    
+        "Wait." if Current_Time != "Night":
+                    call Round10
+                    call Girls_Location
+                    call EventCalls 
+                            
+        "Return to Your Room" if TravelMode:            
+                    jump Player_Room_Entry 
+
+        "Go to the Showers" if TravelMode:            
+                    jump Shower_Room_Entry
+                    
+        "Leave" if not TravelMode:
+                    call Worldmap
+        "Leave [[Go to Campus Square]" if TravelMode:
+                    jump Campus_Entry
+    
+    if "angry" in E_RecentActions:
+            call EmmaFace("angry")
+            ch_e "I think you should leave now."
+            "Emma pushes you back into the hall and slams the door. You head back to your room."
+            $ Line = 0
+            $ Trigger = 0
+            jump Player_Room
+    jump Emma_Room
+    
+    
+
+
+label Emma_Caught_Changing:
+            call Shift_Focus("Emma")
+            $ D20 = renpy.random.randint(1, 20)
+            
+            call EmmaFace("surprised", 1)
+            $ E_Mouth = "kiss"
+            if D20 > 17:        
+                    #She's naked
+                    call EmmaOutfit("nude")
+            elif D20 >15:       
+                    #She's bottomless
+                    $ E_Legs = 0
+                    $ E_Panties = 0
+            elif D20 >14:       
+                    #She's Topless
+                    $ E_Over = 0
+                    $ E_Chest = 0
+            elif D20 >10:       
+                    #She's in her underwear
+                    $ E_Over = 0
+                    $ E_Legs = 0
+                    $ E_Panties = "white panties"
+            elif D20 >5:        
+                    #She's wearing pants/skirt
+                    $ E_Over = 0
+            #else: #fully dressed
+            call Set_The_Scene(Dress=0)
+            if D20 > 17:        
+                    #She's naked
+                    "As you enter the room, you see Emma is naked, and seems to be getting dressed."      
+            elif D20 >14:       
+                    #She's Topless
+                    "As you enter the room, you see Emma is practically naked, and seems to be getting dressed."  
+            elif D20 >10:       
+                    #She's in her underwear
+                    "As you enter the room, you see Emma is in her underwear, and seems to be getting dressed." 
+            elif D20 >5:        
+                    #She's wearing pants/skirt
+                    "As you enter the room, you see Emma has her top off, and seems to be getting dressed." 
+            else:
+                    #She's done
+                    "As you enter the room, you see Emma has just pulled her top on, and seems to have been getting dressed." 
+                 
+            if D20 > 5: 
+                    if not ApprovalCheck("Emma", (D20 *70)) or (not E_SeenPussy and not E_Panties) or (not E_SeenChest and not E_Chest):
+                            # She is mad
+                            call EmmaFace("surprised")
+                            $E_Brows = "angry"  
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -50)
+                            if not E_Over or not E_Legs:
+                                $ E_Over = "towel"
+                                "She grabs a towel and covers up."
+                    else:       
+                            #She's cool with it, but confused.
+                            call EmmaFace("surprised", 1)      
+                            $E_Brows = "confused"
+                            if "exhibitionist" in E_Traits:
+                                $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, (2*D20))  
+                            else:
+                                $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, D20)
+                          
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 20)
+                    if D20 > 17:
+                        call Emma_First_Topless
+                        call Emma_First_Bottomless(1)
+                    elif D20 > 15:
+                        call Emma_First_Bottomless
+                    elif D20 > 14:
+                        call Emma_First_Topless
+                    menu:
+                        ch_e "Did you consider knocking?"
+                        "Sorry, I should have.":  
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 3)
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
+                        "And miss the view?":
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 2)
+                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 2)
+                    #end if she's partially nude
+            else:              
+                    #She's fully dressed      
+                    if not ApprovalCheck("Emma", 900) and (not E_SeenPussy or not E_SeenChest):            
+                            call EmmaFace("angry")
+                            $E_Brows = "confused"
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -5)
+                    else:
+                            call EmmaFace("sexy")
+                            $E_Brows = "confused"
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 4)
+                    menu:
+                        ch_e "Were you hoping to catch me in a compromising position?."
+                        "Sorry, I should have knocked.":   
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 1)
+                        "Well, to be honest. . .":
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 3)
+                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 2)
+            call EmmaFace("sexy")                
+            if ApprovalCheck("Emma", 750) and E_SeenPussy and E_SeenChest:
+                    ch_e "That does show initiative. . ."                
+                    $ E_Over = 0
+                    pause 1     
+                    call EmmaOutfit
+                    "She flashes you real quick."  
+            else:
+                    ch_e "Hmm, show a bit more care next time. . ."   
+            menu:
+                    ch_e "Did you have business with me?" 
+                    "Yeah, a little.":
+                        pass
+                    "Actually, I should get going. . .":
+                        call EmmaOutfit
+                        call Worldmap            
+            jump Emma_Room
+            return
+            #End Emma Caught Changing
+            
+# end Emma's Room Interface //////////////////////////////////////////////////////////////////////
+
 
 label Study_Room_Entry:
     $ bg_current = "bg study"           
