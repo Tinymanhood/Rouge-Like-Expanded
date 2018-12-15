@@ -1,2 +1,9 @@
 
 *.png
+*.rpa
+*.rpyb
+*.rpyc
+*.save
+saves/persistent
+*.mp3
+*.wav
