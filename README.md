@@ -3,7 +3,7 @@
 It has several contributors and aims to add several new things to the game, such as clothes, characters, events/locations and new features.
 
 ## How to play the Github version:
-- Simply download the build for your OS [here](https://mega.nz/#F!wbo0nSgZ!yLJsXW-eW5nGrciFOZSv0A), extract it and play. It  will be updated regularly. 
+- Simply download the build for your OS [here](https://mega.nz/#F!wbo0nSgZ!yLJsXW-eW5nGrciFOZSv0A), extract it and play. It  will be updated regularly. You can update it manually by downloading the files in the repo.
 
 
 ## Features:
