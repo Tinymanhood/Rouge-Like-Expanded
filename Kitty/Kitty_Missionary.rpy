@@ -46,13 +46,13 @@ label K_Sex_P:
     if Situation == "Kitty":                                                                  #Kitty auto-starts   
                 if Approval > 2:                                                      # fix, add kitty auto stuff here
                     call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch   
-                    if K_Legs == "skirt":
+                    if PantsNum("Kitty") == 3:
                         "Kitty slides onto her back and pulls you against her, sliding her skirt up as she does so."
                         $ K_Upskirt = 1
-                    elif K_Legs == "capris" or K_Legs == "black jeans":
+                    elif PantsNum("Kitty") == 10:
                         "Kitty slides onto her back and pulls you against her, sliding her pants off as she does so." 
                         $ K_Upskirt = 1
-                    elif K_Legs == "shorts":
+                    elif PantsNum("Kitty") == 5:
                         "Kitty slides onto her back and pulls you against her, sliding her shorts off as she does so."    
                         $ K_Upskirt = 1
                     else:
@@ -95,13 +95,13 @@ label K_Sex_P:
     
     if Situation == "auto":   
                 call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_1   
-                if K_Legs == "skirt":
+                if PantsNum("Kitty") == 3:
                     "You press Kitty down onto her back, sliding her skirt up as you go."
                     $ K_Upskirt = 1                
-                elif K_Legs == "capris" or K_Legs == "black jeans":
+                elif PantsNum("Kitty") == 10:
                     "You press Kitty down onto her back, sliding her pants down as you do."    
                     $ K_Upskirt = 1
-                elif K_Legs == "shorts":
+                elif PantsNum("Kitty") == 5:
                     "You press Kitty down onto her back, sliding her shorts down as you do."                
                     $ K_Upskirt = 1
                 else:
@@ -373,14 +373,18 @@ label K_SexPrep:
                 $ K_Chest = "bustier bra open"
         elif K_Panties == "zipper panties open":
             ch_k "I'm ready"    
-        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
+        elif K_Panties and PantsNum("Kitty") == 10:  #wearing pants
             "She quickly drops her pants and her [K_Panties]."
-        elif K_Panties and K_Legs == "shorts":
+        elif K_Panties and PantsNum("Kitty") == 5:   #wearing shorts
             "She quickly drops her shorts and her [K_Panties]."
-        elif K_Legs == "capris" or K_Legs == "black jeans":
+        elif K_Panties and PantsNum("Kitty") == 3:   #wearing skirt
+            "She quickly drops her skirt and her [K_Panties]."
+        elif PantsNum("Kitty") == 10:
             "She shrugs and her pants drop through her, exposing her bare pussy."
-        elif K_Legs == "shorts":
+        elif PantsNum("Kitty") == 5:
             "She shrugs and her shorts drop through her, exposing her bare pussy."
+        elif PantsNum("Kitty") == 3:
+            "She shrugs and her skirt drop through her, exposing her bare pussy."
         elif HoseNum("Kitty") >= 5 and K_Panties:
             "She shrugs and her [K_Hose] and [K_Panties] fall to the ground."
             $ K_Hose = 0
@@ -789,13 +793,13 @@ label K_Sex_A:
             #Kitty auto-starts   
             if Approval > 2:                                                      # fix, add kitty auto stuff here
                 call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_5   
-                if K_Legs == "skirt":
+                if PantsNum("Kitty") == 3:
                     "Kitty slides onto her back and pulls you against her, sliding her skirt up as she does so."
                     $ K_Upskirt = 1
-                elif K_Legs == "capris" or K_Legs == "black jeans":
+                elif PantsNum("Kitty") == 10:
                     "Kitty slides onto her back and pulls you against her, sliding her pants off as she does so." 
                     $ K_Upskirt = 1
-                elif K_Legs == "shorts":
+                elif PantsNum("Kitty") == 5:
                     "Kitty slides onto her back and pulls you against her, sliding her shorts off as she does so."    
                     $ K_Upskirt = 1
                 else:
@@ -837,13 +841,13 @@ label K_Sex_A:
     
     if Situation == "auto":   
             call Kitty_Sex_Launch("L") from _call_Kitty_Sex_Launch_6   
-            if K_Legs == "skirt":
+            if PantsNum("Kitty") == 3:
                 "You press Kitty down onto her back, sliding her skirt up as you go."
                 $ K_Upskirt = 1                
-            elif K_Legs == "capris" or K_Legs == "black jeans":
+            elif PantsNum("Kitty") == 10:
                 "You press Kitty down onto her back, sliding her pants down as you do."    
                 $ K_Upskirt = 1
-            elif K_Legs == "shorts":
+            elif PantsNum("Kitty") == 5:
                 "You press Kitty down onto her back, sliding her shorts down as you do."                
                 $ K_Upskirt = 1
             else:
@@ -1133,14 +1137,18 @@ label K_AnalPrep:
                 $ K_Chest = "bustier bra open"
         elif K_Panties == "zipper panties open":
             ch_k "I'm ready"  
-        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
+        elif K_Panties and (PantsNum("Kitty") == 10):
             "She quickly drops her pants and her [K_Panties]."
-        elif K_Panties and K_Legs == "shorts":
+        elif K_Panties and PantsNum("Kitty") == 5:
             "She quickly drops her shorts and her [K_Panties]."
-        elif K_Legs == "capris" or K_Legs == "black jeans":
+        elif K_Panties and PantsNum("Kitty") == 3:
+            "She quickly drops her skirt and her [K_Panties]."
+        elif PantsNum("Kitty") == 10:
             "She shrugs and her pants drop through her, exposing her bare pussy."
-        elif K_Legs == "shorts":
+        elif PantsNum("Kitty") == 5:
             "She shrugs and her shorts drop through her, exposing her bare pussy."
+        elif PantsNum("Kitty") == 3:
+            "She shrugs and her skirt drop through her, exposing her bare pussy."
         elif HoseNum("Kitty") >= 5 and K_Panties:
             "She shrugs and her [K_Hose] and [K_Panties] fall to the ground."
             $ K_Hose = 0

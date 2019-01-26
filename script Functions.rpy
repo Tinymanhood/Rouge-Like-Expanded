@@ -608,9 +608,23 @@ init python:
                         elif K_Legs == "capris":
                             return 10    
                         elif K_Legs == "yoga pants":
-                            return 8                    
+                            return 10 
+                        elif K_Legs == "leather pants":
+                            return 10 
+                        elif K_Legs == "black blue pants":
+                            return 10 
                         elif K_Legs == "shorts":
                             return 5
+                        elif K_Legs == "blue shorts":
+                            return 5
+                        elif K_Legs == "white shorts":
+                            return 5
+                        elif K_Legs == "orange skirt":
+                            return 3
+                        elif K_Legs == "black skirt":
+                            return 3
+                        elif K_Legs == "white skirt":
+                            return 3
                         else:
                             return 0
                 elif Chr == "Emma":
@@ -4522,6 +4536,14 @@ label KittyWardrobe:
                         $ K_Over = 0
                     "Add red shirt" if K_Over != "red shirt":
                         $ K_Over = "red shirt"
+                    "Remove violet shirt scarf" if K_Over == "violet shirt scarf": 
+                        $ K_Over = 0
+                    "Add violet shirt scarf" if K_Over != "violet shirt scarf":
+                        $ K_Over = "violet shirt scarf"
+                    "Remove violet shirt scarfless" if K_Over == "violet shirt scarfless": 
+                        $ K_Over = 0
+                    "Add violet shirt scarfless" if K_Over != "violet shirt scarfless":
+                        $ K_Over = "violet shirt scarfless"
                     "Remove towel" if K_Over == "towel": 
                         $ K_Over = 0
                     "Add towel" if K_Over != "towel":
@@ -4564,6 +4586,10 @@ label KittyWardrobe:
                         $ K_Legs = 0
                     "Add black jeans" if K_Legs != "black jeans":
                         $ K_Legs = "black jeans"
+                    "Remove black blue pants" if K_Legs == "black blue pants":
+                        $ K_Legs = 0
+                    "Add black blue pants" if K_Legs != "black blue pants":
+                        $ K_Legs = "black blue pants"
                     "Remove Yoga Pants" if K_Legs == "yoga pants":
                         $ K_Legs = 0
                     "Add Yoga Pants" if K_Legs != "yoga pants":
@@ -4633,7 +4659,7 @@ label KittyWardrobe:
                 
         "Set Custom Outfit #1.":
             $ K_Custom[0] = 1
-            $ K_Custom[1] = K_Arms
+            $ K_Custom[1] = K_Gloves
             $ K_Custom[2] = K_Legs
             $ K_Custom[3] = K_Over
             $ K_Custom[4] = K_Under
@@ -5078,6 +5104,7 @@ label Failsafe:
     $ Kitty_Arms = 1 if "Kitty_Arms" not in globals().keys() else Kitty_Arms
     $ K_Emote = "normal" if "K_Emote" not in globals().keys() else K_Emote
     $ K_Arms = 0 if "K_Arms" not in globals().keys() else K_Arms
+    $ K_Gloves = 0 if "K_Gloves" not in globals().keys() else K_Gloves
     $ K_Legs = "capris" if "K_Legs" not in globals().keys() else K_Legs
     $ K_Over = "pink top" if "K_Over" not in globals().keys() else K_Over
     $ K_Chest = "cami" if "K_Chest" not in globals().keys() else K_Chest
