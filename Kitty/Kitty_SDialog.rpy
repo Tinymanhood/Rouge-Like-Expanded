@@ -1393,7 +1393,7 @@ label Kitty_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
     # end K dildo ass                              /////////////////////////////////////////////////////////////////////////////
     
     elif Trigger == "plug":
-                        if (K_Legs == "capris" or K_Legs == "leather pants" or K_Legs == "black jeans" or K_Legs == "yoga pants") and not K_Upskirt:
+                        if (PantsNum("Kitty") == 10) and not K_Upskirt:
                                 $ Line = renpy.random.choice(["You rub the plug against the outside of her pants", 
                                         "You slap the plug lightly against her ass"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  

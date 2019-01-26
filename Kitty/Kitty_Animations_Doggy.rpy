@@ -56,6 +56,10 @@ image Kitty_Doggy_Body = LiveComposite(                                         
             "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Body.png",
             "True", "images/KittyDoggy/Kitty_Doggy_Body.png",
             ),  
+        (0,0), ConditionSwitch(
+            "K_Gloves == 'black gloves'", "images/KittyDoggy/Kitty_Doggy_Chest_BlackLongGloves.png",
+            "True", Null(),
+            ),
         (0,0), ConditionSwitch(                                                                                 #Mouth
             #"R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGagTop.png",
             #"'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_BlowW.png",
@@ -172,8 +176,15 @@ image Kitty_Doggy_Body = LiveComposite(                                         
         #    "R_Over == 'black hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_DHoodie.png",
         #    "R_Over == 'white hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_WHoodie.png",           
         #    "R_Over == 'nighty'", "images/RogueDoggy/Rogue_Doggy_Over_NightyTop.png",         
+            "K_Over == 'violet shirt scarfless'", "images/KittyDoggy/Kitty_Doggy_Chest_VioletShirt1.png",
+            "K_Over == 'violet shirt scarf'", "images/KittyDoggy/Kitty_Doggy_Chest_VioletShirt2.png",
             "K_Over == 'black dress'", "images/KittyDoggy/Kitty_Doggy_Over_DressTop.png",
             "K_Over == 'towel'", "images/KittyDoggy/Kitty_Doggy_Over_TowelTop.png",
+            "True", Null(), 
+            ),  
+        (0,0), ConditionSwitch(                                                                                 #Overshirt
+            "not K_Neck", Null(),
+            "K_Neck == 'scarf'", "images/KittyDoggy/Kitty_Doggy_Chest_Shawl.png",
             "True", Null(), 
             ),  
         (0,0), ConditionSwitch(                                                                                 #Hair
@@ -400,6 +411,9 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             "K_Legs == 'black jeans' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans_Down.png",            
             "K_Legs == 'black jeans' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans_Wet.png",
             "K_Legs == 'black jeans'", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png",
+            "K_Legs == 'black blue pants' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants_Down.png",            
+            "K_Legs == 'black blue pants' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants_Wet.png",
+            "K_Legs == 'black blue pants'", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png",
             "K_Legs == 'yoga pants' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga_Down.png",            
             "K_Legs == 'yoga pants' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga_Wet.png",
             "K_Legs == 'yoga pants'", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png",

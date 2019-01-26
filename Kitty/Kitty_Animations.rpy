@@ -18,6 +18,11 @@ image Kitty_Sprite:
             "not K_Arms", "images/KittySprite/Kitty_Sprite_Arms1.png",
             "True", Null(),               
             ), 
+        (0,0), ConditionSwitch(                                                                         #piercings bottom
+            "K_Over == 'armbinder'", Null(),                                                                      #Arms1               
+            "not K_Arms and K_Gloves == 'black gloves'", "images/KittySprite/Kitty_Sprite_BlackLongGloves_1.png",      
+            "True", Null(),   
+            ),  
         (0,0), ConditionSwitch(                                                                         #back of the shirt
             "K_Over == 'dark top' and K_Arms", "images/KittySprite/Kitty_Sprite_Under_dark2.png",       #2
             "K_Over == 'dark top'", "images/KittySprite/Kitty_Sprite_Under_dark1.png",                  #1
@@ -82,6 +87,7 @@ image Kitty_Sprite:
 #            "K_Water", "images/KittySprite/Kitty_Sprite_Water1.png",
 #            "True", Null(),
 #            ),  
+
         (0,0), ConditionSwitch(                                                                         #piercings bottom
             "not K_Pierce or (K_Panties and not K_PantiesDown)", Null(),                       
             "K_Pierce == 'ring'", "images/KittySprite/Kitty_Sprite_Piercing_RingB.png",      
@@ -143,7 +149,11 @@ image Kitty_Sprite:
             "K_Arms", "images/KittySprite/Kitty_Sprite_Arms2.png",
             "True", Null(),               
             ), 
-        
+        (0,0), ConditionSwitch(                                                                         #piercings bottom
+            "K_Over == 'armbinder'", Null(),                                                                      #Arms1               
+            "K_Arms and K_Gloves == 'black gloves'", "images/KittySprite/Kitty_Sprite_BlackLongGloves_2.png",      
+            "True", Null(),   
+            ), 
         (0,0), ConditionSwitch(                                                                         #chest
             "not K_Chest and not K_Over and K_Tan == 'tan'", "images/KittySprite/Kitty_Sprite_Tchest_bare.png",
             "not K_Chest and not K_Over and K_Tan == 'tan2'", "images/KittySprite/Kitty_Sprite_T2chest_bare.png",
@@ -202,6 +212,7 @@ image Kitty_Sprite:
             "not K_Legs or K_Upskirt", Null(),
             "K_Legs == 'capris'", "images/KittySprite/Kitty_Sprite_Pants_Blue.png",
             "K_Legs == 'black jeans'", "images/KittySprite/Kitty_Sprite_Pants_Black.png",
+            "K_Legs == 'black blue pants'", "images/KittySprite/Kitty_Sprite_BlackBluePants.png",
             "K_Legs == 'leather pants'", "images/KittySprite/Kitty_Sprite_Pants_Leather.png",
             "K_Legs == 'orange skirt'", "images/KittySprite/Kitty_Sprite_Pants_Orange.png",
             "K_Legs == 'black skirt'", "images/KittySprite/Kitty_Sprite_Pants_OBlack.png",
@@ -241,6 +252,8 @@ image Kitty_Sprite:
             "K_Arms and K_Over == 'pink top'", "images/KittySprite/Kitty_Sprite_Over_Pink2.png",
             "K_Arms and K_Over == 'purple shirt'", "images/KittySprite/Kitty_Sprite_Over_CrewPurple2.png",
             "K_Arms and K_Over == 'red shirt'", "images/KittySprite/Kitty_Sprite_Over_Crew2.png",
+            "K_Arms and K_Over == 'violet shirt scarfless'", "images/KittySprite/Kitty_Sprite_Over_VioletShirt1_2.png",
+            "K_Arms and K_Over == 'violet shirt scarf'", "images/KittySprite/Kitty_Sprite_Over_VioletShirt2_2.png",
             "K_Arms and K_Over == 'towel'", "images/KittySprite/Kitty_Sprite_Over_Towel2.png",
             "K_Over == 'dark top'", "images/KittySprite/Kitty_Sprite_Over_dark1.png",
             "K_Over == 'pink top'", "images/KittySprite/Kitty_Sprite_Over_Pink1.png",
@@ -248,9 +261,15 @@ image Kitty_Sprite:
             "K_Over == 'red shirt'", "images/KittySprite/Kitty_Sprite_Over_Crew1.png",
             "K_Over == 'towel'", "images/KittySprite/Kitty_Sprite_Over_Towel1.png",
             "K_Over == 'black dress'", "images/KittySprite/Kitty_Sprite_Dress.png",
-            "K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_Overshirt_Armbinder.png",                                                                     #Arms1               
+            "K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_Overshirt_Armbinder.png",   
+            "K_Over == 'violet shirt scarfless'", "images/KittySprite/Kitty_Sprite_Over_VioletShirt1_1.png",
+            "K_Over == 'violet shirt scarf'", "images/KittySprite/Kitty_Sprite_Over_VioletShirt2_1.png",                                                                  #Arms1               
             "True", Null(),
-            ),     
+            ),  
+        (0,0), ConditionSwitch(                                                                         #necklace
+            "K_Neck == 'scarf'", "images/KittySprite/Kitty_Sprite_Shawl.png",
+            "True", Null(),
+            ),      
         (124,0), ConditionSwitch(
             "renpy.showing('Kitty_BJ_Animation')", Null(),
             "True", "Kitty_Head",   
@@ -653,6 +672,11 @@ image Kitty_Sex_Body = LiveComposite(
             "True", "images/KittySex/Kitty_Sex_Body.png",             
             ), 
         (0,0), ConditionSwitch(                                                                                 #Body Base
+            "K_Over == 'armbinder'", Null(),             
+            "K_Gloves == 'black gloves'", "images/KittySex/Kitty_Sex_BlackLongGloves.png",   
+            "True", Null(),             
+            ),  
+        (0,0), ConditionSwitch(                                                                                 #Body Base
             "not K_Pierce", Null(),             
             "K_Pierce == 'barbell'", "images/KittySex/Kitty_Sex_Body_Tits_Barbell.png",   
             "K_Pierce == 'ring'", "images/KittySex/Kitty_Sex_Body_Tits_Ring.png",   
@@ -667,7 +691,13 @@ image Kitty_Sex_Body = LiveComposite(
             "K_Chest == 'black top'", "images/KittySex/Kitty_Sex_Neck_Black.png",
             "K_Chest == 'leather top'", "images/KittySex/Kitty_Sex_Neck_Leather.png",
             "True", Null(),
-            ),  
+            ), 
+        (0,0), ConditionSwitch(                                                                                 #tanktop
+            "not K_Legs", Null(),        
+            "K_Upskirt", Null(),        
+            "K_Legs == 'black blue pants'", "images/KittySex/Kitty_Sex_Chest_BlackBluePants.png",
+            "True", Null(),            
+            ), 
         (0,0), ConditionSwitch(                                                                                 #tanktop
             "not K_Chest", Null(),        
             "K_Chest == 'cami'", "images/KittySex/Kitty_Sex_Under_Cami.png",
@@ -704,10 +734,16 @@ image Kitty_Sex_Body = LiveComposite(
             "K_Over == 'pink top'", "images/KittySex/Kitty_Sex_Over_PinkShirt.png",           
             "K_Over == 'purple shirt'", "images/KittySex/Kitty_Sex_Over_purpleShirt.png",   
             "K_Over == 'red shirt'", "images/KittySex/Kitty_Sex_Over_RedShirt.png",   
+            "K_Over == 'violet shirt scarfless'", "images/KittySex/Kitty_Sex_Over_VioletShirt1_1.png",   
+            "K_Over == 'violet shirt scarf'", "images/KittySex/Kitty_Sex_Over_VioletShirt2_1.png",   
             "K_Over == 'towel'", "images/KittySex/Kitty_Sex_Over_Towel.png",       
             "K_Over == 'armbinder'", "images/KittySex/KittySexArmbinderOvershirt.png",       
             "True", Null(), 
-            ),  
+            ),
+        (0,0), ConditionSwitch(                                                                                 #necklace
+            "K_Neck == 'scarf'", "images/KittySex/Kitty_Sex_Shawl.png",
+            "True", Null(),
+            ), 
         (0,0),ConditionSwitch(                                                                                  #Outside Spunk
             "'belly' in K_Spunk", "images/KittySex/Kitty_Sex_Spunk_Body.png",   
             "True", Null(),  
@@ -789,12 +825,16 @@ image Kitty_Sex_Legs:
             "K_Legs == 'blue shorts' and K_Wet > 1", "images/KittySex/Kitty_Sex_BlueShorts_Wet.png",
             "K_Legs == 'blue shorts'", "images/KittySex/Kitty_Sex_BlueShorts.png",
             "K_Legs == 'white shorts' and K_Wet > 1", "images/KittySex/Kitty_Sex_WhiteShorts_Wet.png",
-            "K_Legs == 'white shorts'", "images/KittySex/Kitty_Sex_WhiteShorts.png",                             
+            "K_Legs == 'white shorts'", "images/KittySex/Kitty_Sex_WhiteShorts.png",  
+            "K_LegsUp and K_Legs == 'black blue pants' and K_Wet > 1", "images/KittySex/Kitty_Sex_Legs_BlackBluePants_LegsUp_Wet.png",
+            "K_LegsUp and K_Legs == 'black blue pants'", "images/KittySex/Kitty_Sex_Legs_BlackBluePants_LegsUp.png",  
             "K_LegsUp", Null(),
             "K_Legs == 'capris' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Blue_Wet.png",
             "K_Legs == 'capris'", "images/KittySex/Kitty_Sex_Pants_Blue.png",
             "K_Legs == 'black jeans' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Black_Wet.png",
             "K_Legs == 'black jeans'", "images/KittySex/Kitty_Sex_Pants_Black.png",
+            "K_Legs == 'black blue pants' and K_Wet > 1", "images/KittySex/Kitty_Sex_Legs_BlackBluePants_Wet.png",
+            "K_Legs == 'black blue pants'", "images/KittySex/Kitty_Sex_Legs_BlackBluePants.png",
             "K_Legs == 'yoga pants' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Yoga_Wet.png",
             "True", Null(),                      
             ),   
@@ -870,10 +910,12 @@ image Kitty_Sex_Feet = LiveComposite(
             "True", Null(),              
             ),  
         (0,0), ConditionSwitch(                                                                                 #Legs Layer
+            "K_Upskirt", Null(), 
+            "K_LegsUp and K_Legs == 'black blue pants'", "images/KittySex/Kitty_Sex_Feet_BlackBluePants_LegsUp.png",                                 
             "K_LegsUp", Null(),
-            "K_Upskirt", Null(),                               
             "K_Legs == 'capris'", "images/KittySex/Kitty_Sex_Feet_Blue.png",
             "K_Legs == 'black jeans'", "images/KittySex/Kitty_Sex_Feet_Black.png",
+            "K_Legs == 'black blue pants'", "images/KittySex/Kitty_Sex_Feet_BlackBluePants.png",
             "K_Legs == 'yoga pants'", "images/KittySex/Kitty_Sex_Feet_Yoga.png",
             "True", Null(),                      
             ),   
@@ -1912,6 +1954,11 @@ image Kitty_BJ_Backdrop:
             ),
             #body
         (0,0), ConditionSwitch(
+            "K_Over == 'armbinder'", Null(),
+            "K_Gloves == 'black gloves'", "images/KittyBJFace/Kitty_BJ_BlackLongGloves.png",
+            "True", Null(),
+            ),
+        (0,0), ConditionSwitch(
             "K_Over == 'armbinder'", "images/KittyBJFace/Kitty_BJ_Over_Armbinder_Straps.png",
             "True", Null(),
             ),
@@ -1948,7 +1995,14 @@ image Kitty_BJ_Backdrop:
             "K_Over == 'pink top'", "images/KittyBJFace/Kitty_BJ_Over_PinkShirt.png",
             "K_Over == 'purple shirt'", "images/KittyBJFace/Kitty_BJ_Over_purpleShirt.png",
             "K_Over == 'red shirt'", "images/KittyBJFace/Kitty_BJ_Over_RedShirt.png",
+            "K_Over == 'violet shirt scarfless'", "images/KittyBJFace/Kitty_BJ_Over_VioletShirt1.png",
+            "K_Over == 'violet shirt scarf'", "images/KittyBJFace/Kitty_BJ_Over_VioletShirt2.png",
             "K_Over == 'towel'", "images/KittyBJFace/Kitty_BJ_Over_Towel.png",
+            "True", Null(),
+            ),  
+        (0,0), ConditionSwitch(                                                                         
+            #necklace
+            "K_Neck == 'scarf'", "images/KittyBJFace/Kitty_BJ_Shawl.png",
             "True", Null(),
             ),  
         )
@@ -2205,6 +2259,10 @@ image Kitty_Selfie:
             "True", "images/KittySelfie/Kitty_selfie0.png",                                                   
             ),
             #body
+        (0,0), ConditionSwitch(
+            "K_Gloves == 'black gloves'", "images/KittySelfie/Kitty_Selfie_BlackLongGloves.png",
+            "True", Null(),
+            ),
         (0,0), ConditionSwitch(                                                                         
             #necklace
             "K_Neck == 'gold necklace'", "images/KittyBJFace/Kitty_BJ_Neck_Gold.png",
@@ -2237,7 +2295,13 @@ image Kitty_Selfie:
             "K_Over == 'pink top'", "images/KittySelfie/Kitty_selfie_pinkshirt.png",
             "K_Over == 'purple shirt'", "images/KittySelfie/Kitty_selfie_purpleshirt.png",
             "K_Over == 'red shirt'", "images/KittySelfie/Kitty_selfie_redshirt.png",
+            "K_Over == 'violet shirt scarfless'", "images/KittySelfie/Kitty_Selfie_VioletShirt1.png",
+            "K_Over == 'violet shirt scarf'", "images/KittySelfie/Kitty_Selfie_VioletShirt2.png",
             "K_Over == 'towel'", "images/KittyBJFace/Kitty_BJ_Over_Towel.png",
+            "True", Null(),
+            ), 
+        (0,0), ConditionSwitch(                                                                         
+            "K_Neck == 'scarf'", "images/KittySelfie/Kitty_Selfie_Shawl.png",
             "True", Null(),
             ), 
         (0,0), ConditionSwitch(                                                                 
@@ -2648,6 +2712,24 @@ image Kitty_Hand_Over:
     anchor (0.5,0.5)
     pos (0,0)
 
+
+image Kitty_Gloves_Under:
+    ConditionSwitch(
+        "K_Gloves == 'black gloves'", "images/KittySprite/handkitty2_BlackLongGloves.png",
+        "True", Null()
+        ),
+    anchor (0.5,0.5)
+    pos (0,0)
+
+
+image Kitty_Gloves_Over:
+    ConditionSwitch(
+        "K_Gloves == 'black gloves'", "images/KittySprite/handkitty1_BlackLongGloves.png",
+        "True", Null()
+        ),
+    anchor (0.5,0.5)
+    pos (0,0)
+
 #transform Handcock_1():
 #    subpixel True
 #    rotate_pad False
@@ -2690,6 +2772,13 @@ image Kitty_HJ_Animation:
             "Speed", Null(),
             ),  
     contains:
+        ConditionSwitch(                                                # backside of the hand
+            "not Speed", Transform("Kitty_Gloves_Under"), 
+            "Speed == 1", At("Kitty_Gloves_Under", Kitty_Hand_1()),
+            "Speed >= 2", At("Kitty_Gloves_Under", Kitty_Hand_2()),
+            "Speed", Null(),
+            ),  
+    contains:
         ConditionSwitch(                                                # cock
             "not Speed", Transform("Zero_Handcock"), 
             "Speed == 1", At("Zero_Handcock", Handcock_1()),
@@ -2702,6 +2791,13 @@ image Kitty_HJ_Animation:
             "not Speed", Transform("Kitty_Hand_Over"), 
             "Speed == 1", At("Kitty_Hand_Over", Kitty_Hand_1()),
             "Speed >= 2", At("Kitty_Hand_Over", Kitty_Hand_2()), 
+            "Speed", Null(),
+            ),   
+    contains:
+        ConditionSwitch(                                                # fingers of the hand
+            "not Speed", Transform("Kitty_Gloves_Over"), 
+            "Speed == 1", At("Kitty_Gloves_Over", Kitty_Hand_1()),
+            "Speed >= 2", At("Kitty_Gloves_Over", Kitty_Hand_2()), 
             "Speed", Null(),
             ),   
     anchor (0.51, -1.3)
