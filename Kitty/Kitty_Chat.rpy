@@ -3647,6 +3647,16 @@ label Kitty_Clothes:
                     $ K_Shame = K_OutfitShame[2]
                     ch_k "That one[K_like]used to be my favorite too!"
                 "Let's try something else though.":
+                    ch_k "K."   
+
+        "That violet shirt and black and blue pants outfit look really nice on you.":                           #Pink  
+            call KittyOutfit("party outfit") 
+            menu:
+                "You should wear this one out. [[set current outfit]":
+                    $ K_Outfit = "party outfit"
+                    $ K_Shame = K_OutfitShame[2]
+                    ch_k "That one[K_like]used to be my favorite too!"
+                "Let's try something else though.":
                     ch_k "K."            
                     
         "Remember that outfit we put together? [[Set a custom outfit] (locked)" if not K_Custom[0] and not K_Custom2[0] and not K_Custom3[0] and not K_Custom4[0] and not K_Custom5[0] and not K_Custom6[0] and not K_Custom7[0]:
