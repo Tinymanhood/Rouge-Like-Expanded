@@ -1790,7 +1790,7 @@ label Rogue_Offhand(TempLine=0):
             $ TempFocus += 4 if P_Focus < 90 else 0 
         
     elif Trigger2 == "lick pussy":
-            if R_Legs != "pants" and not R_Panties:  
+            if PantsNum("Rogue") != 10 and not R_Panties:  
                 $ Line = renpy.random.choice([". You slide your tongue into her pussy and flick the roof with deft strokes.", 
                     ". You spread the lips back and she gasps as you slide your tongue between them.", 
                     ". You can feel her twitching as you grind your tongue against her clit.",
@@ -1809,7 +1809,7 @@ label Rogue_Offhand(TempLine=0):
             $ TempFocus += 4 if P_Focus < 90 else 0 
             
     elif Trigger2 == "fondle ass":
-            if R_Legs != "pants" and not R_Panties: 
+            if PantsNum("Rogue") != 10 and not R_Panties: 
                 $ Line = renpy.random.choice([". You reach out and brush your hands across her bare ass.", 
                         ". You put your hand against her firm rear and grind against it.", 
                         ". You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 

@@ -2009,7 +2009,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                 
         if R_Panties and R_Panties != "shorts" and "pantyless" in R_DailyActions:       
                 # This checks the pantyless state from flirting 
-                if R_Legs == "pants" or HoseNum("Rogue") >= 10:
+                if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 10:
                     $ R_Shame -= 5    
                 elif R_Legs:
                     $ R_Shame -= 10  

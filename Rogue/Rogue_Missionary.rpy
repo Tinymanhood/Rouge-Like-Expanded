@@ -428,9 +428,9 @@ label R_Missionary_SexPrep:
         elif R_Panties == "zipper panties open":
             "You get ready"    
         else:     
-            if R_Legs == "pants" and R_Panties:
+            if PantsNum("Rogue") == 10 and R_Panties:
                 "You quickly pull down her pants and her [R_Panties] and press against her slit."
-            if R_Panties and R_Legs != "pants":
+            if R_Panties and PantsNum("Rogue") != 10:
                 "You quickly pull down her [R_Panties] and press against her slit."  
         $ R_Upskirt = 1
         $ R_PantiesDown = 1       
@@ -1311,9 +1311,9 @@ label R_Missionary_AnalPrep:
         elif R_Panties == "zipper panties open":
             "You get ready"  
         else: 
-            if R_Legs == "pants" and R_Panties:
+            if PantsNum("Rogue") == 10 and R_Panties:
                 "You quickly pull down her pants and her [R_Panties] and press against her back door."
-            if R_Panties and R_Legs != "pants":
+            if R_Panties and PantsNum("Rogue") != 10:
                 "You quickly pull down her [R_Panties] and press against her back door."  
         $ R_Upskirt = 1
         $ R_PantiesDown = 1       

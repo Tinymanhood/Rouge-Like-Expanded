@@ -967,7 +967,7 @@ label R_Fondle_Thighs:
                                                                                         # Will she let you fondle her thighs? Modifiers
     if R_FondleT: #You've done it before
         $ Tempmod += 10
-    if R_Legs == "pants" or HoseNum("Rogue") >= 5: # she's got pants on.
+    if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: # she's got pants on.
         $ Tempmod -= 5    
     if R_Lust > 75: #She's really horny
         $ Tempmod += 10    
@@ -1344,7 +1344,7 @@ label RFT_After:
     
     $ R_FondleT += 1  
     $ R_Action -=1
-    if R_Legs != "pants" or R_Upskirt:        
+    if PantsNum("Rogue") != 10 or R_Upskirt:        
         $ R_Addictionrate += 1
         if "addictive" in P_Traits:
             $ R_Addictionrate += 1
@@ -1373,7 +1373,7 @@ label R_Fondle_Pussy:
                                                                                         # Will she let you fondle? Modifiers
     if R_FondleP: #You've done it before
         $ Tempmod += 20
-    if R_Legs == "pants" or HoseNum("Rogue") >= 5: # she's got pants on.
+    if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: # she's got pants on.
         $ Tempmod -= 10    
     if R_Lust > 75: #She's really horny
         $ Tempmod += 15
@@ -1783,7 +1783,7 @@ label RFP_After:
     
     $ R_FondleP += 1  
     $ R_Action -=1
-    if R_Legs != "pants" or R_Upskirt:        
+    if PantsNum("Rogue") != 10 or R_Upskirt:        
         $ R_Addictionrate += 1
         if "addictive" in P_Traits:
             $ R_Addictionrate += 1
@@ -1891,7 +1891,7 @@ label R_Lick_Pussy:
                                                                                   # Will she let you fondle? Modifiers     
     if R_LickP: #You've done it before
         $ Tempmod += 15
-    if R_Legs == "pants" or HoseNum("Rogue") >= 5: # she's got pants on.
+    if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: # she's got pants on.
         $ Tempmod -= 15  
     if R_Lust > 95:
         $ Tempmod += 20  
@@ -2071,7 +2071,7 @@ label RLP_Prep: #Animation set-up
         
     if not R_Forced and Situation != "auto":
         $ Tempmod = 0
-        if R_Legs == "pants":
+        if PantsNum("Rogue") == 10:
             $ Tempmod = 15
         call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off_8
         if "angry" in R_RecentActions:
@@ -2229,7 +2229,7 @@ label RLP_Cycle: #Repeating strokes
                                     jump RLP_After
         #End menu (if Line)
         
-        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
+        if R_Panties or PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
                 call R_Undress("auto") from _call_R_Undress_6
             
         call Sex_Dialog("Rogue",Partner) from _call_Sex_Dialog_60
@@ -2298,7 +2298,7 @@ label RLP_After:
     
     $ R_LickP += 1  
     $ R_Action -=1     
-    if R_Legs != "pants" or R_Upskirt:        
+    if PantsNum("Rogue") != 10 or R_Upskirt:        
         $ R_Addictionrate += 1
         if "addictive" in P_Traits:
             $ R_Addictionrate += 1
@@ -2331,7 +2331,7 @@ label R_Fondle_Ass:
                                                                                      # Will she let you fondle? Modifiers
     if R_FondleA: #You've done it before
         $ Tempmod += 10
-    if R_Legs == "pants" or HoseNum("Rogue") >= 5: # she's got pants on.
+    if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: # she's got pants on.
         $ Tempmod -= 5     
     if R_Lust > 75: #She's really horny
         $ Tempmod += 15
@@ -2728,7 +2728,7 @@ label RFA_After:
     
     $ R_FondleA += 1  
     $ R_Action -=1            
-    if R_Legs != "pants" or R_Upskirt:        
+    if PantsNum("Rogue") != 10 or R_Upskirt:        
         $ R_Addictionrate += 1
         if "addictive" in P_Traits:
             $ R_Addictionrate += 1
@@ -2759,7 +2759,7 @@ label R_Insert_Ass:
     call Shift_Focus("Rogue") from _call_Shift_Focus_232
     if R_InsertA: #You've done it before
         $ Tempmod += 25
-    if R_Legs == "pants" or HoseNum("Rogue") >= 5: # she's got pants on.
+    if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: # she's got pants on.
         $ Tempmod -= 15    
     if R_Lust > 85 and R_Loose: #She's really horny
         $ Tempmod += 15
@@ -3096,7 +3096,7 @@ label RIA_Cycle: #Repeating strokes
                                     jump RIA_After
         #End menu (if Line)
         
-        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
+        if R_Panties or PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
                 call R_Undress("auto") from _call_R_Undress_9
             
         call Sex_Dialog("Rogue",Partner) from _call_Sex_Dialog_62
@@ -3199,7 +3199,7 @@ label R_Lick_Ass:
                                                                              # Will she let you lick? Modifiers         
     if R_LickA: #You've done it before
         $ Tempmod += 20
-    if R_Legs == "pants" or HoseNum("Rogue") >= 5: # she's got pants on.
+    if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: # she's got pants on.
         $ Tempmod -= 25 
     if R_Lust > 95:
         $ Tempmod += 20  
@@ -3382,7 +3382,7 @@ label RLA_Prep: #Animation set-up
         return
     if not R_Forced and Situation != "auto":
         $ Tempmod = 0
-        if R_Legs == "pants":
+        if PantsNum("Rogue") == 10:
             $ Tempmod = 15
         call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off_11
         if "angry" in R_RecentActions:
@@ -3548,7 +3548,7 @@ label RLA_Cycle: #Repeating strokes
                                     jump RLA_After
         #End menu (if Line)
         
-        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
+        if R_Panties or PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
                 call R_Undress("auto") from _call_R_Undress_11
             
         call Sex_Dialog("Rogue",Partner) from _call_Sex_Dialog_63
@@ -3617,7 +3617,7 @@ label RLA_After:
     
     $ R_LickA += 1  
     $ R_Action -=1      
-    if R_Legs != "pants" or R_Upskirt:        
+    if PantsNum("Rogue") != 10 or R_Upskirt:        
         $ R_Addictionrate += 1
         if "addictive" in P_Traits:
             $ R_Addictionrate += 1

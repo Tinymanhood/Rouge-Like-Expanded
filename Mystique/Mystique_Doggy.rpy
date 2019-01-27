@@ -1471,7 +1471,7 @@ label Mystique_Plug_Ass:
     elif (newgirl["Mystique"].Anal + newgirl["Mystique"].DildoA + newgirl["Mystique"].Plug) > 0: #You've done it before
         $ Tempmod += 20   
         
-    if newgirl["Mystique"].Legs == "pants:": # she's got pants on.
+    if newgirl["Mystique"].Legs == "pants": # she's got pants on.
         $ Tempmod -= 20   
         
     if newgirl["Mystique"].Lust > 95:

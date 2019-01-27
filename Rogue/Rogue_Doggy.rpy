@@ -49,7 +49,7 @@ label R_Doggy_P:
             if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                 "Rogue turns and backs up against your cock, sliding her skirt up as she does so."
                 $ R_Upskirt = 1
-            elif R_Legs == "pants":
+            elif PantsNum("Rogue") == 10:
                 "Rogue turns and backs up against your cock, sliding her pants off as she does so."                
                 $ R_Legs = 0
             else:
@@ -93,7 +93,7 @@ label R_Doggy_P:
         if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
             "You press up against Rogue's backside, sliding her skirt up as you go."
             $ R_Upskirt = 1
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "You press up against Rogue's backside, sliding her pants down as you do."                
             $ R_Legs = 0
         else:
@@ -346,9 +346,9 @@ label R_SexPrep:
         if R_Panties or R_Legs or HoseNum("Rogue") >= 5: #If she refuses to take off her pants but agreed to sex
             ch_r "Well, I guess some things are necessary, [R_Petname]."
             
-        if R_Legs == "pants" and R_Panties:
+        if PantsNum("Rogue") == 10 and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "She quickly pulls down her pants, exposing her bare ass."
         elif HoseNum("Rogue") >= 5 and R_Panties:
             "She quickly pulls down her [R_Hose] and drops her [R_Panties]."
@@ -383,9 +383,9 @@ label R_SexPrep:
                 "You take careful aim and then ram your cock in."
                             
     else:  #if Situation == "auto"         
-        if R_Legs == "pants" and R_Panties:
+        if PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her slit."
-        if R_Panties and R_Legs != "pants":
+        if R_Panties and PantsNum("Rogue") != 10:
             "You quickly pull down her [R_Panties] and press against her slit."  
         $ R_Upskirt = 1
         $ R_PantiesDown = 1       
@@ -1107,7 +1107,7 @@ label R_Doggy_A:
             if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                 "Rogue turns and backs up against your cock, sliding her skirt up as she does so."
                 $ R_Upskirt = 1
-            elif R_Legs == "pants":
+            elif PantsNum("Rogue") == 10:
                 "Rogue turns and backs up against your cock, sliding her pants off as she does so."                
                 $ R_Legs = 0
             else:
@@ -1154,7 +1154,7 @@ label R_Doggy_A:
         if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
             "You press up against Rogue's backside, sliding her skirt up as you go."
             $ R_Upskirt = 1
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "You press up against Rogue's backside, sliding her pants down as you do."                
             $ R_Legs = 0
         else:
@@ -1463,7 +1463,7 @@ label R_Plug_Ass:
     elif (R_Anal + R_DildoA + R_Plug) > 0: #You've done it before
         $ Tempmod += 20   
         
-    if R_Legs == "pants:": # she's got pants on.
+    if PantsNum("Rogue") == 10: # she's got pants on.
         $ Tempmod -= 20   
         
     if R_Lust > 95:
@@ -1499,7 +1499,7 @@ label R_Plug_Ass:
                 if R_Legs == "skirt":
                     "Rogue grabs her plug, hiking up her skirt as she does."
                     $ R_Upskirt = 1
-                elif R_Legs == "pants":
+                elif PantsNum("Rogue") == 10:
                     "Rogue grabs her plug, pulling down her pants as she does."              
                     $ R_Legs = 0
                 else:
@@ -1805,9 +1805,9 @@ label RPA_Prep:
         if R_Panties or R_Legs or HoseNum("Rogue") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_r "Well, I guess some things are necessary, [R_Petname]."
             
-        if R_Legs == "pants" and R_Panties:
+        if PantsNum("Rogue") == 10 and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "She quickly pulls down her pants, exposing her bare ass."
         elif HoseNum("Rogue") >= 5 and R_Panties:
             "She quickly pulls down her [R_Hose] and drops her [R_Panties]."
@@ -1843,9 +1843,9 @@ label RPA_Prep:
                 #"You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"       
-        if R_Legs == "pants" and R_Panties:
+        if PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press the plug against her ass."
-        if R_Panties and R_Legs != "pants":
+        if R_Panties and PantsNum("Rogue") != 10:
             "You quickly pull down her [R_Panties] and press the plug against her ass."  
         $ R_Upskirt = 1
         $ R_PantiesDown = 1       
@@ -2128,9 +2128,9 @@ label R_AnalPrep:
         if R_Panties or R_Legs or HoseNum("Rogue") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_r "Well, I guess some things are necessary, [R_Petname]."
             
-        if R_Legs == "pants" and R_Panties:
+        if PantsNum("Rogue") == 10 and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "She quickly pulls down her pants, exposing her bare ass."
         elif HoseNum("Rogue") >= 5 and R_Panties:
             "She quickly pulls down her [R_Hose] and drops her [R_Panties]."
@@ -2171,9 +2171,9 @@ label R_AnalPrep:
                 "You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"       
-        if R_Legs == "pants" and R_Panties:
+        if PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her ass."
-        if R_Panties and R_Legs != "pants":
+        if R_Panties and PantsNum("Rogue") != 10:
             "You quickly pull down her [R_Panties] and press against her ass."  
         $ R_Upskirt = 1
         $ R_PantiesDown = 1       

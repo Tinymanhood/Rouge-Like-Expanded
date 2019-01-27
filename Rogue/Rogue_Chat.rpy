@@ -109,7 +109,7 @@ label Rogue_Chat:
                                 pause .1
                             $ R_Upskirt = 0
                             pause
-                        elif R_Legs == "pants":
+                        elif PantsNum("Rogue") == 10:
                             #$ Temp_R_Legs = R_Legs            
                             $ R_Upskirt = 1
                             #$ R_Legs = 0
@@ -2569,7 +2569,7 @@ label Rogue_AskPanties(Store = 0):
             $ Tempmod -= 20
         
         $ Line = 0
-        if R_Legs == "pants" or HoseNum("Rogue") >= 10: 
+        if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 10: 
             if ApprovalCheck("Rogue", 1000, "OI", TabM = 5) or "exhibitionist" in R_Traits:   
                 $ Line = "here"
             elif ApprovalCheck("Rogue", 900, TabM = 5):
@@ -2662,7 +2662,7 @@ label Rogue_AskPanties(Store = 0):
                                 
                     if Line:                                            #She agreed to stay  
                                 call RogueFace("sly", 1) from _call_RogueFace_647 
-                                if R_Legs == "pants" or HoseNum("Rogue") >= 10:   
+                                if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 10:   
                                         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5)         
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 5)            
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 5)   
@@ -2745,7 +2745,7 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 $ Store = R_Legs
                 $ Store2 = R_Hose
                 
-                if R_Legs == "pants":    
+                if PantsNum("Rogue") == 10:    
                     $ R_Legs = 0        
                 if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"): 
                     $ R_Upskirt = 1
@@ -2778,7 +2778,7 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                         
                 $ R_Legs = Store  
                 $ R_Hose = Store2      
-                if R_Legs == "pants":
+                if PantsNum("Rogue") == 10:
                     "She hands you the panties and then pulls her pants back on."
                 elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and HoseNum("Rogue") >= 5:
                     "She hands you the panties and then pulls her [R_Hose] back on and her skirt back down."  
@@ -5848,6 +5848,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             else: #If she's missing something on her legs   
                         if R_Legs == "pants":                   #If wearing pants commando
                             $ Count = 25
+                        elif R_Legs == "leather pants":                   #If wearing pants commando
+                            $ Count = 25
                         elif R_Legs == "skirt":                 #If wearing a skirt commando
                             $ Count = 20
                         elif R_Legs == "skirtshort":            #If wearing a short skirt commando
@@ -5893,7 +5895,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif Custom == 9:
                 pass
             elif Count >= 20:
-                        if R_Legs == "pants":
+                        if PantsNum("Rogue") == 10:
                             ch_r "Oh, I think these pants will work fine."
                         elif R_Legs:
                             ch_r "Oh, I think this skirt will work fine."
