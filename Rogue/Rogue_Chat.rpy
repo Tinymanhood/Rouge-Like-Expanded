@@ -87,28 +87,58 @@ label Rogue_Chat:
                         ch_r "Ok [R_Petname]."
                         call Rogue_Doggy_Launch("plug") from _call_Rogue_Doggy_Launch_2
                         "Rogue points her ass towards you."
-                        if R_Legs == "skirt" or R_Legs == "SR7 skirtshort" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort":
+                        if R_Legs == "skirt" or R_Legs == "SR7 skirtshort" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort" or R_Over == "blue dress" or R_Over == "red dress":
                             $ R_Upskirt = 1
-                            "Lifts up her skirt."
-                            pause .1
-                            if R_Hose == "tights":
-                                $ Temp_R_Hose = R_Hose            
-                                $ R_Hose = 0
-                                "And pulls down her tights"
+                            if R_Over == "blue dress" or R_Over == "red dress":
+                                "Lifts up her dress."
                                 pause .1
-                            if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
-                                $ R_PantiesDown = 1
-                                "And pulls down her [R_Panties]"
+                                if R_Legs == "pants":
+                                    #$ Temp_R_Legs = R_Legs            
+                                    $ R_Upskirt = 1
+                                    #$ R_Legs = 0
+                                    "Rogue pulls down her pants."  
+                                    pause .1
+                                    if R_Hose == "tights":
+                                        $ Temp_R_Hose = R_Hose            
+                                        $ R_Hose = 0
+                                        "And pulls down her tights"
+                                        pause .1
+                                    if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
+                                        $ R_PantiesDown = 1
+                                        "And pulls down her [R_Panties]"
+                                        pause .1
+                                    ch_r "There, you happy?"
+                                    pause .1
+                                    call Rogue_Show_Plug
+                                    $ R_PantiesDown = 0
+                                    pause .1
+                                    if Temp_R_Hose:
+                                        $ R_Hose = Temp_R_Hose
+                                        pause .1
+                                    #$ R_Legs = Temp_R_Legs
+                                    $ R_Upskirt = 0
+                                    pause
+                            else:
+                                "Lifts up her skirt."
                                 pause .1
-                            ch_r "There, you happy?"
-                            call Rogue_Show_Plug from _call_Rogue_Show_Plug
-                            $ R_PantiesDown = 0
-                            pause .1
-                            if Temp_R_Hose:
-                                $ R_Hose = Temp_R_Hose
+                                if R_Hose == "tights":
+                                    $ Temp_R_Hose = R_Hose            
+                                    $ R_Hose = 0
+                                    "And pulls down her tights"
+                                    pause .1
+                                if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
+                                    $ R_PantiesDown = 1
+                                    "And pulls down her [R_Panties]"
+                                    pause .1
+                                ch_r "There, you happy?"
+                                call Rogue_Show_Plug from _call_Rogue_Show_Plug
+                                $ R_PantiesDown = 0
                                 pause .1
-                            $ R_Upskirt = 0
-                            pause
+                                if Temp_R_Hose:
+                                    $ R_Hose = Temp_R_Hose
+                                    pause .1
+                                $ R_Upskirt = 0
+                                pause
                         elif R_Legs == "pants":
                             #$ Temp_R_Legs = R_Legs            
                             $ R_Upskirt = 1
@@ -1708,7 +1738,7 @@ label Rogue_Chitchat(O=0, Options = ["default","default","default"]):
         ch_r "Can't wait for the next big party."
         ch_r "I love to dance, and I've got the best partner to grind with-"
         call Rogue_Doggy_Launch("massage") from _call_Rogue_Doggy_Launch_3
-        if R_Legs == "skirt" or R_Legs == "cheerleader skirt":
+        if R_Legs == "skirt" or R_Legs == "cheerleader skirt" or R_Over == "blue dress" or R_Over == "red dress":
             $ R_Upskirt = 1
             if R_Panties and R_SeenPanties and ApprovalCheck("Rogue", 800, TabM = 3):
                 pass
@@ -2117,7 +2147,7 @@ label Rogue_Flirt:
                         ch_r "Ow! Lay off."  
                         #End pinch her ass
                     
-        "Flip her skirt up" if (R_Legs == "skirt" or R_Legs == "skirtshort" or R_Legs == "SR7 skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort") and not R_Upskirt:   #Flip her skirt           
+        "Flip her skirt up" if (R_Legs == "skirt" or R_Legs == "skirtshort" or R_Legs == "SR7 skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort" or R_Over == "blue dress" or R_Over == "red dress") and not R_Upskirt:   #Flip her skirt           
                     call RogueFace("surprised", 1) from _call_RogueFace_578
                     $ R_Upskirt = 1
                     pause 0.5            
@@ -2246,7 +2276,7 @@ label Rogue_Flirt:
                     if "exhibitionist" in R_Traits:
                         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 4) 
                     #End Flip her Skirt
-        "Pull her panties down" if (R_Legs == "skirt" or R_Legs == "SR7 skirtshort" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort" or not R_Legs) and R_Panties and R_Panties != "swimsuit1" and R_Panties != "swimsuit2" and not R_PantiesDown and not R_Upskirt and not R_Hose:            
+        "Pull her panties down" if (R_Legs == "skirt" or R_Legs == "SR7 skirtshort" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort" or R_Over == "blue dress" or R_Over == "red dress" or not R_Legs) and R_Panties and R_Panties != "swimsuit1" and R_Panties != "swimsuit2" and not R_PantiesDown and not R_Upskirt and not R_Hose:            
                     call RogueFace("surprised", 1) from _call_RogueFace_599
                     $ R_Upskirt = 1
                     $ R_PantiesDown = 1
@@ -2747,7 +2777,7 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 
                 if R_Legs == "pants":    
                     $ R_Legs = 0        
-                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"): 
+                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt" or R_Over == "blue dress" or R_Over == "red dress"): 
                     $ R_Upskirt = 1
                 if HoseNum("Rogue") >= 5:
                     $ R_Hose = 0        
@@ -2780,6 +2810,12 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 $ R_Hose = Store2      
                 if R_Legs == "pants":
                     "She hands you the panties and then pulls her pants back on."
+                elif (R_Over == "blue dress" or R_Over == "red dress") and HoseNum("Rogue") >= 5:
+                    "She hands you the panties and then pulls her [R_Hose] back on and her dress back down."  
+                    $ R_Upskirt = 0
+                elif R_Over == "blue dress" or R_Over == "red dress":
+                    "She hands you the panties and then pulls her dress back down."  
+                    $ R_Upskirt = 0
                 elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and HoseNum("Rogue") >= 5:
                     "She hands you the panties and then pulls her [R_Hose] back on and her skirt back down."  
                     $ R_Upskirt = 0
@@ -4291,7 +4327,27 @@ label Rogue_Clothes:
                                 $ R_Shame = R_OutfitShame[2]
                                 ch_r "Sure, [R_Petname], that one's nice."
                             "Let's try something else though.":
-                                ch_r "Ok."            
+                                ch_r "Ok." 
+
+        "Put on that red dress":                  
+            call RogueOutfit("red dress")
+            menu:
+                "You should wear this one out. [[set current outfit]":
+                    $ R_Outfit = "red dress"
+                    $ R_Shame = R_OutfitShame[2]
+                    ch_r "This is so classy!"
+                "Let's try something else though.":
+                    ch_r "Ok." 
+
+        "Put on that blue dress":                  
+            call RogueOutfit("blue dress")
+            menu:
+                "You should wear this one out. [[set current outfit]":
+                    $ R_Outfit = "blue dress"
+                    $ R_Shame = R_OutfitShame[2]
+                    ch_r "This is so classy!"
+                "Let's try something else though.":
+                    ch_r "Ok."             
                     
         "Remember that outfit we put together? [[Set a custom outfit] (locked)" if not R_Custom[0] and not R_Custom2[0] and not R_Custom3[0] and not R_Custom4[0] and not R_Custom5[0] and not R_Custom6[0] and not R_Custom7[0]:
                         pass       
@@ -4567,7 +4623,27 @@ label Rogue_Clothes:
             else:
                 ch_r "That don't leave much to the imagination. . ."
                 jump Rogue_Clothes   
-            $ R_Over = "towel"  
+            $ R_Over = "towel"
+
+        "How about that red dress?" if R_Over != "red dress":
+            if R_Legs:
+                ch_r "I can't really wear that with my [R_Legs] on."
+            elif ApprovalCheck("Rogue", 1000):
+                ch_r "Sure. . ."
+                $ R_Over = "red dress"   
+
+            else:
+                ch_r "That's a bit . . . revealing."   
+
+        "How about that blue dress?" if R_Over != "blue dress":
+            if R_Legs:
+                ch_r "I can't really wear that with my [R_Legs] on."
+            elif ApprovalCheck("Rogue", 1000):
+                ch_r "Sure. . ."
+                $ R_Over = "blue dress"   
+
+            else:
+                ch_r "That's a bit . . . revealing."    
             
         "How about that green nighty I got you?" if R_Over != "nighty" and "nighty" in R_Inventory:
                         if R_Legs:
@@ -5234,6 +5310,11 @@ label Rogue_Clothes:
         "You could lose those glasses." if R_Glasses:
                         $ R_Glasses = 0
 
+        "Wear those boots." if not R_Boots:
+                        $ R_Boots = "boots"
+        "You could lose those boots." if R_Boots:
+                        $ R_Boots = 0
+
         "Dye your hair.":
             if ApprovalCheck("Rogue", 800):
                 ch_r "Which color?"
@@ -5800,7 +5881,11 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif R_Over == "yellow mesh top":      
                 $ Count += 5
             elif R_Over == "black mesh top":      
-                $ Count += 5                   
+                $ Count += 5      
+            elif R_Over == "red dress":      
+                $ Count += 40  
+            elif R_Over == "blue dress":      
+                $ Count += 40             
             elif R_Over == "towel":      
                 $ Count += 10
             #else: nothing    
@@ -5832,13 +5917,17 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             $ Tempshame -= Count                  #Set Outfit shame for the upper half    
             $ Count = 0         
             
-            if R_Legs and R_Panties: #If wearing both legs and panties   
+            if (R_Legs or R_Over == "red dress" or R_Over == "blue dress") and R_Panties: #If wearing both legs and panties   
                         $ Count = 30        
             else: #If she's missing something on her legs   
                         if R_Legs == "pants":                   #If wearing pants commando
                             $ Count = 25
                         elif R_Legs == "skirt":                 #If wearing a skirt commando
                             $ Count = 20
+                        elif R_Over == "blue dress":      
+                            $ Count = 20  
+                        elif R_Over == "red dress":      
+                            $ Count = 20  
                         elif R_Legs == "skirtshort":            #If wearing a short skirt commando
                              $ Count = 0
                         elif R_Legs == "SR7 skirtshort":            #If wearing a short skirt commando
@@ -5846,7 +5935,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif R_Legs == "cheerleader skirt":                 #If wearing a cheerleader skirt commando
                             $ Count = 20
                         elif R_Legs == "cheerleader skirtshort":            #If wearing a short cheerleader skirt commando
-                            $ Count = 0       
+                            $ Count = 0   
+                                   
                         elif R_Panties == "shorts":             #If wearing shorts
                             $ Count = 25
                         elif R_Panties == "red shorts":             #If wearing shorts
@@ -5964,6 +6054,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom2[4] = R_Neck
                         $ R_Custom2[5] = R_Chest 
                         $ R_Custom2[6] = R_Panties
+                        $ R_Custom2[7] = R_Boots
                         $ R_Custom2[8] = R_Hair
                         $ R_Custom2[9] = R_Hose
                         $ R_Custom2[0] = 2 if Agree else 1        
@@ -5974,6 +6065,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom3[4] = R_Neck
                         $ R_Custom3[5] = R_Chest 
                         $ R_Custom3[6] = R_Panties
+                        $ R_Custom3[7] = R_Boots
                         $ R_Custom3[8] = R_Hair
                         $ R_Custom3[9] = R_Hose
                         $ R_Custom3[0] = 2 if Agree else 1
@@ -5984,6 +6076,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Gym[4] = R_Neck
                         $ R_Gym[5] = R_Chest 
                         $ R_Gym[6] = R_Panties
+                        $ R_Gym[7] = R_Boots
                         $ R_Gym[8] = R_Hair
                         $ R_Gym[9] = R_Hose
                         $ R_Gym[0] = 2     
@@ -5994,6 +6087,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Sleepwear[4] = R_Neck 
                         $ R_Sleepwear[5] = R_Chest 
                         $ R_Sleepwear[6] = R_Panties
+                        $ R_Sleepwear[7] = R_Boots
                         $ R_Sleepwear[8] = R_Hair
                         $ R_Sleepwear[9] = R_Hose
                         $ R_Sleepwear[0] = 2 if Agree else 1   
@@ -6004,6 +6098,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom[4] = R_Neck
                         $ R_Custom[5] = R_Chest 
                         $ R_Custom[6] = R_Panties
+                        $ R_Custom[7] = R_Boots
                         $ R_Custom[8] = R_Hair
                         $ R_Custom[9] = R_Hose
                         $ R_Custom[0] = 2 if Agree else 1
@@ -6014,6 +6109,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom5[4] = R_Neck
                         $ R_Custom5[5] = R_Chest 
                         $ R_Custom5[6] = R_Panties
+                        $ R_Custom5[7] = R_Boots
                         $ R_Custom5[8] = R_Hair
                         $ R_Custom5[9] = R_Hose
                         $ R_Custom5[0] = 2 if Agree else 1
@@ -6024,6 +6120,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom6[4] = R_Neck
                         $ R_Custom6[5] = R_Chest 
                         $ R_Custom6[6] = R_Panties
+                        $ R_Custom6[7] = R_Boots
                         $ R_Custom6[8] = R_Hair
                         $ R_Custom6[9] = R_Hose
                         $ R_Custom6[0] = 2 if Agree else 1
@@ -6034,6 +6131,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom7[4] = R_Neck
                         $ R_Custom7[5] = R_Chest 
                         $ R_Custom7[6] = R_Panties
+                        $ R_Custom7[7] = R_Boots
                         $ R_Custom7[8] = R_Hair
                         $ R_Custom7[9] = R_Hose
                         $ R_Custom7[0] = 2 if Agree else 1
@@ -6044,6 +6142,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom4[4] = R_Neck
                         $ R_Custom4[5] = R_Chest 
                         $ R_Custom4[6] = R_Panties
+                        $ R_Custom4[7] = R_Boots
                         $ R_Custom4[8] = R_Hair
                         $ R_Custom4[9] = R_Hose
                         $ R_Custom4[0] = 2 if Agree else 1

@@ -10,4 +10,4 @@ saves/persistent
 *.db
 *.jpg
 *.zip
-UnRen.bat
+*.bat

@@ -1227,9 +1227,13 @@ label R_Masturbate: #(Situation = Situation):
     
     if Situation == "Rogue":                                                                  #Rogue auto-starts   
                 if Approval > 2:                                                      # fix, add rogue auto stuff here
-                        if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
-                            "Rogue's hand snakes down her body, and hikes up her skirt."
-                            $ R_Upskirt = 1
+                        if (R_Legs == "skirt" or R_Legs == "cheerleader skirt" or R_Over == "red dress" or R_Over == "blue dress"):
+                            if R_Over == "red dress" or R_Over == "blue dress":
+                                "Rogue's hand snakes down her body, and hikes up her dress."
+                                $ R_Upskirt = 1
+                            else:
+                                "Rogue's hand snakes down her body, and hikes up her skirt."
+                                $ R_Upskirt = 1
                         elif R_Legs == "pants":
                             "Rogue slides her hand down her body and into her jeans."  
                         elif HoseNum("Rogue") >= 5:

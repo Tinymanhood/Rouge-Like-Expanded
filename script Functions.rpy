@@ -4987,6 +4987,7 @@ label Failsafe:
     $ E_HairColor = 0 if "E_HairColor" not in globals().keys() else E_HairColor
     $ R_Gag = 0 if "R_Gag" not in globals().keys() else R_Gag
     $ R_Gagx = 0 if "R_Gagx" not in globals().keys() else R_Gagx
+    $ R_Boots = 0 if "R_Boots" not in globals().keys() else R_Boots
     $ R_Glasses = 0 if "R_Glasses" not in globals().keys() else R_Glasses
     $ R_Blush = 0 if "R_Blush" not in globals().keys() else R_Blush
     $ R_Spunk = [] if "R_Spunk" not in globals().keys() else R_Spunk

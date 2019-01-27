@@ -2095,7 +2095,7 @@ label RLP_Prep: #Animation set-up
         $ renpy.pop_call() 
         $ Situation = 0  
         
-    if R_Legs == "skirt":
+    if R_Legs == "skirt" or R_Over == "red dress" or R_Over == "blue dress":
         $ R_Upskirt = 1  
         $ R_SeenPanties = 1
     if not R_Panties:
@@ -3406,7 +3406,7 @@ label RLA_Prep: #Animation set-up
         $ Situation = 0  
     
     $ R_Upskirt = 1
-    if R_Legs == "skirt":
+    if R_Legs == "skirt" or ((R_Over == "red dress" or R_Over == "blue dress") and not R_Legs):
         $ R_SeenPanties = 1
     if not R_Panties:
         call Rogue_First_Bottomless(1) from _call_Rogue_First_Bottomless_23
