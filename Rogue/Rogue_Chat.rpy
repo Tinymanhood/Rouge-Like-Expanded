@@ -5231,8 +5231,19 @@ label Rogue_Clothes:
 
         "I like those glasses." if not R_Glasses:
                         $ R_Glasses = "glasses"
+        
+        "I like those sunglasses." if not R_Glasses:
+                        $ R_Glasses = "sunglasses"
+        
         "You could lose those glasses." if R_Glasses:
                         $ R_Glasses = 0
+
+        "Change your haistyle":
+            if R_Hair == "evo":
+                $ R_Hair = "newhair"
+                $ R_Tan = 0
+            else:
+                $ R_Hair = "evo"
 
         "Dye your hair.":
             if ApprovalCheck("Rogue", 800):
