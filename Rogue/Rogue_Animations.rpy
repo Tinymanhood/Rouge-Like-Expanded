@@ -16,6 +16,7 @@ image Rogue:
             "R_Over == 'black mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_blackmesh1.png",
             "R_Over == 'black mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_blackmesh2.png",  
             "R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty1.png",
+            "R_Over == 'jacket'", "images/RogueSprite/Rogue_JacketB.png",
             "R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodieB.png",
             "R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodieB.png",
             "R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodieB.png",
@@ -83,7 +84,7 @@ image Rogue:
         (0,0), ConditionSwitch(                                                                         #Panties            
             "not R_Panties", Null(),
             "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", Null(),
-            "R_Legs == 'pants' and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
+            "PantsNum('Rogue') == 10 and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
             "R_Panties == 'shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_shorts_down_wet.png",
             "R_Panties == 'red shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_ryshorts_down_wet.png",
             "R_Panties == 'blue shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_byshorts_down_wet.png",
@@ -150,6 +151,7 @@ image Rogue:
             ),   
         (0,0), ConditionSwitch(                                                                         #chest clothes layer
             "R_Chest == 'tank'", "images/RogueSprite/Rogue_chest_tank.png",
+            "R_Chest == 'green top'", "images/RogueSprite/Rogue_GrnTop.png",
             "R_Chest == 'SR7 tank short'", "images/RogueSprite/Rogue_chest_tankshort_SR7.png",
             "R_Chest == 'tank short'", "images/RogueSprite/Rogue_chest_tankshort.png",
             "R_Chest == 'slut tank short'", "images/RogueSprite/Rogue_chest_tankshort_slut.png",
@@ -242,6 +244,8 @@ image Rogue:
             ),                                                                           #Eyes
             
         (0,0), ConditionSwitch(                                                                         #Pants and Skirts
+            "R_Legs == 'leather pants' and R_Upskirt", "images/RogueSprite/Rogue_LeatherPants_Down.png", 
+            "R_Legs == 'leather pants'", "images/RogueSprite/Rogue_LeatherPants.png", 
             "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_down.png", 
             "R_Legs == 'pants'", "images/RogueSprite/Rogue_legs_pants.png",          
             "R_Legs == 'skirt' and R_Upskirt", "images/RogueSprite/Rogue_legs_skirt_up.png",
@@ -291,6 +295,7 @@ image Rogue:
             "Rogue_Arms == 1 and R_Over == 'red top'", "images/RogueSprite/Rogue_over_red1.png",
             "Rogue_Arms == 1 and R_Over == 'towel'", "images/RogueSprite/Rogue_over_towel1.png",
             "Rogue_Arms == 1 and R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty1.png",
+            "Rogue_Arms == 1 and R_Over == 'jacket'", "images/RogueSprite/Rogue_Jacket1.png",
             "Rogue_Arms == 1 and R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie1.png",
             "Rogue_Arms == 1 and R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie1.png",
             "Rogue_Arms == 1 and R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie1.png",
@@ -306,6 +311,7 @@ image Rogue:
             "R_Over == 'black mesh top'", "images/RogueSprite/Rogue_over_blackmesh2.png", 
             "R_Over == 'pink top'", "images/RogueSprite/Rogue_over_pink2.png",
             "R_Over == 'red top'", "images/RogueSprite/Rogue_over_red2.png",
+            "R_Over == 'jacket'", "images/RogueSprite/Rogue_Jacket2.png",
             "R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie2.png",
             "R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie2.png",
             "R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie2.png",
@@ -919,6 +925,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "not R_Chest", Null(), 
             "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",  
             "R_Chest == 'tank'", "images/RogueDoggy/Rogue_Doggy_Chest_Tank.png",
+            "R_Chest == 'green top'", "images/RogueDoggy/Rogue_Doggy_GrnTop.png",
             "R_Chest == 'SR7 tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort_SR7.png",
             "R_Chest == 'tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
             "R_Chest == 'slut tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
@@ -948,6 +955,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_Over == 'black mesh top'", "images/RogueDoggy/Rogue_Doggy_Over_BlackMesh.png",           
             "R_Over == 'pink top'", "images/RogueDoggy/Rogue_Doggy_Over_Pink.png",
             "R_Over == 'red top'", "images/RogueDoggy/Rogue_Doggy_Over_Red.png",             
+            "R_Over == 'jacket'", "images/RogueDoggy/Rogue_Doggy_Jacket.png",
             "R_Over == 'hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_Hoodie.png",
             "R_Over == 'blue hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_BHoodie.png",
             "R_Over == 'red hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_RHoodie.png",
@@ -995,7 +1003,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
 image Rogue_Doggy_Ass = LiveComposite(                                                                                          #Lower body
         (420,750), #(210,375), #(419,750), 
         (0,0), ConditionSwitch(                                                                                 #Panties back
-            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt)", Null(),  
+            "not R_PantiesDown or (PantsNum('Rogue') == 10 and not R_Upskirt)", Null(),  
             "R_Panties == 'shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
             "R_Panties == 'red shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
             "R_Panties == 'blue shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",    
@@ -1020,7 +1028,7 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "True", Null(),
             ),             
         (0,0), ConditionSwitch(                                                                                 #Panties if Down
-            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt)", Null(),
+            "not R_PantiesDown or (PantsNum('Rogue') == 10 and not R_Upskirt)", Null(),
             "R_Panties == 'shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_Shorts_Down_Wet.png",
             "R_Panties == 'red shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_RYShorts_Down_Wet.png",
             "R_Panties == 'blue shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_BYShorts_Down_Wet.png", #fix turn this on when graphics fixed
@@ -1052,9 +1060,9 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
         (0,0), ConditionSwitch(                                                                                 #pubes              
             "not R_Pubes", Null(),         
             "P_Sprite and P_Cock == 'in'", Null(),
-            "R_Legs == 'pants' and not R_Upskirt and (R_HairColor == 'black' or R_HairColor == 'blackwhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlack_Panties.png",   
-            "R_Legs == 'pants' and not R_Upskirt and (R_HairColor == 'blonde' or R_HairColor == 'blondewhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlonde_Panties.png",   
-            "R_Legs == 'pants' and not R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Pubes_Panties.png",   
+            "PantsNum('Rogue') == 10 and not R_Upskirt and (R_HairColor == 'black' or R_HairColor == 'blackwhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlack_Panties.png",   
+            "PantsNum('Rogue') == 10 and not R_Upskirt and (R_HairColor == 'blonde' or R_HairColor == 'blondewhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlonde_Panties.png",   
+            "PantsNum('Rogue') == 10 and not R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Pubes_Panties.png",   
             "R_PantiesDown and (R_HairColor == 'black' or R_HairColor == 'blackwhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlack.png",  
             "R_PantiesDown and (R_HairColor == 'blonde' or R_HairColor == 'blondewhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlonde.png",  
             "R_PantiesDown", "images/RogueDoggy/Rogue_Doggy_Pubes.png",  
@@ -1143,6 +1151,9 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "R_Legs == 'pants' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Down.png",            
             "R_Legs == 'pants' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Wet.png",
             "R_Legs == 'pants'", "images/RogueDoggy/Rogue_Doggy_Legs_Pants.png",
+            "R_Legs == 'leather pants' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_LeatherPants_Down.png",            
+            "R_Legs == 'leather pants' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_LeatherPants.png",
+            "R_Legs == 'leather pants'", "images/RogueDoggy/Rogue_Doggy_LeatherPants.png",
             "R_Legs == 'skirt' and R_Upskirt and P_Sprite and P_Cock == 'anal' and Speed" , "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_UpAnal.png",   
             "R_Legs == 'skirt' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_Up.png",   
             "R_Legs == 'skirt'", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt.png", 
