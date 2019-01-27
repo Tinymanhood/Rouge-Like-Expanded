@@ -4,6 +4,7 @@ label Prologue:
     $ Day = 1
     $ Time_Count = 2
     $ bg_current = "bg study"    
+    call Set_The_Scene(0)
     scene setting onlayer backdrop 
     "You recently discovered that you were a mutant when a Sentinel attacked your home.\nYou were rescued by a squad of X-Men and given this address."
     "You've arrived in the early evening at the Xavier Institute, where you've been promised a new home."
