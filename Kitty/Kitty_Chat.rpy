@@ -3900,7 +3900,7 @@ label Kitty_Clothes:
                 $ K_Over = "black dress"   
 
             else:
-                ch_r "That's a bit . . . revealing."  
+                ch_k "That's a bit . . . revealing."  
                             
         "Never mind":
             pass

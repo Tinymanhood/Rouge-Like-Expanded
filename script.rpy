@@ -1749,6 +1749,38 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Hose = 0
                     $ R_Shame = 0
 
+        elif R_OutfitTemp == "red dress":
+                    if not R_Over:
+                            $ Undressed = 1
+                    elif R_Panties == 0 and "pantyless" not in R_DailyActions:                        
+                            $ Undressed = 1   
+                    
+                    $ R_Neck = 0
+                    $ R_Arms = 0
+                    $ R_Legs = 0
+                    $ R_Over = "red dress"
+                    $ R_Chest = 0
+                    $ R_Neck = 0
+                    $ R_Panties = "black panties"      
+                    $ R_Hose = 0 
+                    $ R_Shame = 0
+
+        elif R_OutfitTemp == "blue dress":
+                    if not R_Over:
+                            $ Undressed = 1
+                    elif R_Panties == 0 and "pantyless" not in R_DailyActions:                        
+                            $ Undressed = 1   
+                    
+                    $ R_Neck = 0
+                    $ R_Arms = 0
+                    $ R_Legs = 0
+                    $ R_Over = "blue dress"
+                    $ R_Chest = 0
+                    $ R_Neck = 0
+                    $ R_Panties = "black panties"      
+                    $ R_Hose = 0 
+                    $ R_Shame = 0
+
         elif R_OutfitTemp == "swimsuit1":
                     #if 0 in (R_Legs,R_Over,R_Chest):
                     #        $ Undressed = 1

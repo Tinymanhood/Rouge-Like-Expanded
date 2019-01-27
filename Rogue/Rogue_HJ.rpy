@@ -1864,7 +1864,13 @@ label R_Dildo_Pussy:
     
     if Situation == "Rogue":                                                                  #Rogue auto-starts   
                 if Approval > 2:                                                      # fix, add rogue auto stuff here
-                    if R_Legs == "skirt":
+                    if R_Over == "red dress" or R_Over == "blue dress":
+                        "Rogue grabs her dildo, hiking up her dress as she does"
+                        $ R_Upskirt = 1
+                        if R_Legs == "pants":
+                            "Rogue grabs her dildo, pulling down her pants as she does."              
+                            $ R_Legs = 0
+                    elif R_Legs == "skirt":
                         "Rogue grabs her dildo, hiking up her skirt as she does."
                         $ R_Upskirt = 1
                     elif R_Legs == "pants":
@@ -2438,7 +2444,13 @@ label R_Dildo_Ass:
     if Situation == "Rogue":                                                                  
             #Rogue auto-starts   
             if Approval > 2:                                                      # fix, add rogue auto stuff here
-                if R_Legs == "skirt":
+                if R_Over == "red dress" or R_Over == "blue dress":
+                    "Rogue grabs her dildo, hiking up her dress as she does"
+                    $ R_Upskirt = 1
+                    if R_Legs == "pants":
+                        "Rogue grabs her dildo, pulling down her pants as she does."              
+                        $ R_Legs = 0
+                elif R_Legs == "skirt":
                     "Rogue grabs her dildo, hiking up her skirt as she does."
                     $ R_Upskirt = 1
                 elif R_Legs == "pants":

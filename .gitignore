@@ -8,3 +8,6 @@ saves/persistent
 *.mp3
 *.wav
 *.db
+*.jpg
+*.zip
+*.bat

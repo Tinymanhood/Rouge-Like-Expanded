@@ -766,11 +766,12 @@ label Rogue_Caught_Changing:
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 1)
             call RogueFace("sexy") from _call_RogueFace_87                
             if ApprovalCheck("Rogue", 750) and R_SeenPussy and R_SeenChest:
-                    ch_r "You could have just asked, [R_Petname]."                
-                    $ R_Over = 0
+                    ch_r "You could have just asked, [R_Petname]."  
+                    if R_Over != "blue dress" and R_Over != "red dress":
+                        $ R_Over = 0
                     $ R_Upskirt = 1
                     pause 1     
-                    call RogueOutfit from _call_RogueOutfit_13
+                    call RogueOutfit
                     $ R_Upskirt = 0
                     "She flashes you real quick."  
             else:

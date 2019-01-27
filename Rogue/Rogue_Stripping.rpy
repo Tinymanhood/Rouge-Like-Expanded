@@ -1005,13 +1005,16 @@ label Rogue_Bottoms_Off(Intro = 1, Line = 0, Cnt = 0):
         $ Cnt = 0
         
         if not R_Upskirt:                     
-            if R_Legs == "skirt":                                          #If she's in a skirt with panties, hike it up?
+            if R_Legs == "skirt" or R_Over == "red dress" or R_Over == "blue dress":                                          #If she's in a skirt with panties, hike it up?
                 if Approval >= 2 or (R_SeenPussy and not Taboo):
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 1)
                     if Taboo:
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, (int(Taboo/20)))                 
                     $ R_Upskirt = 1
-                    "She slides her skirt up."
+                    if R_Over == "red dress" or R_Over == "blue dress":
+                        "She slides her dress up"
+                    else:
+                        "She slides her skirt up."
                     $ Cnt = 1 
                     
             if R_Legs == "pants" or HoseNum("Rogue") >= 5:            
