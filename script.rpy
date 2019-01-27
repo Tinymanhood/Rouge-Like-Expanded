@@ -297,6 +297,7 @@ init -1:
     default R_Hair = "evo"
     default R_Gag = 0    
     default R_Gagx = 0   
+    default R_Boots = 0    
     default R_Bondage = 0  
     default R_Glasses = 0    
     default R_Blush = 0
@@ -1726,6 +1727,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = "spiked collar"        
                     $ R_Chest = "tank"
                     $ R_Panties = "black panties"
+                    $ R_Boots = 0
                     if "stockings and garterbelt" in R_Inventory:
                         $ R_Hose = "stockings and garterbelt"
                     elif ApprovalCheck("Rogue", 300, "I"):                        
@@ -1746,6 +1748,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = 0
                     $ R_Chest = "buttoned tank"
                     $ R_Panties = "black panties"
+                    $ R_Boots = 0
                     $ R_Hose = 0
                     $ R_Shame = 0
 
@@ -1762,8 +1765,10 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = 0
                     $ R_Neck = 0
                     $ R_Panties = "black panties"      
+                    $ R_Boots = "boots"
                     $ R_Hose = 0 
                     $ R_Shame = 0
+                    $ R_Boots = "boots"
 
         elif R_OutfitTemp == "blue dress":
                     if not R_Over:
@@ -1778,6 +1783,38 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = 0
                     $ R_Neck = 0
                     $ R_Panties = "black panties"      
+                    $ R_Boots = 0
+                    $ R_Hose = 0 
+                    $ R_Shame = 0
+
+        elif R_OutfitTemp == "red dress pantyless":
+                    if not R_Over:
+                            $ Undressed = 1
+                    
+                    $ R_Neck = 0
+                    $ R_Arms = 0
+                    $ R_Legs = 0
+                    $ R_Over = "red dress"
+                    $ R_Chest = 0
+                    $ R_Neck = 0
+                    $ R_Panties = 0      
+                    $ R_Boots = "boots"
+                    $ R_Hose = 0 
+                    $ R_Shame = 0
+                    $ R_Boots = "boots"
+
+        elif R_OutfitTemp == "blue dress pantyless":
+                    if not R_Over:
+                            $ Undressed = 1
+                    
+                    $ R_Neck = 0
+                    $ R_Arms = 0
+                    $ R_Legs = 0
+                    $ R_Over = "blue dress"
+                    $ R_Chest = 0
+                    $ R_Neck = 0
+                    $ R_Panties = 0      
+                    $ R_Boots = 0
                     $ R_Hose = 0 
                     $ R_Shame = 0
 
@@ -1794,6 +1831,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = 0
                     $ R_Chest = "swimsuit1"
                     $ R_Panties = "swimsuit1"
+                    $ R_Boots = 0
                     $ R_Hose = 0
                     $ R_Shame = 0
 
@@ -1810,6 +1848,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = 0
                     $ R_Chest = "swimsuit2"
                     $ R_Panties = "swimsuit2"
+                    $ R_Boots = 0
                     $ R_Hose = 0
                     $ R_Shame = 0
 
@@ -1820,6 +1859,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = 0
                     $ R_Chest = 0
                     $ R_Panties = 0        
+                    $ R_Boots = 0
                     $ R_Hose = 0
                     $ R_Shame = 50
         elif R_OutfitTemp == "towel":
@@ -1831,6 +1871,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = 0
                     $ R_Over = "towel"
                     $ R_Panties = 0        
+                    $ R_Boots = 0
                     $ R_Hose = 0        
                     $ R_Shame = 35
         elif R_OutfitTemp == "custom1":
@@ -1851,7 +1892,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = R_Custom[4]
                     $ R_Chest = R_Custom[5]
                     $ R_Panties = R_Custom[6]
-            #        $ R_Pubes = R_Custom[7]
+                    $ R_Boots = R_Custom[7]
                     $ R_Hair = R_Custom[8] if R_Custom[8] else "evo"
                     $ R_Hose = R_Custom[9]        
                     $ R_Shame = R_OutfitShame[3]
@@ -1874,7 +1915,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = R_Custom2[5]
                     if "pantyless" not in R_DailyActions:
                         $ R_Panties = R_Custom2[6]
-            #        $ R_Pubes = R_Custom2[7]
+                    $ R_Boots = R_Custom2[7]
                     $ R_Hair = R_Custom2[8] if R_Custom2[8] else "evo"
                     $ R_Hose = R_Custom2[9]        
                     $ R_Shame = R_OutfitShame[5]
@@ -1896,7 +1937,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = R_Custom3[4] 
                     $ R_Chest = R_Custom3[5]
                     $ R_Panties = R_Custom3[6]
-            #        $ R_Pubes = R_Custom3[7]
+                    $ R_Boots = R_Custom3[7]
                     $ R_Hair = R_Custom3[8] if R_Custom3[8] else "evo"
                     $ R_Hose = R_Custom3[9]        
                     $ R_Shame = R_OutfitShame[6]
@@ -1919,7 +1960,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = R_Custom4[5]
                     if "pantyless" not in R_DailyActions:
                         $ R_Panties = R_Custom4[6]
-            #        $ R_Pubes = R_Custom4[7]
+                    $ R_Boots = R_Custom4[7]
                     $ R_Hair = R_Custom4[8] if R_Custom4[8] else "evo"
                     $ R_Hose = R_Custom4[9]        
                     $ R_Shame = R_OutfitShame[11]
@@ -1942,7 +1983,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = R_Custom5[5]
                     if "pantyless" not in R_DailyActions:
                         $ R_Panties = R_Custom5[6]
-            #        $ R_Pubes = R_Custom5[7]
+                    $ R_Boots = R_Custom5[7]
                     $ R_Hair = R_Custom5[8] if R_Custom5[8] else "evo"
                     $ R_Hose = R_Custom5[9]        
                     $ R_Shame = R_OutfitShame[12]
@@ -1965,7 +2006,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = R_Custom6[5]
                     if "pantyless" not in R_DailyActions:
                         $ R_Panties = R_Custom6[6]
-            #        $ R_Pubes = R_Custom6[7]
+                    $ R_Boots = R_Custom6[7]
                     $ R_Hair = R_Custom6[8] if R_Custom6[8] else "evo"
                     $ R_Hose = R_Custom6[9]        
                     $ R_Shame = R_OutfitShame[13]
@@ -1988,7 +2029,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Chest = R_Custom7[5]
                     if "pantyless" not in R_DailyActions:
                         $ R_Panties = R_Custom7[6]
-            #        $ R_Pubes = R_Custom7[7]
+                    $ R_Boots = R_Custom7[7]
                     $ R_Hair = R_Custom7[8] if R_Custom7[8] else "evo"
                     $ R_Hose = R_Custom7[9]        
                     $ R_Shame = R_OutfitShame[14]
@@ -2010,6 +2051,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = R_Sleepwear[4] #0 
                     $ R_Chest = R_Sleepwear[5] #"tank"
                     $ R_Panties = R_Sleepwear[6] #"green panties"
+                    $ R_Boots = R_Sleepwear[7] #boots
                     $ R_Hair = R_Sleepwear[8] if R_Sleepwear[8] else "evo"
                     $ R_Hose = R_Sleepwear[9] #0 
                     $ R_Shame = R_OutfitShame[4]
@@ -2031,6 +2073,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Neck = R_Gym[4]
                     $ R_Chest = R_Gym[5]
                     $ R_Panties = R_Gym[6]
+                    $ R_Boots = R_Gym[7]
                     $ R_Hair = R_Gym[8] if R_Gym[8] else "evo"
                     $ R_Hose = R_Gym[9]     
                     $ R_Shame = R_OutfitShame[7]        

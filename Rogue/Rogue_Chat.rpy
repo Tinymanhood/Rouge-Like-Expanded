@@ -5310,6 +5310,11 @@ label Rogue_Clothes:
         "You could lose those glasses." if R_Glasses:
                         $ R_Glasses = 0
 
+        "Wear those boots." if not R_Boots:
+                        $ R_Boots = "boots"
+        "You could lose those boots." if R_Boots:
+                        $ R_Boots = 0
+
         "Dye your hair.":
             if ApprovalCheck("Rogue", 800):
                 ch_r "Which color?"
@@ -5912,13 +5917,17 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             $ Tempshame -= Count                  #Set Outfit shame for the upper half    
             $ Count = 0         
             
-            if R_Legs and R_Panties: #If wearing both legs and panties   
+            if (R_Legs or R_Over == "red dress" or R_Over == "blue dress") and R_Panties: #If wearing both legs and panties   
                         $ Count = 30        
             else: #If she's missing something on her legs   
                         if R_Legs == "pants":                   #If wearing pants commando
                             $ Count = 25
                         elif R_Legs == "skirt":                 #If wearing a skirt commando
                             $ Count = 20
+                        elif R_Over == "blue dress":      
+                            $ Count = 20  
+                        elif R_Over == "red dress":      
+                            $ Count = 20  
                         elif R_Legs == "skirtshort":            #If wearing a short skirt commando
                              $ Count = 0
                         elif R_Legs == "SR7 skirtshort":            #If wearing a short skirt commando
@@ -5926,7 +5935,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif R_Legs == "cheerleader skirt":                 #If wearing a cheerleader skirt commando
                             $ Count = 20
                         elif R_Legs == "cheerleader skirtshort":            #If wearing a short cheerleader skirt commando
-                            $ Count = 0       
+                            $ Count = 0   
+                                   
                         elif R_Panties == "shorts":             #If wearing shorts
                             $ Count = 25
                         elif R_Panties == "red shorts":             #If wearing shorts
@@ -6044,6 +6054,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom2[4] = R_Neck
                         $ R_Custom2[5] = R_Chest 
                         $ R_Custom2[6] = R_Panties
+                        $ R_Custom2[7] = R_Boots
                         $ R_Custom2[8] = R_Hair
                         $ R_Custom2[9] = R_Hose
                         $ R_Custom2[0] = 2 if Agree else 1        
@@ -6054,6 +6065,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom3[4] = R_Neck
                         $ R_Custom3[5] = R_Chest 
                         $ R_Custom3[6] = R_Panties
+                        $ R_Custom3[7] = R_Boots
                         $ R_Custom3[8] = R_Hair
                         $ R_Custom3[9] = R_Hose
                         $ R_Custom3[0] = 2 if Agree else 1
@@ -6064,6 +6076,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Gym[4] = R_Neck
                         $ R_Gym[5] = R_Chest 
                         $ R_Gym[6] = R_Panties
+                        $ R_Gym[7] = R_Boots
                         $ R_Gym[8] = R_Hair
                         $ R_Gym[9] = R_Hose
                         $ R_Gym[0] = 2     
@@ -6074,6 +6087,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Sleepwear[4] = R_Neck 
                         $ R_Sleepwear[5] = R_Chest 
                         $ R_Sleepwear[6] = R_Panties
+                        $ R_Sleepwear[7] = R_Boots
                         $ R_Sleepwear[8] = R_Hair
                         $ R_Sleepwear[9] = R_Hose
                         $ R_Sleepwear[0] = 2 if Agree else 1   
@@ -6084,6 +6098,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom[4] = R_Neck
                         $ R_Custom[5] = R_Chest 
                         $ R_Custom[6] = R_Panties
+                        $ R_Custom[7] = R_Boots
                         $ R_Custom[8] = R_Hair
                         $ R_Custom[9] = R_Hose
                         $ R_Custom[0] = 2 if Agree else 1
@@ -6094,6 +6109,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom5[4] = R_Neck
                         $ R_Custom5[5] = R_Chest 
                         $ R_Custom5[6] = R_Panties
+                        $ R_Custom5[7] = R_Boots
                         $ R_Custom5[8] = R_Hair
                         $ R_Custom5[9] = R_Hose
                         $ R_Custom5[0] = 2 if Agree else 1
@@ -6104,6 +6120,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom6[4] = R_Neck
                         $ R_Custom6[5] = R_Chest 
                         $ R_Custom6[6] = R_Panties
+                        $ R_Custom6[7] = R_Boots
                         $ R_Custom6[8] = R_Hair
                         $ R_Custom6[9] = R_Hose
                         $ R_Custom6[0] = 2 if Agree else 1
@@ -6114,6 +6131,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom7[4] = R_Neck
                         $ R_Custom7[5] = R_Chest 
                         $ R_Custom7[6] = R_Panties
+                        $ R_Custom7[7] = R_Boots
                         $ R_Custom7[8] = R_Hair
                         $ R_Custom7[9] = R_Hose
                         $ R_Custom7[0] = 2 if Agree else 1
@@ -6124,6 +6142,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         $ R_Custom4[4] = R_Neck
                         $ R_Custom4[5] = R_Chest 
                         $ R_Custom4[6] = R_Panties
+                        $ R_Custom4[7] = R_Boots
                         $ R_Custom4[8] = R_Hair
                         $ R_Custom4[9] = R_Hose
                         $ R_Custom4[0] = 2 if Agree else 1

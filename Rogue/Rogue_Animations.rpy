@@ -250,6 +250,10 @@ image Rogue:
             "R_Legs == 'cheerleader skirtshort'", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short.png",
             "True", Null(),   
             ),
+        (0,0), ConditionSwitch(                                                                         
+            "R_Boots", "images/RogueSprite/Rogue_Highshoes.png",                                                                         #No gloves, no collar
+            "True", Null(),  
+            ), 
 
         (0,0), ConditionSwitch(                                                                         #Arms and gloves
             "Rogue_Arms == 1", Null(),                                                              #No gloves, no collar

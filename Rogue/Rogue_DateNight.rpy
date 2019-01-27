@@ -111,7 +111,10 @@ label Rogue_Date_Night:
         else:
             $ R_Outfit = "evo_green"
     else:
-        $ Options = ["evo_pink", "evo_green", "red dress", "blue dress"]
+        if (ApprovalCheck("Rogue", 1500) or ApprovalCheck("Rogue", 500, "I")) or "exhibitionist" in R_Traits:
+            $ Options = ["red dress pantyless", "blue dress pantyless"]
+        else:            
+            $ Options = ["red dress", "blue dress"]
         $ Options.append("custom1") if R_Custom[0] == 2 else Options
         $ Options.append("custom2") if R_Custom2[0] == 2 else Options
         $ Options.append("custom3") if R_Custom3[0] == 2 else Options
