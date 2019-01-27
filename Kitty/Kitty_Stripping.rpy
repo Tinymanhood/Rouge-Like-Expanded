@@ -1000,13 +1000,13 @@ label Kitty_Bottoms_Off(Intro = 1, Line = 0, Cnt = 0):
                     "She slides her skirt up."
                     $ Cnt = 1 
                     
-            if PantsNum("Kitty") >= 5 or HoseNum("Kitty") >= 5:            
-                if K_Panties:                                               #she has pants and panties on
+            if PantsNum("Kitty") >= 3 or HoseNum("Kitty") >= 5:            
+                if K_Panties:                                               #she has pants, shorts, skirt and panties on
                     if not Approval or (not K_SeenPanties and Taboo):
                         return   
                 elif Approval < 2 or (not K_SeenPussy and Taboo):
                     return     
-                elif K_Legs == "pants" and K_Upskirt:  
+                elif PantsNum("Kitty") > 5 and K_Upskirt:  
                     return
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 1)
                 $ K_Upskirt = 1
@@ -1086,7 +1086,9 @@ label Kitty_Bottoms_Off(Intro = 1, Line = 0, Cnt = 0):
         elif PantsNum("Kitty") >= 10:
             ch_k "I'm keeping my pants on."   
         elif PantsNum("Kitty") >= 5:
-            ch_k "I'm keeping my shorts on."  
+            ch_k "I'm keeping my shorts on." 
+        elif PantsNum("Kitty") >= 3:
+            ch_k "I'm keeping my skirt on."  
         else:
             ch_k "I'm keeping my panties on." 
         menu:            
@@ -1265,6 +1267,8 @@ label Kitty_Bottoms_Off_Legs:
                         "She reaches into her pants, then pulls her [Line] through them."    
                     elif PantsNum("Kitty") >= 5:
                         "She reaches into her shorts, then pulls her [Line] through them."
+                    elif PantsNum("Kitty") >= 3:
+                        "She reaches into her skirt, then pulls her [Line] through them."
                     else:
                         "She glances up at you as her [Line] drop to the ground."
                     if not K_Legs:

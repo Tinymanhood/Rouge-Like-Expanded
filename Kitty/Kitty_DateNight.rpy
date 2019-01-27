@@ -295,8 +295,12 @@ label K_Date_Dinner:
         "Halfway through the meal, Kitty gets a sly look on her face, then shifts her chair around next to yours."
         if PantsNum("Kitty") > 5:
             "She takes your hand and pulls it over to her crotch, shoving it down her pants. You can feel that she's warm as a furnace."
-        else:
+        elif PantsNum("Kitty") == 5:
+            "She takes your hand and pulls it over to her crotch, shoving it down her shorts. You can feel that she's warm as a furnace."
+        elif PantsNum("Kitty") == 3:
             "She takes your hand and pulls it down to her crotch, shoving it under her skirt. You can feel that she's warm as a furnace."
+        else:
+            "She takes your hand and pulls it down to her crotch. You can feel that she's warm as a furnace."
         "You stroke her pussy for several minutes, until finally she shudders in orgasm and slowly pulls your hand free with a sly smile."
         ch_k "Thanks, [K_Petname], I needed that."
         $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 3)

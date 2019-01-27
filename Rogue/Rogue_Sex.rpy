@@ -380,11 +380,26 @@ label R_Tag(Forced = 0):
                         if R_Addict >= 85 and not ApprovalCheck("Rogue", 500, "O"): #if she's strung out and not obedient
                                 $ R_Eyes = "manic"                        
                                 "She lashes out and leaps at you, grabbing you by the chin."
-                                $ R_Eyes = "sly"   
-                                if "no tag" not in R_RecentActions:
-                                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -5)
-                                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 5)
-                                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 1)   
+                                menu:
+                                    "Push her back":
+                                        call RogueFaceSpecial("sadside")
+                                        ch_r "I... I'm sorry, I don't know what's wrong with me..."
+                                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 25)
+                                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 25)  
+                                        call RogueFaceSpecial("sad")
+                                        ch_r "I should go"
+                                        $ R_RecentActions.append("no tag")
+                                        $ R_DailyActions.append("no tag")
+                                        $ R_Arms = "gloved"
+                                        $ Rogue_Arms = 1
+                                        return 
+
+                                    "Let her":  
+                                        $ R_Eyes = "sly" 
+                                        if "no tag" not in R_RecentActions:
+                                                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -5)
+                                                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 5)
+                                                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 1)   
                         else:
                                 ch_r "Not cool, [R_Petname]."
                                 if "no tag" not in R_RecentActions:
