@@ -367,6 +367,7 @@ init -1:
     default K_Emote = "normal"
     default K_EmoteDefault = "normal"
     default K_Arms = 0
+    default K_Gloves = 0
     default K_Legs = "capris"
     default K_Over = "pink top"
     default K_Under = "pink top"
@@ -2277,6 +2278,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                             $ Undressed = 1
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
+                    $ K_Gloves = 0
                     $ K_Legs = "capris"
                     $ K_Over = "pink top"
                     $ K_Chest = "cami"
@@ -2289,6 +2291,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                             $ Undressed = 1
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
+                    $ K_Gloves = 0
                     $ K_Legs = "black jeans"
                     $ K_Over = "red shirt"
                     $ K_Chest = "bra"
@@ -2296,11 +2299,25 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ K_Neck = 0
                     $ K_Hair = "evo"
                     $ K_Hose = 0 
+        elif K_OutfitTemp == "party outfit":
+                    if 0 in (K_Legs,K_Over,K_Chest):
+                            $ Undressed = 1
+                    elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
+                            $ Undressed = 1   
+                    $ K_Gloves = "black gloves"
+                    $ K_Legs = "black blue pants"
+                    $ K_Over = "violet shirt scarfless"
+                    $ K_Chest = "bra"
+                    $ K_Panties = "green panties"      
+                    $ K_Neck = "scarf"
+                    $ K_Hair = "evo"
+                    $ K_Hose = 0 
         elif K_OutfitTemp == "black dress":
                     if not K_Over:
                             $ Undressed = 1
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Over = "black dress"
                     $ K_Chest = 0
@@ -2314,6 +2331,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                             $ Undressed = 1
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Over = 0
                     $ K_Chest = "bustier bra"
@@ -2327,6 +2345,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                             $ Undressed = 1
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Over = 0
                     $ K_Chest = "bustier bra open"
@@ -2338,6 +2357,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
         elif K_OutfitTemp == "swimsuit3":
                     if K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1  
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Over = 0
                     $ K_Chest = "swimsuit3"
@@ -2351,6 +2371,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                             $ Undressed = 1
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Over = 0
                     $ K_Chest = "purple bikini bra"
@@ -2364,6 +2385,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                             $ Undressed = 1
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1 
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Over = 0
                     $ K_Chest = "kitty lingerie top"
@@ -2377,7 +2399,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
         elif K_OutfitTemp == "towel":
                     if K_Over == 0:
                             $ Undressed = 2
-                    $ K_Arms = 0
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Chest = 0
                     $ K_Over = "towel"
@@ -2388,6 +2410,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ K_Shame = 35
 
         elif K_OutfitTemp == "nude":
+                    $ K_Gloves = 0
                     $ K_Legs = 0
                     $ K_Chest = 0
                     $ K_Over = 0
@@ -2407,7 +2430,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Custom[9]:          
                             $ Undressed = 1
                     
-                    $ K_Arms = K_Custom[1]
+                    $ K_Gloves = K_Custom[1]
                     $ K_Legs = K_Custom[2]
                     $ K_Over = K_Custom[3]    
                     $ K_Neck = K_Custom[4]
@@ -2428,7 +2451,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Custom2[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Custom2[1]
+                    $ K_Gloves = K_Custom2[1]
                     $ K_Legs = K_Custom2[2]
                     $ K_Over = K_Custom2[3]   
                     $ K_Neck = K_Custom2[4]
@@ -2449,7 +2472,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Custom3[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Custom3[1]
+                    $ K_Gloves = K_Custom3[1]
                     $ K_Legs = K_Custom3[2]
                     $ K_Over = K_Custom3[3]
                     $ K_Neck = K_Custom3[4]
@@ -2470,7 +2493,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Custom4[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Custom4[1]
+                    $ K_Gloves = K_Custom4[1]
                     $ K_Legs = K_Custom4[2]
                     $ K_Over = K_Custom4[3]
                     $ K_Neck = K_Custom4[4]
@@ -2491,7 +2514,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Custom5[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Custom5[1]
+                    $ K_Gloves = K_Custom5[1]
                     $ K_Legs = K_Custom5[2]
                     $ K_Over = K_Custom5[3]
                     $ K_Neck = K_Custom5[4]
@@ -2512,7 +2535,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Custom6[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Custom6[1]
+                    $ K_Gloves = K_Custom6[1]
                     $ K_Legs = K_Custom6[2]
                     $ K_Over = K_Custom6[3]
                     $ K_Neck = K_Custom6[4]
@@ -2533,7 +2556,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Custom7[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Custom7[1]
+                    $ K_Gloves = K_Custom7[1]
                     $ K_Legs = K_Custom7[2]
                     $ K_Over = K_Custom7[3]
                     $ K_Neck = K_Custom7[4]
@@ -2554,7 +2577,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Sleepwear[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Sleepwear[1] #0
+                    $ K_Gloves = K_Sleepwear[1] #0
                     $ K_Legs = K_Sleepwear[2] #shorts
                     $ K_Over = K_Sleepwear[3] #0
                     $ K_Neck = K_Sleepwear[4] #0
@@ -2578,7 +2601,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif not K_Hose and K_Gym[9]:          
                             $ Undressed = 1
                         
-                    $ K_Arms = K_Gym[1]
+                    $ K_Gloves = K_Gym[1]
                     $ K_Legs = K_Gym[2]
                     $ K_Over = K_Gym[3] 
                     $ K_Neck = K_Gym[4]
