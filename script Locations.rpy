@@ -1931,7 +1931,7 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                     $ E_Water = 1
     elif RogueCount and KittyCount:
                     $ Line = "You swim around with Rogue and Kitty."
-                    call Shift_Focus("Rogue, Kitty") from _call_Shift_Focus_45
+                    call Shift_Focus("Rogue", "Kitty") from _call_Shift_Focus_45
                     $ R_Water = 1
                     $ K_Water = 1
     elif KittyCount:
