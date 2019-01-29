@@ -235,6 +235,8 @@ image Rogue:
             ),                                                                           #Eyes
             
         (0,0), ConditionSwitch(                                                                         #Pants and Skirts
+            "R_Boots == 'boots' and R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_boots_down.png", 
+            "R_Boots == 'boots' and R_Legs == 'pants'", "images/RogueSprite/Rogue_legs_pants_boots.png", 
             "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_down.png", 
             "R_Legs == 'pants'", "images/RogueSprite/Rogue_legs_pants.png",          
             "R_Legs == 'skirt' and R_Upskirt", "images/RogueSprite/Rogue_legs_skirt_up.png",
