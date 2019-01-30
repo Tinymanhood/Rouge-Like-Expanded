@@ -1465,7 +1465,7 @@ label K_Plug_Ass:
     elif (K_Anal + K_DildoA + K_Plug) > 0: #You've done it before
         $ Tempmod += 20   
         
-    if K_Legs == "pants:": # she's got pants on.
+    if K_Legs == "pants": # she's got pants on.
         $ Tempmod -= 20   
         
     if K_Lust > 95:

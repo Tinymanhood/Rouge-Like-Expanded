@@ -1475,7 +1475,7 @@ label R_Plug_Ass:
     elif (R_Anal + R_DildoA + R_Plug) > 0: #You've done it before
         $ Tempmod += 20   
         
-    if R_Legs == "pants:": # she's got pants on.
+    if R_Legs == "pants": # she's got pants on.
         $ Tempmod -= 20   
         
     if R_Lust > 95:
