@@ -174,7 +174,7 @@ image Emma_BJ_ONI_Head:                                                         
             ),
         (0,0), ConditionSwitch(
             # Basic Face layer
-            "Speed <= 2 or Speed == 5 or not renpy.showing('Emma_BJ_Animation_ONI')", ConditionSwitch( 
+            "Speed <= 2 or Speed == 5 or (not renpy.showing('Emma_BJ_Animation') and OniBJ)", ConditionSwitch( 
                     # If the animation isn't sucking, or if not in BJ pose
                     "E_Blush", "images/EmmaBJFaceONI/Emma_BJ_FaceClosed_Blush.png",              
                     "True", "images/EmmaBJFaceONI/Emma_BJ_FaceClosed.png",
@@ -184,7 +184,7 @@ image Emma_BJ_ONI_Head:                                                         
             ),           
         (0,0), ConditionSwitch(                                                                         
             #Mouth
-            "Speed and renpy.showing('Emma_BJ_Animation_ONI')", ConditionSwitch( 
+            "Speed and renpy.showing('Emma_BJ_Animation') and OniBJ", ConditionSwitch( 
                     # If in sucking position
                     "Speed == 1", "images/EmmaBJFaceONI/Emma_BJ_Mouth_Tongue.png",  #licking
                     "(Speed == 2 or Speed == 5)", Null(),                          #heading
@@ -206,7 +206,7 @@ image Emma_BJ_ONI_Head:                                                         
             ),       
         (428,605), ConditionSwitch(   
             # Heading Mouth
-            "not renpy.showing('Emma_BJ_Animation_ONI')", Null(),
+            "not renpy.showing('Emma_BJ_Animation') and OniBJ", Null(),
             "Speed == 2", At("Emma_BJ_ONI_MouthHeading", Emma_BJ_ONI_MouthAnim()),  #heading 
             "Speed == 5", At("Emma_BJ_ONI_MouthHeading", Emma_BJ_ONI_MouthAnimC()), #cumming high    
             "True", Null(),
@@ -215,7 +215,7 @@ image Emma_BJ_ONI_Head:                                                         
         (0,0), ConditionSwitch(                                                                         
             #Spunk layer
             "'mouth' not in E_Spunk", Null(), 
-            "Speed and renpy.showing('Emma_BJ_Animation_ONI')", ConditionSwitch( 
+            "Speed and renpy.showing('Emma_BJ_Animation') and OniBJ", ConditionSwitch( 
                     # If in sucking position
                     "Speed == 1", "images/EmmaBJFaceONI/Emma_BJ_Spunk_Tongue.png",  #licking
                     "(Speed == 2 or Speed == 5)", Null(),                          #heading
