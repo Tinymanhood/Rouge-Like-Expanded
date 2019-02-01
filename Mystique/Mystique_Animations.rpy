@@ -2181,127 +2181,162 @@ label MystiqueWardrobe:
             while True:
                 menu:
                     "Default":
-                        call E_Pos_Reset from _call_E_Pos_Reset_56
+                        call Mystique_Pos_Reset
                     "Face":
-                        call E_Kissing_Launch(0) from _call_E_Kissing_Launch_2
+                        call Mystique_Kissing_Launch(0)
                     "Body":
-                        call E_Pussy_Launch(0) from _call_E_Pussy_Launch_17
+                        call Mystique_Pussy_Launch(0)
                     "Back":
-                        jump EmmaWardrobe 
+                        jump MystiqueWardrobe 
         # Outfits
         "Nude":
-            $ E_Over = 0
-            $ E_Chest = 0
-            $ E_Legs = 0
-            $ E_Panties = 0
-            $ E_Gloves = 0
-            $ E_Neck = 0
+            $ newgirl["Mystique"].Over = 0
+            $ newgirl["Mystique"].Chest = 0
+            $ newgirl["Mystique"].Legs = 0
+            $ newgirl["Mystique"].Panties = 0
+            $ newgirl["Mystique"].Gloves = 0
+            $ newgirl["Mystique"].Neck = 0
+            $ newgirl["Mystique"].Hose = 0
+        "Looks":
+            menu:
+                "Rogue":
+                    $ newgirl["Mystique"].LooksLike = "Rogue"
+                "Kitty":
+                    $ newgirl["Mystique"].LooksLike = "Kitty"
+                "Emma":
+                    $ newgirl["Mystique"].LooksLike = "Emma"
+                "Raven":
+                    $ newgirl["Mystique"].LooksLike = "Raven"
+                "Mystique":
+                    $ newgirl["Mystique"].LooksLike = "Mystique"
         "Over":              
             while True:
                 menu:
                     # Overshirts    
-                    "Remove [E_Over]" if E_Over:
-                        $ E_Over = 0
-                    "Add Jacket":
-                        $ E_Over = "jacket"   
-                        $ E_Arms = 0
+                    "Remove [newgirl[Mystique].Over]" if newgirl["Mystique"].Over:
+                        $ newgirl["Mystique"].Over = 0
+                    "Add Workout Jacket":
+                        $ newgirl["Mystique"].Over = "workout jacket"   
+                        $ newgirl["Mystique"].Arms = 0
+                    "Add lavender shirt":
+                        $ newgirl["Mystique"].Over = "lavender shirt"   
+                        $ newgirl["Mystique"].Arms = 0
+                    "Add red shirt":
+                        $ newgirl["Mystique"].Over = "red shirt"   
+                        $ newgirl["Mystique"].Arms = 0
                     "Add Towel":
-                        $ E_Over = "towel"   
-                        $ E_Arms = 0
+                        $ newgirl["Mystique"].Over = "towel"   
+                        $ newgirl["Mystique"].Arms = 0
                     "Back":
-                        jump EmmaWardrobe                
+                        jump MystiqueWardrobe                
         "Tops":            
             while True:
                 menu:
                     # Tops    
-                    "Remove [E_Chest]" if E_Chest:
-                        $ E_Chest = 0
-                    "Add corset":
-                        $ E_Chest = "corset"
+                    "Remove [newgirl[Mystique].Chest]" if newgirl["Mystique"].Chest:
+                        $ newgirl["Mystique"].Chest = 0
+                    "Add workout top":
+                        $ newgirl["Mystique"].Chest = "workout top"
+                    "Add black bra":
+                        $ newgirl["Mystique"].Chest = "black bra"
+                    "Add yellow bikini":
+                        $ newgirl["Mystique"].Chest = "yellow bikini"
+                    "Add top":
+                        $ newgirl["Mystique"].Chest = "top"
                     "Back":
-                        jump EmmaWardrobe             
+                        jump MystiqueWardrobe             
         
         "Legs":            
             while True:
                 menu:
                     # Legs   
-                    "Remove legs" if E_Legs:     
-                        $ E_Legs = 0
-                    "Add pants":
-                        $ E_Legs = "pants"
-                        $ E_Upskirt = 0
+                    "Remove legs" if newgirl["Mystique"].Legs:     
+                        $ newgirl["Mystique"].Legs = 0
+                    "Add workout pants":
+                        $ newgirl["Mystique"].Legs = "workout pants"
+                        $ newgirl["Mystique"].Upskirt = 0
+                    "Add black skirt":
+                        $ newgirl["Mystique"].Legs = "black skirt"
+                        $ newgirl["Mystique"].Upskirt = 0
+                    "Add split skirt":
+                        $ newgirl["Mystique"].Legs = "split skirt"
+                        $ newgirl["Mystique"].Upskirt = 0
                     "Toggle upskirt":
-                        if E_Upskirt:
-                            $ E_Upskirt = 0
+                        if newgirl["Mystique"].Upskirt:
+                            $ newgirl["Mystique"].Upskirt = 0
                         else:
-                            $ E_Upskirt = 1
+                            $ newgirl["Mystique"].Upskirt = 1
                     "Back":
-                        jump EmmaWardrobe    
+                        jump MystiqueWardrobe    
         
         "Underwear":            
             while True:
                 menu:
                     # Underwear
-                    "Remove panties" if E_Panties:     
-                        $ E_Panties = 0     
+                    "Remove panties" if newgirl["Mystique"].Panties:     
+                        $ newgirl["Mystique"].Panties = 0     
                     "Add black panties":
-                        $ E_Panties = "white panties"
+                        $ newgirl["Mystique"].Panties = "black panties"
+                    "Add yellow bikini":
+                        $ newgirl["Mystique"].Panties = "yellow bikini"
+                    "Add black lingerie":
+                        $ newgirl["Mystique"].Panties = "black lingerie"
                     "pull down-up panties":
-                        if E_PantiesDown:
-                            $ E_PantiesDown = 0
+                        if newgirl["Mystique"].PantiesDown:
+                            $ newgirl["Mystique"].PantiesDown = 0
                         else:
-                            $ E_PantiesDown = 1
+                            $ newgirl["Mystique"].PantiesDown = 1
                     "Back":
-                        jump EmmaWardrobe    
+                        jump MystiqueWardrobe    
         "Misc":
             while True:
                 menu: 
                     "Emotions":
-                        call EmmaEmotionEditor from _call_EmmaEmotionEditor_1
+                        call MystiqueEmotionEditor
                     "Toggle Arms":
-                        if Emma_Arms == 1:
-                            $ Emma_Arms = 2
+                        if newgirl['Mystique'].Girl_Arms == 1:
+                            $ newgirl['Mystique'].Girl_Arms = 2
                         else:
-                            $ Emma_Arms = 1
+                            $ newgirl['Mystique'].Girl_Arms = 1
                     "Toggle Wetness":
-                        if not E_Wet:
-                            $ E_Wet = 1
-                        elif E_Wet == 1:
-                            $ E_Wet = 2
+                        if not newgirl["Mystique"].Wet:
+                            $ newgirl["Mystique"].Wet = 1
+                        elif newgirl["Mystique"].Wet == 1:
+                            $ newgirl["Mystique"].Wet = 2
                         else:
-                            $ E_Wet  = 0
+                            $ newgirl["Mystique"].Wet  = 0
                     "Toggle wet look":
-                        if not E_Water:
-                            $ E_Water = 1
-                        elif E_Water == 1:
-                            $ E_Water = 3
+                        if not newgirl["Mystique"].Water:
+                            $ newgirl["Mystique"].Water = 1
+                        elif newgirl["Mystique"].Water == 1:
+                            $ newgirl["Mystique"].Water = 3
                         else:
-                            $ E_Water  = 0
+                            $ newgirl["Mystique"].Water  = 0
                     "Toggle pubes":
-                        if not E_Pubes:
-                            $ E_Pubes = 1
+                        if not newgirl["Mystique"].Pubes:
+                            $ newgirl["Mystique"].Pubes = 1
                         else:
-                            $ E_Pubes = 0
+                            $ newgirl["Mystique"].Pubes = 0
                     "Toggle Pussy Spunk":
-                        if "pussy" in E_Spunk:
-                            $ E_Spunk.remove("pussy")
+                        if "pussy" in newgirl["Mystique"].Spunk:
+                            $ newgirl["Mystique"].Spunk.remove("pussy")
                         else:
-                            $ E_Spunk.append("pussy")
+                            $ newgirl["Mystique"].Spunk.append("pussy")
 
-                    "Add choker" if not E_Neck:
-                        $ E_Neck = "choker"
-                    "Remove choker" if E_Neck:
-                        $ E_Neck = 0
+                    # "Add choker" if not newgirl["Mystique"].Neck:
+                    #     $ newgirl["Mystique"].Neck = "choker"
+                    # "Remove choker" if newgirl["Mystique"].Neck:
+                    #     $ newgirl["Mystique"].Neck = 0
                         
-                    "Add Gloves" if not E_Arms:
-                        $ E_Arms = "white gloves"
-                    "Remove Gloves" if E_Arms:
-                        $ E_Arms = 0
+                    # "Add Gloves" if not newgirl["Mystique"].Arms:
+                    #     $ newgirl["Mystique"].Arms = "white gloves"
+                    # "Remove Gloves" if newgirl["Mystique"].Arms:
+                    #     $ newgirl["Mystique"].Arms = 0
                     "Back":
-                        jump EmmaWardrobe               
+                        jump MystiqueWardrobe               
         "Nothing":
             return
-    jump EmmaWardrobe
+    jump MystiqueWardrobe
 return
 
 label MystiqueEmotionEditor(CountStore = "normal"):
@@ -2309,93 +2344,93 @@ label MystiqueEmotionEditor(CountStore = "normal"):
         "Emotions1: Normal Angry Smiling Sexy Surprised Bemused Manic.":        
             menu:
                 "Normal":
-                    $ E_Emote = "normal"
-                    call EmmaFace from _call_EmmaFace_1525
+                    $ newgirl["Mystique"].Emote = "normal"
+                    call MystiqueFace
                 "Angry":
-                    $ E_Emote = "angry"
-                    call EmmaFace from _call_EmmaFace_1526
+                    $ newgirl["Mystique"].Emote = "angry"
+                    call MystiqueFace
                 "Smiling":
-                    $ E_Emote = "smile"
-                    call EmmaFace from _call_EmmaFace_1527
+                    $ newgirl["Mystique"].Emote = "smile"
+                    call MystiqueFace
                 "Sexy":
-                    $ E_Emote = "sexy"
-                    call EmmaFace from _call_EmmaFace_1528
+                    $ newgirl["Mystique"].Emote = "sexy"
+                    call MystiqueFace
                 "Suprised":
-                    $ E_Emote = "surprised"
-                    call EmmaFace from _call_EmmaFace_1529
+                    $ newgirl["Mystique"].Emote = "surprised"
+                    call MystiqueFace
                 "Bemused":
-                    $ E_Emote = "bemused"
-                    call EmmaFace from _call_EmmaFace_1530
+                    $ newgirl["Mystique"].Emote = "bemused"
+                    call MystiqueFace
                 "Manic":
-                    $ E_Emote = "manic"
-                    call EmmaFace from _call_EmmaFace_1531
+                    $ newgirl["Mystique"].Emote = "manic"
+                    call MystiqueFace
                     
         "Emotions2: Sad Sucking Kiss Tongue Confused Closed Down.":  
             menu:
                 "Sad":
-                    $ E_Emote = "sad"
-                    call EmmaFace from _call_EmmaFace_1532
+                    $ newgirl["Mystique"].Emote = "sad"
+                    call MystiqueFace
                 "Sucking":
-                    $ E_Emote = "sucking"
-                    call EmmaFace from _call_EmmaFace_1533
+                    $ newgirl["Mystique"].Emote = "sucking"
+                    call MystiqueFace
                 "kiss":
-                    $ E_Emote = "kiss"
-                    call EmmaFace from _call_EmmaFace_1534
+                    $ newgirl["Mystique"].Emote = "kiss"
+                    call MystiqueFace
                 "Tongue":
-                    $ E_Emote = "tongue"
-                    call EmmaFace from _call_EmmaFace_1535
+                    $ newgirl["Mystique"].Emote = "tongue"
+                    call MystiqueFace
                 "confused":
-                    $ E_Emote = "confused"
-                    call EmmaFace from _call_EmmaFace_1536
+                    $ newgirl["Mystique"].Emote = "confused"
+                    call MystiqueFace
                 "Closed":
-                    $ E_Emote = "closed"
-                    call EmmaFace from _call_EmmaFace_1537
+                    $ newgirl["Mystique"].Emote = "closed"
+                    call MystiqueFace
                 "Down":
-                    $ E_Emote = "down"
-                    call EmmaFace from _call_EmmaFace_1538
+                    $ newgirl["Mystique"].Emote = "down"
+                    call MystiqueFace
                     
         "Emotions3: Sadside Startled Perplexed Sly":  
             menu:
                 "Sadside":
-                    $ E_Emote = "sadside"
-                    call EmmaFace from _call_EmmaFace_1539
+                    $ newgirl["Mystique"].Emote = "sadside"
+                    call MystiqueFace
                 "Startled":
-                    $ E_Emote = "startled"
-                    call EmmaFace from _call_EmmaFace_1540
+                    $ newgirl["Mystique"].Emote = "startled"
+                    call MystiqueFace
                 "Perplexed":
-                    $ E_Emote = "perplexed"
-                    call EmmaFace from _call_EmmaFace_1541
+                    $ newgirl["Mystique"].Emote = "perplexed"
+                    call MystiqueFace
                 "Sly":
-                    $ E_Emote = "sly"
-                    call EmmaFace from _call_EmmaFace_1542
+                    $ newgirl["Mystique"].Emote = "sly"
+                    call MystiqueFace
         "Toggle Mouth Spunk":
-            if "mouth" in E_Spunk:
-                $ E_Spunk.remove("mouth")
+            if "mouth" in newgirl["Mystique"].Spunk:
+                $ newgirl["Mystique"].Spunk.remove("mouth")
             else:
-                $ E_Spunk.append("mouth")
+                $ newgirl["Mystique"].Spunk.append("mouth")
         "Toggle hand Spunk":
-            if "hand" in E_Spunk:
-                $ E_Spunk.remove("hand")
+            if "hand" in newgirl["Mystique"].Spunk:
+                $ newgirl["Mystique"].Spunk.remove("hand")
             else:
-                $ E_Spunk.append("hand")
+                $ newgirl["Mystique"].Spunk.append("hand")
                 
         "Toggle Facial Spunk":
-            if "facial" in E_Spunk and "hair" not in E_Spunk:
-                $ E_Spunk.append("hair")
-            elif "facial" in E_Spunk:
-                $ E_Spunk.remove("facial")                
-                $ E_Spunk.remove("hair")
+            if "facial" in newgirl["Mystique"].Spunk and "hair" not in newgirl["Mystique"].Spunk:
+                $ newgirl["Mystique"].Spunk.append("hair")
+            elif "facial" in newgirl["Mystique"].Spunk:
+                $ newgirl["Mystique"].Spunk.remove("facial")                
+                $ newgirl["Mystique"].Spunk.remove("hair")
             else:
-                $ E_Spunk.append("facial")
+                $ newgirl["Mystique"].Spunk.append("facial")
             
         "Blush":
-            if E_Blush == 2:
-                $ E_Blush = 1
-            elif E_Blush:
-                $ E_Blush = 0
+            if newgirl["Mystique"].Blush == 2:
+                $ newgirl["Mystique"].Blush = 1
+            elif newgirl["Mystique"].Blush:
+                $ newgirl["Mystique"].Blush = 0
             else:
-                $ E_Blush = 2  
+                $ newgirl["Mystique"].Blush = 2  
         "Exit.":
             return
-    jump EmmaEmotionEditor
+    jump MystiqueEmotionEditor
 return

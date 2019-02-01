@@ -4793,6 +4793,77 @@ label EmmaStats:
             call Checkout from _call_Checkout_49
             return
     jump EmmaStats
+
+label NewGirlStats(Girl = "Mystique"):    
+    $ GirlLove = newgirl[Girl].Love
+    $ GirlInbt = newgirl[Girl].Inbt
+    $ GirlObed = newgirl[Girl].Obed
+    $ GirlLust = newgirl[Girl].Lust
+    $ GirlAddict = newgirl[Girl].Addict
+    $ GirlAddictionrate = newgirl[Girl].Addictionrate
+    $ GirlKissed = newgirl[Girl].Kissed
+    $ GirlRecentActions = newgirl[Girl].RecentActions
+    menu:
+        "My Love is [GirlLove], Inhibition is [GirlInbt], my Obedience is [GirlObed], my Lust is [GirlLust], my Addiction is [GirlAddict], my addiction rate is [GirlAddictionrate], and I've been kissed [GirlKissed] times."
+        "Print actions":
+            "[GirlRecentActions]"
+        "Raise Love":
+            $ newgirl[Girl].Love += 100
+        "Lower Love":
+            $ newgirl[Girl].Love -= 100
+        "Raise Obedience":
+            $ newgirl[Girl].Obed += 100
+        "Lower Obedience":
+            $ newgirl[Girl].Obed -= 100
+        "Raise Inhibitions":
+            $ newgirl[Girl].Inbt += 100
+        "Lower Inhibitions":
+            $ newgirl[Girl].Inbt -= 100
+        "Taboo toggle":
+            $ Taboo = 40 if Taboo != 40 else 0
+            "[Taboo]"
+        "Small":
+            $ Count = 1
+            while Count:
+                menu:
+                    "Raise Love":
+                        $ newgirl[Girl].Love += 10
+                    "Lower Love":
+                        $ newgirl[Girl].Love -= 10
+                    "Raise Obedience":
+                        $ newgirl[Girl].Obed += 10
+                    "Lower Obedience":
+                        $ newgirl[Girl].Obed -= 10
+                    "Raise Inhibitions":
+                        $ newgirl[Girl].Inbt += 10
+                    "Lower Inhibitions":
+                        $ newgirl[Girl].Inbt -= 10
+                    "Back":
+                        $ Count = 0                    
+        "Other":
+            menu:        
+                "Raise Lust":
+                    $ newgirl[Girl].Lust += 10
+                "Lower Lust":
+                    $ newgirl[Girl].Lust -= 10
+                "Raise Addiction":
+                    $ newgirl[Girl].Addict += 10
+                "Lower Addiction":
+                    $ newgirl[Girl].Addict -= 10
+                "Back":
+                    pass
+        "Wardrobe":
+            if Girl == "Mystique":
+                call MystiqueWardrobe
+            elif Girl == "Laura":
+                call LauraWardrobe
+            else:
+                "[Girl] has no wardrobe defined?"
+            
+        "Return":
+            call Checkout
+            return
+    call NewGirlStats(Girl)
     
 label Failsafe: 
     #This routine is meant to set any variables that aren't already set.     

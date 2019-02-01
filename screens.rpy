@@ -889,7 +889,7 @@ screen R_Status_screen:
         showif not Trigger:
             imagebutton auto "images/Button_Mystique_%s.png" action ShowTransient("Test_Focus_Map") xpos 690 ypos 5 focus_mask True #xpos 690 ypos 5 
         showif config.developer: #nothing here
-            imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
+            imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("NewGirlStats", "Mystique") xpos 730 ypos 5 focus
 
     elif Ch_Focus == "Laura":
         add "images/BarBackdrop_L.png"
@@ -930,7 +930,7 @@ screen R_Status_screen:
         showif not Trigger:
             imagebutton auto "images/Button_Laura_%s.png" action ShowTransient("Test_Focus_Map") xpos 690 ypos 5 focus_mask True #xpos 690 ypos 5 
         showif config.developer: #nothing here
-            imagebutton auto "images/Button_Laura_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
+            imagebutton auto "images/Button_Laura_%s.png" action ui.callsinnewcontext("NewGirlStats", "Laura") xpos 730 ypos 5 focus
                             
     frame:
         #Focus meter (dick)
