@@ -55,6 +55,27 @@ image Kitty_Doggy_Body = LiveComposite(                                         
             "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Body.png",
             "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Body.png",
             "True", "images/KittyDoggy/Kitty_Doggy_Body.png",
+            ),
+        (0,0), ConditionSwitch(   
+            "K_DynamicTan[0] and K_DynamicTan[3] == 'lace bra'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittyDoggy/Kitty_Doggy_Chest_LaceBra.png"),
+            "K_DynamicTan[0] and K_DynamicTan[3] == 'darker lace bra'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittyDoggy/Kitty_Doggy_Chest_DarkerLace.png"),
+            "K_DynamicTan[0] and K_DynamicTan[3] == 'purple bikini bra'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittyDoggy/Kitty_Doggy_Chest_PurpleBikini.png"),
+            "K_DynamicTan[0] and K_DynamicTan[3] == 'bra'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittyDoggy/Kitty_Doggy_Chest_UnderBra.png"),
+            "K_DynamicTan[0] and K_DynamicTan[3] == 'orange top'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittyDoggy/Kitty_Doggy_ChestOrangeTop.png"),
+            "K_DynamicTan[0] and K_DynamicTan[3] == 'black top'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittyDoggy/Kitty_Doggy_ChestBlackTop.png"),
+            
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'sports bra'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_Bra_Sport.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'red bikini bra'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_Bra_Bikini2.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'cami'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_Cami1.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'white cami'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_WhiteCami1.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'kitty lingerie top'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_KittyLingerie_Top1.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'leather top'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_Leather1.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'swimsuit3'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_Swimsuit3.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'bustier bra' and K_PantiesDown", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_BustierOpen.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'bustier bra'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_Bustier.png"),
+            # "K_DynamicTan[0] and K_DynamicTan[3] == 'bustier bra open'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Body.png", "images/KittySprite/Kitty_Sprite_BustierOpen.png"),
+            
+            "True", Null(),
             ),  
         (0,0), ConditionSwitch(
             "K_Gloves == 'black gloves'", "images/KittyDoggy/Kitty_Doggy_Chest_BlackLongGloves.png",
@@ -262,6 +283,26 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Ass.png",   
             "True", "images/KittyDoggy/Kitty_Doggy_Ass.png",              
             ), 
+        (0,0), ConditionSwitch(   
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'green panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'white panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+            "True", Null(),
+            ),  
+        (0,0), ConditionSwitch(   
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'blue shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'white shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'capris'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'black jeans'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'black blue pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'yoga pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'orange skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'white skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'black skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Ass.png", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+            "True", Null(),
+            ),  
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "K_Water", "images/RogueDoggy/Rogue_Doggy_WetAss.png",   
             "True", Null(),              
@@ -297,7 +338,146 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_Closed.png", 
             "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_Closed.png", 
             "True", "images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", 
-            ),   
+            ),  
+        (0,0), ConditionSwitch(   
+            # "P_Sprite and P_Cock == 'in'", Null(),
+            "not K_DynamicTan[0]", Null(),
+            "P_Sprite and P_Cock == 'in' and Speed > 2", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'in' and Speed > 1", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'in' and Speed", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'in'", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "Trigger == 'lick pussy'", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "K_DynamicTan[0]", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+            "True", Null(),
+            ),  
+        (0,0), ConditionSwitch(   
+            # "P_Sprite and P_Cock == 'in'", Null(),
+            "not K_DynamicTan[0]", Null(),
+            "P_Sprite and P_Cock == 'in' and Speed > 2", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Pussy_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'in' and Speed > 1", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Pussy_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'in' and Speed", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Pussy_Moving_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'in'", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Pussy_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+            "Trigger == 'lick pussy'", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Open.png", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "K_DynamicTan[0]", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+            "True", Null(),
+            ),  
         #(0,0), ConditionSwitch(                                                                                 #pubes              
         #    "not R_Pubes", Null(),         
         #    "P_Sprite and P_Cock == 'in'", Null(),
@@ -340,6 +520,187 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Tight.png", 
             "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", 
             ),
+        (0,0), ConditionSwitch(   
+            # "P_Sprite and P_Cock == 'in'", Null(),
+            "not K_DynamicTan[0]", Null(),
+            "P_Sprite and P_Cock == 'anal' and Speed > 3", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal' and Speed > 2", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal' and Speed > 1", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal' and Speed", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal'", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'plug' and Speed", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "K_Loose", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+            "K_DynamicTan[0]", ConditionSwitch(
+                                                            "K_DynamicTan[4] == 'green panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'white panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+                                                            "K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+                                                            "True", Null(),
+                                                            ),
+            "True", Null(),
+            ),  
+        (0,0), ConditionSwitch(   
+            # "P_Sprite and P_Cock == 'in'", Null(),
+            "not K_DynamicTan[0]", Null(),
+            "P_Sprite and P_Cock == 'anal' and Speed > 3", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking3_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal' and Speed > 2", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking2_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal' and Speed > 1", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Doggy_Anal_Fucking_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal' and Speed", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Doggy_Anal_Heading_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "P_Sprite and P_Cock == 'anal'", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Anal_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+            "P_Sprite and P_Cock == 'plug' and Speed", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("Kitty_Anal_Plug_Heading_White", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+
+            "K_Loose", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+            "K_DynamicTan[0]", ConditionSwitch(
+                                                            "K_DynamicTan[2] == 'shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+                                                            "K_DynamicTan[2] == 'blue shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'white shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+                                                            "K_DynamicTan[2] == 'capris'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+                                                            "K_DynamicTan[2] == 'black jeans'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+                                                            "K_DynamicTan[2] == 'black blue pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+                                                            "K_DynamicTan[2] == 'yoga pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+                                                            "K_DynamicTan[2] == 'orange skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+                                                            "K_DynamicTan[2] == 'white skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+                                                            "K_DynamicTan[2] == 'black skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+                                                            "True", Null(),
+                                                            ),
+            "True", Null(),
+            ),  
         (0,0), ConditionSwitch(                                                                                 #Hose
             "K_Spank >= 1 and K_Spank <= 4 and K_Plugged", "images/KittyDoggy/Kitty_Doggy_SpankPlugged1.png",
             "K_Spank >= 1 and K_Spank <= 4 and (P_Cock == 'anal' or P_Cock == 'plug')", "images/KittyDoggy/Kitty_Doggy_SpankAnal1.png",
@@ -493,41 +854,21 @@ image Kitty Doggy Blink:                                                        
 image Kitty_Pussy:                                                                                              #Full Animation for speed 0    
     contains:  
         "Kitty_Doggy_Pussy_FBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
-        # ),                                                                                 #Base
     contains:                                                                                   #Cock
         "Zero_Doggy_Insert"
         pos (169,460) #Out stroke
     contains:
         "Kitty_Doggy_Pussy_FMask"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FMask.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FMask.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png",
-        # ),                                                                                   #Mask
 
 image Kitty_Pussy_Moving:                                                                                       #Full Animation for speed 1
     subpixel True
     contains:                                                                                   #Base
         "Kitty_Doggy_Pussy_FBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
-        # ),    
         anchor (0.52,0.69)
         pos (220,518) # fix this back once re-exported(217,518) 
         xzoom 1
     contains:                                                                                   #Base
         "Kitty_Doggy_Pussy_FHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
-        # ),    
         subpixel True
         anchor (0.52,0.69)
         pos (217,518) 
@@ -547,11 +888,6 @@ image Kitty_Pussy_Moving:                                                       
 image Kitty_Pussy_Heading: #This is the image impacted by the mask for the pussy flap in "Kitty_Pussy_Moving"
     contains:                                                                                   #Mask
         "Kitty_Doggy_Pussy_FHeading"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHeading.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHeading.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHeading.png",
-        # ), 
         anchor (0.52,0.69)
         pos (217,515)
         zoom 1
@@ -565,18 +901,8 @@ image Kitty_Pussy_Heading: #This is the image impacted by the mask for the pussy
 image Kitty_Pussy_Fucking2:                                                                                      #Full Animation for speed 2
     contains:                                                                                   #Base
         "Kitty_Doggy_Pussy_FBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
-        # ),   
     contains:                                                                                   #Base
         "Kitty_Doggy_Pussy_FHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
-        # ),  
     contains:                                                                                   #Cock        
         AlphaMask("Zero_Doggy_Fucking2", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
         
@@ -584,38 +910,70 @@ image Kitty_Pussy_Fucking2:                                                     
 image Kitty_Pussy_Fucking3:                                                                                      #Full Animation for speed 3
     contains:                                                                                   #Base
         "Kitty_Doggy_Pussy_FBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
-        # ),   
     contains:                                                                                   #Base
         "Kitty_Doggy_Pussy_FHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
-        # ),   
     contains:                                                                                   #Cock        
         AlphaMask("Zero_Doggy_Fucking3", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
         
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>              #Pussy fucking animations    
+image Kitty_Pussy_White:                                                                                              #Full Animation for speed 0    
+    contains:  
+        "Kitty_Doggy_Pussy_FBase_White"
+    contains:                                                                                   #Cock
+        "Zero_Doggy_Insert"
+        pos (169,460) #Out stroke
+    contains:
+        "Kitty_Doggy_Pussy_FMask_White"
+
+image Kitty_Pussy_Moving_White:                                                                                       #Full Animation for speed 1
+    subpixel True
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Pussy_FBase_White"
+        anchor (0.52,0.69)
+        pos (220,518) # fix this back once re-exported(217,518) 
+        xzoom 1
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Pussy_FHole_White"
+        subpixel True
+        anchor (0.52,0.69)
+        pos (217,518) 
+        xzoom .6
+        block:
+            ease 1 xzoom 1
+            pause 1
+            ease 3 xzoom .6
+            repeat 
+    contains:                                                                                   #Cock
+        AlphaMask("Zero_Doggy_Heading", "Rogue_Pussy_Mask")
+    
+    contains:                                                                                   #pussy flap
+        AlphaMask("Rogue_Pussy_Heading", "Rogue_Pussy_Hole_Mask")  
         
+            
+image Kitty_Pussy_Fucking2_White:                                                                                      #Full Animation for speed 2
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Pussy_FBase_White"
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Pussy_FHole_White"
+    contains:                                                                                   #Cock        
+        AlphaMask("Zero_Doggy_Fucking2", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
+        
+
+image Kitty_Pussy_Fucking3_White:                                                                                      #Full Animation for speed 3
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Pussy_FBase_White"
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Pussy_FHole_White"
+    contains:                                                                                   #Cock        
+        AlphaMask("Zero_Doggy_Fucking3", "images/RogueDoggy/Rogue_Doggy_SexMask.png")        
+
+
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
 image Kitty_Anal2:                                                                                               #Anal static
     contains:                                                                                   #Base
         "Kitty_Doggy_Anal_FullBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-        # ),         
     contains:
         "Kitty_Doggy_Anal_FullHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
-        # ),                                         #Hole
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -624,31 +982,26 @@ image Kitty_Anal2:                                                              
         pos (172,500)
     contains:                                                                                   #Mask
         "Kitty_Doggy_Anal_FullMask"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
-        # ),  
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5    
     contains:  
         "Kitty_Doggy_Anal_FullCheeks"                                                                                 #Cheeks
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
-        # ),  
 
 
 image Kitty_Anal:                                                                                               #Anal static Loose
     contains:                                                                                   #Base
         "Kitty_Doggy_Asshole_Loose"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
-        # ),    
+        anchor (0.50,0.69)
+        pos (208,500)
+        zoom 1.25
+    contains:                                                                                   #Cock
+        "Zero_Doggy_Insert"
+        pos (172,500)
+
+image Kitty_Anal_White:                                                                                               #Anal static Loose
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Asshole_Loose_White"
         anchor (0.50,0.69)
         pos (208,500)
         zoom 1.25
@@ -659,11 +1012,6 @@ image Kitty_Anal:                                                               
 image Kitty_Anal_Plug_Stopped:                                                                                               #Anal static Loose
     contains:                                                                                   #Base
         "Kitty_Doggy_Anal_FullBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-        # ),     
         anchor (0.50,0.69)
         pos (208,500)
         zoom 1.25
@@ -675,14 +1023,6 @@ image Kitty_Anal_Plug_Stopped:                                                  
         #zoom 1.25
 
 image Kitty_Anal_Plug:                                                                                               #Anal static Loose
-    #contains:                                                                                   #Base
-    #    ConditionSwitch(          
-    #    "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-    #    "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-    #    ),     
-    #    anchor (0.50,0.69)
-    #    pos (208,500)
-    #    zoom 1.25
     contains:                                                                                   #Cock
         "Plug_Doggy_Insert"
         pos (172,500)
@@ -695,18 +1035,8 @@ image Kitty_Anal_Plug:                                                          
 image Kitty_Doggy_Anal_Heading:                                                                                       #Animation for speed 1
     contains:                                                                                   #Base
         "Kitty_Doggy_Anal_FullBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-        # ),     
     contains:
         "Kitty_Doggy_Anal_FullHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
-        # ),                                         #Hole
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -725,11 +1055,6 @@ image Kitty_Doggy_Anal_Heading:                                                 
             repeat
     contains:                                                                                   #Mask
         "Kitty_Doggy_Anal_FullMask"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
-        # ),  
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -740,29 +1065,46 @@ image Kitty_Doggy_Anal_Heading:                                                 
             repeat             
     contains:                                                                                   #Cheeks
         "Kitty_Doggy_Anal_FullCheeks"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
-        # ),  
+
+image Kitty_Doggy_Anal_Heading_White:                                                                                       #Animation for speed 1
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Anal_FullBase_White"
+    contains:
+        "Kitty_Doggy_Anal_FullHole_White"
+        anchor (0.52,0.69)
+        pos (218,518)
+        zoom .5
+        block:
+            ease .5 zoom 1
+            pause .5
+            ease 1.5 zoom .5
+            repeat 
+    contains:                                                                                   #Cock
+        "Zero_Doggy_Insert"
+        pos (172,500)
+        block:
+            ease .5 ypos 450
+            pause .25
+            ease 1.75 ypos 500#505
+            repeat
+    contains:                                                                                   #Mask
+        "Kitty_Doggy_Anal_FullMask_White"
+        anchor (0.52,0.69)
+        pos (218,518)
+        zoom .5
+        block:
+            ease .5 zoom 1
+            pause .5
+            ease 1.5 zoom .5
+            repeat             
+    contains:                                                                                   #Cheeks
+        "Kitty_Doggy_Anal_FullCheeks_White"
 
 image Kitty_Anal_Plug_Heading:                                                                                       #Animation for speed 1
     contains:                                                                                   #Base
         "Kitty_Doggy_Anal_FullBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-        # ),     
-        #"images/KittyDoggy/Kitty_Doggy_Anal_HeadingBase.png"    
     contains:
         "Kitty_Doggy_Anal_FullHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
-        # ),                                         #Hole
-        #"images/KittyDoggy/Kitty_Doggy_Anal_HeadingBase.png"                                       #Hole
         anchor (0.52,0.69)
         pos (218,518)
         zoom .4
@@ -789,12 +1131,6 @@ image Kitty_Anal_Plug_Heading:                                                  
             repeat
     contains:                                                                                   #Mask
         "Kitty_Doggy_Anal_FullMask_Plug"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask_Plug.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask_Plug.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask_Plug.png",
-        # ),  
-        #"images/KittyDoggy/Kitty_Doggy_Anal_HeadingMask_Plug.png"
         anchor (0.52,0.69)
         pos (218,518)
         zoom .4
@@ -821,11 +1157,64 @@ image Kitty_Anal_Plug_Heading:                                                  
             repeat            
     contains:                                                                                   #Cheeks
         "Kitty_Doggy_Anal_FullCheeks"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
-        # ),  
+
+image Kitty_Anal_Plug_Heading_White:                                                                                       #Animation for speed 1
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Anal_FullBase_White"
+    contains:
+        "Kitty_Doggy_Anal_FullHole_White"
+        anchor (0.52,0.69)
+        pos (218,518)
+        zoom .4
+        block:
+            #ease .25 zoom .8
+            #pause .75
+            #ease 1.5 zoom .3
+            #repeat 
+            ease .30 zoom .9
+            pause .10
+            ease .10 zoom .6
+            #pause .75
+            pause .75
+            ease .25 zoom .9
+            ease 1.0 zoom .4
+            repeat 
+    contains:                                                                                   #Cock
+        "Plug_Doggy_Insert"
+        pos (172,500)
+        block:
+            ease .5 ypos 450
+            pause .5  #up
+            ease 1.5 ypos 500#505  down
+            repeat
+    contains:                                                                                   #Mask
+        "Kitty_Doggy_Anal_FullMask_Plug_White"
+        anchor (0.52,0.69)
+        pos (218,518)
+        zoom .4
+        block:
+            #ease .25 zoom .8
+            #pause .75
+            #ease 1.5 zoom .3
+            #repeat 
+            ease .30 zoom .9
+            pause .10
+            ease .10 zoom .6
+            #pause .25
+            pause .75
+            ease .25 zoom .9
+            ease 1.0 zoom .4
+            repeat 
+    contains:                                                                                   #Cock
+        "images/RogueDoggy/Rogue_Doggy_Plug_In_Top.png", 
+        pos (172,500)
+        block:
+            ease .5 ypos 450
+            pause .5
+            ease 1.5 ypos 500#505
+            repeat            
+    contains:                                                                                   #Cheeks
+        "Kitty_Doggy_Anal_FullCheeks_White"
 
 
 
@@ -868,41 +1257,26 @@ image Zero_Doggy_Anal1:                                                         
 image Kitty_Doggy_Anal_Fucking:                                                                                       #Animation for speed 2 Ass
     contains:                                                                                   #Base
         "Kitty_Doggy_Anal_FullBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-        # ),     
     contains:                                                                                   #Hole
         "Kitty_Doggy_Anal_FullHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
-        # ),    
-    # contains:
-    #     "Kitty_Doggy_Asshole_Loose"
-    #     # ConditionSwitch(          
-    #     # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-    #     # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-    #     # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
-    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal1", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")
     contains:                                                                                   #Mask
         "Kitty_Doggy_Anal_FullMask"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
-        # ),  
     contains:                                                                                   #Cheeks
         "Kitty_Doggy_Anal_FullCheeks"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
-        # ),  
+
+image Kitty_Doggy_Anal_Fucking_White:                                                                                       #Animation for speed 2 Ass
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Anal_FullBase_White"
+    contains:                                                                                   #Hole
+        "Kitty_Doggy_Anal_FullHole_White"
+    contains:                                                                                   #Cock
+        AlphaMask("Zero_Doggy_Anal1", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")
+    contains:                                                                                   #Mask
+        "Kitty_Doggy_Anal_FullMask_White"
+    contains:                                                                                   #Cheeks
+        "Kitty_Doggy_Anal_FullCheeks_White"
 
 
 image Kitty_Doggy_Fuck_Top:                #animation for anal fucking top half
@@ -955,80 +1329,50 @@ image Zero_Doggy_Anal3:                                                         
 image Kitty_Doggy_Anal_Fucking2:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
         "Kitty_Doggy_Anal_FullBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-        # ),     
     contains:                                                                                   #Hole
         "Kitty_Doggy_Anal_FullHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
-        # ),    
-    # contains:
-    #     "Kitty_Doggy_Asshole_Loose"
-    #     # ConditionSwitch(          
-    #     # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-    #     # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-    #     # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
-    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal2", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
         "Kitty_Doggy_Anal_FullMask"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
-        # ),  
     contains:                                                                                   #Cheeks
         "Kitty_Doggy_Anal_FullCheeks"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
-        # ),  
 
 image Kitty_Doggy_Anal_Fucking3:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
         "Kitty_Doggy_Anal_FullBase"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
-        # ),      
     contains:                                                                                   #Hole
         "Kitty_Doggy_Anal_FullHole"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
-        # ),    
-    # contains:
-    #     "Kitty_Doggy_Asshole_Loose"
-    #     # ConditionSwitch(          
-    #     # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-    #     # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-    #     # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
-    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal3", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
         "Kitty_Doggy_Anal_FullMask3"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask3.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask3.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask3.png",
-        # ),  
     contains:                                                                                   #Cheeks
         "Kitty_Doggy_Anal_FullCheeks"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
-        # ),  
+
+image Kitty_Doggy_Anal_Fucking2_White:                                                                                      #Animation for speed 3 Ass
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Anal_FullBase_White"
+    contains:                                                                                   #Hole
+        "Kitty_Doggy_Anal_FullHole_White"
+    contains:                                                                                   #Cock
+        AlphaMask("Zero_Doggy_Anal2", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
+    contains:                                                                                   #Mask
+        "Kitty_Doggy_Anal_FullMask_White"
+    contains:                                                                                   #Cheeks
+        "Kitty_Doggy_Anal_FullCheeks_White"
+
+image Kitty_Doggy_Anal_Fucking3_White:                                                                                      #Animation for speed 3 Ass
+    contains:                                                                                   #Base
+        "Kitty_Doggy_Anal_FullBase_White"
+    contains:                                                                                   #Hole
+        "Kitty_Doggy_Anal_FullHole_White"
+    contains:                                                                                   #Cock
+        AlphaMask("Zero_Doggy_Anal3", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
+    contains:                                                                                   #Mask
+        "Kitty_Doggy_Anal_FullMask3_White"
+    contains:                                                                                   #Cheeks
+        "Kitty_Doggy_Anal_FullCheeks_White"
 
 
 image Kitty_Doggy_Fuck3_Top:                #animation for anal fucking2 top half
@@ -1140,7 +1484,7 @@ label Kitty_Doggy_Reset:
 # Core Rogue BJ element ///////////////////////////////////////////////////////////////////////////                                     Core Rogue BJ element
 #Rogue BJ Over Sprite Compositing
 
-# Core Rogue Handjob element //////////////////////////////////////////////////////////////////////                                         Core Rogue HJ element
+# Core Kitty Doggy element_ //////////////////////////////////////////////////////////////////////                                         Core Rogue HJ element
 #### Anal #####
 image Kitty_Doggy_Anal_FullMask:
     contains:                                                                                   #Mask
@@ -1148,6 +1492,7 @@ image Kitty_Doggy_Anal_FullMask:
         "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
         "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
         "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
+
         ), 
 image Kitty_Doggy_Anal_FullBase:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
@@ -1198,10 +1543,34 @@ image Kitty_Doggy_Pussy_FBase:
 image Kitty_Doggy_Pussy_FMask:
     contains:
         ConditionSwitch(          
-        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FMask.png",
-        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FMask.png",
-        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png",
-        ), 
+            "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FMask.png",
+            "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FMask.png",
+            "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png",
+            ), 
+    contains:
+        ConditionSwitch(   
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'green panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'white panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'kitty lingerie panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Panties_Green.png"),
+            "K_DynamicTan[0] and K_DynamicTan[4] == 'purple bikini panties'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Panties_Purple.png"),
+            "True", Null(),
+            ),  
+    contains:
+        ConditionSwitch(   
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Shorts.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'blue shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'white shorts'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'capris'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'black jeans'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'black blue pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Legs_BlackBluePants.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'yoga pants'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_Legs_Yoga.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'orange skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_SkirtOrange.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'white skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_SkirtWhite.png"),
+            "K_DynamicTan[0] and K_DynamicTan[2] == 'black skirt'", AlphaMask("images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png", "images/KittyDoggy/Kitty_Doggy_SkirtBlack.png"),
+            "True", Null(),
+            ),  
+
+        
 
 image Kitty_Doggy_Pussy_FHole:
     contains:                                                                                   #Base
@@ -1224,5 +1593,150 @@ image Kitty_Doggy_Anal_FullMask_Plug:
         ConditionSwitch(          
         "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask_Plug.png",
         "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask_Plug.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask_Plug.png",
+        ),
+
+# Core Kitty Doggy element_ //////////////////////////////////////////////////////////////////////                                         Core Rogue HJ element
+#### Anal #####
+image Kitty_Doggy_Anal_FullMask_:
+    contains:                                                                                   #Mask
+        ConditionSwitch(          
+        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
+        ), 
+image Kitty_Doggy_Anal_FullBase_:                                                                                      #Animation for speed 3 Ass
+    contains:                                                                                   #Base
+        ConditionSwitch(          
+        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),
+image Kitty_Doggy_Anal_FullHole_:      
+    contains:                                                                                   #Hole
+        ConditionSwitch(          
+        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ), 
+image Kitty_Doggy_Asshole_Loose_:  
+    contains:
+        ConditionSwitch(          
+        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+        ),  
+image Kitty_Doggy_Anal_FullMask3_:    
+    contains:                                                                                   #Mask
+        ConditionSwitch(          
+        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask3.png",
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask3.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask3.png",
+        ),
+image Kitty_Doggy_Anal_FullCheeks_White:
+    contains:                                                                                   #Cheeks
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ), 
+
+##### Pussy #####
+
+image Kitty_Doggy_Pussy_FBase_White:
+    contains:  
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
+        ),  
+
+image Kitty_Doggy_Pussy_FMask_White:
+    contains:
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png",
+        ), 
+
+image Kitty_Doggy_Pussy_FHole_White:
+    contains:                                                                                   #Base
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
+        ), 
+
+image Kitty_Doggy_Pussy_FHeading_:
+    contains:
+        ConditionSwitch(          
+        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHeading.png",
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHeading.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHeading.png",
+        ), 
+
+image Kitty_Doggy_Anal_FullMask_Plug_:
+    contains:                                                                                   #Mask
+        ConditionSwitch(          
+        "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask_Plug.png",
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask_Plug.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask_Plug.png",
+        ), 
+
+
+# Core Kitty White Doggy element //////////////////////////////////////////////////////////////////////                                         Core Rogue HJ element
+#### Anal #####
+image Kitty_Doggy_Anal_FullMas_White:
+    contains:                                                                                   #Mask
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
+        ), 
+image Kitty_Doggy_Anal_FullBase_White:           
+    contains:                                                                                   #Base
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),
+image Kitty_Doggy_Anal_FullHole_White:
+    contains:                                                                                   #Hole
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ), 
+image Kitty_Doggy_Asshole_Loose_White:
+    contains:
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+        ),  
+image Kitty_Doggy_Anal_FullMask3_White:
+    contains:                                                                                   #Mask
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask3.png",
+        ),
+image Kitty_Doggy_Anal_FullCheek_White:
+    contains:                                                                                   #Cheeks
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ), 
+
+##### Pussy #####
+
+image Kitty_Doggy_Pussy_FBas_White:
+    contains:  
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
+        ),  
+
+image Kitty_Doggy_Pussy_FMas_White:
+    contains:
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png",
+        ), 
+
+image Kitty_Doggy_Pussy_FHol_White:
+    contains:                                                                                   #Base
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
+        ), 
+
+image Kitty_Doggy_Pussy_FHeadin_White:
+    contains:
+        ConditionSwitch(          
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHeading.png",
+        ), 
+
+image Kitty_Doggy_Anal_FullMask_Plu_White:
+    contains:                                                                                   #Mask
+        ConditionSwitch(          
         "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask_Plug.png",
         ), 
