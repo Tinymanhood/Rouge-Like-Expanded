@@ -1066,8 +1066,8 @@ label Rogue_ToplessorNothing:
     return              
     
 label Rogue_First_Topless(Silent = 0, TempLine=0):  
-    if R_BodySuit and not R_BodySuitOff:
-        "first topless was called while rogue was wearing a bodysuit, ERROR MESSAGE"
+    if (R_BodySuit and not R_BodySuitOff) or R_BodySuit != "classic uniform damaged" or R_Chest or R_Over:
+        # "first topless was called while rogue was wearing a bodysuit, ERROR MESSAGE"
         return        
     $ R_RecentActions.append("topless")                      
     $ R_DailyActions.append("topless")
@@ -1684,9 +1684,9 @@ label Rogue_Bottoms_Off_Refused:
     return   
     
 label Rogue_First_Bottomless(Silent = 0): 
-    if R_BodySuit and not R_BodySuitOff:
-        "first bottomless was called while rogue was wearing a bodysuit, ERROR MESSAGE"
-        return 
+    if (R_BodySuit and not R_BodySuitOff) or R_BodySuit != "classic uniform damaged" or R_Legs or R_Panties or HoseNum("Rogue") >= 10:
+        # "first bottomless was called while rogue was wearing a bodysuit, ERROR MESSAGE"
+        return
     $ R_RecentActions.append("bottomless")                      
     $ R_DailyActions.append("bottomless")
     call DrainWord("Rogue","no bottomless")
