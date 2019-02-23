@@ -652,6 +652,56 @@ init python:
                             
                 #if it falls though. . .
                 return 0 
+
+    def ChestNum(Chr = "Rogue"): 
+            #This function determines how much pants are on, 10 for pants, 5 for shorts, <5 for less.
+
+                if Chr == "Rogue":
+                        if R_Chest == "tank":
+                            return 2
+                        elif R_Chest == "buttoned tank":
+                            return 2
+                        elif R_Chest == "cheerleader":
+                            return 2
+                        elif R_Chest == "green crop top":
+                            return 2
+                        elif R_Chest == "black crop top":
+                            return 2
+                        elif R_Chest:
+                            return 1
+
+                #if nothing else:
+                return 0 
+
+    def BodySuitTopCoverage(Chr = "Rogue"): 
+            #This function determines how much pants are on, 10 for pants, 5 for shorts, <5 for less.
+
+                if Chr == "Rogue":
+                        if R_BodySuit == "classic uniform":
+                            return 100
+                        elif R_BodySuit == "swimsuit1":
+                            return 80
+                        elif R_BodySuit == "swimsuit2":
+                            return 50
+                        
+
+                #if nothing else:
+                return 0 
+
+    def BodySuitBottomCoverage(Chr = "Rogue"): 
+            #This function determines how much pants are on, 10 for pants, 5 for shorts, <5 for less.
+
+                if Chr == "Rogue":
+                        if R_BodySuit == "classic uniform":
+                            return 100
+                        elif R_BodySuit == "swimsuit1":
+                            return 20 # = regular panties
+                        elif R_BodySuit == "swimsuit1":
+                            return 10 # = regular panties
+                        
+
+                #if nothing else:
+                return 0 
             
     def ClothingCheck(Chr = "Rogue", C = 0): 
             #This function counts how many items of clothing she has on and returns that number.
@@ -4326,16 +4376,20 @@ label RogueWardrobe:
                     "Back":
                         jump RogueWardrobe               
         "Set Custom Outfit #1.":
-            $ R_Custom[0] = 1
-            $ R_Custom[1] = R_Arms
-            $ R_Custom[2] = R_Legs
+            $ R_Custom[1] = R_Arms  
+            $ R_Custom[2] = R_Legs 
             $ R_Custom[3] = R_Over
-            $ R_Custom[4] = R_Under #fix, this can be changed to something else, no longer necessary
-            $ R_Custom[5] = R_Chest
-            $ R_Custom[6] = R_Panties 
-            $ R_Custom[7] = R_Pubes 
+            $ R_Custom[4] = R_Neck
+            $ R_Custom[5] = R_Chest 
+            $ R_Custom[13] = R_BodySuit
+            $ R_Custom[14] = R_Headband
+            $ R_Custom[15] = R_Accessory
+            $ R_Custom[6] = R_Panties
+            $ R_Custom[7] = R_Boots
             $ R_Custom[8] = R_Hair
             $ R_Custom[9] = R_Hose
+            $ R_Custom[0] = 1
+
         "Wear Custom Outfit #[R_Custom[0]]." if R_Custom[0]:
             $ Line = R_Outfit
             $ R_Outfit = "custom1"
@@ -5044,6 +5098,7 @@ label Failsafe:
     $ R_Over = "mesh top" if "R_Over" not in globals().keys() else R_Over
     $ R_Under = 0 if "R_Under" not in globals().keys() else R_Under
     $ R_Chest = "tank" if "R_Chest" not in globals().keys() else R_Chest
+    $ R_BodySuit = 0 if "R_BodySuit" not in globals().keys() else R_BodySuit
     $ R_Pierce = 0 if "R_Pierce" not in globals().keys() else R_Pierce
     $ R_Panties = "black panties" if "R_Panties" not in globals().keys() else R_Panties
     $ R_Neck = "spiked collar" if "R_Neck" not in globals().keys() else R_Neck
@@ -5060,6 +5115,8 @@ label Failsafe:
     $ R_Gagx = 0 if "R_Gagx" not in globals().keys() else R_Gagx
     $ R_Boots = 0 if "R_Boots" not in globals().keys() else R_Boots
     $ R_Glasses = 0 if "R_Glasses" not in globals().keys() else R_Glasses
+    $ R_Headband = 0 if "R_Headband" not in globals().keys() else R_Headband
+    $ R_Accessory = 0 if "R_Accessory" not in globals().keys() else R_Accessory
     $ R_Blush = 0 if "R_Blush" not in globals().keys() else R_Blush
     $ R_Spunk = [] if "R_Spunk" not in globals().keys() else R_Spunk
     $ R_Sperm = [] if "R_Sperm" not in globals().keys() else R_Sperm
@@ -5071,18 +5128,19 @@ label Failsafe:
     $ R_Wet = 0 if "R_Wet" not in globals().keys() else R_Wet
     $ R_Water = 0 if "R_Water" not in globals().keys() else R_Water
     $ R_Upskirt = 0 if "R_Upskirt" not in globals().keys() else R_Upskirt
+    $ R_BodySuitOff = 0 if "R_BodySuitOff" not in globals().keys() else R_BodySuitOff
     $ R_PantiesDown = 0 if "R_PantiesDown" not in globals().keys() else R_PantiesDown
     $ R_Uptop = 0 if "R_Uptop" not in globals().keys() else R_Uptop
     $ R_Held = 0 if "R_Held" not in globals().keys() else R_Held
-    $ R_Custom = [0,0,0,0,0,0,0,0,0,0,0] if "R_Custom" not in globals().keys() else R_Custom
-    $ R_Custom2 = [0,0,0,0,0,0,0,0,0,0,0] if "R_Custom2" not in globals().keys() else R_Custom2
-    $ R_Custom3 = [0,0,0,0,0,0,0,0,0,0,0] if "R_Custom3" not in globals().keys() else R_Custom3
-    $ R_Custom4 = [0,0,0,0,0,0,0,0,0,0,0] if "R_Custom4" not in globals().keys() else R_Custom4
-    $ R_Custom5 = [0,0,0,0,0,0,0,0,0,0,0] if "R_Custom5" not in globals().keys() else R_Custom5
-    $ R_Custom6 = [0,0,0,0,0,0,0,0,0,0,0] if "R_Custom6" not in globals().keys() else R_Custom6
-    $ R_Custom7 = [0,0,0,0,0,0,0,0,0,0,0] if "R_Custom7" not in globals().keys() else R_Custom7
-    $ R_Gym = [0,"gloved",0,"hoodie",0,"sports bra","shorts",0,0,0,0] if "R_Gym" not in globals().keys() else R_Gym
-    $ R_Sleepwear = [0,0,0,0,"tank","green panties",0] if "R_Sleepwear" not in globals().keys() else R_Sleepwear
+    $ R_Custom = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom" not in globals().keys() else R_Custom
+    $ R_Custom2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom2" not in globals().keys() else R_Custom2
+    $ R_Custom3 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom3" not in globals().keys() else R_Custom3
+    $ R_Custom4 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom4" not in globals().keys() else R_Custom4
+    $ R_Custom5 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom5" not in globals().keys() else R_Custom5
+    $ R_Custom6 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom6" not in globals().keys() else R_Custom6
+    $ R_Custom7 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom7" not in globals().keys() else R_Custom7
+    $ R_Gym = [0,"gloved",0,"hoodie",0,"sports bra","shorts",0,0,0,0,0,0,0,0,0,0] if "R_Gym" not in globals().keys() else R_Gym
+    $ R_Sleepwear = [0,0,0,0,"tank","green panties",0,0,0,0,0,0,0] if "R_Sleepwear" not in globals().keys() else R_Sleepwear
     $ R_Schedule = [0,0,0,0,0,0,0,0,4,0] if "R_Schedule" not in globals().keys() else R_Schedule                      #chooses when she wears what
     $ R_SpriteVer = 0 if "R_SpriteVer" not in globals().keys() else R_SpriteVer
     $ RogueLayer = 50 if "RogueLayer" not in globals().keys() else RogueLayer
