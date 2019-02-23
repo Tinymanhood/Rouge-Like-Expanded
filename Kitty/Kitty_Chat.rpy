@@ -158,49 +158,47 @@ label Kitty_Chat:
                         call KittyFace("sly",0) 
                         ch_k "Hmmm, sounds like a good idea"
 
-                            menu:
+                        menu:
+                            "Which parts?"
+                            
+                            "Her top" if R_Over or R_Chest:    
+                                ch_k "Ok"
 
-                                "Which parts?"
-                                
-                                "Her top" if R_Over or R_Chest:    
-                                    ch_k "Ok"
-    
-                                    if R_Over:     
-                                        $ R_Over = 0
-                                    if R_Chest:     
-                                        $ R_Chest = 0
-                                    if R_BodySuit:
-                                        $ R_BodySuit = 0
-                
-                                    call RogueFace("surprised", 2) 
-                                    "Kitty grabs Rogue's clothes and phase them out of Rogue's body using her powers."
-                                    $ R_SeenChest += 1 
-                                    if not R_Panties and not R_Legs and HoseNum("Rogue") < 10:
-                                        $ R_SeenPussy += 1 
-                                    
-        
-                                "Her bottoms" if R_Legs or R_Panties or R_Hose:
-                                    ch_k "Ok"
-    
-                                    if R_Legs:     
-                                        $ R_Legs = 0
-                                    if R_Panties:     
-                                        $ R_Panties = 0
-                                    if R_Hose:     
-                                        $ R_Hose = 0
-                                    if R_BodySuit:
-                                        $ R_BodySuit = 0
-        
-        
-                                    call RogueFace("surprised", 2) 
-                                    "Kitty grabs Rogue's clothes and phase them out of Rogue's body using her powers."
+                                if R_Over:     
+                                    $ R_Over = 0
+                                if R_Chest:     
+                                    $ R_Chest = 0
+                                if R_BodySuit:
+                                    $ R_BodySuit = 0
+            
+                                call RogueFace("surprised", 2) 
+                                "Kitty grabs Rogue's clothes and phase them out of Rogue's body using her powers."
+                                $ R_SeenChest += 1 
+                                if not R_Panties and not R_Legs and HoseNum("Rogue") < 10:
                                     $ R_SeenPussy += 1 
-                                    if not R_Over and not R_Chest:
-                                        $ R_SeenChest += 1 
+                                
+    
+                            "Her bottoms" if R_Legs or R_Panties or R_Hose:
+                                ch_k "Ok"
 
-        
-                                "Never mind":
-                                    pass
+                                if R_Legs:     
+                                    $ R_Legs = 0
+                                if R_Panties:     
+                                    $ R_Panties = 0
+                                if R_Hose:     
+                                    $ R_Hose = 0
+                                if R_BodySuit:
+                                    $ R_BodySuit = 0
+    
+    
+                                call RogueFace("surprised", 2) 
+                                "Kitty grabs Rogue's clothes and phase them out of Rogue's body using her powers."
+                                $ R_SeenPussy += 1 
+                                if not R_Over and not R_Chest:
+                                    $ R_SeenChest += 1 
+    
+                            "Never mind":
+                                pass
 
                         if not Taboo: #no taboo
                             if "exhibitionist" in R_Traits:
