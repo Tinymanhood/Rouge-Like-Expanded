@@ -1947,11 +1947,11 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Legs = 0
                     $ R_Over = 0
                     $ R_Neck = 0
-                    $ R_Chest = "swimsuit1"
+                    $ R_Chest = 0
                     $ R_BodySuit = "swimsuit1"
                     $ R_Headband = 0
                     $ R_Accessory = 0
-                    $ R_Panties = "swimsuit1"
+                    $ R_Panties = 0
                     $ R_Boots = 0
                     $ R_Hose = 0
                     $ R_Shame = 0
@@ -1967,11 +1967,11 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ R_Legs = 0
                     $ R_Over = 0
                     $ R_Neck = 0
-                    $ R_Chest = "swimsuit2"
+                    $ R_Chest = 0
                     $ R_BodySuit = "swimsuit2"
                     $ R_Headband = 0
                     $ R_Accessory = 0
-                    $ R_Panties = "swimsuit2"
+                    $ R_Panties = 0
                     $ R_Boots = 0
                     $ R_Hose = 0
                     $ R_Shame = 0

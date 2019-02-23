@@ -2180,7 +2180,8 @@ label Rogue_Flirt:
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 5)             
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 2)           
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 3) 
-                        $ R_SeenPanties = 1
+                        if not R_BodySuit:
+                            $ R_SeenPanties = 1
                         
                     elif R_Panties: #panties on, but Taboo
                         if ApprovalCheck("Rogue", 750, "L") and ApprovalCheck("Rogue", 1300, TabM=2):
@@ -2207,11 +2208,13 @@ label Rogue_Flirt:
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -10)          
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)           
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
-                            ch_r "Why would you even do that in public?"
+                            if not R_BodySuit:
+                                ch_r "Why would you even do that in public?"
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 7)             
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 3)           
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 3)
-                        $ R_SeenPanties = 1
+                        if not R_BodySuit:
+                            $ R_SeenPanties = 1
                         
                     elif not Taboo: #no panties, no taboo
                         if ApprovalCheck("Rogue", 850, "L"):
@@ -2225,7 +2228,8 @@ label Rogue_Flirt:
                             call RogueFace("bemused", 1) from _call_RogueFace_591
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -3)           
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3)  
-                            ch_r "Wha?! [R_Petname]? . . I don't usually. . ."
+                            if not R_BodySuit:
+                                ch_r "Wha?! [R_Petname]? . . I don't usually. . ."
                         elif ApprovalCheck("Rogue", 500):
                             call RogueFace("angry", 1) from _call_RogueFace_592
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5)           
@@ -2237,11 +2241,13 @@ label Rogue_Flirt:
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -10)          
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)           
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
-                            ch_r "I- I don't usually, you know. . ."  
+                            if not R_BodySuit:
+                                ch_r "I- I don't usually, you know. . ."  
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 7)             
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 3)           
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 4)  
-                        call Rogue_First_Bottomless from _call_Rogue_First_Bottomless_6 
+                        if not R_BodySuit:
+                            call Rogue_First_Bottomless from _call_Rogue_First_Bottomless_6 
                         
                     else: #no panties, taboo
                         if ApprovalCheck("Rogue", 850, "L") and ApprovalCheck("Rogue", 1500):
@@ -2267,16 +2273,18 @@ label Rogue_Flirt:
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -10)          
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)           
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
-                            ch_r "I- I don't usually, you know. . ." 
+                            if not R_BodySuit:
+                                ch_r "I- I don't usually, you know. . ." 
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 7)             
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 4)           
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 4)  
-                        call Rogue_First_Bottomless from _call_Rogue_First_Bottomless_7                  
+                        if not R_BodySuit:
+                            call Rogue_First_Bottomless from _call_Rogue_First_Bottomless_7                  
                     $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 1) 
                     if "exhibitionist" in R_Traits:
                         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 4) 
                     #End Flip her Skirt
-        "Pull her panties down" if (R_Legs == "skirt" or R_Legs == "SR7 skirtshort" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort" or R_Over == "blue dress" or R_Over == "red dress" or not R_Legs) and R_Panties and R_Panties != "swimsuit1" and R_Panties != "bodysuit" and R_Panties != "swimsuit2" and not R_PantiesDown and not R_Upskirt and not R_Hose:            
+        "Pull her panties down" if (R_Legs == "skirt" or R_Legs == "SR7 skirtshort" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort" or R_Over == "blue dress" or R_Over == "red dress" or not R_Legs) and R_Panties and R_Panties != "swimsuit1" and not R_BodySuit and R_Panties != "swimsuit2" and not R_PantiesDown and not R_Hose:            
                     call RogueFace("surprised", 1) from _call_RogueFace_599
                     $ R_Upskirt = 1
                     $ R_PantiesDown = 1
@@ -5310,30 +5318,30 @@ label Rogue_Clothes:
 
             menu Rogue_Clothes_Under_SwimSuits:
 
-                "Why don't you wear the swimsuit1" if R_Panties != "swimsuit1" or R_Chest != "swimsuit1":
+                "Why don't you wear the swimsuit1" if R_BodySuit != "swimsuit1":
                                 if ApprovalCheck("Rogue", 800, TabM=3):
                                     ch_r "Sure."
-                                    $ R_Panties = "swimsuit1"
-                                    $ R_Chest = "swimsuit1"
+                                    $ R_BodySuit = "swimsuit1"
+                                    # $ R_Chest = "swimsuit1"
                                 # elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
                                 #     ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I don't see how that's any business of yours, [R_Petname]."
                                 jump Rogue_Clothes_Under_SwimSuits
         
-                "Why don't you wear the swimsuit2" if R_Panties != "swimsuit2" or R_Chest != "swimsuit2":
+                "Why don't you wear the swimsuit2" if R_BodySuit != "swimsuit2":
                                 if ApprovalCheck("Rogue", 1200, TabM=3):
                                     ch_r "Sure."
-                                    $ R_Panties = "swimsuit2"
-                                    $ R_Chest = "swimsuit2"
+                                    $ R_BodySuit = "swimsuit2"
+                                    # $ R_Chest = "swimsuit2"
                                 # elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
                                 #     ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I don't see how that's any business of yours, [R_Petname]."
                                 jump Rogue_Clothes_Under_SwimSuits
 
-                "Remove the swimsuit" if R_Panties == "swimsuit2" or R_Chest == "swimsuit2" or R_Panties == "swimsuit1" or R_Chest == "swimsuit1":
-                                call Rogue_Remove_Swimsuit from _call_Rogue_Remove_Swimsuit
+                "Remove the swimsuit" if R_BodySuit == "swimsuit2" or R_BodySuit == "swimsuit1":
+                                $ R_BodySuit = 0
                                 jump Rogue_Clothes_Under_SwimSuits
 
                 "Nevermind.":
