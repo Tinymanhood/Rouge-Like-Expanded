@@ -4639,6 +4639,7 @@ label Kitty_Clothes:
                     if ApprovalCheck("Kitty", 600):
                         ch_k "Like this?"
                         $ K_Tan = "tan"
+                        $ K_DynamicTan[0] = 0
                     else:
                         ch_k "Yeah, I know that."
                     jump Kitty_Clothes_Misc_Tan
@@ -4647,6 +4648,7 @@ label Kitty_Clothes:
                     if ApprovalCheck("Kitty", 600):
                         ch_k "Like this?"
                         $ K_Tan = "tan2"
+                        $ K_DynamicTan[0] = 0
                     else:
                         ch_k "Yeah, I know that."
                     jump Kitty_Clothes_Misc_Tan
@@ -4655,6 +4657,20 @@ label Kitty_Clothes:
                     if ApprovalCheck("Kitty", 600):
                         ch_k "Like this?"
                         $ K_Tan = "tan3"
+                        $ K_DynamicTan[0] = 0
+                    else:
+                        ch_k "Yeah, I know that."
+                    jump Kitty_Clothes_Misc_Tan
+
+                "I like the fourth special tan style":
+                    if ApprovalCheck("Kitty", 600):
+                        "This tan style will tan her according to her clothes, you won't be able to see it unless you remove her clothes after it"
+                        ch_k "Like this?"
+                        $ K_Tan = "tan3"
+                        $ K_DynamicTan[0] = 1
+                        $ K_DynamicTan[2] = K_Legs
+                        $ K_DynamicTan[3] = K_Chest
+                        $ K_DynamicTan[4] = K_Panties
                     else:
                         ch_k "Yeah, I know that."
                     jump Kitty_Clothes_Misc_Tan
@@ -4663,6 +4679,7 @@ label Kitty_Clothes:
                     if ApprovalCheck("Kitty", 600):
                         ch_k "Like this?"
                         $ K_Tan = 0
+                        $ K_DynamicTan[0] = 0
                     else:
                         ch_k "Yeah, I know that."
                     jump Kitty_Clothes_Misc_Tan
