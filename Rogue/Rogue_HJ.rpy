@@ -1834,7 +1834,7 @@ label R_Dildo_Pussy:
 
     if R_DildoP: #You've done it before
         $ Tempmod += 15
-    if R_Legs == "pants:": # she's got pants on.
+    if R_Legs == "pants": # she's got pants on.
         $ Tempmod -= 20
         
     if R_Lust > 95:
@@ -2413,7 +2413,7 @@ label R_Dildo_Ass:
     elif (R_Anal + R_DildoA + R_Plug) > 0: #You've done it before
         $ Tempmod += 20   
         
-    if R_Legs == "pants:": # she's got pants on.
+    if R_Legs == "pants": # she's got pants on.
         $ Tempmod -= 20   
         
     if R_Lust > 95:
