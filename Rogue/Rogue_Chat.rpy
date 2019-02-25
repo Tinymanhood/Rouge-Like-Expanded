@@ -2563,7 +2563,7 @@ label Rogue_Flirt:
 label Rogue_AskPanties(Store = 0):
     $ Store = Tempmod  
     $ Line = 0
-    if not R_Panties or R_Panties == "shorts" or R_Panties == "red shorts"  or R_Panties == "blue shorts":
+    if not R_Panties:
         if ApprovalCheck("Rogue", 900):
             call RogueFace("sexy", 1) from _call_RogueFace_635
             $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 80, 5) 
@@ -4907,22 +4907,22 @@ label Rogue_Clothes:
         "What about wearing your shorts?":
                         menu:
                           ch_r "Which color would suit me best?"
-                          "The green one suits you well." if R_Panties != "shorts":
+                          "The green one suits you well." if R_Legs != "shorts":
                                 ch_r "Alright."
-                                $ R_Panties = "shorts"
-                          "The blue one looks nice on you." if R_Panties != "blue shorts":
+                                $ R_Legs = "shorts"
+                          "The blue one looks nice on you." if R_Legs != "blue shorts":
                                 ch_r "Alright."
-                                $ R_Panties = "blue shorts"
-                          "The red one looks hot." if R_Panties != "red shorts":
+                                $ R_Legs = "blue shorts"
+                          "The red one looks hot." if R_Legs != "red shorts":
                                 ch_r "Alright."
-                                $ R_Panties = "red shorts"
+                                $ R_Legs = "red shorts"
                                 
                                             
-        "Why don't you lose the shorts?" if R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts":
+        "Why don't you lose the shorts?" if R_Legs == "shorts" or R_Legs == "red shorts" or R_Legs == "blue shorts":
                         call RogueFace("sexy", 1) from _call_RogueFace_742
-                        if R_BodySuit:
+                        if R_BodySuit or HoseNum("Rogue") >= 10:
                              ch_r "Sure."
-                        elif R_SeenPussy and ApprovalCheck("Rogue", 500, TabM=4): # You've seen her pussy
+                        elif not R_Panties and R_SeenPussy and ApprovalCheck("Rogue", 500, TabM=4): # You've seen her pussy
                             if ApprovalCheck("Rogue", 800, "L"):               
                                 ch_r "Well aren't you cheeky. . ."
                             elif ApprovalCheck("Rogue", 500, "O"):
@@ -4932,7 +4932,7 @@ label Rogue_Clothes:
                             else:
                                 ch_r "Oh, I guess I could."    
                                 
-                        elif not R_Legs:                       #she's not wearing anything over them
+                        elif not R_Panties:                       #she's not wearing anything under them
                             ch_r "I'm not wearing anything under these, you know. . ."
                             menu:
                                 "Then you could slip on the green panties. . .":
@@ -5011,7 +5011,7 @@ label Rogue_Clothes:
                             else:
                                 ch_r "Oh, I guess I could."  
                                 
-                        $ R_Panties  = 0   
+                        $ R_Legs  = 0   
                         "She pulls her shorts off."
                                 
         "Never mind":
@@ -5212,8 +5212,6 @@ label Rogue_Clothes:
                                     call Rogue_Swimsuit_Change_Bottom
                                     ch_r "Sure, ok."
                                     $ R_Panties = "green panties"  
-                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                                    ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I think I'll choose my own underwear, thank you."
         
@@ -5222,8 +5220,6 @@ label Rogue_Clothes:
                                     call Rogue_Swimsuit_Change_Bottom
                                     ch_r "Sure, ok."
                                     $ R_Panties = "black large panties"  
-                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                                    ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I think I'll choose my own underwear, thank you."
                                 jump Rogue_Clothes_Under_Panties
@@ -5234,8 +5230,6 @@ label Rogue_Clothes:
                                     call Rogue_Swimsuit_Change_Bottom
                                     ch_r "Sure."
                                     $ R_Panties = "black panties"
-                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                                    ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I don't see how that's any business of yours, [R_Petname]."
                                 jump Rogue_Clothes_Under_Panties
@@ -5246,8 +5240,6 @@ label Rogue_Clothes:
                                     call Rogue_Swimsuit_Change_Bottom
                                     ch_r "Sure."
                                     $ R_Panties = "lace panties"
-                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                                    ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I don't see how that's any business of yours, [R_Petname]."
                                 jump Rogue_Clothes_Under_Panties
@@ -5323,8 +5315,6 @@ label Rogue_Clothes:
                                     ch_r "Sure."
                                     $ R_BodySuit = "swimsuit1"
                                     # $ R_Chest = "swimsuit1"
-                                # elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                                #     ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I don't see how that's any business of yours, [R_Petname]."
                                 jump Rogue_Clothes_Under_SwimSuits
@@ -5334,8 +5324,6 @@ label Rogue_Clothes:
                                     ch_r "Sure."
                                     $ R_BodySuit = "swimsuit2"
                                     # $ R_Chest = "swimsuit2"
-                                # elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                                #     ch_r "Heh, no, I think I'll stick with these, thanks."
                                 else:
                                     ch_r "I don't see how that's any business of yours, [R_Petname]."
                                 jump Rogue_Clothes_Under_SwimSuits
@@ -6115,11 +6103,11 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif R_Legs == "cheerleader skirtshort":            #If wearing a short cheerleader skirt commando
                             $ Count = 0   
                                    
-                        elif R_Panties == "shorts":             #If wearing shorts
+                        elif R_Legs == "shorts":             #If wearing shorts
                             $ Count = 25
-                        elif R_Panties == "red shorts":             #If wearing shorts
+                        elif R_Legs == "red shorts":             #If wearing shorts
                             $ Count = 25
-                        elif R_Panties == "blue shorts":             #If wearing shorts
+                        elif R_Legs == "blue shorts":             #If wearing shorts
                             $ Count = 25  
                         elif R_Panties == "green panties":      #If wearing only green panties
                             $ Count = 10
@@ -6161,7 +6149,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                             ch_r "Oh, I think this skirt will work fine."
                         elif HoseNum("Rogue") >= 10:
                             ch_r "Oh, these [R_Hose] will work."
-                        elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                        elif (R_Legs == "shorts" or R_Legs == "red shorts" or R_Legs == "blue shorts"):
                             ch_r "Oh, I think these shorts will work fine."  
                         else:
                             ch_r "The towel's an odd choice. . ."
