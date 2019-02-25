@@ -999,7 +999,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),
             "R_BodySuit == 'classic uniform'", "images/RogueDoggy/Rogue_Doggy_XCatsuit_top.png",
             "R_BodySuit == 'classic uniform damaged'", "images/RogueDoggy/Rogue_Doggy_XCatsuit_Dmg_top.png",
-            "R_BodySuit == 'swimsuit1' or R_BodySuit == 'swimsuit1'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",
+            "R_BodySuit == 'swimsuit1' or R_BodySuit == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(                                                                                 #tanktop
@@ -1079,7 +1079,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
 image Rogue_Doggy_Ass = LiveComposite(                                                                                          #Lower body
         (420,750), #(210,375), #(419,750), 
         (0,0), ConditionSwitch(                                                                                 #Panties back
-            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt)", Null(),  
+            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt) or R_BodySuit == 'classic uniform damaged'", Null(),  
             "R_Panties == 'shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
             "R_Panties == 'red shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
             "R_Panties == 'blue shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",    
@@ -1098,13 +1098,19 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "R_Water", "images/RogueDoggy/Rogue_Doggy_WetAss.png",   
             "True", Null(),              
             ),  
+        (0,0), ConditionSwitch(                                                                                 #Panties if Down
+            "not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal' and P_Cock != 'plug')", Null(),
+            "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),
+            "R_BodySuit == 'classic uniform damaged'", "images/RogueDoggy/Rogue_Doggy_XCatsuit_bottom_Dmg_botpart.png",
+            "True", Null(),                     
+            ),  
         (0,0), ConditionSwitch(                                                                                 #Hose
             "R_Hose == 'stockings'", "images/RogueDoggy/Rogue_Doggy_Hose.png",
             "R_Hose == 'SR7 hose'", "images/RogueDoggy/Rogue_Doggy_Hose_SR7.png",
             "True", Null(),
             ),             
         (0,0), ConditionSwitch(                                                                                 #Panties if Down
-            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt)", Null(),
+            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt) or R_BodySuit == 'classic uniform damaged'", Null(),
             "R_Panties == 'shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_Shorts_Down_Wet.png",
             "R_Panties == 'red shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_RYShorts_Down_Wet.png",
             "R_Panties == 'blue shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_BYShorts_Down_Wet.png", #fix turn this on when graphics fixed
@@ -1211,12 +1217,18 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit_bottom.png",  
             "True", Null(),                     
             ),  
+        (0,0), ConditionSwitch(   
+            "P_Sprite and (P_Cock == 'in' or P_Cock == 'anal' or P_Cock == 'plug')", Null(),
+            "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),
+            "R_BodySuit == 'classic uniform damaged'", "images/RogueDoggy/Rogue_Doggy_XCatsuit_bottom_Dmg_botpart.png",
+            "True", Null(),                     
+            ),  
         (0,0), ConditionSwitch(                                                                                 #Panties if Down
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),
             "R_BodySuit == 'classic uniform' and R_Wet", "images/RogueDoggy/Rogue_Doggy_XCatsuit_bottom_Wet.png",
             "R_BodySuit == 'classic uniform'", "images/RogueDoggy/Rogue_Doggy_XCatsuit_bottom.png",
-            "R_BodySuit == 'classic uniform damaged'", "images/RogueDoggy/Rogue_Doggy_XCatsuit_bottom_Dmg.png",
-            "R_BodySuit == 'swimsuit1' or R_BodySuit == 'swimsuit1'", "images/RogueDoggy/Rogue_Doggy_Swimsuit_bottom.png",
+            "R_BodySuit == 'classic uniform damaged'", "images/RogueDoggy/Rogue_Doggy_XCatsuit_bottom_Dmg_toppart.png",
+            "R_BodySuit == 'swimsuit1' or R_BodySuit == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit_bottom.png",
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(                                                                         #full hose/tights  
@@ -2277,6 +2289,20 @@ image Rogue_Sex_Legs:
             "R_Water", "images/RogueSex/Rogue_Sex_Water_Legs.png",   
             "True", Null(),              
             ),  
+        (0,0), ConditionSwitch(
+            "R_PantiesDown", Null(),
+            "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
+            "R_LegsUp", Null(),   
+            "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg.png",
+            "True", Null(),                     
+            ), 
+        (0,0), ConditionSwitch(
+            "R_PantiesDown", Null(),
+            "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
+            "not R_LegsUp", Null(),   
+            "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp_Dmg.png",
+            "True", Null(),                     
+            ), 
         (0,0), "Rogue_Sex_Anus",                                                                          #Anus Composite 
 
         (0,0), "Rogue_Sex_Pussy",  
@@ -2314,7 +2340,7 @@ image Rogue_Sex_Legs:
             "not R_LegsUp", Null(),   
             "R_BodySuit == 'classic uniform' and R_Wet", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp_Wet.png",
             "R_BodySuit == 'classic uniform'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp.png",
-            "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp_Dmg.png",
+            "R_BodySuit == 'classic uniform damaged' and not R_PantiesDown", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp_Dmg.png",
             "True", Null(),                     
             ), 
         (0,0), ConditionSwitch(        
@@ -2496,7 +2522,7 @@ image Rogue_Sex_Pussy:
             # pubes
             ConditionSwitch(    
                 "not R_Pubes", Null(),         
-                "R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff", Null(),
+                # "R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff", Null(),
                 #"P_Sprite and P_Cock == 'in' and Speed >= 2 and R_HairColor == 'black'", "images/RogueSex/Rogue_Sex_PubesBlack_Fucking.png",
                 #"P_Sprite and P_Cock == 'in' and Speed >= 2", "images/RogueSex/Rogue_Sex_Pubes_Fucking.png",
                 #"P_Sprite and P_Cock == 'in' and Speed and R_HairColor == 'black'", "images/RogueSex/Rogue_Sex_PubesBlack_Open.png",
