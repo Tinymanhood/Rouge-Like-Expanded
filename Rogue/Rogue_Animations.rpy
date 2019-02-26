@@ -2320,20 +2320,29 @@ image Rogue_Sex_Legs:
             "R_Water", "images/RogueSex/Rogue_Sex_Water_Legs.png",   
             "True", Null(),              
             ),  
+        # (0,0), ConditionSwitch(
+        #     "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
+        #     "R_LegsUp", Null(),   
+        #     # "(R_Panties and not R_PantiesDown) and R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg_center.png",
+        #     "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg_center.png",
+        #     "True", Null(),                     
+        #     ), 
         (0,0), ConditionSwitch(
-            "R_PantiesDown", Null(),
+            "not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal')", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "R_LegsUp", Null(),   
+            "R_BodySuit == 'classic uniform' and R_Wet", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Wet.png",
+            "R_BodySuit == 'classic uniform'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs.png",
             "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg.png",
             "True", Null(),                     
             ), 
-        (0,0), ConditionSwitch(
-            "R_PantiesDown", Null(),
-            "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
-            "not R_LegsUp", Null(),   
-            "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp_Dmg.png",
-            "True", Null(),                     
-            ), 
+        # (0,0), ConditionSwitch(
+        #     "not R_PantiesDown", Null(),
+        #     "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
+        #     "not R_LegsUp", Null(),   
+        #     "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp_Dmg.png",
+        #     "True", Null(),                     
+        #     ), 
         (0,0), "Rogue_Sex_Anus",                                                                          #Anus Composite 
 
         (0,0), "Rogue_Sex_Pussy",  
@@ -2359,6 +2368,7 @@ image Rogue_Sex_Legs:
             "True", Null(),                     
             ), 
         (0,0), ConditionSwitch(
+            "P_Sprite and (P_Cock == 'in' or P_Cock == 'anal')", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "R_LegsUp", Null(),   
             "R_BodySuit == 'classic uniform' and R_Wet", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Wet.png",
@@ -2366,6 +2376,13 @@ image Rogue_Sex_Legs:
             "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg.png",
             "True", Null(),                     
             ), 
+        # (0,0), ConditionSwitch(
+        #     "R_Panties and R_PantiesDown", Null(),
+        #     "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
+        #     "R_LegsUp", Null(),   
+        #     "R_Panties and R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg_center.png",
+        #     "True", Null(),                     
+        #     ), 
         (0,0), ConditionSwitch(
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "not R_LegsUp", Null(),   
@@ -4124,10 +4141,10 @@ image Rogue_SelfieChin:
             "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
-        (0,0), ConditionSwitch(                                                                      
-            "R_Headband", "images/RogueBJFace/Rogue_BjFace_XHeadband.png",   
-            "True", Null(),
-            ), 
+        # (0,0), ConditionSwitch(                                                                      
+        #     "R_Headband", "images/RogueBJFace/Rogue_BjFace_XHeadband.png",   
+        #     "True", Null(),
+        #     ), 
         )
 
 image Rogue_BJ Blink:

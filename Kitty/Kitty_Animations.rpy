@@ -2312,18 +2312,30 @@ image Kitty_Selfie:
             "K_Water or K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_HairBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "True", Null(),
             ),   
+        # (0,0), ConditionSwitch(                                                                 
+        #     # Underface for not sucking 
+        #     #"Speed <= 2 or Speed == 5", Null(),   #"Speed <= 2 or Trigger != 'blow' or Speed == 5", Null(), 
+        #     "K_Water and K_Blush and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen_Wet_Blush.png",    
+        #     "K_Water and K_Blush", "images/KittyBJFace/Kitty_BJ_FaceOpen_Wet_Blush.png",    
+        #     "K_Water and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen_Wet.png", 
+        #     "K_Water", "images/KittyBJFace/Kitty_BJ_FaceOpen_Wet.png", 
+        #     "K_Blush and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen_Blush.png",              
+        #     "K_Blush", "images/KittyBJFace/Kitty_BJ_FaceOpen_Blush.png",              
+        #     "True and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen.png",
+        #     "True", "images/KittyBJFace/Kitty_BJ_FaceOpen.png"
+        #     ),  
         (0,0), ConditionSwitch(                                                                 
-            # Underface for not sucking 
-            #"Speed <= 2 or Speed == 5", Null(),   #"Speed <= 2 or Trigger != 'blow' or Speed == 5", Null(), 
-            "K_Water and K_Blush and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen_Wet_Blush.png",    
-            "K_Water and K_Blush", "images/KittyBJFace/Kitty_BJ_FaceOpen_Wet_Blush.png",    
-            "K_Water and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen_Wet.png", 
-            "K_Water", "images/KittyBJFace/Kitty_BJ_FaceOpen_Wet.png", 
-            "K_Blush and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen_Blush.png",              
-            "K_Blush", "images/KittyBJFace/Kitty_BJ_FaceOpen_Blush.png",              
-            "True and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceOpen.png",
-            "True", "images/KittyBJFace/Kitty_BJ_FaceOpen.png"
-            ),   
+            # Underface for sucking 
+            # "Speed > 2 and Speed != 5", Null(),            
+            "K_Water and K_Blush and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceClosed_Wet_Blush.png",    
+            "K_Water and K_Blush", "images/KittyBJFace/Kitty_BJ_FaceClosed_Wet_Blush.png",    
+            "K_Water and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceClosed_Wet.png", 
+            "K_Water", "images/KittyBJFace/Kitty_BJ_FaceClosed_Wet.png", 
+            "K_Blush and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceClosed_Blush.png",              
+            "K_Blush", "images/KittyBJFace/Kitty_BJ_FaceClosed_Blush.png",              
+            "True and K_Tan", "images/KittyBJFace/Kitty_BJ_TFaceClosed.png",
+            "True", "images/KittyBJFace/Kitty_BJ_FaceClosed.png"
+            ), 
         
         (0,0), ConditionSwitch(                                                                         
             #Mouth

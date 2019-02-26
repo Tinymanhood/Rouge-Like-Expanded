@@ -5392,6 +5392,12 @@ label Rogue_Clothes:
                                 # $ R_Panties = "bodysuit"
                                 # $ R_Chest = "bodysuit"
                                 $ R_BodySuit = "classic uniform"  
+
+                "Wear your damaged classic uniform?" if R_BodySuit != "classic uniform damaged":
+                                ch_r "Sure, ok."
+                                # $ R_Panties = "bodysuit"
+                                # $ R_Chest = "bodysuit"
+                                $ R_BodySuit = "classic uniform damaged"
         
                         
                 "You know, you could wear some panties with that. . ." if not R_Panties:
