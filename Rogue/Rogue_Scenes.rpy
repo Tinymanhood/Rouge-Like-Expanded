@@ -2458,6 +2458,8 @@ label Rogue_Frisky_Class:
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak under the hem of her skirt, slowly tracing the soft contours of her mound." 
                                     elif R_Legs == "pants":
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak down her pants, slowly tracing the soft contours of her mound." 
+                                    elif R_Legs:
+                                        "Rogue's sly smile turns sultry as she feels your fingers sneak down her clothes, slowly tracing the soft contours of her mound." 
                                     else: #No pants
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak between her legs, slowly tracing the soft contours of her mound." 
                                         

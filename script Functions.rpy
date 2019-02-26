@@ -568,9 +568,9 @@ init python:
                             elif R_Hose == "ripped tights":
                                 return 5
                             elif R_Hose == "fishnet":
-                                return 10
+                                return 1
                             elif R_Hose == "SR7 hose":
-                                return 10
+                                return 1
                             else:
                                 return 0
                                 
@@ -4315,7 +4315,7 @@ label RogueWardrobe:
                     "Add black panties":
                         $ R_Panties = "black panties"
                     "Add shorts":
-                        $ R_Panties = "shorts"
+                        $ R_Legs = "shorts"
                     "Add green panties":
                         $ R_Panties = "green panties"
                     "Add purple bikini panties":
@@ -5139,7 +5139,7 @@ label Failsafe:
     $ R_Custom5 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom5" not in globals().keys() else R_Custom5
     $ R_Custom6 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom6" not in globals().keys() else R_Custom6
     $ R_Custom7 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] if "R_Custom7" not in globals().keys() else R_Custom7
-    $ R_Gym = [0,"gloved",0,"hoodie",0,"sports bra","shorts",0,0,0,0,0,0,0,0,0,0] if "R_Gym" not in globals().keys() else R_Gym
+    $ R_Gym = [0,"gloved","shorts","hoodie",0,"sports bra",0,0,0,0,0,0,0,0,0,0,0] if "R_Gym" not in globals().keys() else R_Gym
     $ R_Sleepwear = [0,0,0,0,"tank","green panties",0,0,0,0,0,0,0] if "R_Sleepwear" not in globals().keys() else R_Sleepwear
     $ R_Schedule = [0,0,0,0,0,0,0,0,4,0] if "R_Schedule" not in globals().keys() else R_Schedule                      #chooses when she wears what
     $ R_SpriteVer = 0 if "R_SpriteVer" not in globals().keys() else R_SpriteVer
