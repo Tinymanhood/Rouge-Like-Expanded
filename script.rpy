@@ -2801,7 +2801,8 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     else:
                         $ K_Shame -= 23  
                     
-                    $ K_Panties = 0        
+                    if K_OutfitTemp != "purple bikini":
+                        $ K_Panties = 0    
                     $ K_Shame = 0 if K_Shame < 0 else K_Shame
                     
         if not Changed and K_OutfitTemp == K_Outfit and K_Loc == bg_current:
@@ -3264,6 +3265,8 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     else:
                         $ E_Shame -= 23  
                     
+                    if E_OutfitTemp != "bikini":
+                        $ E_Panties = 0   
                     $ E_Panties = 0        
                     $ E_Shame = 0 if E_Shame < 0 else E_Shame
                     
@@ -5807,7 +5810,7 @@ label Display_Laura(Dress = 1, TrigReset = 1, DLoc = newgirl["Laura"].SpriteLoc,
         
     #Display Laura    
     if not renpy.showing('Laura_Sprite'):
-        show Laura_Sprite at SpriteLoc(1000,YLoc) zorder newgirl["Laura"].GirlLayerLayer:
+        show Laura_Sprite at SpriteLoc(1000,YLoc) zorder newgirl["Laura"].GirlLayer:
                 offset (0,0)
                 anchor (0.5, 0.0)  
                 pos (1000,YLoc)
@@ -5823,7 +5826,7 @@ label Display_Laura(Dress = 1, TrigReset = 1, DLoc = newgirl["Laura"].SpriteLoc,
             offset (0,0)
             anchor (0.5, 0.0)  
             pos (DLoc,YLoc)    
-#    show Laura_Sprite at SpriteLoc(DLoc,YLoc) zorder newgirl["Laura"].GirlLayerLayer:
+#    show Laura_Sprite at SpriteLoc(DLoc,YLoc) zorder newgirl["Laura"].GirlLayer:
 #            alpha 1
 #            zoom 1
 #            offset (0,0)
