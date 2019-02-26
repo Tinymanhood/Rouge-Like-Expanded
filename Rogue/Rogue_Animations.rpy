@@ -2376,6 +2376,15 @@ image Rogue_Sex_Legs:
             "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg.png",
             "True", Null(),                     
             ), 
+        (0,0), ConditionSwitch(
+            # "P_Sprite and (P_Cock == 'in' or P_Cock == 'anal')", Null(),
+            "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
+            "R_LegsUp", Null(),   
+            # "R_BodySuit == 'classic uniform' and R_Wet", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Wet.png",
+            # "R_BodySuit == 'classic uniform'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs.png",
+            "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Dmg_pubescover.png",
+            "True", Null(),                     
+            ), 
         # (0,0), ConditionSwitch(
         #     "R_Panties and R_PantiesDown", Null(),
         #     "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
