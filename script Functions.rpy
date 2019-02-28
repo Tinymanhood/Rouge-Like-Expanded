@@ -600,6 +600,12 @@ init python:
                             return 3
                         elif R_Legs == "pants":
                             return 10
+                        elif R_Legs == "shorts":
+                            return 5
+                        elif R_Legs == "blue shorts":
+                            return 5
+                        elif R_Legs == "red shorts":
+                            return 5
                         else:
                             return 0
                 elif Chr == "Kitty":

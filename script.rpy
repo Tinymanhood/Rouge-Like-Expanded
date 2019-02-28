@@ -325,7 +325,7 @@ init -1:
     default R_Custom5 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] 
     default R_Custom6 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] 
     default R_Custom7 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] 
-    default R_Gym = [2,"gloved","shorts","hoodie",0,"sports bra","shorts",0,0,0,0,0,0,0,0,0,0]
+    default R_Gym = [2,"gloved","shorts","hoodie",0,"sports bra",0,0,0,0,0,0,0,0,0,0,0]
     default R_Sleepwear = [0,0,0,0,0,"tank","green panties",0,0,0,0,0,0,0,0,0]
     default R_Schedule = [0,0,0,0,0,0,0,0,4,0]                      #chooses when she wears what
     default R_SpriteVer = 0

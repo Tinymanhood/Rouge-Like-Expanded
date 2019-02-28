@@ -398,11 +398,11 @@ label R_SexPrep:
             "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her slit."
         elif R_Legs == "pants" and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her slit."
-        elif R_BodySuit and R_Panties and R_Legs != "pants":
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
             "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her slit."
         elif R_Panties and R_Legs != "pants":
             "You quickly pull down her [R_Panties] and press against her slit." 
-        elif R_BodySuit:
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
             "You quickly take off her [R_BodySuit] and press against her slit." 
         $ R_Upskirt = 1
         $ R_BodySuitOff = 1
@@ -1884,11 +1884,11 @@ label RPA_Prep:
             "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press the plug against her ass."
         elif R_Legs == "pants" and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press the plug against her ass."
-        elif R_BodySuit and R_Panties and R_Legs != "pants":
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
             "You quickly take off her [R_BodySuit] and her [R_Panties] and press the plug against her ass."
         elif R_Panties and R_Legs != "pants":
             "You quickly pull down her [R_Panties] and press the plug against her ass." 
-        elif R_BodySuit:
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
             "You quickly take off her [R_BodySuit] and press the plug against her ass."
         $ R_Upskirt = 1
         $ R_BodySuitOff = 1
@@ -2226,11 +2226,11 @@ label R_AnalPrep:
             "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her ass."
         elif R_Legs == "pants" and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her ass."
-        elif R_BodySuit and R_Panties and R_Legs != "pants":
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
             "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her ass."
         elif R_Panties and R_Legs != "pants":
             "You quickly pull down her [R_Panties] and press against her ass." 
-        elif R_BodySuit:
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
             "You quickly take off her [R_BodySuit] and press against her ass."
         $ R_Upskirt = 1
         $ R_BodySuitOff = 1
