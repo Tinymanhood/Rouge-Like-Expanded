@@ -284,25 +284,32 @@ label K_Warn_Her:
             
             
 #Cum in mouth start / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-label K_In_Mouth:           
+label K_In_Mouth:      
     if Trigger == "anal":
-        $ Tempmod -= 15
+            $ Tempmod -= 15
     if "hungry" not in K_Traits and K_Addict <= 50 and "full" in K_RecentActions:
-        $ Tempmod -= 15                   
-                
+            $ Tempmod -= 15                  
+            
+    $ P_Cock = "out"    
     if Situation == "auto":
-                $ Situation = 0
-                if not renpy.showing("Kitty_BJ_Animation"):
-                        call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_4
-                        $ Speed = 2
-                "You grab her head and cum in her mouth"  
-                $ K_Eyes = "closed"        
-                show Kitty_BJ_Animation
-                with vpunch
+                $ Situation = 0                
+                if renpy.showing("Kitty_TJ_Animation"):     
+                        call KittyFace("kiss")                        
+                elif not renpy.showing("Kitty_BJ_Animation"):
+                        call Kitty_BJ_Launch("cum")
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
+                "You grab her head and cum in her mouth"  
+                $ K_Eyes = "closed"                 
+                $ P_Spunk = 1    
+                if renpy.showing("Kitty_TJ_Animation"): 
+                        show Kitty_TJ_Animation
+                        with vpunch   
+                else:
+                        show Kitty_BJ_Animation
+                        with vpunch   
                 if "full" in K_RecentActions:
-                        #if she's had enough                    
-                        call KittyFace("bemused") from _call_KittyFace_420
+                        #if she's had enough
+                        call KittyFace("bemused")
                         $ K_Spunk.append("mouth")
                         $ Speed = 0
                         "She gags a little, but manages to swallow it."
@@ -311,24 +318,24 @@ label K_In_Mouth:
                         ch_k ". . . is there anywhere else we could put this?"
                 elif K_Swallow >= 5 or "hungry" in K_Traits:
                         #if she likes to swallow
-                        call KittyFace("sexy") from _call_KittyFace_421
+                        call KittyFace("sexy")
                         $ K_Mouth = "smile"
                         $ K_Spunk.append("mouth")
                         "She quickly gulps it down and wipes her mouth."
-                        $ Speed = 0
                         $ K_Spunk.remove("mouth")
-                        ch_k "Mmmm, Kitty likes her milk."
-                        call KittyFace from _call_KittyFace_422
-                elif K_Swallow:
-                        call KittyFace("bemused") from _call_KittyFace_423
-                        $ K_Spunk.append("mouth")
-                        "She gags a little, but manages to swallow it."
                         $ Speed = 0
+                        ch_k "Mmmm, Kitty likes her milk."
+                        call KittyFace
+                elif K_Swallow:
+                        call KittyFace("bemused")
+                        $ K_Spunk.append("mouth")
+                        $ Speed = 0
+                        "She gags a little, but manages to swallow it."
                         $ K_Spunk.remove("mouth")
                         ch_k "That[K_like]takes some getting used to."
-                        call KittyFace from _call_KittyFace_424
+                        call KittyFace
                 elif not K_Swallow and K_Addict >= 50 and K_Inbt < 500 and K_Blow < 10:
-                        call KittyFace("bemused", 1) from _call_KittyFace_425
+                        call KittyFace("bemused", 1)
                         $ K_Spunk.append("mouth")
                         ". . ."            
                         $ K_Spunk.remove("mouth")
@@ -340,10 +347,10 @@ label K_In_Mouth:
                         $ K_Addictionrate += 1
                         if "addictive" in P_Traits:
                             $ K_Addictionrate += 1
-                        call KittyFace from _call_KittyFace_426
+                        call KittyFace
                         jump K_Orgasm_After
                 elif not K_Swallow and K_Addict >= 50:
-                        call KittyFace("sexy") from _call_KittyFace_427
+                        call KittyFace("sexy")
                         $ K_Mouth = "tongue"
                         $ K_Spunk.append("mouth")
                         ". . ."
@@ -353,15 +360,15 @@ label K_In_Mouth:
                         "She gags and spits it into her palm. Then she licks her lips, looks down, and drinks up what's in her palm."
                         $ K_Spunk.remove("hand")
                         ch_k "You coulda warned me." 
-                        call KittyFace from _call_KittyFace_428
+                        call KittyFace
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 2)
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
                 elif not K_Swallow:
                         if ApprovalCheck("Kitty", 700, "LO") and ApprovalCheck("Kitty", 300, "I"):
-                            call KittyFace("angry") from _call_KittyFace_429
+                            call KittyFace("angry")
                             $ K_Spunk.append("mouth")
                         else:
-                            call KittyFace("bemused") from _call_KittyFace_430
+                            call KittyFace("bemused")
                             $ K_Mouth = "tongue"
                             $ K_Spunk.append("mouth")
                         ". . ."
@@ -375,27 +382,27 @@ label K_In_Mouth:
                                     $ K_Addictionrate += 1
                                     if "addictive" in P_Traits:
                                         $ K_Addictionrate += 1
-                                    call KittyFace("smile", 1) from _call_KittyFace_431
-                                    ch_k "Well, just[K_like]let me know next time?"
+                                    call KittyFace("smile", 1)
+                                    ch_k "Well, just[K_like]now I know, I guess?"
                                     jump K_Orgasm_After
                                 
                             "Why don't you try swallowing it?":
                                     if ApprovalCheck("Kitty", 1300):
                                         "She tentatively licks her hand, and then gulps it down."
-                                        $ K_Spunk.remove("hand")                          
-                                        call KittyFace("sexy", 1) from _call_KittyFace_432
+                                        $ K_Spunk.remove("hand")
+                                        call KittyFace("sexy", 1)
                                         $ K_Spunk.append("mouth")
                                         ch_k "Hmm, creamy. . ."
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 12)
-                                        $ K_Spunk.remove("mouth")                            
+                                        $ K_Spunk.remove("mouth")
                                     elif ApprovalCheck("Kitty", 1000, "OI", Bonus = (K_Addict*10)):
-                                        call KittyFace("bemused", 1) from _call_KittyFace_433
+                                        call KittyFace("bemused", 1)
                                         $ K_Brows = "normal" 
                                         $ K_Mouth = "sad"
+                                        $ K_Spunk.remove("hand")
                                         $ K_Spunk.append("mouth")
-                                        $ K_Spunk.remove("hand")      
                                         "She scowls a bit, but licks her hand clean as she does so, and swallows it down."
-                                        $ K_Spunk.remove("mouth")      
+                                        $ K_Spunk.remove("mouth")
                                         ch_k "It's. . . not terrible."
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 15)
                                     else:
@@ -408,99 +415,123 @@ label K_In_Mouth:
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -1, 1)                    
                                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -1, 1)
                                     if ApprovalCheck("Kitty", 1200, "OI") or K_Addict >= 50:                            
-                                        call KittyFace("sad", 1) from _call_KittyFace_434
+                                        call KittyFace("sad", 1)
                                         $ K_Spunk.append("mouth")
-                                        $ K_Spunk.remove("hand")  
+                                        $ K_Spunk.remove("hand")
                                         "She scowls a bit, but licks her hand clean as she does so, and swallows it down."
-                                        $ K_Spunk.remove("mouth")  
+                                        $ K_Spunk.remove("mouth")
                                         ch_k "That's. . . not terrible."
                                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 15)
-                                    else:          
-                                        $ K_Spunk.remove("hand")                
+                                    else:         
+                                        $ K_Spunk.remove("hand")               
                                         "She scowls at you and wipes her hand off. Then she licks her lips."                        
                                         jump K_Orgasm_After
                 else:                
                             jump K_Orgasm_After
-                            
+                                
                 jump K_Swallowed
                 #end if not asked/auto / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
-    
+           
     $ Situation = 0
     "You ask if you can cum in her mouth."
     if renpy.showing("Kitty_SexSprite"):
-            call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_1    
-    
+            call Kitty_HJ_Launch("cum")
+        
     if "full" in K_RecentActions:
             pass
         
     elif K_Swallow >= 5 or "hungry" in K_Traits:  
             # If she's swallowed 5 times, 
-            call KittyFace("sucking") from _call_KittyFace_435
-            if not renpy.showing("Kitty_BJ_Animation"):
-                call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_5            
+            call KittyFace("sucking")
+            if renpy.showing("Kitty_TJ_Animation"):    
+                call KittyFace("kiss")
+                $ Speed = 5
+                "She nods and bends down to put the tip between her lips."
+            elif not renpy.showing("Kitty_BJ_Animation"):
+                call Kitty_BJ_Launch("cum")            
                 $ Speed = 2
                 "She nods and bends down to put the tip between her lips."
             else:            
-                ch_k "Uh-huh. . . [[head bobs]"
-            $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
+                $ Speed = 2
+                "She nods and hums a \"yes\" sound."      
+            $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not  
+            ". . ."    
+            $ P_Spunk = 1
             $ K_Spunk.append("mouth")
-            ". . ."
-            call KittyFace("sexy") from _call_KittyFace_436            
+            "After you cum, she quickly gulps it down and wipes her mouth."
+            call KittyFace("sexy")            
             $ Speed = 0
             ch_k "Mmm, creamy."
-            $ K_Spunk.remove("mouth")  
+            $ K_Spunk.remove("mouth")
             jump K_Swallowed
         
     elif K_Addict >= 80 and K_Swallow: 
             #addicted
             $ K_Brows = "confused"
             $ K_Eyes = "manic"
-            if not renpy.showing("Kitty_BJ_Animation"):
-                call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_6            
+            if renpy.showing("Kitty_TJ_Animation"):    
+                call KittyFace("kiss")
+                $ Speed = 5
+                "She looks a bit quizzical, but gently puts the tip to her lips, just as you blow."
+            elif not renpy.showing("Kitty_BJ_Animation"):
+                call Kitty_BJ_Launch("cum")            
                 $ Speed = 2    
-                "She looks a bit confused, but gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
+                "She looks a bit quizzical, but gently puts the tip to her lips, just as you blow."
             else:            
-                ch_k "Uh-huh. . . [[head bobs]"
+                $ Speed = 2
+                "She nods and hums a \"yes\" sound."
             $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-            $ K_Spunk.append("mouth")
+            $ K_Mouth = "sucking"
             ". . ."
+            $ P_Spunk = 1
+            $ K_Spunk.append("mouth")
             $ Speed = 0
-            call KittyFace("sexy") from _call_KittyFace_437
+            "She gags a little, but quickly swallows it."
+            call KittyFace("sexy")
             $ K_Mouth = "smile"
             ch_k "You coulda warned me first."
-            $ K_Spunk.remove("mouth")  
+            $ K_Spunk.remove("mouth")
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 5)
             jump K_Swallowed
             
     elif K_Swallow:                
             if ApprovalCheck("Kitty", 900):
                 $ K_Brows = "confused"
-                if not renpy.showing("Kitty_BJ_Animation"):
-                    call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_7            
+                if renpy.showing("Kitty_TJ_Animation"):    
+                    call KittyFace("kiss")
+                    $ Speed = 5
+                    "She looks a bit confused, but gently puts the tip to her lips."
+                    "Just as you blow. She gags a little, but quickly swallows it."
+                elif not renpy.showing("Kitty_BJ_Animation"):
+                    call Kitty_BJ_Launch("cum")            
                     $ Speed = 2    
-                    "She looks a bit confused, but gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
+                    "She looks a bit confused, but gently puts the tip to her lips."
+                    "Just as you blow. She gags a little, but quickly swallows it."
                 else:            
-                    $ Speed = 2                    
+                    $ Speed = 2     
                     ch_k "[[mumbled] Huh?"
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
+                $ K_Mouth = "sucking"
                 $ K_Spunk.append("mouth")
                 $ K_Brows = "normal"
                 $ K_Eyes = "sexy"
                 ". . ."
-                $ Speed = 0
-                call KittyFace("sexy") from _call_KittyFace_438
+                $ P_Spunk = 1
                 $ K_Spunk.append("mouth")
+                "She gags a little, but quickly swallows it."
+                $ Speed = 0
+                call KittyFace("sexy")
                 ch_k "Yech, that's still kinda nasty."
-                $ K_Spunk.remove("mouth")  
+                $ K_Spunk.remove("mouth")
                 jump K_Swallowed
      
     #If she hasn't swallowed or doesn't automatically want to. . .  
     
     if  ApprovalCheck("Kitty", 500, "LI") or ApprovalCheck("Kitty", 400, "OI"): 
-        call KittyFace("bemused") from _call_KittyFace_439
+        call KittyFace("bemused")
         $ K_Eyes = "sexy"
     else:
-        call KittyFace("angry") from _call_KittyFace_440
+        call KittyFace("angry")
         
     $ Speed = 0    
     
@@ -516,18 +547,18 @@ label K_In_Mouth:
                 $ K_Addictionrate += 1
                 if "addictive" in P_Traits:
                     $ K_Addictionrate += 1
-                call KittyFace("smile", 1) from _call_KittyFace_441
+                call KittyFace("smile", 1)
                 ch_k "Can't hurt to ask, right?"
-                if ApprovalCheck("Kitty", 1300, TabM=1) and "full" not in K_RecentActions:
+                if ApprovalCheck("Kitty", 1200, TabM=1) and "full" not in K_RecentActions:
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 3)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 2)  
-                    call KittyFace("sexy", 1) from _call_KittyFace_442
+                    call KittyFace("sexy", 1)
                     ch_k "It's[K_like]worth a shot."
                 else:
                     jump K_Handy_Finish                
             
         "Give it a try, you might like it." if "full" not in K_RecentActions:
-                if ApprovalCheck("Kitty", 1300, TabM=1): 
+                if ApprovalCheck("Kitty", 1300, TabM=1):  
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 5)
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 3)
                     $ K_Brows = "confused"  
@@ -538,20 +569,20 @@ label K_In_Mouth:
                     if "addictive" in P_Traits:
                         $ K_Addictionrate += 1
                     $ K_Blush = 1
-                    ch_k "Yeah, right."
+                    ch_k "You wish, [K_Petname]."
                     jump K_Handy_Finish
-                        
+                            
         "Seriously, put it in your mouth.":
                 if ApprovalCheck("Kitty", 1500, "LI", TabM=1) or ApprovalCheck("Kitty", 1200, "OI", TabM=1):
-                        call KittyFace("sucking", 1) from _call_KittyFace_443
+                        call KittyFace("sucking", 1)
                 elif ApprovalCheck("Kitty", 1000, "OI", Bonus = (K_Addict*10)): #Mild addiction included                
-                        call KittyFace("angry", 1) from _call_KittyFace_444
+                        call KittyFace("angry", 1)
                 else: 
                         #You insisted, she refused. 
-                        call KittyFace("angry", 1) from _call_KittyFace_445
+                        call KittyFace("angry", 1)
                         "She scowls at you, drops you cock and pulls back."
-                        call Kitty_HJ_Launch("cum") from _call_Kitty_HJ_Launch_2
-                        call Kitty_HJ_Reset from _call_Kitty_HJ_Reset_1                
+                        call Kitty_HJ_Launch("cum")
+                        call Kitty_HJ_Reset                
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
                         $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -4, 1)
                         ch_k "You can handle it yourself then."
@@ -560,37 +591,43 @@ label K_In_Mouth:
                         $ K_RecentActions.append("angry")
                         $ K_DailyActions.append("angry")   
                         $ Line = 0
-                        return       
+                        return  
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 10)
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 5)
         
-    if not renpy.showing("Kitty_BJ_Animation"):
-        call Kitty_BJ_Launch("cum") from _call_Kitty_BJ_Launch_8            
+    if renpy.showing("Kitty_TJ_Animation"):    
+        call KittyFace("kiss")
+        $ Speed = 5
+    elif not renpy.showing("Kitty_BJ_Animation"):
+        call Kitty_BJ_Launch("cum")     
     $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-    if ApprovalCheck("Kitty", 1200):                  
-            "She gently puts the tip to her lips, just as you blow." 
-            "She gags a little, but quickly swallows it." 
+    if ApprovalCheck("Kitty", 1200):            
+            "She gently puts the tip to her lips, just as you blow."
     else:
-            "She tentatively places the tip in her mouth, and you blast inside it. She quickly gulps it down."                    
-            call KittyFace("sexy") from _call_KittyFace_446
+            "She tentatively places the tip in her mouth, and you blast inside it."                   
+            call KittyFace("sexy")
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -3, 1)
-            $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -4, 1)    
+            $ K_Love = Statupdate("Kitty", "Love", K_Love, 80, -4, 1)  
+            
+    $ P_Spunk = 1
     $ K_Spunk.append("mouth")
+    $ K_Mouth = "sucking"
     ". . ."   
+    "She gags a little, but quickly swallows it." 
     $ Speed = 0            
-    call KittyFace("sexy") from _call_KittyFace_447 
+    call KittyFace("sexy") 
     
-    if ApprovalCheck("Kitty", 1100) and K_Swallow >= 3:
+    if ApprovalCheck("Kitty", 1000) and K_Swallow >= 3:
             ch_k "I'm starting to get used to that."    
-    elif ApprovalCheck("Kitty", 800):                
-        ch_k "I guess that isn't too bad."
+    elif ApprovalCheck("Kitty", 800):                          
+            ch_k "I guess that isn't too bad."
     else:
-        call KittyFace("sad") from _call_KittyFace_448
-        ch_k "Kinda nasty, [K_Petname]."   
+            call KittyFace("sad")
+            ch_k "Kinda nasty, [K_Petname]."    
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 3)
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)            
     $ K_Blow += 1
-    jump K_Swallowed
+    jump K_Swallowed     
     #end Kitty in mouth  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 

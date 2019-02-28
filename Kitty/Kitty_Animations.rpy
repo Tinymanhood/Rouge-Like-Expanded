@@ -2101,6 +2101,12 @@ label Kitty_Sex_Launch(Line = "solo"):
     $ P_Sprite = 1
     $ Speed = 0
     hide Kitty_Sprite  
+    if renpy.showing("Kitty_BJ_Animation"):
+        hide Kitty_BJ_Animation
+    if renpy.showing("Kitty_HJ_Animation"):
+        hide Kitty_HJ_Animation
+    if renpy.showing("Kitty_TJ_Animation"):
+        hide Kitty_TJ_Animation
     show Kitty_SexSprite zorder 150        
 #    show Kitty_SexSprite zorder 150:
 #        pos (750,230)
@@ -2368,11 +2374,16 @@ image Kitty_BJ_Head:                                                            
         
         (0,0), ConditionSwitch(                                                                         
             #Mouth
-            "Speed == 1", "images/KittyBJFace/Kitty_BJ_Mouth_Tongue.png",  #licking
-            "(Speed == 2 or Speed == 5)", Null(),                          #heading
-            "Speed == 3", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #sucking
-            "Speed == 4", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #deepthroat     
-            "Speed == 6", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #cumming        
+            "Speed and renpy.showing('Kitty_BJ_Animation')", ConditionSwitch( 
+                  "Speed == 1", "images/KittyBJFace/Kitty_BJ_Mouth_Tongue.png",  #licking
+                  "(Speed == 2 or Speed == 5)", Null(),                          #heading
+                  "Speed == 3", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #sucking
+                  "Speed == 4", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #deepthroat     
+                  "Speed == 6", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #cumming        
+                  "True", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #cumming     
+                  ), 
+            "Speed == 3 and renpy.showing('Kitty_TJ_Animation')", "images/KittyBJFace/Kitty_BJ_Mouth_Tongue.png",                        
+            "Speed >= 5 and renpy.showing('Kitty_TJ_Animation')", "images/KittyBJFace/Kitty_BJ_Mouth_Kiss.png",
             "K_Mouth == 'normal' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Smile.png",
             "K_Mouth == 'normal'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",
             "K_Mouth == 'lipbite' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Lipbite.png",
@@ -2393,6 +2404,7 @@ image Kitty_BJ_Head:                                                            
         (428,605), ConditionSwitch(   
             # Heading Mouth
 #            "Speed == 2 and Trigger == 'blow'", At("Kitty_BJ_MouthHeading", Kitty_BJ_MouthAnim()),  #heading 
+            "not renpy.showing('Kitty_BJ_Animation')", Null(),      
             "Speed == 2", At("Kitty_BJ_MouthHeading", Kitty_BJ_MouthAnim()),  #heading 
             "Speed == 5", At("Kitty_BJ_MouthHeading", Kitty_BJ_MouthAnimC()), #cumming high   
             "True", Null(),
@@ -2401,11 +2413,16 @@ image Kitty_BJ_Head:                                                            
         (0,0), ConditionSwitch(                                                                         
             #Spunk layer
             "'mouth' not in K_Spunk", Null(), 
-#            "Speed == 1 and Trigger == 'blow'", "images/KittyBJFace/Kitty_BJ_Spunk_Tongue.png", #licking           
-            "Speed == 1", "images/KittyBJFace/Kitty_BJ_Spunk_Tongue.png", #licking
-            "Speed == 3", "images/KittyBJFace/Kitty_BJ_Spunk_SuckingU.png", #sucking
-            "Speed == 4", "images/KittyBJFace/Kitty_BJ_Spunk_SuckingU.png", #deepthroat 
-            "Speed == 6", "images/KittyBJFace/Kitty_BJ_Spunk_SuckingU.png", #cumming     
+            "Speed and renpy.showing('Kitty_BJ_Animation')", ConditionSwitch( 
+                  # If in sucking position"Speed == 1", "images/KittyBJFace/Kitty_BJ_Spunk_Tongue.png", #licking
+                  "Speed == 1", "images/KittyBJFace/Kitty_BJ_Spunk_Tongue.png",  #licking
+                  "(Speed == 2 or Speed == 5)", Null(),                          #heading
+                  "Speed == 3", "images/KittyBJFace/Kitty_BJ_Spunk_SuckingU.png", #sucking
+                  "Speed == 4", "images/KittyBJFace/Kitty_BJ_Spunk_SuckingU.png", #deepthroat 
+                  "Speed == 6", "images/KittyBJFace/Kitty_BJ_Spunk_SuckingU.png", #cumming     
+                  "True", "images/KittyBJFace/Kitty_BJ_Spunk_SuckingU.png", #cumming     
+                  ),  
+            "Speed >= 5 and renpy.showing('Kitty_TJ_Animation')", "images/KittyBJFace/Kitty_BJ_Spunk_Kiss.png",
             "K_Mouth == 'normal'", "images/KittyBJFace/Kitty_BJ_Spunk_Smile.png",
             "K_Mouth == 'lipbite'", "images/KittyBJFace/Kitty_BJ_Spunk_Lipbite.png",
             "K_Mouth == 'kiss'", "images/KittyBJFace/Kitty_BJ_Spunk_Kiss.png",
@@ -3023,6 +3040,624 @@ label Kitty_BJ_Reset: # The sequence to the Kitty animations from BJ to default
 
 
 
+# Start Kitty TJ Animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+# Core Kitty TJ annimation element ///////////////////////////////////////////////////////////////////////////                                     Core Kitty BJ element
+
+image Kitty_TJ_Animation:
+    #core titjob animation   
+    contains:
+        ConditionSwitch(                                                              
+            # Kitty's upper body
+            "P_Sprite", ConditionSwitch(                                                               
+                    # If during sex
+                    "Speed == 1", "Kitty_TJ_Body_1",#slow
+                    "Speed == 2", "Kitty_TJ_Body_2",#fast
+                    "Speed == 3", "Kitty_TJ_Body_3",#licking
+                    "Speed >= 5", "Kitty_TJ_Body_5",#cumming
+                    "True",       "Kitty_TJ_Body_0",#Static
+                    ),
+            "True","Kitty_TJ_Body_0",#Static
+            )    
+    zoom 1.35 #0.8
+    anchor (.5,.5)
+    pos (600,605) #(600,705)#height for bj
+    
+
+image Kitty_TJ_Torso:                                                                        
+    # Her torso for the sex, BJ, and TJ poses
+    contains:
+            #body
+            "images/KittyBJFace/Kitty_TJ_Body.png"  
+
+image Kitty_TJ_Arms:                                                                        
+    # Her arms for the TJ poses
+    contains:
+            #body
+            "images/KittyBJFace/Kitty_TJ_Arms.png"  
+              
+image Kitty_TJ_Tits:
+    #core titjob breasts   
+    contains:
+            #base layer     
+        ConditionSwitch(    
+            "P_Sprite and Speed", "images/KittyBJFace/Kitty_TJ_Tits_Smooshed.png", 
+            "True", "images/KittyBJFace/Kitty_TJ_Tits.png",
+            )
+
+image Kitty_Mega_Mask:
+    # giant green brick for use in finding where a mask is
+    contains:
+        Solid("#159457", xysize=(1750,1750))
+        alpha .5
+
+
+#  TJ animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+
+image Kitty_TJ_Body_0:                                                                        
+        #Her Body in the TJ pose, idle
+        contains:
+                #Hair underlay
+                "Kitty_BJ_HairBack"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (505,260) #bottom  #505
+                subpixel True
+                block:
+                    ease 2.4 ypos 250 #top
+                    ease 1.6 ypos 260 #bottom
+                    repeat 
+        contains:       
+                #base body
+                "Kitty_TJ_Torso"#"images/KittyBJFace/Kitty_TJ_Body.png"           
+                pos (545,330)#(500,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.4 ypos 325 #top
+                    ease 1.6 ypos 330 #bottom
+                    repeat   
+        contains:       
+                #arms
+                "Kitty_TJ_Arms"#"images/KittyBJFace/Kitty_TJ_Arms.png"                
+                pos (545,330)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.4 ypos 325 #top
+                    ease 1.6 ypos 330 #bottom
+                    repeat   
+        contains:
+                #head
+                "Kitty_BJ_Head"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (505,260) #bottom  #280
+                subpixel True
+                block:
+                    ease 2.4 ypos 250 #top
+                    ease 1.6 ypos 260 #bottom
+                    repeat 
+        contains:
+                #tits underlayer
+                "Kitty_TJ_Tits"             
+                pos (545,330)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.4 ypos 325 #top
+                    ease 1.6 ypos 330 #bottom
+                    repeat   
+        contains:
+                #zero's cock
+                ConditionSwitch(    
+                    "P_Sprite", "Blowcock",
+                    "True", Null(),
+                    )      
+                subpixel True
+                pos (640,150) #bottom #150
+                anchor (0.5,0.5)
+                zoom 0.4   
+#End TJ animation Speed 0
+    
+    
+image Kitty_TJ_Mask_1:
+        contains:
+            "images/KittyBJFace/Kitty_TJ_Mask.png"
+            pos (100,60) #bottom #pos (545,330)          
+            anchor (0.5, 0.5)
+            zoom 1.4           #temp
+            subpixel True
+            block:
+                ease 2.9 ypos -40 #top 280
+                ease 1 ypos 60 #bottom 330
+                pause .1
+                repeat  
+
+image Kitty_TJ_Body_1:                                                                        
+        #Her Body in the TJ pose, slow 1
+        contains:
+                #Hair underlay
+                "Kitty_BJ_HairBack"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (505,260) #bottom  #505
+                subpixel True
+                block:
+                    ease 3 ypos 210 #top
+                    ease 1 ypos 260 #bottom
+                    repeat 
+        contains:       
+                #base body
+                "Kitty_TJ_Torso"#"images/KittyBJFace/Kitty_TJ_Body.png"           
+                pos (545,330)#(500,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.8 ypos 280 #top
+                    ease 1 ypos 330 #bottom
+                    pause .2
+                    repeat   
+        contains:       
+                #arms
+                "Kitty_TJ_Arms"#"images/KittyBJFace/Kitty_TJ_Arms.png"                
+                pos (545,330)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.85 ypos 280 #top
+                    ease 1 ypos 330 #bottom
+                    pause .15
+                    repeat    
+        contains:
+                #head
+                "Kitty_BJ_Head"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (505,260) #bottom  #280
+                subpixel True
+                block:
+                    ease 2.9 ypos 210 #top
+                    ease 1 ypos 260 #bottom
+                    pause .1
+                    repeat 
+        contains:
+                #tits underlayer
+                "Kitty_TJ_Tits"             
+                pos (545,330)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.9 ypos 280 #top
+                    ease 1 ypos 330 #bottom
+                    pause .1
+                    repeat   
+        contains:
+                #zero's cock
+                ConditionSwitch(    
+                    "P_Sprite", AlphaMask("Blowcock", "Kitty_TJ_Mask_1"), 
+                    "True", Null(),
+                    )      
+                subpixel True
+                pos (665,500) #bottom #150
+                anchor (0.5,0.5)
+                zoom 0.4   
+                block:
+                    ease 2.8 ypos 490 #top
+                    ease .8 ypos 500 #bottom
+                    pause .4
+                    repeat 
+#End TJ animation Speed 1
+    
+    
+image Kitty_TJ_Mask_2:
+        contains:
+            "images/KittyBJFace/Kitty_TJ_Mask.png"
+            pos (100,60) #bottom #pos (545,330)            
+            anchor (0.5, 0.5)
+            zoom 1.4           #temp
+            subpixel True
+            block:
+                ease .71 ypos -15 #top 280
+                ease .27 ypos 60 #bottom 330
+                pause .02
+                repeat  
+
+image Kitty_TJ_Body_2:                                                                        
+        #Her Body in the TJ pose, fast 2
+        contains:
+                #Hair underlay
+                "Kitty_BJ_HairBack"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (505,260) #bottom  #505
+                subpixel True
+                block:
+                    ease .7 ypos 215 #top
+                    ease .25 ypos 260 #bottom
+                    pause .05
+                    repeat 
+        contains:       
+                #base body
+                "Kitty_TJ_Torso"#"images/KittyBJFace/Kitty_TJ_Body.png"           
+                pos (545,330)#(500,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease .65 ypos 285 #top
+                    ease .25 ypos 330 #bottom
+                    pause .1
+                    repeat   
+        contains:       
+                #arms
+                "Kitty_TJ_Arms"#"images/KittyBJFace/Kitty_TJ_Arms.png"                
+                pos (545,330)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease .68 ypos 285 #top
+                    ease .25 ypos 330 #bottom
+                    pause .07
+                    repeat  
+        contains:
+                #tits underlayer
+                "Kitty_TJ_Tits"             
+                pos (545,330)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease .71 ypos 290 #top
+                    ease .27 ypos 330 #bottom
+                    pause .02
+                    repeat    
+        contains:
+                #head
+                "Kitty_BJ_Head"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (505,260) #bottom  #280
+                subpixel True
+                block:
+                    ease .68 ypos 215 #top
+                    ease .25 ypos 260 #bottom
+                    pause .07
+                    repeat  
+        contains:
+                #zero's cock
+                ConditionSwitch(    
+                    "P_Sprite", AlphaMask("Blowcock", "Kitty_TJ_Mask_2"), 
+                    "True", Null(),
+                    )      
+                subpixel True
+                pos (665,500) #bottom #150
+                anchor (0.5,0.5)
+                zoom 0.4   
+                block:
+                    ease .72 ypos 490 #top
+                    ease .27 ypos 500 #bottom
+                    pause .01
+                    repeat 
+#End TJ animation Speed 2
+    
+    
+image Kitty_TJ_Mask_3:
+        contains:
+            "images/KittyBJFace/Kitty_TJ_Mask.png"
+            pos (100,140) #bottom #pos (545,330)            
+            anchor (0.5, 0.5)
+            zoom 1.4           #temp
+            subpixel True
+            block:
+                ease 2.2 ypos 90 #top 280
+                ease .6 ypos 140 #bottom 330
+                pause .2
+                repeat  
+                
+image Kitty_TJ_Body_3:                                                                        
+        #Her Body in the TJ pose, licking 3
+        contains:
+                #Hair underlay
+                "Kitty_BJ_HairBack"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (500,260) #bottom  #505
+                rotate 0
+                subpixel True
+                parallel:
+                    block: 
+                        #un tilted loop
+                        ease 2 pos (500,290) #top
+                        ease .6 pos (500,315) #bottom 
+                        pause .4
+                        repeat 2
+                    block:
+                        #left tilted loop
+                        ease 2.2 pos (500,290) #top
+                        ease .8 pos (520,320) #bottom 
+                        ease 2.2 pos (510,290) #top
+                        ease .8 pos (520,320) #bottom 
+                    block: 
+                        #un tilted loop
+                        ease 2 pos (500,290) #top
+                        ease .6 pos (500,315) #bottom  
+                        pause .4
+                        repeat 2
+                    block:
+                        #right tilted loop
+                        ease 2.2 pos (500,290) #top
+                        ease .8 pos (475,320) #bottom 
+                        ease 2.2 pos (490,290) #top
+                        ease .8 pos (475,320) #bottom 
+                    repeat 
+        contains:       
+                #base body
+                "Kitty_TJ_Torso"#"images/KittyBJFace/Kitty_TJ_Body.png"           
+                pos (545,360)#(500,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.2 ypos 340 #top
+                    ease .6 ypos 360 #bottom
+                    pause .2
+                    repeat   
+        contains:       
+                #arms
+                "Kitty_TJ_Arms"#"images/KittyBJFace/Kitty_TJ_Arms.png"                
+                pos (545,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.2 ypos 340 #top
+                    ease .6 ypos 360 #bottom
+                    pause .2
+                    repeat   
+        contains:
+                #tits underlayer
+                "Kitty_TJ_Tits"             
+                pos (545,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.2 ypos 340 #top
+                    ease .6 ypos 360 #bottom
+                    pause .2
+                    repeat  
+        contains:
+                #head
+                "Kitty_BJ_Head"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (500,310) #bottom  #505
+                subpixel True
+                rotate 0
+                parallel:
+                    block: 
+                        #un tilted loop
+                        ease 2 pos (500,290) #top
+                        ease .6 pos (500,315) #bottom 
+                        pause .4
+                        repeat 2
+                    block:
+                        #left tilted loop
+                        ease 2.2 pos (500,290) #top
+                        ease .8 pos (520,320) #bottom 
+                        ease 2.2 pos (510,290) #top
+                        ease .8 pos (520,320) #bottom 
+                    block: 
+                        #un tilted loop
+                        ease 2 pos (500,290) #top
+                        ease .6 pos (500,315) #bottom  
+                        pause .4
+                        repeat 2
+                    block:
+                        #right tilted loop
+                        ease 2.2 pos (500,290) #top
+                        ease .8 pos (475,320) #bottom 
+                        ease 2.2 pos (490,290) #top
+                        ease .8 pos (475,320) #bottom 
+                    repeat 
+                parallel:  
+                    block:
+                        #un tilted loop
+                        ease 2.2 rotate 0  #top
+                        pause 3.8 #bottom  
+                    block:
+                        #left tilted loop  
+                        ease 2.2 rotate 0   #top
+                        ease .8 rotate 10   #bottom
+                        ease 2.2 rotate 0   #top
+                        ease .8 rotate 5   #bottom
+                    block:
+                        #un tilted loop
+                        ease 2.2 rotate 0  #top
+                        pause 3.8 #bottom  
+                    block:
+                        #right tilted loop
+                        ease 2.2 rotate 0   #top
+                        ease .8 rotate -10   #bottom 
+                        ease 2.2 rotate 0   #top
+                        ease .8 rotate -5   #bottom  
+                    repeat                  
+        contains:
+                #zero's cock
+                ConditionSwitch(    
+                    "P_Sprite", AlphaMask("Blowcock", "Kitty_TJ_Mask_3"), 
+                    "True", Null(),
+                    )      
+                subpixel True
+                pos (665,500) #bottom #150
+                anchor (0.5,0.5)
+                zoom 0.4   
+#End TJ animation Speed 3
+  
+  
+image Kitty_TJ_Mask_5:
+        contains:
+            "images/KittyBJFace/Kitty_TJ_Mask.png"
+            pos (100,140) #bottom #pos (545,330)            
+            anchor (0.5, 0.5)
+            zoom 1.4           #temp
+            subpixel True
+            block:
+                ease 2.2 ypos 120 #top 280 #90
+                ease 1.6 ypos 140 #bottom 330
+                pause .2
+                repeat  
+
+image Kitty_TJ_Body_5:                                                                        
+        #Her Body in the TJ pose, cumming 5
+        contains:
+                #Hair underlay
+                "Kitty_BJ_HairBack"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (500,260) #bottom  #505
+                rotate 0
+                subpixel True
+                block: 
+                    #un tilted loop
+                    ease 2 pos (500,304) #top 280
+                    ease 1.6 pos (500,307) #bottom 315
+                    pause .4               
+                    repeat 
+        contains:       
+                #base body
+                "Kitty_TJ_Torso"#"images/KittyBJFace/Kitty_TJ_Body.png"           
+                pos (545,360)#(500,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.2 ypos 350 #top
+                    ease 1.6 ypos 360 #bottom
+                    pause .2
+                    repeat   
+        contains:       
+                #arms
+                "Kitty_TJ_Arms"#"images/KittyBJFace/Kitty_TJ_Arms.png"                
+                pos (545,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.2 ypos 350 #top
+                    ease 1.6 ypos 360 #bottom
+                    pause .2
+                    repeat    
+        contains:
+                #head
+                "Kitty_BJ_Head"
+                zoom 0.41
+                anchor (0.5, 0.5)
+                pos (500,307) #bottom  #505
+                subpixel True
+                rotate 0
+                block: 
+                    #un tilted loop
+                    ease 2 pos (500,304) #top 280
+                    ease 1.6 pos (500,307) #bottom 315
+                    pause .4               
+                    repeat             
+        contains:
+                #tits underlayer
+                "Kitty_TJ_Tits"             
+                pos (545,360)#pos (0,0) #bottom            
+                anchor (0.5, 0.5)
+                zoom 0.55           #temp
+                subpixel True
+                block:
+                    ease 2.2 ypos 350 #top
+                    ease 1.6 ypos 360 #bottom
+                    pause .2
+                    repeat   
+        contains:
+                #zero's cock
+                ConditionSwitch(    
+                    "P_Sprite", AlphaMask("Blowcock", "Kitty_TJ_Mask_5"), 
+                    "True", Null(),
+                    )      
+                subpixel True
+                pos (665,500) #bottom #150
+                anchor (0.5,0.5)
+                zoom 0.4   
+                    
+#End TJ animation Speed 5 (cumming)
+       
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+label Kitty_TJ_Launch(Line = 0):    # The sequence to launch the Kitty Titfuck animations   
+    if renpy.showing("Kitty_TJ_Animation"):
+        return
+    call Kitty_Hide
+    show Kitty_Sprite at SpriteLoc(K_SpriteLoc) zorder KittyLayer:
+        alpha 1
+        ease 1 zoom 2 xpos 700 yoffset 50 #offset (-100,50) 
+    if Taboo: # Kitty gets started. . .
+        if R_Loc == bg_current:
+            "Kitty looks back at Rogue to see if she's watching."
+        elif K_Loc == bg_current:
+            "Kitty looks back at Kitty to see if she's watching."
+        else:
+            "Kitty looks around to see if anyone can see her."
+    
+    if K_Chest and K_Over:
+        "She throws off her [K_Over] and her [K_Chest]."                
+    elif K_Over:
+        "She throws off her [K_Over], baring her breasts underneath."
+    elif K_Chest:
+        "She tugs off her [K_Chest] and throws it aside."
+    $ K_Over = 0
+    $ K_Chest = 0
+    $ Kitty_Arms = 0
+    
+    call Kitty_First_Topless      #restore if topless          
+     
+    show blackscreen onlayer black with dissolve   
+    show Kitty_Sprite zorder KittyLayer:
+        alpha 0
+    $ Speed = 0
+    if Line != "cum":
+        $ Trigger = "titjob"
+    show Kitty_TJ_Animation zorder 150 
+    $ P_Sprite = 1
+    hide blackscreen onlayer black with dissolve
+    return
+    
+label Kitty_TJ_Reset: # The sequence to the Kitty animations from Titfuck to default
+    if not renpy.showing("Kitty_TJ_Animation"):
+        return
+    call Kitty_Hide 
+    $ P_Sprite = 0
+    
+    show Kitty_Sprite at SpriteLoc(K_SpriteLoc) zorder KittyLayer:
+        zoom 2 xpos 550 yoffset 50 #offset (-100,50)  #zoom 2 offset (-100,50)
+    show Kitty_Sprite zorder KittyLayer:
+        alpha 1
+        ease 1 zoom 1.5 xpos 700 yoffset 50
+        pause .5
+        ease .5 zoom 1 xpos K_SpriteLoc yoffset 0
+        
+#    "Kitty pulls back"
+    return
+            
+# End Kitty TJ Animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+
+
+
 
 
 
@@ -3257,7 +3892,7 @@ label Kitty_Hide:
         hide Kitty_Doggy
         hide Kitty_HJ_Animation
         hide Kitty_BJ_Animation
-    #    hide Kitty_TJ_Animation 
+        hide Kitty_TJ_Animation 
         return
 
 label KThreewayBreasts_Launch:    

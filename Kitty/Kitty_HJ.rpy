@@ -531,7 +531,7 @@ label K_HJAfter:
 
 ## K_Titjob //////////////////////////////////////////////////////////////////////              Not finished
 label K_Titjob:
-    return #fix remove when this works
+    # return #fix remove when this works
     
     call Shift_Focus("Kitty") from _call_Shift_Focus_208
     if K_Tit >= 7: # She loves it
@@ -937,20 +937,30 @@ label KTJ_Cycle: #Repeating strokes
         $ Round -= 1
         menu:
             "[Line]."
-            "Get moving. . ." if not Speed:
-                $ Speed = 1
-            "Keep going. . ." if Speed:
-                pass
-            "Speed up. . ." if Speed < 2:                    
-                $ Speed = 2
-                "You ask her to up the pace a bit."
+            "Keep going. . .":
+                        pass
+               
+            "Start moving? . ." if Speed == 0:
+                        $ Speed = 1
+                
+            "Speed up. . ." if  Speed == 1:                    
+                        $ Speed = 2
+                        "You ask her to up the pace a bit."
             "Speed up. . . (locked)" if Speed >= 2:
-                pass
-            "Slow Down. . ." if Speed > 1:                    
-                $ Speed = 1
-                "You ask her to slow it down a bit."
-            "Slow Down. . . (locked)" if Speed <= 1:
-                pass
+                        pass
+                
+            "Stop moving" if Speed == 1 or Speed == 3:                                          
+                        $ Speed = 0
+            "Slow Down. . ." if Speed == 2:                    
+                        $ Speed = 1
+                        "You ask her to slow it down a bit."
+            "Slow Down. . . (locked)" if not Speed:                
+                        pass
+                        
+            "Lick it" if Speed != 3:
+                        $ Speed = 3
+            "Lick it (locked)" if Speed == 3:
+                        pass
 
             "Blindfold her" if K_Bondage and not K_Blindfold:
                 call KittyFace("sexy", 1) from _call_KittyFace_793 
@@ -1087,6 +1097,9 @@ label KTJ_Cycle: #Repeating strokes
     call Kitty_Offhand from _call_Kitty_Offhand_1                                                            #Offhand and reduce addiciton per stroke        
     $ K_Addict -= 2          
     
+    call Sex_Dialog("Kitty",Partner)
+
+
     if P_Focus >= 100 or K_Lust >= 100:                                     #If either of you could cum    
         if P_Focus >= 100:                                                  #You cum             
             call PK_Cumming from _call_PK_Cumming_15
