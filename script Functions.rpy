@@ -5200,6 +5200,7 @@ label Failsafe:
     $ K_Pubes = 1 if "K_Pubes" not in globals().keys() else K_Pubes
     $ K_Nudes = 1 if "K_Nudes" not in globals().keys() else K_Nudes
     $ K_Tan = 0 if "K_Tan" not in globals().keys() else K_Tan
+    $ K_DynamicTan = [0,0,0,0,0,0,0,0] if "K_DynamicTan" not in globals().keys() else K_DynamicTan
     $ K_LegsUp = 0 if "K_LegsUp" not in globals().keys() else K_LegsUp
     $ K_Wet = 0 if "K_Wet" not in globals().keys() else K_Wet
     $ K_Water = 0 if "K_Water" not in globals().keys() else K_Water

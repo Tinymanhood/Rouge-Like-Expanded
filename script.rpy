@@ -390,6 +390,7 @@ init -1:
     default K_Pubes = 1
     default K_Nudes = 1
     default K_Tan = 0
+    default K_DynamicTan = [0,0,0,0,0,0,0,0]  #controller, over, legs, chest, panties, gloves? choker?, extra
     default K_LegsUp = 0
     default K_HairColor = 0
     default R_HairColor = 0
