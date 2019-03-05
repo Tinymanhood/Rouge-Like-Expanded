@@ -1441,7 +1441,7 @@ label QuickEvents:
                     elif E_Inbt > 500 and E_Lust < 90:
                             "Emma looks a bit flushed and uncomfortable."
                     elif bg_current != "bg showerroom":
-                            "Emma gets an embarrassed look on her face and suddenly phases through the floor."
+                            "Emma gets an embarrassed look on her face and suddenly leaves the room."
                             call Remove_Girl("Emma") from _call_Remove_Girl_2
                             call Set_The_Scene from _call_Set_The_Scene_4
         else:
@@ -1470,7 +1470,7 @@ label QuickEvents:
                     elif newgirl["Mystique"].Inbt > 500 and newgirl["Mystique"].Lust < 90:
                             "Mystique looks a bit flushed and uncomfortable."
                     elif bg_current != "bg showerroom":
-                            "Mystique gets an embarrassed look on her face and suddenly phases through the floor."
+                            "Mystique gets an embarrassed look on her face and suddenly leaves the room."
                             call Remove_Girl("Mystique") from _call_Remove_Girl_3
                             call Set_The_Scene from _call_Set_The_Scene_5
         else:

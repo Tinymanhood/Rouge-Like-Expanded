@@ -2230,7 +2230,7 @@ label SpecialMenu:
                         $ K_Lvl += 1
                         $ K_StatPoints += 1
                         jump LevelCheat
-                    "Raise Emmma's Level":
+                    "Raise Emma's Level":
                         $ E_Lvl += 1
                         $ E_StatPoints += 1
                         jump LevelCheat

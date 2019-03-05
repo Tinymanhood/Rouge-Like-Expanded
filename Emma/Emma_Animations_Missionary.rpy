@@ -1201,7 +1201,8 @@ label Emma_Sex_Launch(Line = "solo"):
         return     
     $ P_Sprite = 1
     $ Speed = 0
-    hide Emma_Sprite  
+    hide Emma_Sprite 
+    hide Emma_Doggy 
     show Emma_SexSprite zorder 150        
     with dissolve
     return
