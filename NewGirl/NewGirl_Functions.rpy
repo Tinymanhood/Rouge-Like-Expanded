@@ -1062,18 +1062,21 @@ label NewGirl_Dirty_Talk(D20=0, TempCheck=0, Line=0):
             if D20 <= 5 or (E_SEXP <= 30 and ApprovalCheck("Emma", 400, "I")):
                     #If she's relatively inexperienced or there is a low roll
                     $ Line = renpy.random.choice([
-                            "You're so amazing, " + E_Petname + ".",
-                            "You know how to push, like, every one of my buttons. . .",
-                            "Heh. . .{i}somebody{/i} seems to like that.",
-                            "That's, like, {i}so{/i} good."
+                            "You're incredible, " + E_Petname + ".",
+                            "You're surprisingly skilled at this. . .",
+                            "Well, that certainly got a positive response.",
+                            "Exceptional work, darling.",
                             ])
             elif D20 <= 15: 
                     #If she's relatively experienced and there's a moderate roll
                     $ Line = renpy.random.choice([
-                                "This is {i}so{/i} hot, " + E_Petname + ".",
-                                "I think I just, like, discovered one of your other mutant powers, " + E_Petname + ".",
-                                "I like it.  Like, a {i}lot{/i}.",
-                                "I've never wanted a guy like I want you, " + E_Petname + "."
+                                "I'm overwhelmed, " + E_Petname + ".",
+                                "Well now we have another skill to develop, " + E_Petname + ".",                                        
+                                "Oooh, that's lovely. . .",
+                                "More, I want more!",
+                                "You're simply adorable, " + E_Petname + ".",
+                                "Ooh, you'll {i}have{/i} to do that one again. . .",
+                                "You certainly do leave an impression, " + E_Petname + "."
                                 ])
             else: #a 15+ roll and experienced
                     if Primary == "Emma":

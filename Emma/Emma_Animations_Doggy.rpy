@@ -1034,7 +1034,8 @@ label Emma_Doggy_Launch(Line = "massage"):
         return     
     $ P_Sprite = 1
     $ Speed = 0
-    hide Emma_Sprite  
+    hide Emma_Sprite 
+    hide Emma_SexSprite 
     show Emma_Doggy at SpriteLoc(StageCenter+50) zorder 150
     with dissolve
     return

@@ -351,8 +351,10 @@ label R_SexPrep:
         
         if R_Panties or R_Legs or HoseNum("Rogue") >= 5: #If she refuses to take off her pants but agreed to sex
             ch_r "Well, I guess some things are necessary, [R_Petname]."
-            
-        if R_Legs == "pants" and R_Panties:
+        
+        if R_BodySuit:
+            "She quickly removes her clothes, exposing her bare ass."
+        elif R_Legs == "pants" and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
         elif R_Legs == "pants":
             "She quickly pulls down her pants, exposing her bare ass."
@@ -366,8 +368,11 @@ label R_SexPrep:
             "She quickly pulls down her [R_Panties]."  
             
         $ R_Upskirt = 1
-        $ R_PantiesDown = 1       
+        $ R_PantiesDown = 1  
+        $ R_BodySuitOff = 1     
         $ R_SeenPanties = 1
+        if R_BodySuit and not R_Chest and not R_Over:
+            call Rogue_First_Topless
         call Rogue_First_Bottomless from _call_Rogue_First_Bottomless_24
         
         if Taboo: # Rogue gets started. . .
@@ -389,13 +394,22 @@ label R_SexPrep:
                 "You take careful aim and then ram your cock in."
                             
     else:  #if Situation == "auto"         
-        if R_Legs == "pants" and R_Panties:
+        if R_BodySuit and R_Legs == "pants" and R_Panties:
+            "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her slit."
+        elif R_Legs == "pants" and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her slit."
-        if R_Panties and R_Legs != "pants":
-            "You quickly pull down her [R_Panties] and press against her slit."  
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
+            "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her slit."
+        elif R_Panties and R_Legs != "pants":
+            "You quickly pull down her [R_Panties] and press against her slit." 
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
+            "You quickly take off her [R_BodySuit] and press against her slit." 
         $ R_Upskirt = 1
+        $ R_BodySuitOff = 1
         $ R_PantiesDown = 1       
         $ R_SeenPanties = 1
+        if R_BodySuit and not R_Chest and not R_Over:
+            call Rogue_First_Topless(1)
         call Rogue_First_Bottomless(1) from _call_Rogue_First_Bottomless_25
         
     call Seen_First_Peen(1) from _call_Seen_First_Peen_28
@@ -1822,8 +1836,10 @@ label RPA_Prep:
         call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off_13        
         if R_Panties or R_Legs or HoseNum("Rogue") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_r "Well, I guess some things are necessary, [R_Petname]."
-            
-        if R_Legs == "pants" and R_Panties:
+        
+        if R_BodySuit:
+            "She quickly removes her clothes, exposing her bare ass."    
+        elif R_Legs == "pants" and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
         elif R_Legs == "pants":
             "She quickly pulls down her pants, exposing her bare ass."
@@ -1838,7 +1854,10 @@ label RPA_Prep:
             
         $ R_Upskirt = 1
         $ R_PantiesDown = 1       
+        $ R_BodySuitOff = 1     
         $ R_SeenPanties = 1
+        if R_BodySuit and not R_Chest and not R_Over:
+            call Rogue_First_Topless
         call Rogue_First_Bottomless from _call_Rogue_First_Bottomless_26
         
         if Taboo: # Rogue gets started. . .
@@ -1860,15 +1879,24 @@ label RPA_Prep:
                 "Rogue slowly backs up against the plug."
                 #"You press against her rim and nudge your cock in."
                      
-    else: #if Situation == "auto"       
-        if R_Legs == "pants" and R_Panties:
+    else: #if Situation == "auto"    
+        if R_BodySuit and R_Legs == "pants" and R_Panties:
+            "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press the plug against her ass."
+        elif R_Legs == "pants" and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press the plug against her ass."
-        if R_Panties and R_Legs != "pants":
-            "You quickly pull down her [R_Panties] and press the plug against her ass."  
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
+            "You quickly take off her [R_BodySuit] and her [R_Panties] and press the plug against her ass."
+        elif R_Panties and R_Legs != "pants":
+            "You quickly pull down her [R_Panties] and press the plug against her ass." 
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
+            "You quickly take off her [R_BodySuit] and press the plug against her ass."
         $ R_Upskirt = 1
+        $ R_BodySuitOff = 1
         $ R_PantiesDown = 1       
         $ R_SeenPanties = 1
-        call Rogue_First_Bottomless(1) from _call_Rogue_First_Bottomless_27
+        if R_BodySuit and not R_Chest and not R_Over:
+            call Rogue_First_Topless(1)
+        call Rogue_First_Bottomless(1)
         
     #call Seen_First_Peen(1)
     
@@ -2146,7 +2174,9 @@ label R_AnalPrep:
         if R_Panties or R_Legs or HoseNum("Rogue") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_r "Well, I guess some things are necessary, [R_Petname]."
             
-        if R_Legs == "pants" and R_Panties:
+        if R_BodySuit:
+            "She quickly removes her clothes, exposing her bare ass."
+        elif R_Legs == "pants" and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
         elif R_Legs == "pants":
             "She quickly pulls down her pants, exposing her bare ass."
@@ -2161,7 +2191,10 @@ label R_AnalPrep:
             
         $ R_Upskirt = 1
         $ R_PantiesDown = 1       
+        $ R_BodySuitOff = 1     
         $ R_SeenPanties = 1
+        if R_BodySuit and not R_Chest and not R_Over:
+            call Rogue_First_Topless
         call Rogue_First_Bottomless from _call_Rogue_First_Bottomless_28
         
         if R_Plugged:
@@ -2189,15 +2222,24 @@ label R_AnalPrep:
                 "You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"       
-        if R_Legs == "pants" and R_Panties:
+        if R_BodySuit and R_Legs == "pants" and R_Panties:
+            "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her ass."
+        elif R_Legs == "pants" and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her ass."
-        if R_Panties and R_Legs != "pants":
-            "You quickly pull down her [R_Panties] and press against her ass."  
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
+            "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her ass."
+        elif R_Panties and R_Legs != "pants":
+            "You quickly pull down her [R_Panties] and press against her ass." 
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
+            "You quickly take off her [R_BodySuit] and press against her ass."
         $ R_Upskirt = 1
+        $ R_BodySuitOff = 1
         $ R_PantiesDown = 1       
         $ R_SeenPanties = 1
-        call Rogue_First_Bottomless(1) from _call_Rogue_First_Bottomless_29
-        
+        if R_BodySuit and not R_Chest and not R_Over:
+            call Rogue_First_Topless(1)
+        call Rogue_First_Bottomless(1)
+
     call Seen_First_Peen(1) from _call_Seen_First_Peen_29
     
     if not R_Anal:                                                      #First time stat buffs       

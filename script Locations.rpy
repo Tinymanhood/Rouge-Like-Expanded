@@ -14,9 +14,9 @@ label Worldmap:
         "My Room":
                     $ renpy.pop_call() 
                     jump Player_Room_Entry  
-        "Testbed" if config.developer:          
-                    $ renpy.pop_call() 
-                    #jump Rogue_Room_Test
+        # "Testbed" if config.developer:          
+        #             $ renpy.pop_call() 
+        #             #jump Rogue_Room_Test
         "Girl's Rooms":
             menu:
                 "Rogue's Room":   

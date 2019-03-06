@@ -105,8 +105,8 @@ label Kitty_SexMenu:
                         "Could you give me a handjob?":
                             call K_Handjob from _call_K_Handjob_1
                         "Could you give me a titjob?":
-                            ch_k "I'm[K_like]not really up for that right now? [[not enabled]"  
-#                            call K_Titjob         
+                            # ch_k "I'm[K_like]not really up for that right now? [[not enabled]"  
+                            call K_Titjob         
                         "Could you suck my cock?":
                             call K_Blowjob from _call_K_Blowjob_3 
                         "Could you use your feet?":
