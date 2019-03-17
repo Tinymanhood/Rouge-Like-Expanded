@@ -1,10 +1,10 @@
 ﻿   
 label Mod_Laura_Values:
 
-    $ newgirl["Laura"].Petname = "Zero"       #What Mystique calls the player
-    $ newgirl["Laura"].Petnames = ["Zero"]
+    $ newgirl["Laura"].Petname = "guy"       #What Mystique calls the player
+    $ newgirl["Laura"].Petnames = ["guy"]
     $ newgirl["Laura"].Pet = "Laura"           #What you call Laura
-    $ newgirl["Laura"].Pets = ["Laura"]
+    $ newgirl["Laura"].Pets = ["Laura","X-23"]
     $ newgirl["Laura"].GirlName = "Laura"
     $ newgirl["Laura"].Loc = 0
     $ newgirl["Laura"].Love = 400
@@ -28,6 +28,8 @@ label Mod_Laura_Values:
     $ newgirl["Laura"].Gym = [2,0,"leather pants",0,0,"leather bra","black panties",0,0,0,0] #arms position, 0, 0, over, legs, chest, panties, 
     $ newgirl["Laura"].Sleepwear = [0,0,0,0,0,"leather bra","black panties",0,0,0]
     $ newgirl["Laura"].Schedule = [0,0,0,0,0,0,0,0,0,0]                      #chooses when she wears what
+    $ newgirl["Laura"].ScentTimer = 0
+    $ newgirl["Laura"].TempClothes = [0,0,0,0,0,0,0,0,0,0,0]
     ## Sexual Encounters
 return
 

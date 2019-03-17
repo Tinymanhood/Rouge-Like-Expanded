@@ -436,10 +436,16 @@ label Return_Player:
             if bg_current != "bg kitty" and K_Loc == bg_current:
                     "Kitty heads out."        
                     $ K_Loc = "bg kitty"
+            if bg_current != "bg emma" and E_Loc == bg_current:
+                    "Emma heads out."        
+                    $ E_Loc = "bg emma"
+            if bg_current != "bg laura" and newgirl["Laura"].Loc == bg_current:
+                    "Laura heads out."        
+                    $ newgirl["Laura"].Loc = "bg laura"        
             if bg_current != "bg player":
                     "You head back to your room."
             $ bg_current = "bg player"
-            call Set_The_Scene from _call_Set_The_Scene_94
+            call Set_The_Scene
             $ renpy.pop_call()
             jump Player_Room
             
@@ -2211,6 +2217,8 @@ label SpecialMenu:
                                 call K_Level_Up from _call_K_Level_Up 
                         "Level Emma":
                                 call E_Level_Up from _call_E_Level_Up 
+                        "Level Laura":
+                                call Laura_Level_Up
                         "Back":
                                 jump SpecialMenu
                 "You need to gain experience first by training or going to class."
