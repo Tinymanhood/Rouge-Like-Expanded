@@ -598,6 +598,14 @@ init python:
                 if Chr == "Rogue":
                         if R_Legs == "skirt":
                             return 3
+                        elif R_Legs == "skirtshort":            
+                             return 3
+                        elif R_Legs == "SR7 skirtshort":            
+                             return 3
+                        elif R_Legs == "cheerleader skirt":                 
+                            return 3
+                        elif R_Legs == "cheerleader skirtshort":            
+                            return 3
                         elif R_Legs == "pants":
                             return 10
                         elif R_Legs == "shorts":
@@ -606,6 +614,8 @@ init python:
                             return 5
                         elif R_Legs == "red shorts":
                             return 5
+                        elif R_Legs == "leather pants":
+                            return 10
                         else:
                             return 0
                 elif Chr == "Kitty":

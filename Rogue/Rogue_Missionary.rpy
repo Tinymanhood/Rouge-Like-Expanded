@@ -433,13 +433,13 @@ label R_Missionary_SexPrep:
         elif R_Panties == "zipper panties open":
             "You get ready"    
         else:     
-            if R_BodySuit and R_Legs == "pants" and R_Panties:
+            if R_BodySuit and PantsNum("Rogue") == 10 and R_Panties:
                 "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her slit."
-            elif R_Legs == "pants" and R_Panties:
+            elif PantsNum("Rogue") == 10 and R_Panties:
                 "You quickly pull down her pants and her [R_Panties] and press against her slit."
-            elif R_BodySuit and R_Panties and R_Legs != "pants":
+            elif R_BodySuit and R_Panties and PantsNum("Rogue") != 10:
                 "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her slit."
-            elif R_Panties and R_Legs != "pants":
+            elif R_Panties and PantsNum("Rogue") != 10:
                 "You quickly pull down her [R_Panties] and press against her slit." 
             elif R_BodySuit:
                 "You quickly take off her [R_BodySuit] and press against her slit."
@@ -1330,13 +1330,13 @@ label R_Missionary_AnalPrep:
         elif R_Panties == "zipper panties open":
             "You get ready"  
         else:
-            if R_BodySuit and R_Legs == "pants" and R_Panties:
+            if R_BodySuit and PantsNum("Rogue") == 10 and R_Panties:
                 "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her back door."
-            elif R_Legs == "pants" and R_Panties:
+            elif PantsNum("Rogue") == 10 and R_Panties:
                 "You quickly pull down her pants and her [R_Panties] and press against her back door."
-            elif R_BodySuit and R_Panties and R_Legs != "pants":
+            elif R_BodySuit and R_Panties and PantsNum("Rogue") != 10:
                 "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her back door."
-            elif R_Panties and R_Legs != "pants":
+            elif R_Panties and PantsNum("Rogue") != 10:
                 "You quickly pull down her [R_Panties] and press against her back door." 
             elif R_BodySuit:
                 "You quickly take off her [R_BodySuit] and press against her back door."

@@ -2464,7 +2464,7 @@ label Rogue_Frisky_Class:
                                     call RogueFace("sly") from _call_RogueFace_243    
                                     if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak under the hem of her skirt, slowly tracing the soft contours of her mound." 
-                                    elif R_Legs == "pants":
+                                    elif PantsNum("Rogue") == 10:
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak down her pants, slowly tracing the soft contours of her mound." 
                                     elif R_Legs:
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak down her clothes, slowly tracing the soft contours of her mound." 

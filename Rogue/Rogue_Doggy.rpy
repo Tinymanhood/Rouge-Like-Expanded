@@ -52,7 +52,7 @@ label R_Doggy_P:
             elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                 "Rogue turns and backs up against your cock, sliding her skirt up as she does so."
                 $ R_Upskirt = 1
-            elif R_Legs == "pants":
+            elif PantsNum("Rogue") == 10:
                 "Rogue turns and backs up against your cock, sliding her pants off as she does so."                
                 $ R_Legs = 0
             else:
@@ -99,7 +99,7 @@ label R_Doggy_P:
         elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
             "You press up against Rogue's backside, sliding her skirt up as you go."
             $ R_Upskirt = 1
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "You press up against Rogue's backside, sliding her pants down as you do."                
             $ R_Legs = 0
         else:
@@ -354,9 +354,9 @@ label R_SexPrep:
         
         if R_BodySuit:
             "She quickly removes her clothes, exposing her bare ass."
-        elif R_Legs == "pants" and R_Panties:
+        elif PantsNum("Rogue") == 10 and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "She quickly pulls down her pants, exposing her bare ass."
         elif HoseNum("Rogue") >= 5 and R_Panties:
             "She quickly pulls down her [R_Hose] and drops her [R_Panties]."
@@ -394,13 +394,13 @@ label R_SexPrep:
                 "You take careful aim and then ram your cock in."
                             
     else:  #if Situation == "auto"         
-        if R_BodySuit and R_Legs == "pants" and R_Panties:
+        if R_BodySuit and PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her slit."
-        elif R_Legs == "pants" and R_Panties:
+        elif PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her slit."
-        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and PantsNum("Rogue") != 10:
             "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her slit."
-        elif R_Panties and R_Legs != "pants":
+        elif R_Panties and PantsNum("Rogue") != 10:
             "You quickly pull down her [R_Panties] and press against her slit." 
         elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
             "You quickly take off her [R_BodySuit] and press against her slit." 
@@ -1130,7 +1130,7 @@ label R_Doggy_A:
             elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                 "Rogue turns and backs up against your cock, sliding her skirt up as she does so."
                 $ R_Upskirt = 1
-            elif R_Legs == "pants":
+            elif PantsNum("Rogue") == 10:
                 "Rogue turns and backs up against your cock, sliding her pants off as she does so."                
                 $ R_Legs = 0
             else:
@@ -1180,7 +1180,7 @@ label R_Doggy_A:
         elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
             "You press up against Rogue's backside, sliding her skirt up as you go."
             $ R_Upskirt = 1
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "You press up against Rogue's backside, sliding her pants down as you do."                
             $ R_Legs = 0
         else:
@@ -1489,7 +1489,7 @@ label R_Plug_Ass:
     elif (R_Anal + R_DildoA + R_Plug) > 0: #You've done it before
         $ Tempmod += 20   
         
-    if R_Legs == "pants": # she's got pants on.
+    if PantsNum("Rogue") == 10: # she's got pants on.
         $ Tempmod -= 20   
         
     if R_Lust > 95:
@@ -1531,7 +1531,7 @@ label R_Plug_Ass:
                 elif R_Legs == "skirt":
                     "Rogue grabs her plug, hiking up her skirt as she does."
                     $ R_Upskirt = 1
-                elif R_Legs == "pants":
+                elif PantsNum("Rogue") == 10:
                     "Rogue grabs her plug, pulling down her pants as she does."              
                     $ R_Legs = 0
                 else:
@@ -1839,9 +1839,9 @@ label RPA_Prep:
         
         if R_BodySuit:
             "She quickly removes her clothes, exposing her bare ass."    
-        elif R_Legs == "pants" and R_Panties:
+        elif PantsNum("Rogue") == 10 and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "She quickly pulls down her pants, exposing her bare ass."
         elif HoseNum("Rogue") >= 5 and R_Panties:
             "She quickly pulls down her [R_Hose] and drops her [R_Panties]."
@@ -1880,13 +1880,13 @@ label RPA_Prep:
                 #"You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"    
-        if R_BodySuit and R_Legs == "pants" and R_Panties:
+        if R_BodySuit and PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press the plug against her ass."
-        elif R_Legs == "pants" and R_Panties:
+        elif PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press the plug against her ass."
-        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and PantsNum("Rogue") != 10:
             "You quickly take off her [R_BodySuit] and her [R_Panties] and press the plug against her ass."
-        elif R_Panties and R_Legs != "pants":
+        elif R_Panties and PantsNum("Rogue") != 10:
             "You quickly pull down her [R_Panties] and press the plug against her ass." 
         elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
             "You quickly take off her [R_BodySuit] and press the plug against her ass."
@@ -2176,9 +2176,9 @@ label R_AnalPrep:
             
         if R_BodySuit:
             "She quickly removes her clothes, exposing her bare ass."
-        elif R_Legs == "pants" and R_Panties:
+        elif PantsNum("Rogue") == 10 and R_Panties:
             "She quickly pulls down her pants and drops her [R_Panties]."
-        elif R_Legs == "pants":
+        elif PantsNum("Rogue") == 10:
             "She quickly pulls down her pants, exposing her bare ass."
         elif HoseNum("Rogue") >= 5 and R_Panties:
             "She quickly pulls down her [R_Hose] and drops her [R_Panties]."
@@ -2222,13 +2222,13 @@ label R_AnalPrep:
                 "You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"       
-        if R_BodySuit and R_Legs == "pants" and R_Panties:
+        if R_BodySuit and PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants take off her [R_BodySuit] and her [R_Panties] and press against her ass."
-        elif R_Legs == "pants" and R_Panties:
+        elif PantsNum("Rogue") == 10 and R_Panties:
             "You quickly pull down her pants and her [R_Panties] and press against her ass."
-        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and R_Legs != "pants":
+        elif (R_BodySuit and R_BodySuit != "classic uniform damaged") and R_Panties and PantsNum("Rogue") != 10:
             "You quickly take off her [R_BodySuit] and her [R_Panties] and press against her ass."
-        elif R_Panties and R_Legs != "pants":
+        elif R_Panties and PantsNum("Rogue") != 10:
             "You quickly pull down her [R_Panties] and press against her ass." 
         elif (R_BodySuit and R_BodySuit != "classic uniform damaged"):
             "You quickly take off her [R_BodySuit] and press against her ass."
