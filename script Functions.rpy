@@ -1007,7 +1007,62 @@ label Statup(Name=0, Flavor=0, Check=100, Value=1, Greater=0, Type=0, Overflow=0
             
         return    
 
+label RoomStatboost(Type=0,Check=0,Amount=0):
+    # raises/lowers stats of all girls in the room by a fixed amount
+    #ie call RoomStatboost("Love",80,2)
+    if R_Loc == bg_current or "Rogue" in Nearby:
+            call Statup("Rogue", Type, Check, Amount)
+    if K_Loc == bg_current or "Kitty" in Nearby:
+            call Statup("Kitty", Type, Check, Amount)
+    if E_Loc == bg_current or "Emma" in Nearby:
+            call Statup("Emma", Type, Check, Amount)
+    if E_Loc == "bg teacher" and bg_current == "bg classroom":
+            call Statup("Emma", Type, Check, Amount)
+    if newgirl["Laura"].Loc == bg_current or "Laura" in Nearby:
+            call Statup("Laura", Type, Check, Amount)
+    return
 
+label AnyFace(Girl=0,Emote = 5, B = 5, M = 0, Mouth = 0, Eyes = 0, Brows = 0):
+    #this sends a face change to any girl listed
+    if Girl == "Rogue": 
+                    call RogueFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    elif Girl == "Kitty": 
+                    call KittyFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    elif Girl == "Emma": 
+                    call EmmaFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    elif Girl == "Laura": 
+                    call LauraFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    return
+
+label AnyLine(Girl=0,Line=". . ."):
+    #This calls a line from any girl you reference
+    if Girl == "Rogue":
+            ch_r "[Line]"
+    elif Girl == "Kitty":
+            ch_k "[Line]"
+    elif Girl == "Emma":
+            ch_e "[Line]"
+    elif Girl == "Laura":
+            ch_l "[Line]"
+    return
+
+label AnyOutfit(Girl=0,OutfitTemp = 5, Spunk = 0, Undressed = 0, Changed = 1, Perm=0):
+    #this sends a face change to any girl listed
+    # "Perm" gets sent if the outfit is meant to stick
+    if Girl == "Rogue": 
+                    $ R_Outfit = OutfitTemp if Perm else R_Outfit
+                    call RogueOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    elif Girl == "Kitty": 
+                    $ K_Outfit = OutfitTemp if Perm else K_Outfit
+                    call KittyOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    elif Girl == "Emma": 
+                    $ E_Outfit = OutfitTemp if Perm else E_Outfit
+                    call EmmaOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    elif Girl == "Laura": 
+                    $ newgirl["Laura"].Outfit = OutfitTemp if Perm else newgirl["Laura"].Outfit
+                    call LauraOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    return
+    
 label GirlLikesGirl(ChrA = "Rogue", ChrB = "Kitty", Modifier = 1, Auto = 0, Jealousy = 0, Ok = 0):
         #ChrA is the subject girl, ChrB is the object girl, Modifier is sent as the amount of offense this might cause,
         # Jealousy is the temp value for how mad the girl will get
@@ -4286,7 +4341,7 @@ label Partner_Cleanup:
                 call Kitty_Cleanup("ask")    
         elif Partner == "Emma" and E_Spunk:
                 call Emma_Cleanup("ask")  
-        elif Partner == "Laura" and L_Spunk:
+        elif Partner == "Laura" and newgirl["Laura"].Spunk:
                 call Laura_Cleanup("ask")  
         else:
                 "She seems fine."

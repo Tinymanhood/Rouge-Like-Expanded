@@ -685,6 +685,8 @@ label VersionNumber:
         while len(R_Sleepwear) < 16:
             $ R_Sleepwear.append(0)
 
+    if "boy" in newgirl["Laura"].Petnames:
+        call Mod_Laura_Values
 
     if getattr(newgirl["Laura"], "TempClothes", None) == None:
         $ newgirl["Laura"].TempClothes = [0,0,0,0,0,0,0,0,0,0,0]

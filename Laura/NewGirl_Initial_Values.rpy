@@ -1,7 +1,7 @@
 ﻿   
 label Mod_Laura_Values:
 
-    $ newgirl["Laura"].Petname = "guy"       #What Mystique calls the player
+    $ newgirl["Laura"].Petname = "guy"       #What Laura calls the player
     $ newgirl["Laura"].Petnames = ["guy"]
     $ newgirl["Laura"].Pet = "Laura"           #What you call Laura
     $ newgirl["Laura"].Pets = ["Laura","X-23"]
