@@ -1493,15 +1493,15 @@ label CleartheRoom(Character = "Rogue", Passive = 0, Silent = 0, Check = 0):
                     if Silent:
                         pass
                     elif Passive:
-                        ch_m "I think I should be going noww."  
+                        ch_l "I think I should be going noww."  
                     elif Character == "Rogue" and R_Loc == bg_current:
                         ch_r "Laura, could I talk to [Playername] alone for a minute?"
-                        ch_m "Fine, I'll see you later then."  
+                        ch_l "Fine, I'll see you later then."  
                     elif Character == "Kitty" and K_Loc == bg_current:
                         ch_k "[K_Like]could I talk to [Playername] alone for a sec?" 
-                        ch_m "Fine, I'll see you later then."         
+                        ch_l "Fine, I'll see you later then."         
                     else:
-                        ch_m "I think I should be going now."   
+                        ch_l "I think I should be going now."   
                         
                     if "Laura" in Party:
                             $ Party.remove("Laura")  
@@ -1514,7 +1514,7 @@ label CleartheRoom(Character = "Rogue", Passive = 0, Silent = 0, Check = 0):
                             call TaketoRoom(Character)
                     else:
                             $ newgirl["Laura"].Loc = "bg Laura"                    
-                    hide Mystique_Sprite with easeoutright
+                    hide Laura_Sprite with easeoutright
                 else:
                     $ Check += 1   
 
@@ -4259,6 +4259,64 @@ label LikeUpdater(Primary = "Rogue", Value = 1, Noticed = 1):
     
 # End LikeUpdater / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
       
+label Partner_Threechange(Girl=0):  
+        # this routine thorws it to the specific character's threresome activity change
+        # Girl is the lead of the encounter, this is called from Threesome actions during sex scenes
+        if Partner == Girl:
+                "Let Oni know that both roles are set to [Girl]."
+                return
+        if Partner == "Rogue":
+                call Rogue_Three_Change(Girl)        
+        elif Partner == "Kitty":
+                call Kitty_Three_Change(Girl)
+        elif Partner == "Emma":
+                call Emma_Three_Change(Girl) 
+        elif Partner == "Laura":
+                call Laura_Three_Change(Girl) 
+        return
+    
+label Partner_Cleanup:
+        # this routine checks if the Partner has jiz on her, and cleans up if yes
+        # this is called from Threesome actions during sex scenes
+        if not Partner:
+                return
+        if Partner == "Rogue" and R_Spunk:
+                call Rogue_Cleanup("ask")  
+        elif Partner == "Kitty" and K_Spunk:
+                call Kitty_Cleanup("ask")    
+        elif Partner == "Emma" and E_Spunk:
+                call Emma_Cleanup("ask")  
+        elif Partner == "Laura" and L_Spunk:
+                call Laura_Cleanup("ask")  
+        else:
+                "She seems fine."
+        return
+    
+label Partner_Undress:   
+        # this routine undresses the partner in a scene
+        # this is called from Threesome actions during sex scenes 
+        if Partner == "Rogue":
+                call R_Undress   
+        elif Partner == "Kitty":
+                call K_Undress   
+        elif Partner == "Emma":
+                call E_Undress 
+        elif Partner == "Laura":
+                call Laura_Undress
+        return
+    
+label Partner_Cumming(Girl=0):
+        # this routine is called if the Partner might cum
+        #Girl would be the non-Partner
+        if R_Lust >= 100 and R_Loc == bg_current and Girl != "Rogue":                                          
+            call R_Cumming
+        if K_Lust >= 100 and K_Loc == bg_current and Girl != "Kitty":                                          
+            call K_Cumming
+        if E_Lust >= 100 and E_Loc == bg_current and Girl != "Emma":                                          
+            call E_Cumming     
+        if newgirl["Laura"].Lust >= 100 and newgirl["Laura"].Loc == bg_current and Girl != "Laura":                                          
+            call Laura_Cumming    
+        return
 
 label Partner_Like(Girl=0,Value=1,AltValue=1,Measure=800,Backsies=0,Partner=Partner):
         # Thi raises a partner's "like" stat by an amount
@@ -4280,17 +4338,6 @@ label Partner_Like(Girl=0,Value=1,AltValue=1,Measure=800,Backsies=0,Partner=Part
                         $ Value += 3                
                 else:
                         $ Value += 2
-#                if not Backsies:        #I can remove this if the other way works
-#                        # this bit causes the function to go through a second cycle, 
-#                        # skipping this bit and then returning here
-#                        # the point is to give points going the opposite direction
-#                        $ Backsies = Partner 
-#                        $ Partner = Girl 
-#                        $ Girl = Backsies
-#                        call Partner_Like(Girl,Value,AltValue)                        
-#                        $ Backsies = Partner
-#                        $ Partner = Girl
-#                        $ Girl = Backsies 
         #End Trigger4 bonuses
             
         if Girl == "Rogue":

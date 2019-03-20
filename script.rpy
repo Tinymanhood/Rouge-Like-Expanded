@@ -6228,6 +6228,9 @@ label Display_Laura(Dress = 1, TrigReset = 1, DLoc = newgirl["Laura"].SpriteLoc,
                 offset (0,0)
                 anchor (0.5, 0.0)  
                 pos (1000,YLoc)
+    else:
+        show Laura_Sprite at SpriteLoc(DLoc) zorder newgirl["Laura"].GirlLayer
+        
     show Laura_Sprite:
             alpha 1
             zoom 1

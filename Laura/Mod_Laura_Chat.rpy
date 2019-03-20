@@ -44,6 +44,7 @@ label Laura_Chat_Set(Preset=0):
 label Laura_Chat:
     call LauraFace    
     call Shift_Focus("Laura")
+    call Change_Focus("Laura")
     if newgirl["Laura"].Loc != bg_current:
                 show Cellphone at SpriteLoc(StageLeft)
     else:
