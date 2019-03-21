@@ -1056,6 +1056,23 @@ label EventCalls:
         call Present_Check
         $ D20 = renpy.random.randint(1, 20)  
         #Disables events when it's too early in the game or the turn is about to end        
+
+        if Current_Time == "Evening" and "yesdate" in P_DailyActions:
+            if bg_current == "bg campus": 
+                    call DateNight
+                    if "yesdate" in P_DailyActions:
+                            $ P_DailyActions.remove("yesdate")
+                    return
+            else:
+                
+                    menu:
+                        "You have a date to get to, head for the square?"
+                        "Yes":
+                            $ renpy.pop_call()
+                            jump Campus_Entry
+                        "No":
+                            "Suit yourself. . ."
+                            
         if Day < 5 or Round < 10:
                     return
                 
@@ -5092,7 +5109,7 @@ label Taboo_Buddy_Check(Girl="Rogue",TempTaboo=Taboo):
                         $ R_Taboo = 20
             if R_Loc == E_Loc and R_LikeEmma <= 800 and not ("Rogue" in P_Harem and "Emma" in P_Harem):
                         $ R_Taboo = 20
-            if R_Loc == L_Loc and R_LikeLaura <= 800 and not ("Rogue" in P_Harem and "Laura" in P_Harem):
+            if R_Loc == L_Loc and R_LikeNewGirl["Laura"] <= 800 and not ("Rogue" in P_Harem and "Laura" in P_Harem):
                         $ R_Taboo = 20                
             $ Taboo = R_Taboo if (R_Taboo > Taboo and bg_current == R_Loc) else Taboo
     elif Girl == "Kitty":
@@ -5102,7 +5119,7 @@ label Taboo_Buddy_Check(Girl="Rogue",TempTaboo=Taboo):
                         $ K_Taboo = 20
             if K_Loc == E_Loc and K_LikeEmma <= 800 and not ("Kitty" in P_Harem and "Emma" in P_Harem):
                         $ K_Taboo = 20 
-            if K_Loc == L_Loc and K_LikeLaura <= 800 and not ("Kitty" in P_Harem and "Laura" in P_Harem):
+            if K_Loc == L_Loc and K_LikeNewGirl["Laura"] <= 800 and not ("Kitty" in P_Harem and "Laura" in P_Harem):
                         $ K_Taboo = 20 
             $ Taboo = K_Taboo if (K_Taboo > Taboo and bg_current == K_Loc) else Taboo
     elif Girl == "Emma":
@@ -5112,7 +5129,7 @@ label Taboo_Buddy_Check(Girl="Rogue",TempTaboo=Taboo):
                         $ E_Taboo = 20
             if E_Loc == K_Loc and E_LikeKitty <= 800 and not ("Emma" in P_Harem and "Kitty" in P_Harem):
                         $ E_Taboo = 20
-            if E_Loc == L_Loc and E_LikeLaura <= 800 and not ("Emma" in P_Harem and "Laura" in P_Harem):
+            if E_Loc == L_Loc and E_LikeNewGirl["Laura"] <= 800 and not ("Emma" in P_Harem and "Laura" in P_Harem):
                         $ E_Taboo = 20                
             $ Taboo = E_Taboo if (E_Taboo > Taboo and bg_current == E_Loc) else Taboo
     elif Girl == "Laura":

@@ -1269,13 +1269,13 @@ label Laura_Cumming:
             
             #checks to check reaction of other girls
             if K_Loc == bg_current and "noticed laura" in K_RecentActions:                     
-                    $ K_Lust += 15 if K_LikeLaura >= 500 else 10
+                    $ K_Lust += 15 if K_LikeNewGirl["Laura"] >= 500 else 10
                     $ K_Lust += 5 if K_Les >= 5 else 0
             elif R_Loc == bg_current and "noticed laura" in R_RecentActions: 
-                    $ R_Lust += 15 if R_LikeLaura >= 500 else 10
+                    $ R_Lust += 15 if R_LikeNewGirl["Laura"] >= 500 else 10
                     $ R_Lust += 5 if R_Les >= 5 else 0 
             elif E_Loc == bg_current and "noticed laura" in E_RecentActions: 
-                    $ E_Lust += 15 if E_LikeLaura >= 500 else 10
+                    $ E_Lust += 15 if E_LikeNewGirl["Laura"] >= 500 else 10
                     $ E_Lust += 5 if E_Les >= 5 else 0 
             if Partner == "Laura":
                     #If the active girl is someone else
