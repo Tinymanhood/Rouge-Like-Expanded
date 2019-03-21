@@ -172,6 +172,7 @@ init -1:
     default P_Rep = 600
     default P_RecentActions = []
     default P_DailyActions = []
+    default P_Harem = [] #this is a list fo all girls the player is currently dating
 # Player Inventory Variables 
     default P_Income = 12               #how much you make each day
     default P_Cash = 20
@@ -684,6 +685,9 @@ label VersionNumber:
             $ R_Gym.append(0)
         while len(R_Sleepwear) < 16:
             $ R_Sleepwear.append(0)
+
+    if getattr(newgirl["Laura"], "Boots", None) == None:
+        $ newgirl["Laura"].Boots = 0
 
     if "boy" in newgirl["Laura"].Petnames:
         call Mod_Laura_Values

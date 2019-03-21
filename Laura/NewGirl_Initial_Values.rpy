@@ -25,6 +25,7 @@ label Mod_Laura_Values:
     $ newgirl["Laura"].Chest = "leather bra"    
     $ newgirl["Laura"].Neck = "leash choker"
     $ newgirl["Laura"].Hair = "long"
+    $ newgirl["Laura"].Boots = 0
     $ newgirl["Laura"].Gym = [2,0,"leather pants",0,0,"leather bra","black panties",0,0,0,0] #arms position, 0, 0, over, legs, chest, panties, 
     $ newgirl["Laura"].Sleepwear = [0,0,0,0,0,"leather bra","black panties",0,0,0]
     $ newgirl["Laura"].Schedule = [0,0,0,0,0,0,0,0,0,0]                      #chooses when she wears what

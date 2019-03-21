@@ -1063,7 +1063,7 @@ label AnyOutfit(Girl=0,OutfitTemp = 5, Spunk = 0, Undressed = 0, Changed = 1, Pe
                     call LauraOutfit(OutfitTemp,Spunk,Undressed,Changed)
     return
     
-label GirlLikesGirl(ChrA = "Rogue", ChrB = "Kitty", Modifier = 1, Auto = 0, Jealousy = 0, Ok = 0):
+label GirlLikesGirl(ChrA = "Rogue", ChrB = "Kitty", Modifier = 1, Auto = 0, Jealousy = 0, Ok = 0, Likes=0):
         #ChrA is the subject girl, ChrB is the object girl, Modifier is sent as the amount of offense this might cause,
         # Jealousy is the temp value for how mad the girl will get
         
@@ -1207,7 +1207,7 @@ label GirlLikesGirl(ChrA = "Rogue", ChrB = "Kitty", Modifier = 1, Auto = 0, Jeal
         
         return Ok
 
-label GirlWaitAttract(Local=0,Teach=0,D20=0):
+label GirlWaitAttract(Local=0,Teach=0,D20=0,Check=0):
     #This adjusts girl's liking each other based on shared activities
     #Local =1 only checks if they are in the room with you.
     $ D20 = renpy.random.randint(0, 1) 
@@ -1365,6 +1365,123 @@ label Faces(Character="All"):
             $ allgirls += 1
     return
                    
+label Activity_Check(Girl=0,Girl2=0,Silent=0,Removal=1,ClothesCheck=1,Mod=0,Approval=1,Tempshame=0):
+        # This checks whether a girl is up for watching a given activity
+        # Silent is whether it plays dialog or not, Removal is whether it auto-removes the girl on a fail,
+        # ClothesCheck is whether it bothers checking clothing, 2 if skip first girl
+        # Mod gets set to her Like stat -600, so 600 Like, you break even, otherwise it's a penalty
+        # call Activity_Check("Rogue",0,1,0)
+        if not Girl2 or ClothesCheck == 2:
+                $ Mod = 0
+        else:
+                $ Mod = (GirlLikeCheck(Girl,Girl2)-600)
+                if Girl in P_Harem and Girl2 in P_Harem: #bonus for if both in harem
+                        $ Mod += 500
+                        
+        if ClothesCheck and Girl2:
+                if Girl2 == "Rogue":
+                        #sets her shame level to be accurate to current look
+                        call Rogue_OutfitShame(20)
+                        $ Tempshame = R_Shame
+                elif Girl2 == "Kitty":
+                        call Kitty_OutfitShame(20)
+                        $ Tempshame = K_Shame
+                elif Girl2 == "Emma":
+                        call Emma_OutfitShame(20)
+                        $ Tempshame = E_Shame
+                elif Girl2 == "Laura":
+                        call Laura_OutfitShame(20)
+                        $ Tempshame = newgirl["Laura"].Shame
+                
+                if Tempshame <= 15 and (ApprovalCheck(Girl, 600,Bonus=Mod) or ApprovalCheck(Girl, 350, "I")):
+                        #If the outfit is hot but she's ok     
+                        if ApprovalCheck(Girl, 900,Bonus=Mod) or ApprovalCheck(Girl, 450, "I"): 
+                                $ Approval = 2   
+                elif Tempshame <= 20 and (ApprovalCheck(Girl, 900,Bonus=Mod) or ApprovalCheck(Girl, 450, "I")):
+                        #If the outfit is sexy but she's cool with that 
+                        if ApprovalCheck(Girl, 1100,Bonus=Mod) or ApprovalCheck(Girl, 550, "I"): 
+                                $ Approval = 2   
+                elif Tempshame <= 25 and (ApprovalCheck(Girl, 1100,Bonus=Mod) or ApprovalCheck(Girl, 550, "I")):
+                        #If the outfit is sexy but she's cool with that
+                        if ApprovalCheck(Girl, 1400,Bonus=Mod) or ApprovalCheck(Girl, 650, "I"): 
+                                $ Approval = 2    
+                elif (ApprovalCheck(Girl, 1400,Bonus=Mod) or ApprovalCheck(Girl, 650, "I")):
+                        #If the outfit is very scandelous but she's ok with that     
+                        if ApprovalCheck(Girl, 1600,Bonus=Mod) or ApprovalCheck(Girl, 850, "I"): 
+                                $ Approval = 2     
+                        pass
+                else:
+                        $ Approval = 0
+                        
+        if not Approval:
+                    # If it fails the clothing check, skip the next part
+                    pass
+        elif Trigger == "strip" and Trigger2 != "jackin":
+                    pass #covered by the above check
+        elif not Trigger:
+                    pass
+        elif Trigger == "lick ass":
+                    $ Approval = ApprovalCheck(Girl,1550,Bonus=Mod, TabM = 3)
+        elif Trigger == "anal":
+                    $ Approval = ApprovalCheck(Girl,1550,Bonus=Mod, TabM = 3)
+        elif Trigger == "sex":
+                    $ Approval = ApprovalCheck(Girl,1400,Bonus=Mod, TabM = 3)
+        elif Trigger == "lick pussy":            
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger2 == "jackin":            
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger == "blow":            
+                    $ Approval = ApprovalCheck(Girl,1300,Bonus=Mod, TabM = 2)
+        elif Trigger == "titjob":              
+                    $ Approval = ApprovalCheck(Girl,1200,Bonus=Mod, TabM = 3) 
+        elif Trigger == "hotdog":
+                    $ Approval = ApprovalCheck(Girl,1000,Bonus=Mod, TabM = 3)                
+        elif Trigger == "hand" or Trigger3 == "hand":              
+                    $ Approval = ApprovalCheck(Girl,1100,Bonus=Mod, TabM = 2)
+        elif Trigger == "foot":
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)  
+        elif Trigger == "dildo anal":
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger == "dildo pussy":
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger == "insert ass":
+                    $ Approval = ApprovalCheck(Girl,1300,Bonus=Mod, TabM = 2)
+        elif Trigger == "fondle pussy" or Trigger == "insert pussy":
+                    $ Approval = ApprovalCheck(Girl,1050,Bonus=Mod, TabM = 2)
+        elif Trigger == "suck breasts":            
+                    $ Approval = ApprovalCheck(Girl,1050,Bonus=Mod, TabM = 3)
+        elif Trigger == "fondle breasts":                        
+                    $ Approval = ApprovalCheck(Girl,950,Bonus=Mod, TabM = 2)
+        elif Trigger == "fondle ass":
+                    $ Approval = ApprovalCheck(Girl,850,Bonus=Mod, TabM = 1)
+                    
+        elif Trigger == "masturbation": 
+                    $ Approval = ApprovalCheck(Girl,1200,Bonus=Mod, TabM = 2)
+                    
+        elif Trigger == "kiss you":
+                    $ Approval = ApprovalCheck(Girl,500,Bonus=Mod, TabM = 0)                    
+        elif Trigger == "fondle thighs":
+                    $ Approval = ApprovalCheck(Girl,750,Bonus=Mod, TabM = 0)
+                    
+        elif Trigger == "lesbian": 
+                    $ Approval = ApprovalCheck(Girl,1350,Bonus=Mod, TabM = 2)                           
+        
+        if not Silent and not Approval:
+            if Girl == "Rogue":
+                    ch_r "Ain't none a this right, [R_Petname]."
+            elif Girl == "Kitty":
+                    ch_k "I'm[K_like]not really comfortable here?"
+            elif Girl == "Emma":
+                    ch_e "This has become a bit too. . . scandalous for my tastes."
+            elif Girl == "Laura":
+                    ch_l "This is getting weird."
+        
+        if Removal and not Approval:
+                call Remove_Girl(Girl,2)  
+                "[Girl] takes off."
+                
+        return Approval
+
 # to remove words from the daily/recent lists , ie call DrainWord("Rogue","sex",1,0)
 label DrainWord(Character = "Rogue", Word = "word", Recent = 1, Daily = 1):
             if Character == "Kitty" or Character == "All":
