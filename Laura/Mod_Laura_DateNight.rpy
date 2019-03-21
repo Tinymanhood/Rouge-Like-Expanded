@@ -96,20 +96,20 @@ label Laura_Date_Ask:
                     call LauraFace("smile")
         "Good, let's get going then." if bg_current == "bg campus" and Current_Time == "Evening": 
                     call LauraFace("smile")
-        "And I was thinking of asking. . .": 
-                    menu:
-                        ch_p "And I was thinking of asking. . ."
-                        "Rogue along too." if "yesdate" in R_DailyActions or "yesdate" not in P_DailyActions:
-                                    $ Count = newgirl["Laura"].LikeRogue
-                        "Kitty along too." if "yesdate" in K_DailyActions or "yesdate" not in P_DailyActions:
-                                    $ Count = newgirl["Laura"].LikeKitty
-                        "Emma along too." if "yesdate" in E_DailyActions or "yesdate" not in P_DailyActions:
-                                    $ Count = newgirl["Laura"].LikeEmma
-                        "Never mind, probably a bad idea.":  
-                                    call LauraFace("confused")
-                                    ch_l "Um. . ."
-                                    if bg_current != "bg campus": 
-                                            ch_p "Ok, I'll meet you in the campus square."
+        # "And I was thinking of asking. . .": 
+        #             menu:
+        #                 ch_p "And I was thinking of asking. . ."
+        #                 "Rogue along too." if "yesdate" in R_DailyActions or "yesdate" not in P_DailyActions:
+        #                             $ Count = newgirl["Laura"].LikeRogue
+        #                 "Kitty along too." if "yesdate" in K_DailyActions or "yesdate" not in P_DailyActions:
+        #                             $ Count = newgirl["Laura"].LikeKitty
+        #                 "Emma along too." if "yesdate" in E_DailyActions or "yesdate" not in P_DailyActions:
+        #                             $ Count = newgirl["Laura"].LikeEmma
+        #                 "Never mind, probably a bad idea.":  
+        #                             call LauraFace("confused")
+        #                             ch_l "Um. . ."
+        #                             if bg_current != "bg campus": 
+        #                                     ch_p "Ok, I'll meet you in the campus square."
     if Count:
         #If you asked about another girl. . .
         if Count >= 600 and ApprovalCheck("Laura", 800, "OI"): #Count is "newgirl["Laura"].LikeX"

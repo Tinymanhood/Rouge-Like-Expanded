@@ -325,7 +325,7 @@ label Laura_Relationship:
 #                return
 #            else:
 #                $ R_DailyActions.append("asked threesome")                
-#                $Cnt = int((R_LikeLaura - 500)/2)
+#                $Cnt = int((R_LikeNewGirl["Laura"] - 500)/2)
 #                menu:
 #                    ch_r "What does she think about this?"
                         
@@ -358,12 +358,12 @@ label Laura_Relationship:
 #                            ch_r "Well maybe she would, but I don't want to share."  
                     
 #                    "Could you ask?":
-#                        if R_LikeLaura >= 700:
+#                        if R_LikeNewGirl["Laura"] >= 700:
 #                            ch_r "I have to say I've kind of been thinking about it myself."  
 #                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
 #                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 1)
 #                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 5)
-#                        elif R_LikeLaura >= 500:
+#                        elif R_LikeNewGirl["Laura"] >= 500:
 #                            ch_r "I guess, if that's what you want. . ." 
 #                        elif R_Obed >= 700:
 #                            ch_r "If that's what you want. . ." 

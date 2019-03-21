@@ -4338,7 +4338,7 @@ label Laura_Les_After:
                                 ch_l "You've got game there."
                         else:
                                 ch_l "That was pretty good. . ."
-                        if R_LikeLaura >= 600:
+                        if R_LikeNewGirl["Laura"] >= 600:
                                 ch_r "Um, yeah, you too. . ."
                         else:
                                 ch_r "I guess. . ."
@@ -4353,7 +4353,7 @@ label Laura_Les_After:
                                 ch_l "I liked that thing with the mouth work."
                         else:
                                 ch_l "You seem to know your way around. . ."
-                        if E_LikeLaura >= 600:
+                        if E_LikeNewGirl["Laura"] >= 600:
                                 ch_e "Practice, dear. . ."
                         else:
                                 ch_e "It would be better if you'd had more practice, dear."
@@ -4368,7 +4368,7 @@ label Laura_Les_After:
                                 ch_l "Really cute work there."
                         else:
                                 ch_l "That was ok. . ."
-                        if K_LikeLaura >= 600:
+                        if K_LikeNewGirl["Laura"] >= 600:
                                 ch_k "Yeah, that was really hot. . ."
                         else:
                                 ch_k "I guess. . ."
@@ -4533,13 +4533,13 @@ label Laura_Les_Response(Girl="Rogue", Step=1, B=0, B2=0, Tempmod=0, Result=0, A
                     $ Result = 1
                     if Girl == "Rogue":
                             $ newgirl["Laura"].LikeRogue += (int(B/10))
-                            $ R_LikeLaura += (int(B2/10))
+                            $ R_LikeNewGirl["Laura"] += (int(B2/10))
                     elif Girl == "Emma":
                             $ newgirl["Laura"].LikeEmma += (int(B/10))
-                            $ E_LikeLaura += (int(B2/10))
+                            $ E_LikeNewGirl["Laura"] += (int(B2/10))
                     elif Girl == "Kitty":
                             $ newgirl["Laura"].LikeKitty += (int(B/10))
-                            $ K_LikeLaura += (int(B2/10))
+                            $ K_LikeNewGirl["Laura"] += (int(B2/10))
             else:
                 return Result
         
@@ -4591,7 +4591,7 @@ label Laura_Les_Response(Girl="Rogue", Step=1, B=0, B2=0, Tempmod=0, Result=0, A
                                         ch_r "It could be a lot of fun."
                                 $ newgirl["Laura"].LikeRogue += (int(B/10))
                                 if B >= 50:
-                                        $ R_LikeLaura += 5
+                                        $ R_LikeNewGirl["Laura"] += 5
                             elif Girl == "Emma":
                                 call EmmaFace("sexy", 1)
                                 if E_Les and newgirl["Laura"].Les:
@@ -4600,7 +4600,7 @@ label Laura_Les_Response(Girl="Rogue", Step=1, B=0, B2=0, Tempmod=0, Result=0, A
                                         ch_e "What's the matter Laura, I've seen how you look at me. . ."
                                 $ newgirl["Laura"].LikeEmma += (int(B/10))
                                 if B >= 50:
-                                        $ E_LikeLaura += 5
+                                        $ E_LikeNewGirl["Laura"] += 5
                             elif Girl == "Kitty":
                                 call KittyFace("sexy", 1)
                                 if K_Les and newgirl["Laura"].Les:
@@ -4609,7 +4609,7 @@ label Laura_Les_Response(Girl="Rogue", Step=1, B=0, B2=0, Tempmod=0, Result=0, A
                                         ch_k "It could be fun!"
                                 $ newgirl["Laura"].LikeKitty += (int(B/10))
                                 if B >= 50:
-                                        $ K_LikeLaura += 5
+                                        $ K_LikeNewGirl["Laura"] += 5
                             if B >= 50:
                                 call LauraFace("smile", 1)
                                 ch_l "I guess so."
