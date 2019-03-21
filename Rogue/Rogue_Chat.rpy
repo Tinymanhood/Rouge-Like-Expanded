@@ -5509,18 +5509,26 @@ label Rogue_Clothes:
                 menu:
                     "Black" if R_HairColor != "black":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "black"
 
                     "Black with white streak" if R_HairColor != "blackwhite":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "blackwhite"
 
                     "Blonde" if R_HairColor != "blonde":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "blonde"
 
                     "Blonde with white streak" if R_HairColor != "blondewhite":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "blondewhite"
 
                 #ch_r "You think so?"
@@ -5533,6 +5541,8 @@ label Rogue_Clothes:
                 ch_r "You think so?"
                 #"She rummages in her bag and grabs some gel, running it through her hair."
                 ch_r "Like this?"
+                if R_Hair = "newhair"
+                    $ R_Hair = "evo"
                 $ R_HairColor = "nope"
             else:
                 ch_r "It's too high maintenance."
@@ -5540,6 +5550,8 @@ label Rogue_Clothes:
         "You're too pale, get a tan (full tan)" if R_Tan != 'tan':
             if ApprovalCheck("Rogue", 900):
                 ch_r "Like this?"
+                if R_Hair = "newhair"
+                    $ R_Hair = "evo"
                 $ R_Tan = "tan"
             else:
                 ch_r "Yeah, how about no."
@@ -5547,6 +5559,8 @@ label Rogue_Clothes:
         "You're too pale, get a tan (tan lines)" if R_Tan != 'tan1':
             if ApprovalCheck("Rogue", 900):
                 ch_r "Like this?"
+                if R_Hair = "newhair"
+                    $ R_Hair = "evo"
                 $ R_Tan = "tan1"
             else:
                 ch_r "Yeah, how about no."

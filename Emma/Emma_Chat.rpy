@@ -326,7 +326,7 @@ label Emma_Chat_Minimal:
                             pass
 
         "I just wanted to talk. . .":
-                    ch_e "I really don't have anything to talk about at the moment.[[Not in yet]"   
+                    ch_e "I really don't have anything to talk about at the moment. [[YOU haven't unlocked this yet]"   
                     
         "Emma's settings":
                     ch_p "Let's talk about you."
