@@ -265,7 +265,7 @@ label R_Date_Dinner:
         $ R_DailyActions.append("hand") 
     elif R_FondleP and ApprovalCheck("Rogue", 1000) and Count >=10:
         "Halfway through the meal, Rogue gets a sly look on her face, then shifts her chair around next to yours."
-        if R_Legs == "pants":
+        if PantsNum("Rogue") == 10:
             "She takes your hand and pulls it over to her crotch, shoving it down her pants. You can feel that she's warm as a furnace."
         else:
             "She takes your hand and pulls it down to her crotch, shoving it under her skirt. You can feel that she's warm as a furnace."
@@ -406,7 +406,7 @@ label R_Date_Movies:
         $ R_RecentActions.append("kissing")                      
         $ R_DailyActions.append("kissing") 
     
-        if R_Anal and ApprovalCheck("Rogue", 2000, Bonus=(10*Count2)) and R_Legs != "pants":
+        if R_Anal and ApprovalCheck("Rogue", 2000, Bonus=(10*Count2)) and PantsNum("Rogue") != 10:
             call RogueFace("sexy", 1) from _call_RogueFace_817
             if R_Panties:
                 "As you make out, Rogue reaches down and undoes your fly. She pulls her panties aside and shifts into your lap."
@@ -443,7 +443,7 @@ label R_Date_Movies:
             $ P_Semen -= 1
             $ R_RecentActions.append("anal")                      
             $ R_DailyActions.append("anal")  
-        elif R_Sex and ApprovalCheck("Rogue", 2000, Bonus=(10*Count2)) and R_Legs != "pants":
+        elif R_Sex and ApprovalCheck("Rogue", 2000, Bonus=(10*Count2)) and PantsNum("Rogue") != 10:
             call RogueFace("sexy", 1) from _call_RogueFace_818
             if R_Panties:
                 "As you make out, Rogue reaches down and undoes your fly. She pulls her panties aside and shifts into your lap."
@@ -569,7 +569,7 @@ label R_Date_Movies:
             $ R_DailyActions.append("hand") 
         elif R_FondleP and ApprovalCheck("Rogue", 900, Bonus=(10*Count2)):
             call RogueFace("sexy") from _call_RogueFace_826
-            if R_Legs == "pants":
+            if PantsNum("Rogue") == 10:
                 "As you make out, Rogue grabs your hand and shoves it down her pants."
             else:
                 "As you make out, Rogue grabs your hand and shoves it up her skirt."
@@ -602,7 +602,7 @@ label R_Date_Movies:
         elif ApprovalCheck("Rogue", 1000, Bonus=(5*Count2)):
             call RogueFace("sexy") from _call_RogueFace_828
             "After making out for a few minutes, Rogue gets a sly look on her face, then shifts a bit lower in her seat."
-            if R_Legs == "pants":
+            if PantsNum("Rogue") == 10:
                 "Looking down, you notice she's pulled down her pants enough that you can see her bare pussy, lit by the movie screen."    
             else:
                 "Looking down, you notice she's hiked up her skirt enough that you can see her bare pussy, lit by the movie screen."            

@@ -148,13 +148,13 @@ label Rogue_Addicted_Ultimatum:
                             $ Tempmod = 10            
                             call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off
                             $ Tempmod = 10 
-                            if R_Legs == "pants" or HoseNum("Rogue") >= 5:
+                            if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:
                                 ch_r "Ok, but after we do this, I get a little skin contact too."
                             $ Count = 3            
                             call R_Fondle_Thighs from _call_R_Fondle_Thighs                
                             if "fondle thighs" in R_RecentActions:
                                 ch_r "I hope that was enough for you."
-                                if R_Legs == "pants" or HoseNum("Rogue") >= 5:
+                                if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:
                                     call R_Tag from _call_R_Tag_3
                                 jump Rogue_Addicted_End
                         
@@ -405,12 +405,12 @@ label Rogue_Addicted2_Ultimatum:
                             $ CountStore = Tempmod          
                             call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off_2                
                             $ Tempmod = CountStore
-                            if R_Legs == "pants" or HoseNum("Rogue") >= 5:
+                            if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:
                                 ch_r "Ok, but after we do this, I get a little touch too."
                             call R_Fondle_Thighs from _call_R_Fondle_Thighs_1
                             if "fondle thighs" in R_RecentActions:
                                 ch_r "I hope that was enough for you."
-                                if R_Legs == "pants" or HoseNum("Rogue") >= 5:
+                                if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:
                                     call R_Tag from _call_R_Tag_8
                                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 5)
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 5)
@@ -671,12 +671,12 @@ label Rogue_Addicted3_Ultimatum:
                             $ CountStore = Tempmod            
                             call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off_4
                             $ Tempmod = CountStore
-                            if R_Legs == "pants" or HoseNum("Rogue") >= 5:
+                            if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:
                                 ch_r "Ok, but after we do this, I get a little touch too."
                             call R_Fondle_Thighs from _call_R_Fondle_Thighs_2
                             if "fondle thighs" in R_RecentActions:
                                 ch_r "I hope that was enough for you."
-                                if R_Legs == "pants" or HoseNum("Rogue") >= 5:
+                                if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:
                                     call R_Tag from _call_R_Tag_13
                                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 10)
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)

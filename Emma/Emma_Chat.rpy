@@ -275,6 +275,9 @@ label Emma_Chat:
         "Talk with Kitty" if K_Loc == bg_current:
                 jump Kitty_Chat
                 
+        "Talk with Laura" if newgirl["Laura"].Loc == bg_current:
+                jump Laura_Chat
+
         "Talk with Mystique" if newgirl["Mystique"].Loc == bg_current:
                 jump Mystique_Chat
                 
@@ -323,7 +326,7 @@ label Emma_Chat_Minimal:
                             pass
 
         "I just wanted to talk. . .":
-                    ch_e "I really don't have anything to talk about at the moment.[[Not in yet]"   
+                    ch_e "I really don't have anything to talk about at the moment. [[YOU haven't unlocked this yet]"   
                     
         "Emma's settings":
                     ch_p "Let's talk about you."
@@ -2063,13 +2066,13 @@ label Emma_Gifts:
             $ Emma_Arms = 2
             
             
-        "Give her the lace bra." if "lace bra" in P_Inventory: #If you have a bra, you'll give it.
+        "Give her the lace bra." if "e lace bra" in P_Inventory: #If you have a bra, you'll give it.
             $ Count = E_Inventory.count("lace bra")
             if "lace bra" not in E_Inventory:                            
                 "You give Emma the lace bra."
                 if ApprovalCheck("Emma", 1200):                    
                     call EmmaFace("bemused") from _call_EmmaFace_725
-                    $ P_Inventory.remove("lace bra")
+                    $ P_Inventory.remove("e lace bra")
                     $ E_Inventory.append("lace bra")
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 25)
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 30)
@@ -2078,7 +2081,7 @@ label Emma_Gifts:
                     $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 89, 10)
                 elif ApprovalCheck("Emma", 800):
                     call EmmaFace("confused",1) from _call_EmmaFace_726
-                    $ P_Inventory.remove("lace bra")
+                    $ P_Inventory.remove("e lace bra")
                     $ E_Inventory.append("lace bra")
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 20)
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 30)
@@ -2087,7 +2090,7 @@ label Emma_Gifts:
                     call EmmaFace("bemused",1) from _call_EmmaFace_727
                 elif ApprovalCheck("Emma", 600):
                     call EmmaFace("confused") from _call_EmmaFace_728
-                    $ P_Inventory.remove("lace bra")
+                    $ P_Inventory.remove("e lace bra")
                     $ E_Inventory.append("lace bra")
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 20)
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 20)
@@ -2114,13 +2117,13 @@ label Emma_Gifts:
             else: 
                 ch_e "I already have one of those."                
             
-        "Give her the lace panties." if "lace panties" in P_Inventory: #If you have a bra, you'll give it.
+        "Give her the lace panties." if "e lace panties" in P_Inventory: #If you have a bra, you'll give it.
             $ Count = E_Inventory.count("lace panties")
             if "lace panties" not in E_Inventory:                            
                 "You give Emma the lace panties."
                 if ApprovalCheck("Emma", 900):
                     call EmmaFace("confused",1) from _call_EmmaFace_732
-                    $ P_Inventory.remove("lace panties")
+                    $ P_Inventory.remove("e lace panties")
                     $ E_Inventory.append("lace panties")
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 20)
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 25)
@@ -2129,7 +2132,7 @@ label Emma_Gifts:
                     call EmmaFace("bemused",1) from _call_EmmaFace_733
                 elif ApprovalCheck("Emma", 700):
                     call EmmaFace("confused") from _call_EmmaFace_734
-                    $ P_Inventory.remove("lace panties")
+                    $ P_Inventory.remove("e lace panties")
                     $ E_Inventory.append("lace panties")
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 20)
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 20)
@@ -3098,18 +3101,18 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
             else:
                 ch_e "I'm sorry, I'm just much too busy at the moment."         
             hide Emma_Sprite
-            call Gym_Clothes("auto", "Emma")
-            call Pool_Clothes("auto", "Emma")
+            call Gym_Clothes("auto", "Emma") from _call_Gym_Clothes_15
+            call Pool_Clothes("auto", "Emma") from _call_Pool_Clothes_12
             return
         
     elif Line == "go to":                                                                 
             #You agreed to go to her instead  
             $ Tempmod = 0
-            call DrainWord("All","leaving")
-            call DrainWord("All","arriving")
+            call DrainWord("All","leaving") from _call_DrainWord_110
+            call DrainWord("All","arriving") from _call_DrainWord_111
             hide Emma_Sprite
-            call Gym_Clothes("auto", "Emma")
-            call Pool_Clothes("auto", "Emma")
+            call Gym_Clothes("auto", "Emma") from _call_Gym_Clothes_16
+            call Pool_Clothes("auto", "Emma") from _call_Pool_Clothes_13
             if E_Loc == "bg teacher":
                 ch_e "I'll see you there."            
                 jump Class_Room_Entry

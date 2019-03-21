@@ -74,7 +74,7 @@ init -1:
     default ModdedGirls = ["Mystique", "Laura"] #List with all modded girls
     #default ModdedGirls = ["Mystique", "Jean"] #List with all modded girls
     default MystiqueName = "Mystique"
-    default LauraName = "Mystique"
+    default LauraName = "Laura"
     default newgirl = {"Mystique" : Girlnew("Mystique"),    #The LikeOtherGirl attribute should be set for each new girl
                        "Laura" : Girlnew("Laura")
                         }
@@ -172,6 +172,7 @@ init -1:
     default P_Rep = 600
     default P_RecentActions = []
     default P_DailyActions = []
+    default P_Harem = [] #this is a list fo all girls the player is currently dating
 # Player Inventory Variables 
     default P_Income = 12               #how much you make each day
     default P_Cash = 20
@@ -685,9 +686,14 @@ label VersionNumber:
         while len(R_Sleepwear) < 16:
             $ R_Sleepwear.append(0)
 
+    if getattr(newgirl["Laura"], "Boots", None) == None:
+        $ newgirl["Laura"].Boots = 0
 
     if "boy" in newgirl["Laura"].Petnames:
         call Mod_Laura_Values
+
+    if getattr(newgirl["Laura"], "TempClothes", None) == None:
+        $ newgirl["Laura"].TempClothes = [0,0,0,0,0,0,0,0,0,0,0]
 
     if newgirl["Mystique"].XP == (0,):
         $ newgirl["Mystique"].XP = 0
@@ -1047,7 +1053,7 @@ label VersionNumber:
 
 # Event calls ////////////////////////////////////////////////////////////////////
 label EventCalls:
-        call Present_Check from _call_Present_Check           
+        call Present_Check
         $ D20 = renpy.random.randint(1, 20)  
         #Disables events when it's too early in the game or the turn is about to end        
         if Day < 5 or Round < 10:
@@ -1055,14 +1061,14 @@ label EventCalls:
                 
         #Activate's "Rogue like spunk" chat
         if "hungry" not in R_Traits and (R_Swallow + R_Chat[2]) >= 10 and R_Loc == bg_current:      #She's swallowed a lot
-                    call Set_The_Scene from _call_Set_The_Scene            
-                    call Rogue_Hungry from _call_Rogue_Hungry
+                    call Set_The_Scene
+                    call Rogue_Hungry
                     return   
         
         #Activate's "Kitty like spunk" chat
         if "hungry" not in K_Traits and (K_Swallow + K_Chat[2]) >= 10 and K_Loc == bg_current:      #She's swallowed a lot
-                    call Set_The_Scene from _call_Set_The_Scene_1            
-                    call Kitty_Hungry from _call_Kitty_Hungry
+                    call Set_The_Scene
+                    call Kitty_Hungry
                     return   
                     
         #Activates Kitty meet    
@@ -1136,7 +1142,7 @@ label EventCalls:
                                 "Rogue pops into the room, looking a little jumpy."
                                 jump Rogue_Fix
                             else:
-                                call RogueFace("manic", 1) from _call_RogueFace
+                                call RogueFace("manic", 1)
                                 if "asked meet" in R_RecentActions:
                                     pass
                                 elif "asked meet" in R_DailyActions and R_Addict >= 80:
@@ -1164,23 +1170,23 @@ label EventCalls:
         #Activates if she hasn't given you a key yet
         if not R_Event[0] and R_Sleep >= 5:               
                     if R_Loc == bg_current or "Rogue" in Party:
-                        call Rogue_Key from _call_Rogue_Key
+                        call Rogue_Key
                         return  
                 
         #Activates if Rogue or Kitty caught you cheating
         if "saw with kitty" in R_Traits and "dating" in R_Traits:  
                     if bg_current == "bg rogue" or bg_current == "bg player":
-                        call Rogue_Cheated("Kitty") from _call_Rogue_Cheated        
+                        call Rogue_Cheated("Kitty")
                         return
                     else:
-                        call AskedMeet("Rogue","angry") from _call_AskedMeet    
+                        call AskedMeet("Rogue","angry")
                     
         elif "saw with rogue" in K_Traits and "dating" in K_Traits:  
                     if bg_current == "bg kitty" or bg_current == "bg player":
-                        call Kitty_Cheated("Rogue") from _call_Kitty_Cheated        
+                        call Kitty_Cheated("Rogue")
                         return
                     else:
-                        call AskedMeet("Kitty","angry") from _call_AskedMeet_1  
+                        call AskedMeet("Kitty","angry")
         
         #This scene has Rogue ask Kitty if she wants to have a poly relationship with you    
         if "ask kitty" in R_Traits:                                 
@@ -1213,10 +1219,10 @@ label EventCalls:
         #Cues a dating event if Rogue is asked by Kitty to join a poly situation
         if "dating?" in R_Traits and "dating" not in R_Traits and "stop asking" not in R_Traits:
                     if bg_current == "bg rogue" or bg_current == "bg player":
-                        call Rogue_BF from _call_Rogue_BF        
+                        call Rogue_BF
                         return
                     else:
-                        call AskedMeet("Rogue","bemused") from _call_AskedMeet_2  
+                        call AskedMeet("Rogue","bemused")
         #fix duplicate the stuff above to add kitty-centric poly situations.                    
                 
         #Rogue relationship stuff        
@@ -1225,66 +1231,66 @@ label EventCalls:
                         if bg_current == "bg rogue" or bg_current == "bg player":
                             jump Rogue_BF
                         else:
-                            call AskedMeet("Rogue","bemused") from _call_AskedMeet_3   
+                            call AskedMeet("Rogue","bemused")
                 elif "lover" not in R_Petnames and R_Love >= 950 and K_Event[6] < 15: # R_Event[6]   
                         if bg_current == "bg rogue" or bg_current == "bg player":
                             jump Rogue_Love
                         else:
-                            call AskedMeet("Rogue","bemused") from _call_AskedMeet_4   
+                            call AskedMeet("Rogue","bemused")
                 elif "sir" not in R_Petnames and R_Obed >= 500: # R_Event[7]
                         if bg_current == "bg rogue" or bg_current == "bg player":
                             jump Rogue_Sub
                         else:
-                            call AskedMeet("Rogue","bemused") from _call_AskedMeet_5
+                            call AskedMeet("Rogue","bemused")
                 elif "master" not in R_Petnames and R_Obed >= 900 and R_Event[8] <2: # R_Event[8]
                         if bg_current == "bg rogue" or bg_current == "bg player":
                             jump Rogue_Slave
                         else:
-                            call AskedMeet("Rogue","bemused") from _call_AskedMeet_6
+                            call AskedMeet("Rogue","bemused")
                 elif "daddy" not in R_Petnames and ApprovalCheck("Rogue", 750, "L") and ApprovalCheck("Rogue", 500, "O") and ApprovalCheck("Rogue", 500, "I"): # R_Event[5]
                         if bg_current == "bg rogue" or bg_current == "bg player" and R_Loc == bg_current:
-                            call Rogue_Daddy from _call_Rogue_Daddy
+                            call Rogue_Daddy
                             return
                         else:
-                            call AskedMeet("Rogue","bemused") from _call_AskedMeet_7
+                            call AskedMeet("Rogue","bemused")
                 elif "sex friend" not in R_Petnames and R_Inbt >= 500: # R_Event[9]  Fix this one
                         if bg_current == "bg rogue" or bg_current == "bg player":
                             jump Rogue_Sexfriend
                         else:
-                            call AskedMeet("Rogue","bemused") from _call_AskedMeet_8
+                            call AskedMeet("Rogue","bemused")
                 elif "fuck buddy" not in R_Petnames and R_Inbt >= 900: # R_Event[10]  Fix this one
                         if bg_current == "bg rogue" or bg_current == "bg player":
                             jump Rogue_Fuckbuddy
                         else:
-                            call AskedMeet("Rogue","bemused") from _call_AskedMeet_9
+                            call AskedMeet("Rogue","bemused")
         #end Rogue relationship stuff
                 
         #Kitty relationship stuff, not finished
         elif "relationship" not in K_DailyActions: 
                 if "boyfriend" not in K_Petnames and K_Love >= 800: # K_Event[5]
                         if bg_current == "bg kitty" or bg_current == "bg player":
-                            call Kitty_BF from _call_Kitty_BF
+                            call Kitty_BF
                             return
                         else:
-                            call AskedMeet("Kitty","bemused") from _call_AskedMeet_10 
+                            call AskedMeet("Kitty","bemused")
                 elif "lover" not in K_Petnames and K_Love >= 950: # K_Event[6]   
                         if K_Event[6] == 20:
                             pass
                         else:
-                            call Kitty_Love from _call_Kitty_Love
+                            call Kitty_Love
                             return
                 elif "sir" not in K_Petnames and K_Obed >= 500 and "sir" not in K_History: # K_Event[7]
                         if bg_current == "bg kitty" or bg_current == "bg player":
-                            call Kitty_Sub from _call_Kitty_Sub
+                            call Kitty_Sub
                             return 
                         else:
-                            call AskedMeet("Kitty","bemused") from _call_AskedMeet_11
+                            call AskedMeet("Kitty","bemused")
                 elif "master" not in K_Petnames and K_Obed >= 800 and "sir" in K_Petnames and "master" not in K_History: # K_Event[8]
                         if bg_current == "bg kitty" or bg_current == "bg player":
-                            call Kitty_Master from _call_Kitty_Master
+                            call Kitty_Master
                             return 
                         else:
-                            call AskedMeet("Kitty","bemused") from _call_AskedMeet_12
+                            call AskedMeet("Kitty","bemused")
 #                elif "daddy" not in K_Petnames and ApprovalCheck("Kitty", 750, "L") and ApprovalCheck("Kitty", 500, "O") and ApprovalCheck("Kitty", 500, "I"): # K_Event[5]
 #                        if bg_current == "bg kitty" or bg_current == "bg player" and K_Loc == bg_current:
 #                            call Kitty_Daddy
@@ -1293,14 +1299,14 @@ label EventCalls:
 #                            call AskedMeet("Kitty","bemused")
                 elif "sex friend" not in K_Petnames and K_Inbt >= 500: # K_Event[9]  Fix this one
                         if bg_current == "bg kitty" or bg_current == "bg player":
-                            call Kitty_Sexfriend from _call_Kitty_Sexfriend
+                            call Kitty_Sexfriend
                             return 
                         else:
-                            call AskedMeet("Kitty","bemused") from _call_AskedMeet_13
+                            call AskedMeet("Kitty","bemused")
                            
                 elif "fuck buddy" not in K_Petnames and K_Inbt >= 800 and bg_current != K_Loc: # K_Event[10]  Fix this one
                         #if she's not a fuckbuddy yet, and is not around at the time
-                        call Kitty_Fuckbuddy from _call_Kitty_Fuckbuddy
+                        call Kitty_Fuckbuddy
                         return  
         #End Kitty relationsip stuff
 
@@ -1364,7 +1370,7 @@ label QuickEvents:
         #These events get checked every screen refresh
 
         $ del Options[:]
-        call Present_Check from _call_Present_Check_1
+        call Present_Check
         #If Rogue is around
         if R_Loc == bg_current:
                 if R_Lust >= 90:       
@@ -1384,15 +1390,15 @@ label QuickEvents:
                                 "Rogue looks a bit flushed and uncomfortable."
                         elif bg_current != "bg showerroom":
                                 "Rogue gets an embarrassed look on her face and suddenly leaves the room."
-                                call Remove_Girl("Rogue") from _call_Remove_Girl
-                                call Set_The_Scene from _call_Set_The_Scene_2        
+                                call Remove_Girl("Rogue")
+                                call Set_The_Scene
         else:
                 #if Rogue is not around
                 if R_Loc == "bg showerroom" and "showered" in R_DailyActions:
                         #if she's recently showered and still in the shower, send her elsewhere
-                        call Rogue_Schedule from _call_Rogue_Schedule
-                        call RogueOutfit from _call_RogueOutfit
-                        call Girls_Location from _call_Girls_Location
+                        call Rogue_Schedule
+                        call RogueOutfit
+                        call Girls_Location
         #End Rogue Quick Events  
         
         if K_Loc == bg_current:
@@ -1413,15 +1419,15 @@ label QuickEvents:
                             "Kitty looks a bit flushed and uncomfortable."
                     elif bg_current != "bg showerroom":
                             "Kitty gets an embarrassed look on her face and suddenly phases through the floor."
-                            call Remove_Girl("Kitty") from _call_Remove_Girl_1
-                            call Set_The_Scene from _call_Set_The_Scene_3
+                            call Remove_Girl("Kitty")
+                            call Set_The_Scene
         else:
                 #if Kitty is not around
                 if K_Loc == "bg showerroom" and "showered" in K_DailyActions:
                         #if she's recently showered and still in the shower, send her elsewhere
-                        call Kitty_Schedule from _call_Kitty_Schedule
-                        call KittyOutfit from _call_KittyOutfit
-                        call Girls_Location from _call_Girls_Location_1            
+                        call Kitty_Schedule
+                        call KittyOutfit
+                        call Girls_Location
         # End Kitty Quick Events
         
         if E_Loc == bg_current:
@@ -1442,15 +1448,15 @@ label QuickEvents:
                             "Emma looks a bit flushed and uncomfortable."
                     elif bg_current != "bg showerroom":
                             "Emma gets an embarrassed look on her face and suddenly leaves the room."
-                            call Remove_Girl("Emma") from _call_Remove_Girl_2
-                            call Set_The_Scene from _call_Set_The_Scene_4
+                            call Remove_Girl("Emma")
+                            call Set_The_Scene
         else:
                 #if Emma is not around
                 if E_Loc == "bg showerroom" and "showered" in E_DailyActions:
                         #if she's recently showered and still in the shower, send her elsewhere
-                        call Emma_Schedule from _call_Emma_Schedule
-                        call EmmaOutfit from _call_EmmaOutfit
-                        call Girls_Location from _call_Girls_Location_2   
+                        call Emma_Schedule
+                        call EmmaOutfit
+                        call Girls_Location
         #end Emma Quick Events
 
         if newgirl["Mystique"].Loc == bg_current:
@@ -1471,16 +1477,46 @@ label QuickEvents:
                             "Mystique looks a bit flushed and uncomfortable."
                     elif bg_current != "bg showerroom":
                             "Mystique gets an embarrassed look on her face and suddenly leaves the room."
-                            call Remove_Girl("Mystique") from _call_Remove_Girl_3
-                            call Set_The_Scene from _call_Set_The_Scene_5
+                            call Remove_Girl("Mystique")
+                            call Set_The_Scene
         else:
                 #if Mystique is not around
                 if newgirl["Mystique"].Loc == "bg showerroom" and "showered" in newgirl["Mystique"].DailyActions:
                         #if she's recently showered and still in the shower, send her elsewhere
-                        call Mystique_Schedule from _call_Mystique_Schedule
-                        call MystiqueOutfit from _call_MystiqueOutfit
-                        call Girls_Location from _call_Girls_Location_3   
+                        call Mystique_Schedule
+                        call MystiqueOutfit
+                        call Girls_Location
         #end Mystique Quick Events
+
+        if newgirl["Laura"].Loc == bg_current:
+                if newgirl["Laura"].Lust >= 90:       
+                        $ newgirl["Laura"].Blush = 1
+                        $ newgirl["Laura"].Wet = 2 
+                elif newgirl["Laura"].Lust >= 60:        
+                        $ newgirl["Laura"].Blush = 1
+                        $ newgirl["Laura"].Wet = 1
+                else:
+                        $ newgirl["Laura"].Wet = 0
+                  
+                #Laura reacts to getting horny      
+                if Taboo and newgirl["Laura"].Lust >= 75:
+                    if newgirl["Laura"].Inbt > 800 or "exhibitionist" in newgirl["Laura"].Traits:
+                            "Laura gets a sly smile on her face and squirms a bit."
+                    elif newgirl["Laura"].Inbt > 500 and newgirl["Laura"].Lust < 90:
+                            "Laura looks a bit flushed."
+                    elif bg_current != "bg showerroom":
+                            "Laura gets an odd look on her face and dashes out of the room."
+                            call Remove_Girl("Laura")
+                            call Set_The_Scene
+        else:
+                #if Laura is not around
+                if newgirl["Laura"].Loc == "bg showerroom" and "showered" in newgirl["Laura"].DailyActions:
+                        #if she's recently showered and still in the shower, send her elsewhere
+                        call Laura_Schedule  
+                        call LauraOutfit(Changed=1)
+                        call Girls_Location   
+                        call LauraOutfit(Changed=1)
+        #end Laura Quick Events
 
         return   
 #End Quick Events
@@ -1489,14 +1525,24 @@ label AskedMeet(Character = "Rogue", Emotion = "bemused"): # Use AskedMeet("Rogu
     #This asks the player to meet the chosen character later
     if Character == "Rogue":
             if "asked meet" not in R_DailyActions:
-                    call RogueFace(Emotion) from _call_RogueFace_1
+                    call RogueFace(Emotion)
                     "Rogue asks if you could meet her in your room later."
                     $ R_DailyActions.append("asked meet") 
     elif Character == "Kitty":
             if "asked meet" not in K_DailyActions:
-                    call KittyFace(Emotion) from _call_KittyFace
+                    call KittyFace(Emotion)
                     "Kitty asks if you could meet her in your room later."
                     $ K_DailyActions.append("asked meet") 
+    elif Character == "Emma":
+            if "asked meet" not in E_DailyActions:
+                    call EmmaFace(Emotion)
+                    "Emma asks if you could meet her in your room later."
+                    $ E_DailyActions.append("asked meet") 
+    elif Character == "Laura":
+            if "asked meet" not in newgirl["Laura"].DailyActions:
+                    call LauraFace(Emotion)
+                    "Laura asks if you could meet her in your room later."
+                    $ newgirl["Laura"].DailyActions.append("asked meet") 
     return
     
 # End Event Calls //////////////////////////////////////////////////////////////    
@@ -2262,7 +2308,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                 
         if R_Panties and R_Panties != "shorts" and "pantyless" in R_DailyActions:       
                 # This checks the pantyless state from flirting 
-                if R_Legs == "pants" or HoseNum("Rogue") >= 10:
+                if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 10:
                     $ R_Shame -= 5    
                 elif R_Legs:
                     $ R_Shame -= 10  
@@ -3278,7 +3324,7 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                         "She throws her clothes back on."  
         
         $ E_Outfit = E_OutfitTemp
-        call Emma_Tits_Up from _call_Emma_Tits_Up
+        call Emma_Tits_Up
         
         return
 #End Emma's Outfits
@@ -3737,7 +3783,7 @@ label MystiqueOutfit(M_OutfitTemp = newgirl["Mystique"].Outfit, Spunk = 0, Undre
                         "She throws on a towel."
                 elif Undressed:
                         "She throws her clothes back on."  
-        call Mystique_Tits_Up from _call_Mystique_Tits_Up
+        call Mystique_Tits_Up
         
         $ newgirl["Mystique"].Outfit = M_OutfitTemp
 
@@ -3863,7 +3909,8 @@ label Mystique_Todo:
         return
 
 # Laura's Outfit //////////////////////////////////////////////
-label LauraOutfit(L_OutfitTemp = newgirl["Laura"].Outfit, Spunk = 0, Undressed = 0, Changed = 0):   
+# Laura's Outfit //////////////////////////////////////////////
+label LauraOutfit(L_OutfitTemp = newgirl["Laura"].Outfit, Spunk = 0, Undressed = 0, Changed = 1):   
         # L_OutfitTemp is the chosen new outfit, Spunk removes sperm on her, Undressed determines whether she is under dressed  
         
         if L_OutfitTemp == 5: #this sets it to default if using AnyOutfit
@@ -3885,7 +3932,7 @@ label LauraOutfit(L_OutfitTemp = newgirl["Laura"].Outfit, Spunk = 0, Undressed =
         if newgirl["Laura"].Loc == "bg showerroom" and "Laura" not in Party and L_OutfitTemp != "nude":
                 #Automatically puts her in the towel while in the shower
                 $ L_OutfitTemp = "towel"                                  
-        elif newgirl["Laura"].Loc != "bg showerroom":
+        elif newgirl["Laura"].Loc != "bg showerroom" or (L_OutfitTemp != "nude" and L_OutfitTemp != "towel"):
                 #Dries her off
                 $ newgirl["Laura"].Water = 0
                 
@@ -3910,6 +3957,21 @@ label LauraOutfit(L_OutfitTemp = newgirl["Laura"].Outfit, Spunk = 0, Undressed =
                     $ newgirl["Laura"].Boots = 0
                     $ newgirl["Laura"].Hair = "long"
                     $ newgirl["Laura"].Hose = 0  
+                    $ newgirl["Laura"].Shame = 0
+        elif L_OutfitTemp == "streets":
+                    if 0 in (newgirl["Laura"].Legs,newgirl["Laura"].Chest):
+                            $ Undressed = 1
+                    elif newgirl["Laura"].Panties == 0 and "pantyless" not in newgirl["Laura"].DailyActions:                        
+                            $ Undressed = 1   
+                    $ newgirl["Laura"].Arms = 0
+                    $ newgirl["Laura"].Legs = "skirt"
+                    $ newgirl["Laura"].Over = "jacket"
+                    $ newgirl["Laura"].Chest = "corset" if "corset" in newgirl["Laura"].Inventory else "leather bra"
+                    $ newgirl["Laura"].Panties = "lace panties" if "lace panties" in newgirl["Laura"].Inventory else "black panties"
+                    $ newgirl["Laura"].Neck = 0                 
+                    $ newgirl["Laura"].Boots = 0
+                    $ newgirl["Laura"].Hair = "long"
+                    $ newgirl["Laura"].Hose = "stockings and garterbelt" if "lace panties" in newgirl["Laura"].Inventory else "stockings"      
                     $ newgirl["Laura"].Shame = 0
         elif L_OutfitTemp == "towel":
                     if newgirl["Laura"].Over == 0:
@@ -4103,18 +4165,16 @@ label Laura_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Laura"].Loc):
         if "met" not in newgirl["Laura"].History or ("Laura" in Party and Clothes != 2): 
                 #if she's in a party, never mind
                 return  
-        if "sleepover" in newgirl["Laura"].Traits and Current_Time == "morning":
+        if Clothes != 2 and "sleepover" in newgirl["Laura"].Traits and Current_Time == "morning":
                 #she slept over, so just forget this for now  
                 return             
-        
-        $ D20 = renpy.random.randint(1, 20) 
-        
+                
         if (Current_Time == "Morning" and Clothes and Round >= 90) or Clothes == 2:
                 #Pick clothes for the day
                 if newgirl["Laura"].Schedule[Weekday] == 1:
                         $ newgirl["Laura"].OutfitDay = "mission"
                 elif newgirl["Laura"].Schedule[Weekday] == 2:
-                        $ newgirl["Laura"].OutfitDay = "mission"               # fix, make this second costume
+                        $ newgirl["Laura"].OutfitDay = "streets"               # fix, make this second costume
                 elif newgirl["Laura"].Schedule[Weekday] == 3 and newgirl["Laura"].Custom[0]:
                         $ newgirl["Laura"].OutfitDay = "custom1"
                 elif newgirl["Laura"].Schedule[Weekday] == 4:
@@ -4125,6 +4185,7 @@ label Laura_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Laura"].Loc):
                         $ newgirl["Laura"].OutfitDay = "custom3"
                 else: # random
                         $ Options = ["mission"]
+                        $ Options.append("streets") if ApprovalCheck("Laura", 500, "I") else Options
                         $ Options.append("custom1") if newgirl["Laura"].Custom[0] == 2 else Options
                         $ Options.append("custom2") if newgirl["Laura"].Custom2[0] == 2 else Options
                         $ Options.append("custom3") if newgirl["Laura"].Custom3[0] == 2 else Options
@@ -4137,8 +4198,6 @@ label Laura_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Laura"].Loc):
         #Location portion  
         if "Laura" in Party or newgirl["Laura"].Loc == "hold" or not Location:
                 pass    
-        elif True:
-                pass #remove this after she's fully available
         elif Weekday == 0 or Weekday == 2 or Weekday == 4:
         #MoWeFr   
                 if Current_Time == "Morning":
@@ -4174,8 +4233,8 @@ label Laura_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Laura"].Loc):
                     $ newgirl["Laura"].RecentActions.append("leaving") 
                 elif newgirl["Laura"].Loc == bg_current: #If she's showed up
                     $ newgirl["Laura"].RecentActions.append("arriving") 
-        if "Laura" in Nearby:
-                $ Nearby.remove("Laura")
+        # if "Laura" in Nearby:
+        #         $ Nearby.remove("Laura")
         return
 #End Laura's Schedule
 
@@ -4250,7 +4309,8 @@ label Wait (Outfit = 1, Lights = 1):
     $ K_Addict += K_Addictionrate
     $ E_Addict += E_Addictionrate
     $ newgirl["Mystique"].Addict += newgirl["Mystique"].Addictionrate
-    call Checkout(1) from _call_Checkout
+    $ newgirl["Laura"].Addict += newgirl["Laura"].Addictionrate
+    call Checkout(1)
     $ P_XP = 3330 if P_XP > 3330 else P_XP
     $ R_XP = 3330 if R_XP > 3330 else R_XP
     $ K_XP = 3330 if K_XP > 3330 else K_XP
@@ -4263,6 +4323,7 @@ label Wait (Outfit = 1, Lights = 1):
                 $ K_Action += 1 
                 $ E_Action += 1 
                 $ newgirl["Mystique"].Action += 1
+                $ newgirl["Laura"].Action += 1
                 
     # Things that happen when you sleep   
     else:                                                          
@@ -4302,14 +4363,14 @@ label Wait (Outfit = 1, Lights = 1):
                 if "corruption" in P_Traits:
                         $ P_Traits.remove("corruption")  
                 
-                call Favorite_Actions from _call_Favorite_Actions # Sets the girl's favorite activities once per day
+                call Favorite_Actions
                         
                         
         # Things about Rogue when you sleep:  
                 if R_Loc == "hold":
                         $ R_Loc = "bg rogue"      
                 if R_Todo:
-                        call Rogue_Todo from _call_Rogue_Todo
+                        call Rogue_Todo
                 $ R_Addict += R_Addictionrate
                 $ R_Addict -= (3*R_Resistance)
                 
@@ -4345,7 +4406,7 @@ label Wait (Outfit = 1, Lights = 1):
                 if K_Loc == "hold":
                         $ K_Loc = "bg kitty"  
                 if K_Todo:
-                        call Kitty_Todo from _call_Kitty_Todo
+                        call Kitty_Todo
                 
                 if "addict kitty" in P_Traits:
                         $ K_Addict += K_Addictionrate
@@ -4384,7 +4445,7 @@ label Wait (Outfit = 1, Lights = 1):
                 if E_Loc == "hold":
                         $ E_Loc = "bg emma"  
                 if E_Todo:
-                        call Emma_Todo from _call_Emma_Todo
+                        call Emma_Todo
                 
                 if "addict emma" in P_Traits:
                         $ E_Addict += E_Addictionrate
@@ -4423,7 +4484,7 @@ label Wait (Outfit = 1, Lights = 1):
                 if newgirl["Mystique"].Loc == "hold":
                         $ newgirl["Mystique"].Loc = "bg Mystique"  
                 if newgirl["Mystique"].Todo:
-                        call Mystique_Todo from _call_Mystique_Todo
+                        call Mystique_Todo
                 
                 if "addict mystique" in P_Traits:
                         $ newgirl["Mystique"].Addict += newgirl["Mystique"].Addictionrate
@@ -4456,7 +4517,50 @@ label Wait (Outfit = 1, Lights = 1):
                 if "master" in newgirl["Mystique"].Petnames and newgirl["Mystique"].Obed > 600:
                         $ newgirl["Mystique"].Obed += 10
                 if "fuck buddy" in newgirl["Mystique"].Petnames:
-                        $ newgirl["Mystique"].Inbt += 10          
+                        $ newgirl["Mystique"].Inbt += 10    
+
+        # Things about Mystique when you sleep:
+                if newgirl["Laura"].Loc == "hold":
+                        $ newgirl["Laura"].Loc = "bg Laura"  
+                if newgirl["Laura"].Todo:
+                        call Laura_Todo
+                
+                $ newgirl["Laura"].Outfit = "sleepwear"
+                call LauraOutfit(Changed=1)
+                if "addict emma" in P_Traits:
+                        $ newgirl["Laura"].Addict += newgirl["Laura"].Addictionrate
+                        $ newgirl["Laura"].Addict -= (3*newgirl["Laura"].Resistance)
+                else:
+                        $ newgirl["Laura"].Addict = 0
+                        $ newgirl["Laura"].Addictionrate = 0
+        
+                if "addictive" in P_Traits:  
+                        pass
+                elif "nonaddictive" in P_Traits:        
+                        $ newgirl["Laura"].Addictionrate -= 2
+                        $ newgirl["Laura"].Addict -= 5
+                elif newgirl["Laura"].Addictionrate:
+                        $ newgirl["Laura"].Addictionrate -= newgirl["Laura"].Resistance
+                    
+                $ newgirl["Laura"].ForcedCount -= 1 if newgirl["Laura"].ForcedCount > 0 else 0
+                if newgirl["Laura"].ForcedCount > 0:
+                        $ newgirl["Laura"].ForcedCount -= 1 if ApprovalCheck("Laura", 1000, "LO") else 0 
+                $ newgirl["Laura"].Action = newgirl["Laura"].MaxAction    
+                
+                $ newgirl["Laura"].Rep = 0 if newgirl["Laura"].Rep < 0 else newgirl["Laura"].Rep 
+                $ newgirl["Laura"].Rep += 10 if newgirl["Laura"].Rep < 800 else 0
+                $ newgirl["Laura"].Rep = 1000 if newgirl["Laura"].Rep > 1000 else newgirl["Laura"].Rep 
+                $ newgirl["Laura"].Lust -= 5 if newgirl["Laura"].Lust >= 50 else 0
+                
+                if "painted" not in newgirl["Laura"].DailyActions or "cleaned" not in newgirl["Laura"].DailyActions:   
+                        $ del newgirl["Laura"].Spunk[:]  
+                
+                if "lover" in newgirl["Laura"].Petnames and newgirl["Laura"].Love > 800:
+                        $ newgirl["Laura"].Love += 10
+                if "master" in newgirl["Laura"].Petnames and newgirl["Laura"].Obed > 600:
+                        $ newgirl["Laura"].Obed += 10
+                if "fuck buddy" in newgirl["Laura"].Petnames:
+                        $ newgirl["Laura"].Inbt += 10        
     #End of things when you sleep
                     
         
@@ -4473,8 +4577,8 @@ label Wait (Outfit = 1, Lights = 1):
     $ K_OCount = 0     
     $ E_OCount = 0    
     $ newgirl["Mystique"].OCount = 0    
-    call Taboo_Level from _call_Taboo_Level  
-    call GirlWaitAttract from _call_GirlWaitAttract #checks girls attraction based on who's in the room
+    call Taboo_Level
+    call GirlWaitAttract
     
     #Things that are about Rogue:      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     if R_Lust >= 70 and R_Loc != bg_current:
@@ -4490,7 +4594,7 @@ label Wait (Outfit = 1, Lights = 1):
     if R_Loc == "bg classroom" or R_Loc == "bg dangerroom" :
             $ R_XP += 10    
     elif R_Loc == "bg showerroom": 
-            call Remove_Girl("Rogue") from _call_Remove_Girl_4
+            call Remove_Girl("Rogue")
           
     #Appearance clean-up
     $ R_Blush = 0
@@ -4526,10 +4630,10 @@ label Wait (Outfit = 1, Lights = 1):
     if Time_Count == 0: 
             $ del R_DailyActions[:]
             
-    call Rogue_Schedule from _call_Rogue_Schedule_1
-    call Stat_Checks from _call_Stat_Checks    
+    call Rogue_Schedule
+    call Stat_Checks
     if Outfit:
-            call RogueOutfit(R_OutfitDay) from _call_RogueOutfit_1
+            call RogueOutfit(R_OutfitDay)
     
     #end Rogue hourly actions
         
@@ -4549,7 +4653,7 @@ label Wait (Outfit = 1, Lights = 1):
     if K_Loc == "bg classroom" or K_Loc == "bg dangerroom" :
             $ K_XP += 10    
     elif K_Loc == "bg showerroom":
-            call Remove_Girl("Kitty") from _call_Remove_Girl_5
+            call Remove_Girl("Kitty")
         
     #Appearance clean-up
     $ K_Blush = 0
@@ -4576,10 +4680,10 @@ label Wait (Outfit = 1, Lights = 1):
     if Time_Count == 0: 
         $ del K_DailyActions[:]
         
-    call Kitty_Schedule from _call_Kitty_Schedule_1
-    call Stat_Checks from _call_Stat_Checks_1    
+    call Kitty_Schedule
+    call Stat_Checks
     if Outfit:
-            call KittyOutfit(K_OutfitDay) from _call_KittyOutfit_1
+            call KittyOutfit(K_OutfitDay)
     #end Kitty hourly actions
         
     #Things that are about Emma:   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  
@@ -4599,7 +4703,7 @@ label Wait (Outfit = 1, Lights = 1):
     if E_Loc == "bg classroom" or E_Loc == "bg dangerroom" :
             $ E_XP += 10    
     elif E_Loc == "bg showerroom":
-            call Remove_Girl("Emma") from _call_Remove_Girl_6
+            call Remove_Girl("Emma")
         
     #Appearance clean-up
     $ E_Blush = 0
@@ -4626,10 +4730,10 @@ label Wait (Outfit = 1, Lights = 1):
     if Time_Count == 0: 
         $ del E_DailyActions[:]
         
-    call Emma_Schedule from _call_Emma_Schedule_1
-    call Stat_Checks from _call_Stat_Checks_2
+    call Emma_Schedule
+    call Stat_Checks
     if Outfit:
-            call EmmaOutfit(E_OutfitDay) from _call_EmmaOutfit_1
+            call EmmaOutfit(E_OutfitDay)
     #end Emma hourly actions
 
     #Things that are about Mystique:   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  
@@ -4649,7 +4753,7 @@ label Wait (Outfit = 1, Lights = 1):
     if newgirl["Mystique"].Loc == "bg classroom" or newgirl["Mystique"].Loc == "bg dangerroom" :
             $ newgirl["Mystique"].XP += 10    
     elif newgirl["Mystique"].Loc == "bg showerroom":
-            call Remove_Girl("Mystique") from _call_Remove_Girl_7
+            call Remove_Girl("Mystique")
         
     #Appearance clean-up
     $ newgirl["Mystique"].Blush = 0
@@ -4676,15 +4780,70 @@ label Wait (Outfit = 1, Lights = 1):
     if Time_Count == 0: 
         $ del newgirl["Mystique"].DailyActions[:]
         
-    call Mystique_Schedule from _call_Mystique_Schedule_1
-    call Stat_Checks from _call_Stat_Checks_3    
+    call Mystique_Schedule
+    call Stat_Checks
     if Outfit:
-            call MystiqueOutfit(newgirl["Mystique"].OutfitDay) from _call_MystiqueOutfit_1
+            call MystiqueOutfit(newgirl["Mystique"].OutfitDay)
     #end Mystique hourly actions
+
+
+    #Things that are about Laura:   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  
+    if newgirl["Laura"].Lust >= 70 and newgirl["Laura"].Loc != bg_current:
+        $ newgirl["Laura"].Lust = 25
+            
+    #Resets her flirt  options
+    $ newgirl["Laura"].Chat[5] = 0 
+    
+    #Resets her addiction fix attempts
+    if newgirl["Laura"].Event[3]:
+        $ newgirl["Laura"].Event[3] -= 1               
+    
+    $ newgirl["Laura"].Forced = 0
+    if newgirl["Laura"].Loc == "bg classroom" or newgirl["Laura"].Loc == "bg dangerroom" :
+            $ newgirl["Laura"].XP += 10    
+    elif newgirl["Laura"].Loc == "bg showerroom":
+            call Remove_Girl("Laura")
+        
+    #Appearance clean-up
+    $ newgirl["Laura"].Blush = 0
+    $ newgirl["Laura"].Water = 0
+    $ newgirl["Laura"].Held = 0 
+    
+    # Reduce addiction
+    $ newgirl["Laura"].Addictionrate -= newgirl["Laura"].Resistance if newgirl["Laura"].Addictionrate > 3 else 0    
+    $ newgirl["Laura"].Addictionrate = 0 if newgirl["Laura"].Addictionrate < 0 else newgirl["Laura"].Addictionrate    
+    
+    #Adjusts shame rate
+    if newgirl["Laura"].Taboo and newgirl["Laura"].Shame:
+            if newgirl["Laura"].Loc == "bg dangerroom":            
+                    $ newgirl["Laura"].Shame -= 10 if newgirl["Laura"].Shame >=10 else newgirl["Laura"].Shame
+            $ Count = int((newgirl["Laura"].Taboo * newgirl["Laura"].Shame) / 200)
+            $ newgirl["Laura"].Inbt = Statupdate("Laura", "Inbt", newgirl["Laura"].Inbt, 90, Count)         
+            $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 90, Count) 
+            $ newgirl["Laura"].Rep -= int(1.5 * Count)
+    
+    $ newgirl["Laura"].Love -= 5*(Action_Check("Laura","recent","unsatisfied")) #subtracts newgirl["Laura"].Love by 5* the number of recent unsatisfieds
+    
+    # Clears out recent and daily actions
+    $ del newgirl["Laura"].RecentActions[:]
+    if "angry" in newgirl["Laura"].DailyActions:
+        $ newgirl["Laura"].RecentActions.append("angry")
+    if Time_Count == 0: 
+        $ del newgirl["Laura"].DailyActions[:]
+    elif Time_Count == 3 and "yesdate" in newgirl["Laura"].DailyActions and "stoodup" not in newgirl["Laura"].Traits:
+                        #if you stood her up for a date. . .
+                        $ newgirl["Laura"].Traits.append("stoodup")
+        
+    call Laura_Schedule
+    call Stat_Checks    
+    if Outfit:
+            call LauraOutfit(newgirl["Laura"].OutfitDay)
+    #end Laura hourly actions
+
     
     #end wait items: 
-    call Faces from _call_Faces #Sets girls faces based on their emotions
-    call Checkout from _call_Checkout_1
+    call Faces
+    call Checkout
     if Current_Time != "Night":        
             hide NightMask onlayer nightmask  
     if Lights:
@@ -4708,22 +4867,16 @@ label Wait (Outfit = 1, Lights = 1):
 
 label Taboo_Level:
         #Set your taboo level
-        if bg_current in ("bg player", "bg rogue", "bg kitty", "bg emma"):                     
+        if bg_current in ("bg player", "bg rogue", "bg kitty", "bg emma", "bg laura"):                     
                     $ Taboo = 0
-        elif bg_current == "bg classroom":
+        elif bg_current == "bg classroom" or "bg study":
                 if Current_Time == "Night":
                     $ Taboo = 0
                 elif Current_Time == "Evening" or Weekday >= 5:
-                    $ Taboo = 30
                     if "locked" in E_RecentActions:
-                        if bg_current == R_Loc and E_LikeRogue <= 800:
-                            $ E_Taboo = 20
-                            $ Taboo = 20     
-                        elif bg_current == K_Loc and E_LikeKitty <= 800:
-                            $ E_Taboo = 20
-                            $ Taboo = 20          
-                        else:
                             $ Taboo = 0
+                    else:
+                            $ Taboo = 30
                 else:
                     $ Taboo = 40
         elif bg_current == "bg dangerroom":
@@ -4755,7 +4908,7 @@ label Taboo_Level:
                     $ Taboo = 0
                     
         #Set Rogue's Taboo level
-        if R_Loc in ("bg player", "bg rogue", "bg kitty", "bg emma"):  
+        if R_Loc in ("bg player", "bg rogue", "bg kitty", "bg emma", "bg laura"):  
                     if R_Loc == K_Loc and R_LikeKitty <= 800:
                         $ R_Taboo = 20
                         $ Taboo = 20    
@@ -4797,7 +4950,7 @@ label Taboo_Level:
                     $ R_Taboo = 0    
             
         #Set Kitty's Taboo level 
-        if K_Loc in ("bg player", "bg rogue", "bg kitty", "bg emma"):  
+        if K_Loc in ("bg player", "bg rogue", "bg kitty", "bg emma", "bg laura"):  
                     if K_Loc == R_Loc and K_LikeRogue <= 800:
                         $ K_Taboo = 20
                         $ Taboo = 20  
@@ -4839,7 +4992,7 @@ label Taboo_Level:
                     $ K_Taboo = 0   
                     
         #Set Emma's Taboo level 
-        if E_Loc in ("bg player", "bg rogue", "bg kitty", "bg emma"):  
+        if E_Loc in ("bg player", "bg rogue", "bg kitty", "bg emma", "bg laura"):  
                     if E_Loc == R_Loc and E_LikeRogue <= 800:
                         $ E_Taboo = 20
                         $ Taboo = 20     
@@ -4878,15 +5031,106 @@ label Taboo_Level:
         elif E_Loc == "bg showerroom":        
                     $ E_Taboo = 20    
         else:
-                    $ E_Taboo = 0   
+                    $ E_Taboo = 0 
+
+        
+        #Set Laura's Taboo level 
+        if "Laura" in Party:
+                    $ newgirl["Laura"].Loc = bg_current
+        if newgirl["Laura"].Loc == bg_current:
+                $ newgirl["Laura"].Taboo = Taboo            
+        elif newgirl["Laura"].Loc in ("bg player", "bg rogue", "bg kitty", "bg emma", "bg laura"): 
+                $ newgirl["Laura"].Taboo = 0
+        elif newgirl["Laura"].Loc == "bg classroom" or "bg study":
+                if Current_Time == "Night":
+                            $ newgirl["Laura"].Taboo = 5
+                elif Current_Time == "Evening" or Weekday >= 5:
+                    if "locked" in P_RecentActions:
+                            $ newgirl["Laura"].Taboo = 0
+                    else:
+                            $ newgirl["Laura"].Taboo = 30
+                else:
+                    $ newgirl["Laura"].Taboo = 40
+        elif newgirl["Laura"].Loc == "bg dangerroom":
+                if Current_Time == "Night":
+                    $ newgirl["Laura"].Taboo = 5
+                else:
+                    $ newgirl["Laura"].Taboo = 40
+        elif newgirl["Laura"].Loc == "bg pool":
+                if Current_Time == "Night":
+                    $ newgirl["Laura"].Taboo = 0
+                else:
+                    $ newgirl["Laura"].Taboo = 40
+        elif newgirl["Laura"].Loc == "bg field":
+                if Current_Time == "Night":
+                    $ newgirl["Laura"].Taboo = 0
+                else:
+                    $ newgirl["Laura"].Taboo = 40
+        elif newgirl["Laura"].Loc == "bg campus":
+                if Current_Time == "Night":
+                    $ newgirl["Laura"].Taboo = 20
+                else:
+                    $ newgirl["Laura"].Taboo = 40
+        elif newgirl["Laura"].Loc == "bg showerroom":        
+                    $ newgirl["Laura"].Taboo = 20    
+        else:
+                    $ newgirl["Laura"].Taboo = 40   
+
+
         return
         
         #end taboo level
             
+label Taboo_Buddy_Check(Girl="Rogue",TempTaboo=Taboo):
+    #checks if the girl is comfortable with the other girls present
+    if Girl == "Rogue":
+            if R_Taboo >= 20:
+                        # if it's already 20+, there's no point to this
+                        return
+            if R_Loc == K_Loc and R_LikeKitty <= 800 and not ("Rogue" in P_Harem and "Kitty" in P_Harem):
+                        #if either she likes Kitty, or both are in the harem, skip
+                        $ R_Taboo = 20
+            if R_Loc == E_Loc and R_LikeEmma <= 800 and not ("Rogue" in P_Harem and "Emma" in P_Harem):
+                        $ R_Taboo = 20
+            if R_Loc == L_Loc and R_LikeLaura <= 800 and not ("Rogue" in P_Harem and "Laura" in P_Harem):
+                        $ R_Taboo = 20                
+            $ Taboo = R_Taboo if (R_Taboo > Taboo and bg_current == R_Loc) else Taboo
+    elif Girl == "Kitty":
+            if K_Taboo >= 20:
+                        return
+            if K_Loc == R_Loc and K_LikeRogue <= 800 and not ("Kitty" in P_Harem and "Rogue" in P_Harem):
+                        $ K_Taboo = 20
+            if K_Loc == E_Loc and K_LikeEmma <= 800 and not ("Kitty" in P_Harem and "Emma" in P_Harem):
+                        $ K_Taboo = 20 
+            if K_Loc == L_Loc and K_LikeLaura <= 800 and not ("Kitty" in P_Harem and "Laura" in P_Harem):
+                        $ K_Taboo = 20 
+            $ Taboo = K_Taboo if (K_Taboo > Taboo and bg_current == K_Loc) else Taboo
+    elif Girl == "Emma":
+            if E_Taboo >= 20:
+                        return
+            if E_Loc == R_Loc and E_LikeRogue <= 800 and not ("Emma" in P_Harem and "Rogue" in P_Harem):
+                        $ E_Taboo = 20
+            if E_Loc == K_Loc and E_LikeKitty <= 800 and not ("Emma" in P_Harem and "Kitty" in P_Harem):
+                        $ E_Taboo = 20
+            if E_Loc == L_Loc and E_LikeLaura <= 800 and not ("Emma" in P_Harem and "Laura" in P_Harem):
+                        $ E_Taboo = 20                
+            $ Taboo = E_Taboo if (E_Taboo > Taboo and bg_current == E_Loc) else Taboo
+    elif Girl == "Laura":
+            if L_Taboo >= 20:
+                        return
+            if L_Loc == R_Loc and L_LikeRogue <= 800 and not ("Laura" in P_Harem and "Rogue" in P_Harem):
+                        $ L_Taboo = 20
+            if L_Loc == K_Loc and L_LikeKitty <= 800 and not ("Laura" in P_Harem and "Kitty" in P_Harem):
+                        $ L_Taboo = 20
+            if L_Loc == E_Loc and L_LikeEmma <= 800 and not ("Laura" in P_Harem and "Emma" in P_Harem):
+                        $ L_Taboo = 20                
+            $ Taboo = L_Taboo if (L_Taboo > Taboo and bg_current == L_Loc) else Taboo
+    return
+        
 
 # Overrun checking //////////////////////////////////////////////////////////////////////
 label Checkout(Total = 0):    
-            call VersionNumber from _call_VersionNumber
+            call VersionNumber
         #Rogue
             $ R_Love = 1000 if R_Love > 1000 else R_Love    
             $ R_Obed = 1000 if R_Obed > 1000 else R_Obed    
@@ -4964,6 +5208,35 @@ label Checkout(Total = 0):
             $ E_LikeKitty = 0 if E_LikeKitty < 0 else E_LikeKitty 
             if E_Forced and E_ForcedCount < 10:
                 $ E_ForcedCount += 1
+
+        #Laura
+            $ newgirl["Laura"].Love = 1000 if newgirl["Laura"].Love > 1000 else newgirl["Laura"].Love    
+            $ newgirl["Laura"].Obed = 1000 if newgirl["Laura"].Obed > 1000 else newgirl["Laura"].Obed    
+            $ newgirl["Laura"].Inbt = 1000 if newgirl["Laura"].Inbt > 1000 else newgirl["Laura"].Inbt    
+            $ newgirl["Laura"].Lust = 99 if newgirl["Laura"].Lust > 99 else newgirl["Laura"].Lust   
+                
+            $ newgirl["Laura"].Love = 0 if newgirl["Laura"].Love < 0 else newgirl["Laura"].Love    
+            $ newgirl["Laura"].Obed = 0 if newgirl["Laura"].Obed < 0 else newgirl["Laura"].Obed    
+            $ newgirl["Laura"].Inbt = 0 if newgirl["Laura"].Inbt < 0 else newgirl["Laura"].Inbt    
+            $ newgirl["Laura"].Lust = 0 if newgirl["Laura"].Lust < 0 else newgirl["Laura"].Lust   
+                        
+            $ newgirl["Laura"].Action = newgirl["Laura"].MaxAction if newgirl["Laura"].Action > newgirl["Laura"].MaxAction else newgirl["Laura"].Action  
+            $ newgirl["Laura"].Action = 0 if newgirl["Laura"].Action < 0 else newgirl["Laura"].Action  
+            
+            $ newgirl["Laura"].Addict = 100 if newgirl["Laura"].Addict > 100 else newgirl["Laura"].Addict  
+            $ newgirl["Laura"].Addict = 0 if newgirl["Laura"].Addict < 0 else newgirl["Laura"].Addict  
+            $ newgirl["Laura"].Addictionrate = 10 if newgirl["Laura"].Addictionrate > 10 else newgirl["Laura"].Addictionrate  
+            $ newgirl["Laura"].Addictionrate = 0 if newgirl["Laura"].Addictionrate < 0 else newgirl["Laura"].Addictionrate  
+            
+            $ newgirl["Laura"].LikeRogue = 1000 if newgirl["Laura"].LikeRogue > 1000 else newgirl["Laura"].LikeRogue     
+            $ newgirl["Laura"].LikeRogue = 0 if newgirl["Laura"].LikeRogue < 0 else newgirl["Laura"].LikeRogue 
+            $ newgirl["Laura"].LikeKitty = 1000 if newgirl["Laura"].LikeKitty > 1000 else newgirl["Laura"].LikeKitty     
+            $ newgirl["Laura"].LikeKitty = 0 if newgirl["Laura"].LikeKitty < 0 else newgirl["Laura"].LikeKitty 
+            $ newgirl["Laura"].LikeEmma = 1000 if newgirl["Laura"].LikeEmma > 1000 else newgirl["Laura"].LikeEmma     
+            $ newgirl["Laura"].LikeEmma = 0 if newgirl["Laura"].LikeEmma < 0 else newgirl["Laura"].LikeEmma 
+            if newgirl["Laura"].Forced and newgirl["Laura"].ForcedCount < 10:
+                $ newgirl["Laura"].ForcedCount += 1
+            $ newgirl["Laura"].ScentTimer = 0
                 
         #Player
             $ P_Focus = 99 if P_Focus > 99 else P_Focus
@@ -4972,8 +5245,8 @@ label Checkout(Total = 0):
             $ P_Semen = 0 if P_Semen < 0 else P_Semen   
             
             if Total:
-                    call DrainWord("Player","cockout") from _call_DrainWord
-                    call DrainWord("Player","nude") from _call_DrainWord_1
+                    call DrainWord("Player","cockout")
+                    call DrainWord("Player","nude")
 #                    $ LesFlag = 0
                     $ Trigger = 0        
                     $ Trigger2 = 0
@@ -4992,7 +5265,7 @@ transform SpriteLoc(Loc = StageRight, LocY = 50):  #This puts the sprite at a lo
         pos (Loc,LocY)
     
 
-label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
+label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1, TrigReset = 1, Quiet=0):
         # If Chr, then display the characters in the room
         # If Entry, then show the "entry" version of a room, such as a closed door, does not display characters
         # If Dress, then check whether the character is underdressed when displaying her
@@ -5001,7 +5274,7 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
         
         if Entry:
             $ Chr = 0
-        call Display_Background(Entry) from _call_Display_Background 
+        call Display_Background(Entry)
         
         if Current_Time == 'Night':
                 show NightMask onlayer nightmask
@@ -5011,7 +5284,7 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
         scene   #Clears content
                 
         if Chr:
-                call Present_Check from _call_Present_Check_2  #culls out Party to 2, sets location to bg_current, removes extra girls, sets Focus to a girl in the room   
+                call Present_Check
                 
                 $ Grils = 0
                 $ TheGirls = []
@@ -5123,11 +5396,11 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                             $ newgirl["Laura"].SpriteLoc = StageFarRight
                             $ newgirl["Laura"].GirlLayer = 50
     
-                call Display_Laura(Dress) from _call_Display_Laura
-                call Display_Mystique(Dress) from _call_Display_Mystique
-                call Display_Emma(Dress) from _call_Display_Emma
-                call Display_Kitty(Dress) from _call_Display_Kitty
-                call Display_Rogue(Dress) from _call_Display_Rogue    
+                call Display_Laura(Dress)
+                call Display_Mystique(Dress)
+                call Display_Emma(Dress)
+                call Display_Kitty(Dress)
+                call Display_Rogue(Dress)
 
                 # if Grils == 3:
 
@@ -5246,7 +5519,7 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                 if bg_current == "bg study" and Current_Time != "Night":   
                         show Professor at SpriteLoc(StageLeft) zorder 25    
                 if bg_current == "bg classroom" and E_Loc == "bg teacher":  
-                        call EmmaOutfit(Changed=1) from _call_EmmaOutfit_2
+                        call EmmaOutfit(Changed=1)
 #                        show Emma_At_Podium onlayer backdrop
         
         if not renpy.showing("Chibi_UI") and "cockout" in P_RecentActions:
@@ -5271,21 +5544,33 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
                             elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif E_Loc == bg_current:
                             #if Emma is there, shift her to third position
                             $ E_SpriteLoc = StageRight
                             $ EmmaLayer = 75
                             if newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageRight
                                 $ newgirl["Mystique"].GirlLayer = 75
+                        elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageRight
+                                $ newgirl["Laura"].GirlLayer = 75
                         #and move Kitty to first position
                         $ K_SpriteLoc = StageCenter
                         $ KittyLayer = 100
@@ -5311,21 +5596,33 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 $ K_SpriteLoc = StageFarRight
                                 $ KittyLayer = 50
                             elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
                             if newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageRight
                                 $ newgirl["Mystique"].GirlLayer = 75
+                        elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageRight
+                                $ newgirl["Laura"].GirlLayer = 75
                         #and move Emma to first position
                         $ E_SpriteLoc = StageCenter
                         $ EmmaLayer = 100
@@ -5335,7 +5632,7 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                     pass
                 elif Second:
                     $ Partner = Second
-                elif Partner == "Kitty": 
+                elif Partner == "Emma": 
                     #If Emma was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Emma"
@@ -5351,21 +5648,33 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
                             elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif E_Loc == bg_current:
                             #if Emma is there, shift her to second position
                             $ E_SpriteLoc = StageRight
                             $ EmmaLayer = 75
                             if newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageRight
                                 $ newgirl["Mystique"].GirlLayer = 75
+                        elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageRight
+                                $ newgirl["Laura"].GirlLayer = 75
                         #and move Rogue to first position
                         $ R_SpriteLoc = StageCenter
                         $ RogueLayer = 100
@@ -5435,9 +5744,13 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
                             elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif E_Loc == bg_current:
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageRight
@@ -5446,17 +5759,26 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                     #if Mystique is there, shift her to third position
                                     $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                     $ newgirl["Mystique"].GirlLayer = 50
+                                elif newgirl["Laura"].Loc == bg_current:
+                                    #if Laura is there, shift her to third position
+                                    $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                    $ newgirl["Laura"].GirlLayer = 50
                         elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageRight
                                 $ newgirl["Mystique"].GirlLayer = 75
+                        elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageRight
+                                $ newgirl["Laura"].GirlLayer = 75
                         #and move Kitty to first position
                         $ K_SpriteLoc = StageCenter
                         $ KittyLayer = 100
-                        call Display_Emma(Dress) from _call_Display_Emma_1
-                        call Display_Kitty(Dress) from _call_Display_Kitty_1
-                        call Display_Rogue(Dress) from _call_Display_Rogue_1
-                        call Display_Mystique(Dress) from _call_Display_Mystique_1
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
+                        call Display_Laura(Dress)
                         
                 if Ch_Focus == "Kitty": 
                     #If Kitty was already the focal character, return
@@ -5479,35 +5801,48 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 $ K_SpriteLoc = StageFarRight
                                 $ KittyLayer = 50
                             elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
                             if newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageRight
                                 $ newgirl["Mystique"].GirlLayer = 75
+                        elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageRight
+                                $ newgirl["Laura"].GirlLayer = 75
                         #and move Emma to first position
                         $ E_SpriteLoc = StageCenter
                         $ EmmaLayer = 100
-                        call Display_Emma(Dress) from _call_Display_Emma_2
-                        call Display_Kitty(Dress) from _call_Display_Kitty_2
-                        call Display_Rogue(Dress) from _call_Display_Rogue_2
-                        call Display_Mystique(Dress) from _call_Display_Mystique_2
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
+                        call Display_Laura(Dress)
                         
                 if Ch_Focus == "Emma": 
                     #If Emma was already the focal character, return
                     pass
                 elif Second:
                     $ Partner = Second
-                elif Partner == "Kitty": 
+                elif Partner == "Emma": 
                     #If Emma was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Emma"
@@ -5523,28 +5858,41 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
                             elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif E_Loc == bg_current:
                             #if Emma is there, shift her to second position
                             $ E_SpriteLoc = StageRight
                             $ EmmaLayer = 75
                             if newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageFarRight
                                 $ newgirl["Mystique"].GirlLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif newgirl["Mystique"].Loc == bg_current:
-                                #if Emma is there, shift her to third position
+                                #if Mystique is there, shift her to third position
                                 $ newgirl["Mystique"].SpriteLoc = StageRight
                                 $ newgirl["Mystique"].GirlLayer = 75
+                        elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageRight
+                                $ newgirl["Laura"].GirlLayer = 75
                         #and move Rogue to first position
                         $ R_SpriteLoc = StageCenter
                         $ RogueLayer = 100
-                        call Display_Emma(Dress) from _call_Display_Emma_3
-                        call Display_Kitty(Dress) from _call_Display_Kitty_3
-                        call Display_Rogue(Dress) from _call_Display_Rogue_3
-                        call Display_Mystique(Dress) from _call_Display_Mystique_3
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
+                        call Display_Laura(Dress)
                         
                 if Ch_Focus == "Rogue": 
                     #If Rogue was already the focal character, return
@@ -5570,6 +5918,10 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
@@ -5578,17 +5930,26 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
+                            elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageFarRight
+                                $ newgirl["Laura"].GirlLayer = 50
                         elif E_Loc == bg_current:
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageRight
                                 $ EmmaLayer = 75
+                        elif newgirl["Laura"].Loc == bg_current:
+                                #if Laura is there, shift her to third position
+                                $ newgirl["Laura"].SpriteLoc = StageRight
+                                $ newgirl["Laura"].GirlLayer = 75
                         #and move Emma to first position
                         $ newgirl["Mystique"].SpriteLoc = StageCenter
                         $ newgirl["Mystique"].GirlLayer = 100
-                        call Display_Emma(Dress) from _call_Display_Emma_4
-                        call Display_Kitty(Dress) from _call_Display_Kitty_4
-                        call Display_Rogue(Dress) from _call_Display_Rogue_4
-                        call Display_Mystique(Dress) from _call_Display_Mystique_4
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
+                        call Display_Laura(Dress)
                         
                 if Ch_Focus == "Mystique": 
                     #If Mystique was already the focal character, return
@@ -5599,6 +5960,65 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                     #If Mystique was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Mystique"
+
+        elif Chr == "Laura":
+                if newgirl["Laura"].Loc == bg_current:
+                        #If Emma is where you're at. . .
+                        if R_Loc == bg_current:
+                            #if Rogue is there, shift her to second position
+                            $ R_SpriteLoc = StageRight
+                            $ RogueLayer = 75
+                            if K_Loc == bg_current:
+                                #if Kitty is there, shift her to third position
+                                $ K_SpriteLoc = StageFarRight
+                                $ KittyLayer = 50
+                            elif E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                            elif newgirl["Mystique"].Loc == bg_current:
+                                #if Mystique is there, shift her to third position
+                                $ newgirl["Mystique"].SpriteLoc = StageFarRight
+                                $ newgirl["Mystique"].GirlLayer = 50
+                        elif K_Loc == bg_current:
+                            #if Kitty is there, shift her to second position
+                            $ K_SpriteLoc = StageRight
+                            $ KittyLayer = 75
+                            if E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                            elif newgirl["Mystique"].Loc == bg_current:
+                                #if Mystique is there, shift her to third position
+                                $ newgirl["Mystique"].SpriteLoc = StageFarRight
+                                $ newgirl["Mystique"].GirlLayer = 50
+                        elif E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageRight
+                                $ EmmaLayer = 75
+                        elif newgirl["Mystique"].Loc == bg_current:
+                                #if Mystique is there, shift her to third position
+                                $ newgirl["Mystique"].SpriteLoc = StageRight
+                                $ newgirl["Mystique"].GirlLayer = 75
+                        #and move Emma to first position
+                        $ newgirl["Laura"].SpriteLoc = StageCenter
+                        $ newgirl["Laura"].GirlLayer = 100
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
+                        call Display_Laura(Dress)
+                        call Display_Mystique(Dress)
+                        
+                if Ch_Focus == "Laura": 
+                    #If Laura was already the focal character, return
+                    pass
+                elif Second:
+                    $ Partner = Second
+                elif Partner == "Kitty": 
+                    #If Laura was the Partner in a scene, make the existing focal character the Partner
+                    $ Partner = Ch_Focus
+                $ Ch_Focus = "Laura"
+
         $ renpy.restart_interaction() 
         return
     
@@ -5606,7 +6026,7 @@ label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
     # If Dress, then check whether the character is underdressed when displaying her
     
     if Taboo and Dress and R_Loc != "bg pool":        
-            call RogueOutfit from _call_RogueOutfit_2
+            call RogueOutfit
             #$ R_Water = 0
                
     if R_Loc != "bg showerroom" and R_Loc != "bg pool":
@@ -5627,7 +6047,7 @@ label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
             
             if Taboo and Dress:              
                 #If in public, check to see if clothes are too sexy, and change them if necessary
-                call Rogue_OutfitShame from _call_Rogue_OutfitShame
+                call Rogue_OutfitShame
             
             #Display Rogue
             show Rogue at SpriteLoc(DLoc) zorder RogueLayer:
@@ -5638,14 +6058,14 @@ label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
     else:       
             # If Rogue isn't there, put her away
             hide Rogue
-            call Rogue_Hide from _call_Rogue_Hide
+            call Rogue_Hide
     return
 
 label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
    # If Dress, then check whether the character is underdressed when displaying her
     
     if Taboo and Dress and K_Loc != "bg pool": #If not in the showers, get dressed and dry off        
-            call KittyOutfit from _call_KittyOutfit_2
+            call KittyOutfit
             #$ K_Wet = 0
               
     if K_Loc != "bg showerroom" and K_Loc != "bg pool":
@@ -5666,7 +6086,7 @@ label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
             
             if Taboo and Dress:                       
                 #If in public, check to see if clothes are too sexy, and change them if necessary
-                call Kitty_OutfitShame from _call_Kitty_OutfitShame
+                call Kitty_OutfitShame
                 
             #Display Kitty
             show Kitty_Sprite at SpriteLoc(DLoc) zorder KittyLayer:
@@ -5677,14 +6097,14 @@ label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
     else:
             # If Kitty isn't there, put her away
             hide Kitty_Sprite
-            call Kitty_Hide from _call_Kitty_Hide
+            call Kitty_Hide
     return
 
 label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
     # If Dress, then check whether the character is underdressed when displaying her
     
     if Taboo and Dress and E_Loc != "bg pool": #If not in the showers, get dressed and dry off        
-            call EmmaOutfit from _call_EmmaOutfit_3 #add when available
+            call EmmaOutfit
             #$ E_Wet = 0
               
     if E_Loc != "bg showerroom" and E_Loc != "bg pool":
@@ -5705,7 +6125,7 @@ label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
                     $ E_Loc = bg_current 
             
             if Taboo and Dress:                       #If in public, check to see if clothes are too sexy, and change them if necessary
-                call Emma_OutfitShame from _call_Emma_OutfitShame #restore when working
+                call Emma_OutfitShame
                 
             #hide podium/desk shot
             hide Emma_At_Podium onlayer backdrop
@@ -5720,14 +6140,14 @@ label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
     else:
             # If Emma isn't there, put her away
             hide Emma_Sprite
-            call Emma_Hide from _call_Emma_Hide
+            call Emma_Hide
     return
 
 
 label Display_Mystique(Dress = 1, DLoc = newgirl["Mystique"].SpriteLoc, Location = newgirl["Mystique"].Loc):
     # If Dress, then check whether the character is underdressed when displaying her
     if Taboo and Dress and newgirl["Mystique"].Loc != "bg pool": #If not in the showers, get dressed and dry off        
-            call MystiqueOutfit from _call_MystiqueOutfit_2 #add when available
+            call MystiqueOutfit
             #$ newgirl["Mystique"].Wet = 0
               
     if newgirl["Mystique"].Loc != "bg showerroom" and newgirl["Mystique"].Loc != "bg pool":
@@ -5748,7 +6168,7 @@ label Display_Mystique(Dress = 1, DLoc = newgirl["Mystique"].SpriteLoc, Location
                     $ newgirl["Mystique"].Loc = bg_current 
             
             if Taboo and Dress:                       #If in public, check to see if clothes are too sexy, and change them if necessary
-                call Mystique_OutfitShame from _call_Mystique_OutfitShame #restore when working
+                call Mystique_OutfitShame
                 
             #hide podium/desk shot
             #hide Emma_At_Podium onlayer backdrop
@@ -5814,6 +6234,9 @@ label Display_Laura(Dress = 1, TrigReset = 1, DLoc = newgirl["Laura"].SpriteLoc,
                 offset (0,0)
                 anchor (0.5, 0.0)  
                 pos (1000,YLoc)
+    else:
+        show Laura_Sprite at SpriteLoc(DLoc) zorder newgirl["Laura"].GirlLayer
+        
     show Laura_Sprite:
             alpha 1
             zoom 1
@@ -6216,6 +6639,61 @@ label E_Level_Up:
 
 # End Emma Leveling
 
+# Laura Leveling
+label Laura_Level_Up:
+    menu:
+        "Laura has [newgirl[Laura].StatPoints] points to spend. How would you like to spend them?"
+                            
+        "Increase sexual focus. [[One point]" if "focus" not in newgirl["Laura"].Traits:
+            menu:
+                "This trait will unlock the \"Focus\" option during sex, giving Laura more time before she orgasms."
+                "Unlock Focus.":
+                    if newgirl["Laura"].StatPoints:
+                        $ newgirl["Laura"].StatPoints -= 1  
+                        $ newgirl["Laura"].Traits.append("focus") 
+                    else:
+                        "You don't have enough points for that."
+                "Cancel.":
+                    pass                   
+     
+        "Increase Laura's resistance. [[One point]]" if 0 < newgirl["Laura"].Resistance < 3:
+            menu:
+                "This trait will increase Laura's resistance to your touch's addictive properties."
+                "Increase Resistance.":
+                    if newgirl["Laura"].StatPoints:
+                        $ newgirl["Laura"].StatPoints -= 1  
+                        $ newgirl["Laura"].Resistance += 1 
+                    else:
+                        "You don't have enough points for that."
+                "Cancel.":
+                    pass    
+                
+                    
+        "Increase stamina. [[One point]" if newgirl["Laura"].MaxAction < 10:
+            "This trait will increase by 2 the number of sex actions Laura can take before needing a break."
+            menu:
+                "She currently has [newgirl[Laura].MaxAction] actions."
+                "Increase sex actions.":
+                    if newgirl["Laura"].StatPoints:
+                        $ newgirl["Laura"].StatPoints -= 1  
+                        $ newgirl["Laura"].MaxAction += 2
+                        if newgirl["Laura"].MaxAction > 10:
+                            $ newgirl["Laura"].MaxAction = 10
+                            "Laura has reached her maximum actions."
+                    else:
+                        "You don't have enough points for that."
+                "Cancel.":
+                    pass
+        "Do. . . Something else?" if newgirl["Laura"].MaxAction >= 10:
+                "I don't know, what {i}should{/i} she be doing at this point?"
+        "Never Mind, I'll come back later.":
+            return
+    if newgirl["Laura"].StatPoints > 0:
+        jump Laura_Level_Up
+    return
+
+# End Laura Leveling
+
 # Shop Interface //////////////////////////////////////////////////////////////////////
                                                  
 label Shop:
@@ -6279,6 +6757,42 @@ label Shop:
                     if P_Cash >= 110:
                         "You purchase the lace panties, these will look nice on Kitty."
                         $ P_Inventory.append("lace panties")
+                        $ P_Cash -= 110
+                    else:
+                        "You don't have enough for that."  
+                "Never mind.":
+                    pass
+        "Gifts for Emma":
+            menu:  
+                "Buy white lace bra for $90." if "lace bra" not in E_Inventory and "e lace bra" not in P_Inventory:            
+                    if P_Cash >= 90:
+                        "You purchase the lace bra, this will look nice on Emma."
+                        $ P_Inventory.append("e lace bra")
+                        $ P_Cash -= 90
+                    else:
+                        "You don't have enough for that."
+                "Buy white lace panties for $110." if "lace panties" not in E_Inventory and "e lace panties" not in P_Inventory:            
+                    if P_Cash >= 110:
+                        "You purchase the lace panties, these will look nice on Emma."
+                        $ P_Inventory.append("e lace panties")
+                        $ P_Cash -= 110
+                    else:
+                        "You don't have enough for that."  
+                "Never mind.":
+                    pass
+        "Gifts for Laura":
+            menu:  
+                "Buy red lace corset for $90." if "corset" not in newgirl["Laura"].Inventory and "l corset" not in P_Inventory:            
+                    if P_Cash >= 90:
+                        "You purchase the corset, this will look nice on Laura."
+                        $ P_Inventory.append("l corset")
+                        $ P_Cash -= 90
+                    else:
+                        "You don't have enough for that."
+                "Buy red lace panties for $110." if "lace panties" not in newgirl["Laura"].Inventory and "l lace panties" not in P_Inventory:            
+                    if P_Cash >= 110:
+                        "You purchase the lace panties, these will look nice on Laura."
+                        $ P_Inventory.append("l lace panties")
                         $ P_Cash -= 110
                     else:
                         "You don't have enough for that."  

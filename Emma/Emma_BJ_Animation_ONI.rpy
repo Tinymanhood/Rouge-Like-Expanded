@@ -206,9 +206,9 @@ image Emma_BJ_ONI_Head:                                                         
             ),       
         (428,605), ConditionSwitch(   
             # Heading Mouth
-            "not renpy.showing('Emma_BJ_Animation') and OniBJ", Null(),
-            "Speed == 2", At("Emma_BJ_ONI_MouthHeading", Emma_BJ_ONI_MouthAnim()),  #heading 
-            "Speed == 5", At("Emma_BJ_ONI_MouthHeading", Emma_BJ_ONI_MouthAnimC()), #cumming high    
+            "not renpy.showing('Emma_BJ_Animation')", Null(),
+            "OniBJ and Speed == 2", At("Emma_BJ_ONI_MouthHeading", Emma_BJ_ONI_MouthAnim()),  #heading 
+            "OniBJ and Speed == 5", At("Emma_BJ_ONI_MouthHeading", Emma_BJ_ONI_MouthAnimC()), #cumming high    
             "True", Null(),
             ),  
         

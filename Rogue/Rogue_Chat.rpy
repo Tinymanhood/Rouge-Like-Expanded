@@ -139,7 +139,7 @@ label Rogue_Chat:
                                     pause .1
                                 $ R_Upskirt = 0
                                 pause
-                        elif R_Legs == "pants":
+                        elif PantsNum("Rogue") == 10:
                             #$ Temp_R_Legs = R_Legs            
                             $ R_Upskirt = 1
                             #$ R_Legs = 0
@@ -2607,7 +2607,7 @@ label Rogue_AskPanties(Store = 0):
             $ Tempmod -= 20
         
         $ Line = 0
-        if R_Legs == "pants" or HoseNum("Rogue") >= 10: 
+        if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 10: 
             if ApprovalCheck("Rogue", 1000, "OI", TabM = 5) or "exhibitionist" in R_Traits:   
                 $ Line = "here"
             elif ApprovalCheck("Rogue", 900, TabM = 5):
@@ -2700,7 +2700,7 @@ label Rogue_AskPanties(Store = 0):
                                 
                     if Line:                                            #She agreed to stay  
                                 call RogueFace("sly", 1) from _call_RogueFace_647 
-                                if R_Legs == "pants" or HoseNum("Rogue") >= 10:   
+                                if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 10:   
                                         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5)         
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 5)            
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 5)   
@@ -2783,7 +2783,7 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 $ Store = R_Legs
                 $ Store2 = R_Hose
                 
-                if R_Legs == "pants":    
+                if PantsNum("Rogue") == 10:    
                     $ R_Legs = 0        
                 if (R_Legs == "skirt" or R_Legs == "cheerleader skirt" or R_Over == "blue dress" or R_Over == "red dress"): 
                     $ R_Upskirt = 1
@@ -2816,7 +2816,7 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                         
                 $ R_Legs = Store  
                 $ R_Hose = Store2      
-                if R_Legs == "pants":
+                if PantsNum("Rogue") == 10:
                     "She hands you the panties and then pulls her pants back on."
                 elif (R_Over == "blue dress" or R_Over == "red dress") and HoseNum("Rogue") >= 5:
                     "She hands you the panties and then pulls her [R_Hose] back on and her dress back down."  
@@ -4641,9 +4641,12 @@ label Rogue_Clothes:
                             "I like the white one" if R_Over != "white hoodie":
                                 $ R_Over = "white hoodie"
 
-        "How about you jacket?" if R_Over != "classic jacket":
+        "How about you classic jacket?" if R_Over != "classic jacket":
                 $ R_Over = "classic jacket"
 
+        "How about your jacket?":
+                            ch_r "ok"
+                            $ R_Over = "jacket"
                         
         "Maybe just throw on a towel?" if R_Over != "towel":
             call RogueFace("bemused", 1) from _call_RogueFace_734
@@ -4896,10 +4899,14 @@ label Rogue_Clothes:
         "Your ass looks tight in those jeans." if R_Legs != "pants":
                         $ R_Legs = "pants"
                         $ R_Hose = 0
+
+        "Your ass looks tight in those leather pants." if R_Legs != "leather pants":
+                        $ R_Legs = "leather pants"
+                        $ R_Hose = 0
                 
-        "The tights would look good with that." if R_Hose != 'tights' and R_Legs != "pants":     
+        "The tights would look good with that." if R_Hose != 'tights' and PantsNum("Rogue") != 10:     
                         $ R_Hose = "tights"                   
-        "Your ripped tights would look good with that." if R_Hose != 'ripped tights' and "ripped tights" in R_Inventory and R_Legs != "pants":     
+        "Your ripped tights would look good with that." if R_Hose != 'ripped tights' and "ripped tights" in R_Inventory and PantsNum("Rogue") != 10:     
                         $ R_Hose = "ripped tights"           
         "You could lose the tights." if R_Hose == 'ripped tights' or R_Hose == 'tights':     
                         $ R_Hose = 0  
@@ -5033,6 +5040,8 @@ label Rogue_Clothes:
                             ch_r "Sure."    
                         elif ApprovalCheck("Rogue", 1100, TabM=2):
                             ch_r "I guess I don't really mind if you see them. . ."
+                        elif R_Over == "jacket" and ApprovalCheck("Rogue", 500, TabM=2):
+                            ch_r "I guess this covers enough. . ."
                         elif R_Over == "hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
                             ch_r "I guess this covers enough. . ."
                         elif R_Over == "blue hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
@@ -5102,6 +5111,11 @@ label Rogue_Clothes:
                 "Try on that SR7 black tank top." if R_Chest != "SR7 tank short":
                                 call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "SR7 tank short" 
+                                jump Rogue_Clothes_Under_Top
+
+                "Try on that green top." if R_Chest != "green top":
+                                call Rogue_Swimsuit_Change_Top
+                                $ R_Chest = "green top" 
                                 jump Rogue_Clothes_Under_Top
 
                 "Try on that short black slut tank top." if R_Chest != "slut tank short":
@@ -5279,23 +5293,23 @@ label Rogue_Clothes:
         "Hoses and stockings":
             menu Rogue_Clothes_Under_Hoses:
         
-                "The thigh-high hose would look good with that." if R_Hose != "stockings" and R_Legs != "pants":     
+                "The thigh-high hose would look good with that." if R_Hose != "stockings" and PantsNum("Rogue") != 10:     
                                 $ R_Hose = "stockings"  
                                 jump Rogue_Clothes_Under_Hoses
-                "The pantyhose would look good with that." if R_Hose != "pantyhose" and R_Legs != "pants":     
+                "The pantyhose would look good with that." if R_Hose != "pantyhose" and PantsNum("Rogue") != 10:     
                                 $ R_Hose = "pantyhose" 
                                 jump Rogue_Clothes_Under_Hoses
-                "The stockings would look good with that." if R_Hose != "stockings and garterbelt" and "stockings and garterbelt" in R_Inventory and R_Legs != "pants":     
+                "The stockings would look good with that." if R_Hose != "stockings and garterbelt" and "stockings and garterbelt" in R_Inventory and PantsNum("Rogue") != 10:     
                                 $ R_Hose = "stockings and garterbelt"  
                                 jump Rogue_Clothes_Under_Hoses
-                "Your ripped pantyhose would look good with that." if R_Hose != "ripped pantyhose" and "ripped pantyhose" in R_Inventory and R_Legs != "pants":     
+                "Your ripped pantyhose would look good with that." if R_Hose != "ripped pantyhose" and "ripped pantyhose" in R_Inventory and PantsNum("Rogue") != 10:     
                                 $ R_Hose = "ripped pantyhose"                
                                 jump Rogue_Clothes_Under_Hoses
-                "You could use that fishnet" if R_Hose != "fishnet" and R_Legs != "pants":
+                "You could use that fishnet" if R_Hose != "fishnet" and PantsNum("Rogue") != 10:
                                 $ R_Hose = "fishnet" 
                                 jump Rogue_Clothes_Under_Hoses
 
-                "You could use that SR7 hose" if R_Hose != "SR7 hose" and R_Legs != "pants":
+                "You could use that SR7 hose" if R_Hose != "SR7 hose" and PantsNum("Rogue") != 10:
                                 $ R_Hose = "SR7 hose" 
                                 jump Rogue_Clothes_Under_Hoses
         
@@ -5466,6 +5480,10 @@ label Rogue_Clothes:
 
         "I like those glasses." if not R_Glasses:
                         $ R_Glasses = "glasses"
+        
+        "I like those sunglasses." if not R_Glasses:
+                        $ R_Glasses = "sunglasses"
+        
         "You could lose those glasses." if R_Glasses:
                         $ R_Glasses = 0
 
@@ -5476,6 +5494,13 @@ label Rogue_Clothes:
 
         "You could lose those boots." if R_Boots:
                         $ R_Boots = 0
+        
+        "Change your haistyle":
+            if R_Hair == "evo":
+                $ R_Hair = "newhair"
+                $ R_Tan = 0
+            else:
+                $ R_Hair = "evo"
 
         "Dye your hair.":
             if ApprovalCheck("Rogue", 800):
@@ -5484,18 +5509,26 @@ label Rogue_Clothes:
                 menu:
                     "Black" if R_HairColor != "black":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "black"
 
                     "Black with white streak" if R_HairColor != "blackwhite":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "blackwhite"
 
                     "Blonde" if R_HairColor != "blonde":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "blonde"
 
                     "Blonde with white streak" if R_HairColor != "blondewhite":
                         ch_r "Like this?"
+                        if R_Hair = "newhair"
+                            $ R_Hair = "evo"
                         $ R_HairColor = "blondewhite"
 
                 #ch_r "You think so?"
@@ -5508,6 +5541,8 @@ label Rogue_Clothes:
                 ch_r "You think so?"
                 #"She rummages in her bag and grabs some gel, running it through her hair."
                 ch_r "Like this?"
+                if R_Hair = "newhair"
+                    $ R_Hair = "evo"
                 $ R_HairColor = "nope"
             else:
                 ch_r "It's too high maintenance."
@@ -5515,6 +5550,8 @@ label Rogue_Clothes:
         "You're too pale, get a tan (full tan)" if R_Tan != 'tan':
             if ApprovalCheck("Rogue", 900):
                 ch_r "Like this?"
+                if R_Hair = "newhair"
+                    $ R_Hair = "evo"
                 $ R_Tan = "tan"
             else:
                 ch_r "Yeah, how about no."
@@ -5522,6 +5559,8 @@ label Rogue_Clothes:
         "You're too pale, get a tan (tan lines)" if R_Tan != 'tan1':
             if ApprovalCheck("Rogue", 900):
                 ch_r "Like this?"
+                if R_Hair = "newhair"
+                    $ R_Hair = "evo"
                 $ R_Tan = "tan1"
             else:
                 ch_r "Yeah, how about no."
@@ -6026,6 +6065,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                 $ Count += 15
             elif R_Over == "classic jacket":      
                 $ Count += 5
+            elif R_Over == "jacket":      
+                $ Count += 15
             elif R_Over == "hoodie":      
                 $ Count += 15
             elif R_Over == "blue hoodie":      
@@ -6094,6 +6135,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                             $ Count = 25
                         elif R_BodySuit == "classic uniform":
                             $ Count = 25
+                        elif R_Legs == "leather pants":                   #If wearing pants commando
+                            $ Count = 25
                         elif R_Legs == "skirt":                 #If wearing a skirt commando
                             $ Count = 20
                         elif R_Over == "blue dress":      
@@ -6149,7 +6192,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif Custom == 9:
                 pass
             elif Count >= 20:
-                        if R_Legs == "pants":
+                        if PantsNum("Rogue") == 10:
                             ch_r "Oh, I think these pants will work fine."
                         elif R_Legs:
                             ch_r "Oh, I think this skirt will work fine."
@@ -6525,6 +6568,8 @@ label Rogue_Swimsuit_Change_Bottom:
         ch_r "Sure."    
     elif ApprovalCheck("Rogue", 1100, TabM=2):
         ch_r "I guess I don't really mind if you see them. . ."
+    elif R_Over == "jacket" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
     elif R_Over == "hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
         ch_r "I guess this covers enough. . ."
     elif R_Over == "blue hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
@@ -6615,6 +6660,8 @@ label Rogue_Remove_Swimsuit_Top:
         ch_r "Sure."    
     elif ApprovalCheck("Rogue", 1100, TabM=2):
         ch_r "I guess I don't really mind if you see them. . ."
+    elif R_Over == "jacket" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
     elif R_Over == "hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
         ch_r "I guess this covers enough. . ."
     elif R_Over == "blue hoodie" and ApprovalCheck("Rogue", 500, TabM=2):

@@ -555,7 +555,7 @@ label R_Undress(Region = "ask",CountStore=0):
     if Region == "auto":
         if R_Upskirt and R_PantiesDown:
             return
-        if R_Legs == "pants":
+        if PantsNum("Rogue") == 10:
             $ Tempmod = 20
         if R_Lust >= 90:
             $ Tempmod += 10      
@@ -1235,26 +1235,26 @@ label Rogue_Bottoms_Off(Intro = 1, Line = 0, Cnt = 0):
                         "She slides her skirt up."
                     $ Cnt = 1 
                     
-            if R_Legs == "pants" or HoseNum("Rogue") >= 5:            
+            if PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:            
                 if R_Panties or R_BodySuit:                                               #she has pants and panties on
                     if not Approval or (not R_SeenPanties and Taboo):
                         return   
                 elif Approval < 2 or (not R_SeenPussy and Taboo):
                     return     
-                elif R_Legs == "pants" and R_Upskirt:  
+                elif PantsNum("Rogue") == 10 and R_Upskirt:  
                     return
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 1)
                 $ R_Upskirt = 1
                 $ Line = R_Hose
                 if R_Panties or R_BodySuit:
-                    if R_Legs == "pants": 
+                    if PantsNum("Rogue") == 10: 
                         "Rogue grumbles to herself, and then unzips her jeans, sliding them down her legs." 
                     else: #HoseNum("Rogue") >= 5
                         "Rogue grumbles to herself, and then pulls her [R_Hose] down her legs." 
                     $ R_SeenPanties = 1
                 else:
-                    if R_Legs == "pants":
-                        "Rogue grumbles to herself, and then unzips her jeans, sliding them off her bare ass." 
+                    if PantsNum("Rogue") == 10:
+                        "Rogue grumbles to herself, and then unzips her pants, sliding them off her bare ass." 
                     else: #HoseNum("Rogue") >= 5 
                         "Rogue grumbles to herself, and then pulls her [R_Hose] down her bare ass." 
                     call Rogue_First_Bottomless(1)
@@ -1555,7 +1555,7 @@ label Rogue_Bottoms_Off_Legs:
                             $ R_RecentActions.append("no bottomless")                      
                             $ R_DailyActions.append("no bottomless")   
                             return                        
-                        elif R_Legs == "pants" or HoseNum("Rogue") >= 5:
+                        elif PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5:
                             ch_r "A little backwards, but sure. . ."
                         else:
                             ch_r "Ok, sure, [R_Petname]."                                            
@@ -1565,7 +1565,7 @@ label Rogue_Bottoms_Off_Legs:
                                 $ R_Chest = 0
                                 call Rogue_First_Topless
                         $ R_Panties = 0  
-                        if R_Legs == "pants":
+                        if PantsNum("Rogue") == 10:
                             "She pulls her pants off, then removes her [Line], before putting them back on."                        
                         elif HoseNum("Rogue") >= 5:
                             "She pulls her [R_Hose] off, then removes her [Line], before putting them back on."   

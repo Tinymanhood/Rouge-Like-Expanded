@@ -598,6 +598,14 @@ init python:
                 if Chr == "Rogue":
                         if R_Legs == "skirt":
                             return 3
+                        elif R_Legs == "skirtshort":            
+                             return 3
+                        elif R_Legs == "SR7 skirtshort":            
+                             return 3
+                        elif R_Legs == "cheerleader skirt":                 
+                            return 3
+                        elif R_Legs == "cheerleader skirtshort":            
+                            return 3
                         elif R_Legs == "pants":
                             return 10
                         elif R_Legs == "shorts":
@@ -606,6 +614,8 @@ init python:
                             return 5
                         elif R_Legs == "red shorts":
                             return 5
+                        elif R_Legs == "leather pants":
+                            return 10
                         else:
                             return 0
                 elif Chr == "Kitty":
@@ -758,9 +768,302 @@ init python:
                 return C 
             
 
-    
 
-label GirlLikesGirl(ChrA = "Rogue", ChrB = "Kitty", Modifier = 1, Auto = 0, Jealousy = 0, Ok = 0):
+label Statup(Name=0, Flavor=0, Check=100, Value=1, Greater=0, Type=0, Overflow=0, BStat=0, XPOS = 0.75):
+        # Name is the target girl
+        # "Flavor" is the thing being modified, such as Love
+        # Type is the base value of that stat
+        # Check is the maximum threshold, it won't raise if already above that value
+        # Greater reverses the above check
+        # Value is the amount raised
+        # Overflow checks whether you've assigned a stat overflow
+        # BStat stores the leftovers in the overflowed stat
+        
+        if Flavor == "Love" or Flavor == "Obed" or Flavor == "Inbt":
+                #bumps this stat into the 1000s
+                $ Check = Check * 10                  
+        
+        if Name == "Rogue":
+                #sets the details based on character
+                if Flavor == "Love":
+                        $ Type = R_Love
+                elif Flavor == "Obed":
+                        $ Type = R_Obed
+                elif Flavor == "Inbt":
+                        $ Type = R_Inbt
+                elif Flavor == "Lust":
+                        $ Type = R_Lust
+                $ Overflow = R_Chat[4]
+                $ XPOS = R_SpriteLoc
+        elif Name == "Kitty":
+                if Flavor == "Love":
+                        $ Type = K_Love
+                elif Flavor == "Obed":
+                        $ Type = K_Obed
+                elif Flavor == "Inbt":
+                        $ Type = K_Inbt
+                elif Flavor == "Lust":
+                        $ Type = K_Lust
+                $ Overflow = K_Chat[4]
+                $ XPOS = K_SpriteLoc
+        elif Name == "Emma":
+                if Flavor == "Love":
+                        $ Type = E_Love
+                elif Flavor == "Obed":
+                        $ Type = E_Obed
+                elif Flavor == "Inbt":
+                        $ Type = E_Inbt
+                elif Flavor == "Lust":
+                        $ Type = E_Lust
+                $ Overflow = E_Chat[4]
+                $ XPOS = E_SpriteLoc
+        elif Name == "Laura":
+                if Flavor == "Love":
+                        $ Type = newgirl["Laura"].Love
+                elif Flavor == "Obed":
+                        $ Type = newgirl["Laura"].Obed
+                elif Flavor == "Inbt":
+                        $ Type = newgirl["Laura"].Inbt
+                elif Flavor == "Lust":
+                        $ Type = newgirl["Laura"].Lust
+                $ Overflow = newgirl["Laura"].Chat[4]
+                $ XPOS = newgirl["Laura"].SpriteLoc
+        # endset
+        
+        if Greater:                             
+                #this checks if it's greater or less than the intended value
+                #if it fails, the value is zeroed out, cancelling the rest
+                if Type >= Check:
+                    #If it passes the check, add Value to it 
+                    $ Type += Value                   
+                else:
+                    #If not, don't add Value and set Value to 0
+                    $ Value = 0                      
+        else:
+                if Type <= Check:
+                    $ Type += Value  
+                else:
+                    $ Value = 0
+        
+                    
+        if Value:                                       
+            #If there is any change to the stat           
+            if Flavor == "Love":                        
+                    #Sets reporting text color based on Flavor
+                    $ Color = "#c11b17"
+            elif Flavor == "Obed":
+                    $ Color = "#2554c7"
+            elif Flavor == "Inbt":
+                    $ Color = "#FFF380"
+            elif Flavor == "Lust":
+                    $ Color = "#FAAFBE"
+            else: #Usually Focus
+                    $ Color = "#FFFFFF"
+                    $ CallHolder(Value, Color, XPOS)
+                    return
+                 
+            if Type > 1000:    
+                    #if the value overflows, play one value meter, then. . .
+                    $ CallHolder((-(Type-1000-Value)), Color, XPOS)  
+                    $ Value = Type - 1000
+                    if Flavor == "Love":    
+                            $ BStat = "Love"
+                            if Overflow == 1:       #[Love to Obedience]
+                                $ Flavor = "Obed"
+                            elif Overflow == 2:     #[Love to Inhibition] 
+                                $ Flavor = "Inbt"
+                            else: 
+                                $ Value = 0  
+                    elif Flavor == "Obed":    
+                            $ BStat = "Obed"
+                            if Overflow == 3:       #[Obedience to Inhibition]
+                                $ Flavor = "Obed"
+                            elif Overflow == 4:    
+                                $ Flavor = "Love"   #[Obedience to Love] 
+                            else: 
+                                $ Value = 0  
+                    elif Flavor == "Inbt":    
+                            $ BStat = "Inbt"
+                            if Overflow == 5:       #[Inhibition to Obedience]
+                                $ Flavor = "Obed"
+                            elif Overflow == 6:    
+                                $ Flavor = "Love"    #[Inhibition to Love]
+                            else: 
+                                $ Value = 0  
+                               
+                    if Flavor == "Love":                        
+                            #Sets reporting text color based on Flavor
+                            $ Color = "#c11b17"
+                    elif Flavor == "Obed":
+                            $ Color = "#2554c7"
+                    elif Flavor == "Inbt":
+                            $ Color = "#FFF380"
+                    elif Flavor == "Lust":
+                            $ Color = "#FAAFBE"
+                    else:
+                            $ Color = "#FFFFFF"
+                    
+            if Value:                
+                $ CallHolder(Value, Color, XPOS)
+            
+            if Flavor == "Lust" and Type >= 100:
+                if not Trigger:
+                    #calls orgasm if Lust goes over 100, breaks routine
+                    if Name == "Rogue":        
+                        call R_Cumming
+                    elif Name == "Kitty":     
+                        call K_Cumming
+                    elif Name == "Emma":    
+                        call E_Cumming
+                    elif Name == "Emma":    
+                        call Laura_Cumming  
+                    $ Value = 0
+                    
+        #end "if value is positive"
+                    
+        $ Type = 1000 if Type > 1000 else Type
+        
+        if Name == "Rogue":
+                if Flavor == "Love":
+                        $ R_Love += Value
+                        $ R_Love = 1000 if R_Love > 1000 else R_Love
+                elif Flavor == "Obed":
+                        $ R_Obed += Value
+                        $ R_Obed = 1000 if R_Obed > 1000 else R_Obed
+                elif Flavor == "Inbt":
+                        $ R_Inbt += Value
+                        $ R_Inbt = 1000 if R_Inbt > 1000 else R_Inbt
+                elif Flavor == "Lust":
+                        $ R_Lust += Value
+                        $ R_Lust = 100 if R_Lust > 100 else R_Lust
+                        
+                if BStat == "Love":
+                        $ R_Love = 1000
+                elif BStat == "Obed":
+                        $ R_Obed = 1000
+                elif BStat == "Inbt":
+                        $ R_Inbt = 1000
+        elif Name == "Kitty":
+                if Flavor == "Love":
+                        $ K_Love += Value   
+                        $ K_Love = 1000 if K_Love > 1000 else K_Love                     
+                elif Flavor == "Obed":
+                        $ K_Obed += Value
+                        $ K_Obed = 1000 if K_Obed > 1000 else K_Obed 
+                elif Flavor == "Inbt":
+                        $ K_Inbt += Value
+                        $ K_Inbt = 1000 if K_Inbt > 1000 else K_Inbt 
+                elif Flavor == "Lust":
+                        $ K_Lust += Value
+                        $ K_Lust = 100 if K_Lust > 100 else K_Lust 
+                        
+                if BStat == "Love":
+                        $ K_Love = 1000
+                elif BStat == "Obed":
+                        $ K_Obed = 1000
+                elif BStat == "Inbt":
+                        $ K_Inbt = 1000
+        elif Name == "Emma":
+                if Flavor == "Love":
+                        $ E_Love += Value
+                        $ E_Love = 1000 if E_Love > 1000 else E_Love
+                elif Flavor == "Obed":
+                        $ E_Obed += Value
+                        $ E_Obed = 1000 if E_Obed > 1000 else E_Obed
+                elif Flavor == "Inbt":
+                        $ E_Inbt += Value
+                        $ E_Inbt = 1000 if E_Inbt > 1000 else E_Inbt
+                elif Flavor == "Lust":
+                        $ E_Lust += Value
+                        $ E_Lust = 100 if E_Lust > 100 else E_Lust
+                        
+                if BStat == "Love":
+                        $ E_Love = 1000
+                elif BStat == "Obed":
+                        $ E_Obed = 1000
+                elif BStat == "Inbt":
+                        $ E_Inbt = 1000
+        elif Name == "Laura":
+                if Flavor == "Love":
+                        $ newgirl["Laura"].Love += Value
+                        $ newgirl["Laura"].Love = 1000 if newgirl["Laura"].Love > 1000 else newgirl["Laura"].Love
+                elif Flavor == "Obed":
+                        $ newgirl["Laura"].Obed += Value
+                        $ newgirl["Laura"].Obed = 1000 if newgirl["Laura"].Obed > 1000 else newgirl["Laura"].Obed
+                elif Flavor == "Inbt":
+                        $ newgirl["Laura"].Inbt += Value
+                        $ newgirl["Laura"].Inbt = 1000 if newgirl["Laura"].Inbt > 1000 else newgirl["Laura"].Inbt
+                elif Flavor == "Lust":
+                        $ newgirl["Laura"].Lust += Value
+                        $ newgirl["Laura"].Lust = 100 if newgirl["Laura"].Lust > 100 else newgirl["Laura"].Lust
+                        
+                if BStat == "Love":
+                        $ newgirl["Laura"].Love = 1000
+                elif BStat == "Obed":
+                        $ newgirl["Laura"].Obed = 1000
+                elif BStat == "Inbt":
+                        $ newgirl["Laura"].Inbt = 1000
+                # endset
+            
+        return    
+
+label RoomStatboost(Type=0,Check=0,Amount=0):
+    # raises/lowers stats of all girls in the room by a fixed amount
+    #ie call RoomStatboost("Love",80,2)
+    if R_Loc == bg_current or "Rogue" in Nearby:
+            call Statup("Rogue", Type, Check, Amount)
+    if K_Loc == bg_current or "Kitty" in Nearby:
+            call Statup("Kitty", Type, Check, Amount)
+    if E_Loc == bg_current or "Emma" in Nearby:
+            call Statup("Emma", Type, Check, Amount)
+    if E_Loc == "bg teacher" and bg_current == "bg classroom":
+            call Statup("Emma", Type, Check, Amount)
+    if newgirl["Laura"].Loc == bg_current or "Laura" in Nearby:
+            call Statup("Laura", Type, Check, Amount)
+    return
+
+label AnyFace(Girl=0,Emote = 5, B = 5, M = 0, Mouth = 0, Eyes = 0, Brows = 0):
+    #this sends a face change to any girl listed
+    if Girl == "Rogue": 
+                    call RogueFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    elif Girl == "Kitty": 
+                    call KittyFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    elif Girl == "Emma": 
+                    call EmmaFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    elif Girl == "Laura": 
+                    call LauraFace(Emote=Emote,B=B,M=M,Mouth=Mouth,Eyes=Eyes,Brows=Brows)
+    return
+
+label AnyLine(Girl=0,Line=". . ."):
+    #This calls a line from any girl you reference
+    if Girl == "Rogue":
+            ch_r "[Line]"
+    elif Girl == "Kitty":
+            ch_k "[Line]"
+    elif Girl == "Emma":
+            ch_e "[Line]"
+    elif Girl == "Laura":
+            ch_l "[Line]"
+    return
+
+label AnyOutfit(Girl=0,OutfitTemp = 5, Spunk = 0, Undressed = 0, Changed = 1, Perm=0):
+    #this sends a face change to any girl listed
+    # "Perm" gets sent if the outfit is meant to stick
+    if Girl == "Rogue": 
+                    $ R_Outfit = OutfitTemp if Perm else R_Outfit
+                    call RogueOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    elif Girl == "Kitty": 
+                    $ K_Outfit = OutfitTemp if Perm else K_Outfit
+                    call KittyOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    elif Girl == "Emma": 
+                    $ E_Outfit = OutfitTemp if Perm else E_Outfit
+                    call EmmaOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    elif Girl == "Laura": 
+                    $ newgirl["Laura"].Outfit = OutfitTemp if Perm else newgirl["Laura"].Outfit
+                    call LauraOutfit(OutfitTemp,Spunk,Undressed,Changed)
+    return
+    
+label GirlLikesGirl(ChrA = "Rogue", ChrB = "Kitty", Modifier = 1, Auto = 0, Jealousy = 0, Ok = 0, Likes=0):
         #ChrA is the subject girl, ChrB is the object girl, Modifier is sent as the amount of offense this might cause,
         # Jealousy is the temp value for how mad the girl will get
         
@@ -904,7 +1207,7 @@ label GirlLikesGirl(ChrA = "Rogue", ChrB = "Kitty", Modifier = 1, Auto = 0, Jeal
         
         return Ok
 
-label GirlWaitAttract(Local=0,Teach=0,D20=0):
+label GirlWaitAttract(Local=0,Teach=0,D20=0,Check=0):
     #This adjusts girl's liking each other based on shared activities
     #Local =1 only checks if they are in the room with you.
     $ D20 = renpy.random.randint(0, 1) 
@@ -1062,6 +1365,123 @@ label Faces(Character="All"):
             $ allgirls += 1
     return
                    
+label Activity_Check(Girl=0,Girl2=0,Silent=0,Removal=1,ClothesCheck=1,Mod=0,Approval=1,Tempshame=0):
+        # This checks whether a girl is up for watching a given activity
+        # Silent is whether it plays dialog or not, Removal is whether it auto-removes the girl on a fail,
+        # ClothesCheck is whether it bothers checking clothing, 2 if skip first girl
+        # Mod gets set to her Like stat -600, so 600 Like, you break even, otherwise it's a penalty
+        # call Activity_Check("Rogue",0,1,0)
+        if not Girl2 or ClothesCheck == 2:
+                $ Mod = 0
+        else:
+                $ Mod = (GirlLikeCheck(Girl,Girl2)-600)
+                if Girl in P_Harem and Girl2 in P_Harem: #bonus for if both in harem
+                        $ Mod += 500
+                        
+        if ClothesCheck and Girl2:
+                if Girl2 == "Rogue":
+                        #sets her shame level to be accurate to current look
+                        call Rogue_OutfitShame(20)
+                        $ Tempshame = R_Shame
+                elif Girl2 == "Kitty":
+                        call Kitty_OutfitShame(20)
+                        $ Tempshame = K_Shame
+                elif Girl2 == "Emma":
+                        call Emma_OutfitShame(20)
+                        $ Tempshame = E_Shame
+                elif Girl2 == "Laura":
+                        call Laura_OutfitShame(20)
+                        $ Tempshame = newgirl["Laura"].Shame
+                
+                if Tempshame <= 15 and (ApprovalCheck(Girl, 600,Bonus=Mod) or ApprovalCheck(Girl, 350, "I")):
+                        #If the outfit is hot but she's ok     
+                        if ApprovalCheck(Girl, 900,Bonus=Mod) or ApprovalCheck(Girl, 450, "I"): 
+                                $ Approval = 2   
+                elif Tempshame <= 20 and (ApprovalCheck(Girl, 900,Bonus=Mod) or ApprovalCheck(Girl, 450, "I")):
+                        #If the outfit is sexy but she's cool with that 
+                        if ApprovalCheck(Girl, 1100,Bonus=Mod) or ApprovalCheck(Girl, 550, "I"): 
+                                $ Approval = 2   
+                elif Tempshame <= 25 and (ApprovalCheck(Girl, 1100,Bonus=Mod) or ApprovalCheck(Girl, 550, "I")):
+                        #If the outfit is sexy but she's cool with that
+                        if ApprovalCheck(Girl, 1400,Bonus=Mod) or ApprovalCheck(Girl, 650, "I"): 
+                                $ Approval = 2    
+                elif (ApprovalCheck(Girl, 1400,Bonus=Mod) or ApprovalCheck(Girl, 650, "I")):
+                        #If the outfit is very scandelous but she's ok with that     
+                        if ApprovalCheck(Girl, 1600,Bonus=Mod) or ApprovalCheck(Girl, 850, "I"): 
+                                $ Approval = 2     
+                        pass
+                else:
+                        $ Approval = 0
+                        
+        if not Approval:
+                    # If it fails the clothing check, skip the next part
+                    pass
+        elif Trigger == "strip" and Trigger2 != "jackin":
+                    pass #covered by the above check
+        elif not Trigger:
+                    pass
+        elif Trigger == "lick ass":
+                    $ Approval = ApprovalCheck(Girl,1550,Bonus=Mod, TabM = 3)
+        elif Trigger == "anal":
+                    $ Approval = ApprovalCheck(Girl,1550,Bonus=Mod, TabM = 3)
+        elif Trigger == "sex":
+                    $ Approval = ApprovalCheck(Girl,1400,Bonus=Mod, TabM = 3)
+        elif Trigger == "lick pussy":            
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger2 == "jackin":            
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger == "blow":            
+                    $ Approval = ApprovalCheck(Girl,1300,Bonus=Mod, TabM = 2)
+        elif Trigger == "titjob":              
+                    $ Approval = ApprovalCheck(Girl,1200,Bonus=Mod, TabM = 3) 
+        elif Trigger == "hotdog":
+                    $ Approval = ApprovalCheck(Girl,1000,Bonus=Mod, TabM = 3)                
+        elif Trigger == "hand" or Trigger3 == "hand":              
+                    $ Approval = ApprovalCheck(Girl,1100,Bonus=Mod, TabM = 2)
+        elif Trigger == "foot":
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)  
+        elif Trigger == "dildo anal":
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger == "dildo pussy":
+                    $ Approval = ApprovalCheck(Girl,1250,Bonus=Mod, TabM = 2)
+        elif Trigger == "insert ass":
+                    $ Approval = ApprovalCheck(Girl,1300,Bonus=Mod, TabM = 2)
+        elif Trigger == "fondle pussy" or Trigger == "insert pussy":
+                    $ Approval = ApprovalCheck(Girl,1050,Bonus=Mod, TabM = 2)
+        elif Trigger == "suck breasts":            
+                    $ Approval = ApprovalCheck(Girl,1050,Bonus=Mod, TabM = 3)
+        elif Trigger == "fondle breasts":                        
+                    $ Approval = ApprovalCheck(Girl,950,Bonus=Mod, TabM = 2)
+        elif Trigger == "fondle ass":
+                    $ Approval = ApprovalCheck(Girl,850,Bonus=Mod, TabM = 1)
+                    
+        elif Trigger == "masturbation": 
+                    $ Approval = ApprovalCheck(Girl,1200,Bonus=Mod, TabM = 2)
+                    
+        elif Trigger == "kiss you":
+                    $ Approval = ApprovalCheck(Girl,500,Bonus=Mod, TabM = 0)                    
+        elif Trigger == "fondle thighs":
+                    $ Approval = ApprovalCheck(Girl,750,Bonus=Mod, TabM = 0)
+                    
+        elif Trigger == "lesbian": 
+                    $ Approval = ApprovalCheck(Girl,1350,Bonus=Mod, TabM = 2)                           
+        
+        if not Silent and not Approval:
+            if Girl == "Rogue":
+                    ch_r "Ain't none a this right, [R_Petname]."
+            elif Girl == "Kitty":
+                    ch_k "I'm[K_like]not really comfortable here?"
+            elif Girl == "Emma":
+                    ch_e "This has become a bit too. . . scandalous for my tastes."
+            elif Girl == "Laura":
+                    ch_l "This is getting weird."
+        
+        if Removal and not Approval:
+                call Remove_Girl(Girl,2)  
+                "[Girl] takes off."
+                
+        return Approval
+
 # to remove words from the daily/recent lists , ie call DrainWord("Rogue","sex",1,0)
 label DrainWord(Character = "Rogue", Word = "word", Recent = 1, Daily = 1):
             if Character == "Kitty" or Character == "All":
@@ -1237,7 +1657,39 @@ label CleartheRoom(Character = "Rogue", Passive = 0, Silent = 0, Check = 0):
                             $ newgirl["Mystique"].Loc = "bg Mystique"                    
                     hide Mystique_Sprite with easeoutright
                 else:
-                    $ Check += 1                 
+                    $ Check += 1   
+
+            if Character != "Laura" and (newgirl["Laura"].Loc == bg_current or "Laura" in Party):        
+                if not Check:                        
+                    #if the character asking is not Laura, this removes Laura from the room
+                    if Silent:
+                        pass
+                    elif Passive:
+                        ch_l "I think I should be going noww."  
+                    elif Character == "Rogue" and R_Loc == bg_current:
+                        ch_r "Laura, could I talk to [Playername] alone for a minute?"
+                        ch_l "Fine, I'll see you later then."  
+                    elif Character == "Kitty" and K_Loc == bg_current:
+                        ch_k "[K_Like]could I talk to [Playername] alone for a sec?" 
+                        ch_l "Fine, I'll see you later then."         
+                    else:
+                        ch_l "I think I should be going now."   
+                        
+                    if "Laura" in Party:
+                            $ Party.remove("Laura")  
+                    if "leaving" in newgirl["Laura"].RecentActions:
+                            call DrainWord("Laura","leaving")
+                    if "arriving" in newgirl["Laura"].RecentActions:
+                            call DrainWord("Laura","arriving")
+                    if bg_current == "bg Laura":
+                            #if the girl is not Laura but you're in Laura's room, the girl takes you to her room
+                            call TaketoRoom(Character)
+                    else:
+                            $ newgirl["Laura"].Loc = "bg Laura"                    
+                    hide Laura_Sprite with easeoutright
+                else:
+                    $ Check += 1   
+
             $ Check -= 1 if Check > 0 else 0 #removes the initial Check value
             return Check
 
@@ -1497,7 +1949,19 @@ label Chat:
                             call Mystique_Chat from _call_Mystique_Chat_1  
                         else:
                             "You don't know her number, you'll have to go to her." 
-                            return                 
+                            return   
+
+                "Chat with Laura" if newgirl["Laura"].Loc == bg_current:                     
+                        call Laura_Chat
+
+                "Text Laura" if newgirl["Laura"].Loc != bg_current and "met" in newgirl["Laura"].History: 
+                        if "Laura" in Digits:
+                            "You send Laura a text."                 
+                            call Laura_Chat
+                        else:
+                            "You don't know her number, you'll have to go to her." 
+                            return   
+
                 "Never Mind":
                     pass
             return
@@ -2054,6 +2518,13 @@ label Seen_First_Peen(Silent = 0, Undress = 0, GirlsNum = 0): #checked each time
                 if (Ch_Focus == "Mystique" or Partner == "Mystique") and "peen" not in newgirl["Mystique"].RecentActions:
                         #If Mystique hasn't seen your cock yet, call the thing 
                         call Mystique_First_Peen(Silent,Undress,GirlsNum) from _call_Mystique_First_Peen
+                        $ GirlsNum += 1   
+
+        if newgirl["Laura"].Loc == bg_current:  
+                #If Laura is around, check to see if she noticed your cock yet
+                if (Ch_Focus == "Laura" or Partner == "Laura") and "peen" not in newgirl["Laura"].RecentActions:
+                        #If Laura hasn't seen your cock yet, call the thing 
+                        call Laura_First_Peen(Silent,Undress,GirlsNum)
                         $ GirlsNum += 1       
                         
         if not GirlsNum:
@@ -2067,6 +2538,18 @@ label Seen_First_Peen(Silent = 0, Undress = 0, GirlsNum = 0): #checked each time
                 $ P_RecentActions.append("cockout") 
         
         return
+
+label CockOut:        
+        if (Approval == 3 and Primary == "Rogue") or (Approval == 4 and Secondary == "Rogue"):
+                    call Rogue_First_Peen(React=1)   
+        elif (Approval == 3 and Primary == "Kitty") or (Approval == 4 and Secondary == "Kitty"):
+                    call Kitty_First_Peen(React=1) 
+        elif (Approval == 3 and Primary == "Emma") or (Approval == 4 and Secondary == "Emma"):
+                    call Emma_First_Peen(React=1) 
+        elif (Approval == 3 and Primary == "Laura") or (Approval == 4 and Secondary == "Laura"):
+                    call Laura_First_Peen(React=1) 
+        $ Approval = 0
+        return
         
 label Put_Cock_Back: #checked each time she sees your cock
         #if no girls are present
@@ -2076,6 +2559,17 @@ label Put_Cock_Back: #checked each time she sees your cock
                 "You put your cock away."
                 call DrainWord("Player","cockout") from _call_DrainWord_91
 
+        return
+
+label Get_Dressed: #checked each time she sees your cock
+        #if no girls are present
+        if "naked" in P_RecentActions:   
+                "You get dressed."
+                call DrainWord("Player","naked") 
+                call DrainWord("Player","cockout")
+        elif "cockout" in P_RecentActions:                 
+                "You put your cock away."
+                call DrainWord("Player","cockout")
         return
         
 # End First Seen Peen / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /     
@@ -2914,6 +3408,13 @@ label Girls_Location(GirlsNum = 0,Clear=0):
                 if Adjacent == "Mystique" and newgirl["Mystique"].Loc != "bg classroom":
                         $ Adjacent = 0
                 $ GirlsNum += 1   
+
+        if "leaving" in newgirl["Laura"].RecentActions:
+                call Laura_Leave
+                if Adjacent == "Laura" and newgirl["Laura"].Loc != "bg classroom":
+                        $ Adjacent = 0
+                $ GirlsNum += 1   
+
                         
         if "arriving" in R_RecentActions:
                 call Girls_Arrive from _call_Girls_Arrive
@@ -2923,6 +3424,8 @@ label Girls_Location(GirlsNum = 0,Clear=0):
                 call Girls_Arrive from _call_Girls_Arrive_2
         elif "arriving" in newgirl["Mystique"].RecentActions:
                 call Girls_Arrive from _call_Girls_Arrive_3
+        elif "arriving" in newgirl["Laura"].RecentActions:
+                call Girls_Arrive
         return
         
 # End Girls Location / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -3004,6 +3507,22 @@ label GirlsAngry(Girls = 0):
                 $ Party.remove("Mystique")  
             $ Girls += 1
             hide Mystique_Sprite with easeoutleft
+    if newgirl["Laura"].Loc == bg_current and "angry" in newgirl["Laura"].RecentActions:
+            if bg_current == "bg Laura":
+                ch_l "You should leave, or do you want to test me?"
+                "You head back to your room."
+                $ renpy.pop_call()
+                jump Player_Room_Entry
+            else:        
+                $ newgirl["Laura"].Loc = "bg Laura"
+                if Girls:
+                    ". . . and so does [newgirl[Laura].GirlName]."
+                else:
+                    "[newgirl[Laura].GirlName] storms off."            
+            if "Laura" in Party:
+                $ Party.remove("Laura")  
+            $ Girls += 1
+            hide Laura_Sprite with easeoutleft
     return    
     
 # Start Girls Arrive / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
@@ -3028,6 +3547,10 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
             $ GirlsNum += 1
             $ Options.append("Mystique")
             call DrainWord("Mystique","arriving") from _call_DrainWord_95  
+    if "arriving" in newgirl["Laura"].RecentActions and "Laura" not in Party: 
+            $ GirlsNum += 1
+            $ Options.append("Laura")
+            call DrainWord("Laura","arriving")
          
     $ renpy.random.shuffle(Options)
     
@@ -3076,7 +3599,14 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                             $ Primary = "Mystique"
                         else:
                             $ newgirl["Mystique"].Loc = "bg Mystique"
-                        $ Options.remove("Mystique")            
+                        $ Options.remove("Mystique") 
+            if "Laura" in Options:
+                        if bg_current == "bg Laura":
+                            $ Secondary = Primary
+                            $ Primary = "Laura"
+                        else:
+                            $ newgirl["Laura"].Loc = "bg Laura"
+                        $ Options.remove("Laura")            
             #end list clearing
             
     if Line > 3:
@@ -3089,6 +3619,8 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                     call Remove_Girl("Emma") from _call_Remove_Girl_51
             if newgirl["Mystique"].Loc == bg_current and "Mystique" not in (Primary,Secondary) and "Mystique" not in Party:
                     call Remove_Girl("Mystique") from _call_Remove_Girl_52
+            if newgirl["Laura"].Loc == bg_current and "Laura" not in (Primary,Secondary) and "Laura" not in Party:
+                    call Remove_Girl("Laura")
     $ Options = []    
     #This sequence sets the pecking order, more important once there are more girls
     
@@ -3125,6 +3657,11 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 ch_m "Ah, good, you're here. May we come in?"
                             else:
                                 ch_m "Ah, good, you're here. May I come in?"
+                elif Primary == "Laura":
+                            if Secondary:                        
+                                ch_l "Ah, good, you're here. May we come in?"
+                            else:
+                                ch_l "Ah, good, you're here. May I come in?"
                 menu:
                     extend ""
                     "Sure.":
@@ -3160,6 +3697,12 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 2)
                                 if Primary == "Mystique":
                                         ch_m "Good."
+                    if Primary == "Laura" or Secondary == "Laura":
+                                $ newgirl["Laura"].Love = Statupdate("Laura", "Love", newgirl["Laura"].Love, 50, 1)
+                                $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 60, 1)
+                                $ newgirl["Laura"].Inbt = Statupdate("Laura", "Inbt", newgirl["Laura"].Inbt, 50, 2)
+                                if Primary == "Laura":
+                                        ch_l "Good."
                     #end "sure"
                 if Line == "later":     
                     if Primary == "Rogue" or Secondary == "Rogue":
@@ -3198,6 +3741,15 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 if Primary == "Mystique": 
                                         ch_m "If that's how you wish to play it. . ."
                                 call Remove_Girl("Mystique") from _call_Remove_Girl_56
+                    if Primary == "Laura" or Secondary == "Laura":  
+                                $ newgirl["Laura"].Love = Statupdate("Laura", "Love", newgirl["Laura"].Love, 90, -2)
+                                $ newgirl["Laura"].Love = Statupdate("Laura", "Love", newgirl["Laura"].Love, 50, -5)
+                                $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 70, 5) 
+                                $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 30, -7) 
+                                call LauraFace("confused")
+                                if Primary == "Laura": 
+                                        ch_l "If that's how you wish to play it. . ."
+                                call Remove_Girl("Laura")
                     #end "later"
                 if Line == "no":
                     if Primary == "Rogue" or Secondary == "Rogue":
@@ -3250,8 +3802,21 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -4)
                                     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
                                     $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 1) 
-                                    ch_e "We'll see how long that attitude lasts. . ."
+                                    ch_m "We'll see how long that attitude lasts. . ."
                                 call Remove_Girl("Mystique") from _call_Remove_Girl_60
+                    if Primary == "Laura" or Secondary == "Laura":  
+                                $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 50, 7)         
+                                if ApprovalCheck("Laura", 2000) or ApprovalCheck("Laura", 500, "O"):
+                                    $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 80, 2)
+                                    ch_l "I suppose you can have your personal space. . ."
+                                else:    
+                                    call LauraFace("angry")
+                                    $ newgirl["Laura"].Love = Statupdate("Laura", "Love", newgirl["Laura"].Love, 60, -6, 1)
+                                    $ newgirl["Laura"].Love = Statupdate("Laura", "Love", newgirl["Laura"].Love, 90, -4)
+                                    $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 80, 5)
+                                    $ newgirl["Laura"].Inbt = Statupdate("Laura", "Inbt", newgirl["Laura"].Inbt, 50, 1) 
+                                    ch_l "We'll see how long that attitude lasts. . ."
+                                call Remove_Girl("Laura")
                     if Secondary:
                                 "The girls storm out."
                     #end "nope"
@@ -3342,6 +3907,8 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 ch_e "I didn't expect to run into you here."
                 elif Primary == "Mystique":                       
                                 ch_m "I didn't expect to run into you here."
+                elif Primary == "Laura":                       
+                                ch_l "I didn't expect to run into you here."
                 #end girls showed up to Rogues's room.    
             
     elif bg_current == "bg kitty":   
@@ -3432,6 +3999,8 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 ch_e "I didn't expect to run into you here."
                 elif Primary == "Mystique":                       
                                 ch_m "I didn't expect to run into you here."
+                elif Primary == "Laura":                       
+                                ch_l "I didn't expect to run into you here."
                 #end girls showed up to Kitty's room.
     elif bg_current == "bg emma": 
                 if Secondary:  
@@ -3523,6 +4092,8 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 ch_k "Hey[K_like]funny meeting you here."
                 elif Primary == "Mystique":                       
                                 ch_m "I didn't expect to run into you here."
+                elif Primary == "Laura":                       
+                                ch_l "I didn't expect to run into you here."
                 #end girls showed up to Emma's room.
     elif bg_current == "bg Mystique": 
             #add room content here
@@ -3576,6 +4147,8 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                 pass
             if Primary == "Mystique" or Secondary == "Mystique":
                                 ch_m "Oh, hello."
+            if Primary == "Laura" or Secondary == "Laura":
+                                ch_l "Oh, hello."
             if E_Loc == "bg teacher":
                     "Emma takes her position behind the podium."
             #end girls showed up to the Danger Room
@@ -3711,43 +4284,129 @@ label LikeUpdater(Primary = "Rogue", Value = 1, Noticed = 1):
     # Noticed is whether it matters if she notices or not.
     
     if Primary == "Rogue":
-            if E_Loc == bg_current:
-                if not Noticed or "noticed rogue" in E_RecentActions: 
-                    #If Emma was participating in Rogue's activity
-                    $ E_LikeRogue += Value
-                    $ R_LikeEmma += Value
-            
             if K_Loc == bg_current:
-                if not Noticed or "noticed rogue" in K_RecentActions: 
+                if not Noticed or "noticed Rogue" in K_RecentActions: 
                     #If Kitty was participating in Rogue's activity
                     $ K_LikeRogue += Value
                     $ R_LikeKitty += Value
     
+            if E_Loc == bg_current:
+                if not Noticed or "noticed Rogue" in E_RecentActions: 
+                    #If Emma was participating in Rogue's activity
+                    $ E_LikeRogue += Value
+                    $ R_LikeEmma += Value
+            
+            if newgirl["Laura"].Loc == bg_current:
+                if not Noticed or "noticed Rogue" in newgirl["Laura"].RecentActions: 
+                    #If Laura was participating in Rogue's activity
+                    $ newgirl["Laura"].LikeRogue += Value
+                    $ R_LikeNewGirl["Laura"] += Value
+
+            if newgirl["Mystique"].Loc == bg_current:
+                if not Noticed or "noticed Rogue" in newgirl["Mystique"].RecentActions: 
+                    #If Mystique was participating in Rogue's activity
+                    $ newgirl["Mystique"].LikeRogue += Value
+                    $ R_LikeNewGirl["Mystique"] += Value
+                    
     elif Primary == "Kitty":
             if R_Loc == bg_current:
-                if not Noticed or "noticed kitty" in R_RecentActions: 
+                if not Noticed or "noticed Kitty" in R_RecentActions: 
                     #If Rogue was participating in Kitty's activity
                     $ R_LikeKitty += Value
                     $ K_LikeRogue += Value
             
             if E_Loc == bg_current:
-                if not Noticed or "noticed kitty" in E_RecentActions: 
+                if not Noticed or "noticed Kitty" in E_RecentActions: 
                     #If Emma was participating in Kitty's activity
                     $ E_LikeRogue += Value
                     $ K_LikeEmma += Value
                     
+            if newgirl["Laura"].Loc == bg_current:
+                if not Noticed or "noticed Kitty" in newgirl["Laura"].RecentActions: 
+                    #If Laura was participating in Kitty's activity
+                    $ newgirl["Laura"].LikeKitty += Value
+                    $ K_LikeNewGirl["Laura"] += Value  
+
+            if newgirl["Mystique"].Loc == bg_current:
+                if not Noticed or "noticed Kitty" in newgirl["Mystique"].RecentActions: 
+                    #If Mystique was participating in Kitty's activity
+                    $ newgirl["Mystique"].LikeKitty += Value
+                    $ K_LikeNewGirl["Mystique"] += Value                    
+                    
     elif Primary == "Emma":
             if R_Loc == bg_current:
-                if not Noticed or "noticed emma" in R_RecentActions: 
+                if not Noticed or "noticed Emma" in R_RecentActions: 
                     #If Rogue was participating in Emma's activity
                     $ R_LikeEmma += Value
                     $ E_LikeRogue += Value
             
             if K_Loc == bg_current:
-                if not Noticed or "noticed emma" in K_RecentActions: 
+                if not Noticed or "noticed Emma" in K_RecentActions: 
                     #If Kitty was participating in Emma's activity
                     $ K_LikeEmma += Value
                     $ E_LikeRogue += Value
+                    
+            if newgirl["Laura"].Loc == bg_current:
+                if not Noticed or "noticed Emma" in newgirl["Laura"].RecentActions: 
+                    #If Laura was participating in Emma's activity
+                    $ newgirl["Laura"].LikeEmma += Value
+                    $ E_LikeNewGirl["Laura"] += Value
+
+            if newgirl["Mystique"].Loc == bg_current:
+                if not Noticed or "noticed Emma" in newgirl["Mystique"].RecentActions: 
+                    #If Mystique was participating in Emma's activity
+                    $ newgirl["Mystique"].LikeEmma += Value
+                    $ E_LikeNewGirl["Mystique"] += Value
+                    
+    elif Primary == "Laura":
+            if R_Loc == bg_current:
+                if not Noticed or "noticed Laura" in R_RecentActions: 
+                    #If Rogue was participating in Laura's activity
+                    $ R_LikeNewGirl["Laura"] += Value
+                    $ newgirl["Laura"].LikeRogue += Value
+            
+            if K_Loc == bg_current:
+                if not Noticed or "noticed Laura" in K_RecentActions: 
+                    #If Kitty was participating in Laura's activity
+                    $ K_LikeNewGirl["Laura"] += Value
+                    $ newgirl["Laura"].LikeRogue += Value
+                    
+            if E_Loc == bg_current:
+                if not Noticed or "noticed Laura" in E_RecentActions: 
+                    #If Emma was participating in Laura's activity
+                    $ E_LikeNewGirl["Laura"] += Value
+                    $ newgirl["Laura"].LikeEmma += Value
+
+            if newgirl["Mystique"].Loc == bg_current:
+                if not Noticed or "noticed Laura" in newgirl["Mystique"].RecentActions: 
+                    #If Mystique was participating in Emma's activity
+                    $ newgirl["Mystique"].LikeNewGirl["Laura"] += Value
+                    $ newgirl["Laura"].LikeNewGirl["Mystique"] += Value
+
+    elif Primary == "Mystique":
+            if R_Loc == bg_current:
+                if not Noticed or "noticed Mystique" in R_RecentActions: 
+                    #If Rogue was participating in Mystique's activity
+                    $ R_LikeNewGirl["Mystique"] += Value
+                    $ newgirl["Mystique"].LikeRogue += Value
+            
+            if K_Loc == bg_current:
+                if not Noticed or "noticed Mystique" in K_RecentActions: 
+                    #If Kitty was participating in Mystique's activity
+                    $ K_LikeNewGirl["Mystique"] += Value
+                    $ newgirl["Mystique"].LikeRogue += Value
+                    
+            if E_Loc == bg_current:
+                if not Noticed or "noticed Mystique" in E_RecentActions: 
+                    #If Emma was participating in Mystique's activity
+                    $ E_LikeNewGirl["Mystique"] += Value
+                    $ newgirl["Mystique"].LikeEmma += Value
+
+            if newgirl["Mystique"].Loc == bg_current:
+                if not Noticed or "noticed Mystique" in newgirl["Laura"].RecentActions: 
+                    #If Laura was participating in Emma's activity
+                    $ newgirl["Laura"].LikeNewGirl["Mystique"] += Value
+                    $ newgirl["Mystique"].LikeNewGirl["Laura"] += Value
 
     # elif Primary == "Mystique":
     #         if R_Loc == bg_current:
@@ -3772,6 +4431,142 @@ label LikeUpdater(Primary = "Rogue", Value = 1, Noticed = 1):
     
 # End LikeUpdater / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
       
+label Partner_Threechange(Girl=0):  
+        # this routine thorws it to the specific character's threresome activity change
+        # Girl is the lead of the encounter, this is called from Threesome actions during sex scenes
+        if Partner == Girl:
+                "Let Oni know that both roles are set to [Girl]."
+                return
+        if Partner == "Rogue":
+                call Rogue_Three_Change(Girl)        
+        elif Partner == "Kitty":
+                call Kitty_Three_Change(Girl)
+        elif Partner == "Emma":
+                call Emma_Three_Change(Girl) 
+        elif Partner == "Laura":
+                call Laura_Three_Change(Girl) 
+        return
+    
+label Partner_Cleanup:
+        # this routine checks if the Partner has jiz on her, and cleans up if yes
+        # this is called from Threesome actions during sex scenes
+        if not Partner:
+                return
+        if Partner == "Rogue" and R_Spunk:
+                call Rogue_Cleanup("ask")  
+        elif Partner == "Kitty" and K_Spunk:
+                call Kitty_Cleanup("ask")    
+        elif Partner == "Emma" and E_Spunk:
+                call Emma_Cleanup("ask")  
+        elif Partner == "Laura" and newgirl["Laura"].Spunk:
+                call Laura_Cleanup("ask")  
+        else:
+                "She seems fine."
+        return
+    
+label Partner_Undress:   
+        # this routine undresses the partner in a scene
+        # this is called from Threesome actions during sex scenes 
+        if Partner == "Rogue":
+                call R_Undress   
+        elif Partner == "Kitty":
+                call K_Undress   
+        elif Partner == "Emma":
+                call E_Undress 
+        elif Partner == "Laura":
+                call Laura_Undress
+        return
+    
+label Partner_Cumming(Girl=0):
+        # this routine is called if the Partner might cum
+        #Girl would be the non-Partner
+        if R_Lust >= 100 and R_Loc == bg_current and Girl != "Rogue":                                          
+            call R_Cumming
+        if K_Lust >= 100 and K_Loc == bg_current and Girl != "Kitty":                                          
+            call K_Cumming
+        if E_Lust >= 100 and E_Loc == bg_current and Girl != "Emma":                                          
+            call E_Cumming     
+        if newgirl["Laura"].Lust >= 100 and newgirl["Laura"].Loc == bg_current and Girl != "Laura":                                          
+            call Laura_Cumming    
+        return
+
+label Partner_Like(Girl=0,Value=1,AltValue=1,Measure=800,Backsies=0,Partner=Partner):
+        # Thi raises a partner's "like" stat by an amount
+        # call Partner_Like("Rogue",2)
+        # Girl is the lead, Partner is the second girl
+        # Value is the amount it changes if Measure is met, otherwise AltValue
+        # Set Backsies to 1, or this will looptwice to cover both girls equally
+        
+        if not Girl or not Partner:
+                return
+                
+        if Trigger4:
+                # if the Partner is doing a secondary action. . .
+                if Trigger4 == "watch":
+                        pass
+                elif Trigger4 in ("hand","blow"):
+                        $ Value += 1
+                elif Trigger4 in ("lick pussy","lick ass"):
+                        $ Value += 3                
+                else:
+                        $ Value += 2
+        #End Trigger4 bonuses
+            
+        if Girl == "Rogue":
+                if Partner == "Kitty": 
+                        #If Kitty was participating
+                        $ K_LikeRogue += Value if K_LikeRogue >= Measure else AltValue
+                elif Partner == "Emma":  
+                        #If Emma was participating
+                        $ E_LikeRogue += Value if E_LikeRogue >= Measure else AltValue
+                elif Partner == "Laura":  
+                        #If Laura was participating
+                        $ newgirl["Laura"].LikeRogue += Value if newgirl["Laura"].LikeRogue >= Measure else AltValue
+        elif Girl == "Kitty":
+                if Partner == "Rogue": 
+                        #If Kitty was participating
+                        $ R_LikeKitty += Value if R_LikeKitty >= Measure else AltValue
+                elif Partner == "Emma":  
+                        #If Emma was participating
+                        $ E_LikeKitty += Value if E_LikeKitty >= Measure else AltValue
+                elif Partner == "Laura":  
+                        #If Laura was participating
+                        $ newgirl["Laura"].LikeKitty += Value if newgirl["Laura"].LikeKitty >= Measure else AltValue
+        elif Girl == "Emma":
+                if Partner == "Rogue":  
+                        #If Emma was participating
+                        $ R_LikeEmma += Value if R_LikeEmma >= Measure else AltValue
+                elif Partner == "Kitty": 
+                        #If Kitty was participating
+                        $ K_LikeEmma += Value if K_LikeEmma >= Measure else AltValue
+                elif Partner == "Laura":  
+                        #If Laura was participating
+                        $ newgirl["Laura"].LikeEmma += Value if newgirl["Laura"].LikeEmma >= Measure else AltValue
+        elif Girl == "Laura":
+                if Partner == "Rogue":  
+                        #If Emma was participating
+                        $ R_LikeNewGirl["Laura"] += Value if R_LikeNewGirl["Laura"] >= Measure else AltValue
+                elif Partner == "Kitty": 
+                        #If Kitty was participating
+                        $ K_LikeNewGirl["Laura"] += Value if K_LikeNewGirl["Laura"] >= Measure else AltValue
+                elif Partner == "Emma":  
+                        #If Emma was participating
+                        $ E_LikeNewGirl["Laura"] += Value if E_LikeNewGirl["Laura"] >= Measure else AltValue
+        
+        if not Backsies:        
+                        # this bit causes the function to go through a second cycle, 
+                        # skipping this bit and then returning here
+                        # the point is to give points going the opposite direction
+                        $ Backsies = Partner 
+                        $ Partner = Girl 
+                        $ Girl = Backsies
+                        call Partner_Like(Girl,Value,AltValue,Backsies=Backsies)  
+                        $ Partner = Girl
+                        
+        return
+#End Partner_Like
+
+
     
 # Start Primary Sex Dialog / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
 label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust = 0, SecondaryLust = 0, Line1 = 0, Line2 = 0, Line3 = 0, Line4 = 0, D20S = 0): #call Sex_Dialog("Rogue","Kitty") 
@@ -3787,9 +4582,12 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                     if K_Loc == bg_current and not Taboo:                           #If Kitty is around and it's otherwise private
                         call Kitty_Noticed("Rogue") from _call_Kitty_Noticed
                         $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
-#                    elif E_Loc == bg_current and not Taboo:                           #If Emma is around and it's otherwise private
-#                        call Emma_Noticed("Rogue")
-#                        $ Secondary = "Emma" if E_Loc == bg_current else Secondary
+                    elif E_Loc == bg_current and not Taboo:                           #If Emma is around and it's otherwise private
+                        call Emma_Noticed("Rogue")
+                        $ Secondary = "Emma" if E_Loc == bg_current else Secondary
+                    elif newgirl["Laura"].Loc == bg_current and not Taboo:
+                        call Laura_Noticed(Primary)
+                        $ Secondary = "Laura" if newgirl["Laura"].Loc == bg_current else Secondary
                     elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
                         call Rogue_Taboo from _call_Rogue_Taboo                    
                     call Rogue_SexDialog from _call_Rogue_SexDialog    
@@ -3798,9 +4596,9 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                     if R_Loc == bg_current and not Taboo:                           #If Rogue is around and it's otherwise private
                         call Rogue_Noticed("Kitty") from _call_Rogue_Noticed
                         $ Secondary = "Rogue" if R_Loc == bg_current else Secondary
-#                    elif E_Loc == bg_current and not Taboo:                           #If Emma is around and it's otherwise private
-#                        call Emma_Noticed("Kitty")
-#                        $ Secondary = "Emma" if E_Loc == bg_current else Secondary
+                    elif E_Loc == bg_current and not Taboo:                           #If Emma is around and it's otherwise private
+                        call Emma_Noticed("Kitty")
+                        $ Secondary = "Emma" if E_Loc == bg_current else Secondary
                     elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
                         call Kitty_Taboo from _call_Kitty_Taboo                    
                     call Kitty_SexDialog from _call_Kitty_SexDialog
@@ -3812,6 +4610,9 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                     elif K_Loc == bg_current and not Taboo:                           #If Kitty is around and it's otherwise private
                         call Kitty_Noticed("Emma") from _call_Kitty_Noticed_1
                         $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
+                    elif newgirl["Laura"].Loc == bg_current and not Taboo:
+                        call Laura_Noticed(Primary)
+                        $ Secondary = "Laura" if newgirl["Laura"].Loc == bg_current else Secondary
                     elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
                         call Emma_Taboo from _call_Emma_Taboo                    
                     call Emma_SexDialog from _call_Emma_SexDialog
@@ -3823,9 +4624,26 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                     elif K_Loc == bg_current and not Taboo:                           #If Kitty is around and it's otherwise private
                         call Kitty_Noticed("Mystique") from _call_Kitty_Noticed_2
                         $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
+                    elif newgirl["Laura"].Loc == bg_current and not Taboo:
+                        call Laura_Noticed(Primary)
+                        $ Secondary = "Laura" if newgirl["Laura"].Loc == bg_current else Secondary
                     elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
                         call Mystique_Taboo from _call_Mystique_Taboo_1                    
                     call Mystique_SexDialog from _call_Mystique_SexDialog
+
+        elif Primary == "Laura":
+                    if R_Loc == bg_current and not Taboo:                           #If Rogue is around and it's otherwise private
+                        call Rogue_Noticed("Laura")
+                        $ Secondary = "Rogue" if R_Loc == bg_current else Secondary
+                    elif K_Loc == bg_current and not Taboo:                           #If Kitty is around and it's otherwise private
+                        call Kitty_Noticed("Laura")
+                        $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
+                    elif E_Loc == bg_current and not Taboo:                           #If Emma is around and it's otherwise private
+                        call Emma_Noticed("Kitty")
+                        $ Secondary = "Emma" if E_Loc == bg_current else Secondary
+                    elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
+                        call Laura_Taboo
+                    call Laura_SexDialog
         
         
         $ Line1 = Line #Set Line1 to the current state of the Line variable
@@ -3841,6 +4659,8 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                         call Emma_Offhand from _call_Emma_Offhand_1
                     elif Primary == "Mystique":
                         call Mystique_Offhand from _call_Mystique_Offhand
+                    elif Primary == "Laura":
+                        call Laura_Offhand
                     
                     $ Line1 = Line1 + Line
         else:                
@@ -3857,6 +4677,8 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                         call Emma_Self_Lines("T3",Trigger3) from _call_Emma_Self_Lines 
                     elif Primary == "Mystique":
                         call NewGirl_Self_Lines("Mystique","T3",Trigger3) from _call_NewGirl_Self_Lines 
+                    elif Primary == "Laura":
+                        call NewGirl_Self_Lines("Laura","T3",Trigger3)
                     if Line:
                         $ Line3 = Line + "."
            
@@ -3871,6 +4693,8 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                         call Emma_SexDialog_Threeway from _call_Emma_SexDialog_Threeway
                     elif Secondary == "Mystique":
                         call Mystique_SexDialog_Threeway from _call_Mystique_SexDialog_Threeway
+                    elif Secondary == "Laura":
+                        call Laura_SexDialog_Threeway
                     if Line:
                         $ Line4 = Line + "."
         
@@ -3889,32 +4713,41 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                 call EmmaLust from _call_EmmaLust_10 
         elif Primary == "Mystique":
                 $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 200, PrimaryLust)
-                call MystiqueLust from _call_MystiqueLust_11            
+                call MystiqueLust from _call_MystiqueLust_11    
+        elif Primary == "Laura":
+                $ newgirl["Laura"].Lust = Statupdate("Laura", "Lust", newgirl["Laura"].Lust, 200, PrimaryLust)
+                call MystiqueLust
         
         #Applying secondary girl's satisfaction
         if Secondary == "Rogue":
                 $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Kitty" and R_LikeKitty >= 70 else 0  
-                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Emma" and E_LikeKitty >= 70 else 0 
+                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Emma" and R_LikeEmma >= 70 else 0 
+                $ SecondaryLust += (int(PrimaryLust/10)) if (Primary == "Laura" or Primary == "Mystique") and R_LikeNewGirl[Primary] >= 70 else 0 
                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, SecondaryLust) 
                 call RogueLust from _call_RogueLust_2
         elif Secondary == "Kitty":
                 $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Rogue" and K_LikeRogue >= 70 else 0  
                 $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Emma" and K_LikeEmma >= 70 else 0        
+                $ SecondaryLust += (int(PrimaryLust/10)) if (Primary == "Laura" or Primary == "Mystique") and K_LikeNewGirl[Primary] >= 70 else 0        
                 $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, SecondaryLust)
                 call KittyLust from _call_KittyLust_10 
         elif Secondary == "Emma":
                 $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Rogue" and E_LikeRogue >= 50 else 0   
                 $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Kitty" and E_LikeKitty >= 50 else 0     
+                $ SecondaryLust += (int(PrimaryLust/10)) if (Primary == "Laura" or Primary == "Mystique") and E_LikeNewGirl[Primary] >= 50 else 0     
                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, SecondaryLust)
                 call EmmaLust from _call_EmmaLust_11
-        elif Secondary == "Mystique":
-                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Rogue" and newgirl["Mystique"].LikeRogue >= 50 else 0   
-                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Kitty" and newgirl["Mystique"].LikeKitty >= 50 else 0     
-                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Emma" and newgirl["Mystique"].LikeEmma >= 50 else 0     
-                $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 200, SecondaryLust)
-                call MystiqueLust from _call_MystiqueLust_12 
-        
-        
+        elif Secondary == "Mystique" or Secondary == "Laura":
+                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Rogue" and newgirl[Secondary].LikeRogue >= 50 else 0   
+                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Kitty" and newgirl[Secondary].LikeKitty >= 50 else 0     
+                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Emma" and newgirl[Secondary].LikeEmma >= 50 else 0     
+                $ SecondaryLust += (int(PrimaryLust/10)) if (Primary == "Laura" or Primary == "Mystique") and newgirl[Secondary].LikeNewGirl[Primary] >= 50 else 0     
+                $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl[Secondary].Lust, 200, SecondaryLust)
+                if Secondary == "Mystique":
+                    call MystiqueLust
+                elif Secondary == "Laura":
+                    call LauraLust
+
         # Dialog begins to play out. . .  
         
         "[Line1]"
@@ -4099,6 +4932,85 @@ label CloseOut(Chr = "Rogue"):
     return
 # End CloseOut  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
 
+# Start Sex_Over  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
+label Sex_Over(Clothes=1,Girls=0):
+        #this routine plays out at the end of any sex menu session
+        #it cleans them up and puts their clothes on, only returning a line of dialog if they were undressed
+        $ Line = 0
+        if R_Loc == bg_current:
+                # if Rogue is present
+                $ R_OCount = 0    
+                call Rogue_Cleanup("after")
+                if P_Spunk:
+                    ch_r "Let me take care of that for you. . ."
+                    call R_CleanCock                    
+        if K_Loc == bg_current:
+                # if Kitty is present
+                $ K_OCount = 0    
+                call Kitty_Cleanup("after")
+                if P_Spunk:
+                    ch_k "You've got a little something. . ."
+                    ch_k "just let me get that."
+                    call K_CleanCock
+        if E_Loc == bg_current:
+                # if Emma is present
+                $ E_OCount = 0    
+                call Emma_Cleanup("after") 
+                if P_Spunk:
+                    ch_e "[E_Petname], let's get you presentable. . ."
+                    call E_CleanCock
+        if newgirl["Laura"].Loc == bg_current:
+                # if Laura is present
+                $ newgirl["Laura"].OCount = 0    
+                call Laura_Cleanup("after") 
+                if P_Spunk:
+                    ch_l "[newgirl[Laura].Petname], you've got a little something. . ."
+                    call Laura_CleanCock
+                    
+        call AllReset("all") #resets all sex positions.       
+        
+        if Clothes:   
+                #if asked to put their clothes back on. 
+                if R_Loc == bg_current:
+                        # if Rogue is present
+                        call RogueOutfit(Changed=1)
+                        if _return:
+                                $ Line = "Rogue"
+                                $ Girls += 1
+                if K_Loc == bg_current:
+                        # if Kitty is present
+                        call KittyOutfit(Changed=1)
+                        if _return:
+                                if Line:
+                                    $ Line = Line + " and Kitty"
+                                else:
+                                    $ Line = "Kitty"
+                                $ Girls += 1
+                if E_Loc == bg_current:
+                        # if Emma is present
+                        call EmmaOutfit(Changed=1) 
+                        if _return:
+                                if Line:
+                                    $ Line = Line + " and Emma"
+                                else:
+                                    $ Line = "Emma"  
+                                $ Girls += 1   
+                if newgirl["Laura"].Loc == bg_current:
+                        # if Laura is present
+                        call LauraOutfit(Changed=1) 
+                        if _return:
+                                if Line:
+                                    $ Line = Line + " and Laura"
+                                else:
+                                    $ Line = "Laura"  
+                                $ Girls += 1   
+                if Girls > 1:
+                    "[Line] throw their clothes back on."
+                elif Girls:
+                    "[Line] throws her clothes back on."
+        call Get_Dressed
+        call Checkout(1)
+        return
 
 
 

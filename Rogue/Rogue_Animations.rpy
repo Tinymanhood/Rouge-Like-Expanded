@@ -15,6 +15,7 @@ image Rogue:
             "R_Over == 'black mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_blackmesh1.png",
             "R_Over == 'black mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_blackmesh2.png",  
             "R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty1.png",
+            "R_Over == 'jacket'", "images/RogueSprite/Rogue_JacketB.png",
             "R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodieB.png",
             "R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodieB.png",
             "R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodieB.png",
@@ -65,6 +66,12 @@ image Rogue:
             "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
             "R_Tan and R_Hair == 'evo'", "images/RogueSprite/Rogue_thead_evo.png",
             "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
+
+            "R_Hair == 'newhair' and R_Water", "images/RogueSprite/Rogue_head_evowet_newhair.png",
+            "R_Hair == 'newhair' and R_Blush == 2", "images/RogueSprite/Rogue_hair_evo_blush2_newhair.png",
+            "R_Hair == 'newhair' and R_Blush", "images/RogueSprite/Rogue_hair_evo_blush_newhair.png",
+            "R_Hair == 'newhair'", "images/RogueSprite/Rogue_head_evo_newhair.png",
+
             "R_Tan", "images/RogueSprite/Rogue_thead_evo.png",
             "True", "images/RogueSprite/Rogue_head_evo.png",
             ),  
@@ -76,7 +83,9 @@ image Rogue:
         (0,0), ConditionSwitch(                                                                         #Panties            
             "not R_Panties", Null(),
             # "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", Null(),
-            "R_Legs == 'pants' and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
+            # "R_Legs == 'pants' and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
+            "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", Null(),
+            # "PantsNum('Rogue') == 10 and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
             "R_Panties == 'shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_shorts_down_wet.png",
             "R_Panties == 'red shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_ryshorts_down_wet.png",
             "R_Panties == 'blue shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_byshorts_down_wet.png",
@@ -150,6 +159,7 @@ image Rogue:
             "R_Chest == 'blue sports bra'", "images/RogueSprite/Rogue_chest_bysportsbra.png",
             "R_Chest == 'red sports bra'", "images/RogueSprite/Rogue_chest_rysportsbra.png",
             "R_Chest == 'lace bra'", "images/RogueSprite/Rogue_chest_lacebra.png",  
+            "R_Chest == 'green top'", "images/RogueSprite/Rogue_GrnTop.png",
             "R_Chest == 'SR7 tank short'", "images/RogueSprite/Rogue_chest_tankshort_SR7.png",
             "R_Chest == 'tank short'", "images/RogueSprite/Rogue_chest_tankshort.png",
             "R_Chest == 'slut tank short'", "images/RogueSprite/Rogue_chest_tankshort_slut.png",
@@ -256,7 +266,8 @@ image Rogue:
             ),            
         (0,0), "Rogue Blink",  
         (0,0), ConditionSwitch(                                                                                 #Collar
-            "R_Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "R_Glasses == 'glasses'", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "R_Glasses == 'sunglasses'", "images/RogueSprite/Rogue_Sprite_Glasses_black.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ), 
         (0,0), ConditionSwitch(                                                                      
@@ -267,6 +278,8 @@ image Rogue:
         (0,0), ConditionSwitch(                                                                         #Pants and Skirts
             "R_Boots == 'boots' and R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_boots_down.png", 
             "R_Boots == 'boots' and R_Legs == 'pants'", "images/RogueSprite/Rogue_legs_pants_boots.png", 
+            "R_Legs == 'leather pants' and R_Upskirt", "images/RogueSprite/Rogue_LeatherPants_Down.png", 
+            "R_Legs == 'leather pants'", "images/RogueSprite/Rogue_LeatherPants.png", 
             "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_down.png", 
             "R_Legs == 'pants'", "images/RogueSprite/Rogue_legs_pants.png",          
             "R_Legs == 'shorts' and R_Upskirt and R_Wet > 1", "images/RogueSprite/Rogue_shorts_down_wet.png",
@@ -346,6 +359,7 @@ image Rogue:
             "Rogue_Arms == 1 and R_Over == 'towel'", "images/RogueSprite/Rogue_over_towel1.png",
             "Rogue_Arms == 1 and R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty1.png",
             "Rogue_Arms == 1 and R_Over == 'classic jacket'", "images/RogueSprite/Rogue_Sprite_Over_XJacket1.png",
+            "Rogue_Arms == 1 and R_Over == 'jacket'", "images/RogueSprite/Rogue_Jacket1.png",
             "Rogue_Arms == 1 and R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie1.png",
             "Rogue_Arms == 1 and R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie1.png",
             "Rogue_Arms == 1 and R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie1.png",
@@ -366,6 +380,7 @@ image Rogue:
             "R_Over == 'pink top'", "images/RogueSprite/Rogue_over_pink2.png",
             "R_Over == 'red top'", "images/RogueSprite/Rogue_over_red2.png",
             "R_Over == 'classic jacket'", "images/RogueSprite/Rogue_Sprite_Over_XJacket2.png",
+            "R_Over == 'jacket'", "images/RogueSprite/Rogue_Jacket2.png",
             "R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie2.png",
             "R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie2.png",
             "R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie2.png",
@@ -399,6 +414,8 @@ image Rogue:
             "R_Hair == 'evo' and R_HairColor == 'blondewhite'", "images/RogueSprite/Rogue_hairBlondewhite_evo.png",
             "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
             "R_Hair == 'evo'", "images/RogueSprite/Rogue_hair_evo.png",
+            "R_Hair == 'newhair' and R_Water", "images/RogueSprite/Rogue_hair_wet_newhair.png",
+            "R_Hair == 'newhair'", "images/RogueSprite/Rogue_hair_evo_newhair.png",
             "True", Null(), 
             ),                           
         (0,0), ConditionSwitch(                                                                         #hand spunk
@@ -576,6 +593,7 @@ image Rogue_Selfie:
 
         contains:
             ConditionSwitch(
+                "R_Hair == 'newhair'", Null(),
                 "R_HairColor == 'black' or R_HairColor == 'blackwhite'", "images/RogueSelfie/Rogue_selfie_hairBlack_back.png",
                 "R_HairColor == 'blonde' or R_HairColor == 'blondewhite'", "images/RogueSelfie/Rogue_selfie_hairBlonde_back.png",
                 "True", "images/RogueSelfie/Rogue_selfie_hair_back.png",
@@ -585,6 +603,7 @@ image Rogue_Selfie:
             zoom .4
         contains:
             ConditionSwitch(
+                "R_Hair == 'newhair'", "images/RogueSelfie/Rogue_selfie_base.png",
                 "R_Tan == 'tan1'", "images/RogueSelfie/Rogue_t1selfie_base.png",
                 "R_Tan == 'tan'", "images/RogueSelfie/Rogue_tselfie_base.png",
                 "True", "images/RogueSelfie/Rogue_selfie_base.png",
@@ -621,6 +640,7 @@ image Rogue_Selfie:
 
         contains:
             ConditionSwitch(
+                "R_Hair == 'newhair'", "images/RogueSelfie/Rogue_selfie_newhair_hair.png",
                 "R_Hair == 'evo' and R_HairColor == 'blackwhite'", "images/RogueSelfie/Rogue_selfie_hairBlackwhite.png",
                 "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSelfie/Rogue_selfie_hairBlack.png",
                 "R_Hair == 'evo' and R_HairColor == 'blondewhite'", "images/RogueSelfie/Rogue_selfie_hairBlondewhite.png",
@@ -900,6 +920,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
         (420,750),
         (0,0), ConditionSwitch(                                                                                 #Hair underlayer
             "R_Water", Null(), 
+            "R_Hair == 'newhair'", "images/RogueDoggy/Rogue_Doggy_HairB.png",   
             "R_Hair == 'evo' and R_HairColor == 'blackwhite'", "images/RogueDoggy/Rogue_Doggy_HairBlackwhiteB.png",   
             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackB.png",   
             "R_Hair == 'evo' and R_HairColor == 'blondewhite'", "images/RogueDoggy/Rogue_Doggy_HairBlondewhiteB.png",   
@@ -985,7 +1006,8 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
         (0,0), ConditionSwitch(                                                                                 #Collar
-            "R_Glasses", "images/RogueDoggy/Rogue_Doggy_Glasses.png",   
+            "R_Glasses == 'glasses'", "images/RogueDoggy/Rogue_Doggy_Glasses.png",   
+            "R_Glasses == 'sunglasses'", "images/RogueDoggy/Rogue_Doggy_Glasses_black.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
         (0,0), ConditionSwitch(                                                                                 #tanktop
@@ -996,6 +1018,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_Chest == 'blue sports bra'", "images/RogueDoggy/Rogue_Doggy_Chest_BYSportsBra.png",
             "R_Chest == 'red sports bra'", "images/RogueDoggy/Rogue_Doggy_Chest_RYSportsBra.png",
             "R_Chest == 'lace bra'", "images/RogueDoggy/Rogue_Doggy_Chest_Bra.png",
+            "R_Chest == 'green top'", "images/RogueDoggy/Rogue_Doggy_GrnTop.png",
             "R_Chest == 'SR7 tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort_SR7.png",
             "R_Chest == 'tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
             "R_Chest == 'slut tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
@@ -1043,6 +1066,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_Over == 'pink top'", "images/RogueDoggy/Rogue_Doggy_Over_Pink.png",
             "R_Over == 'red top'", "images/RogueDoggy/Rogue_Doggy_Over_Red.png",             
             "R_Over == 'classic jacket'", "images/RogueDoggy/Rogue_Doggy_Over_XJacket.png",
+            "R_Over == 'jacket'", "images/RogueDoggy/Rogue_Doggy_Jacket.png",
             "R_Over == 'hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_Hoodie.png",
             "R_Over == 'blue hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_BHoodie.png",
             "R_Over == 'red hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_RHoodie.png",
@@ -1056,6 +1080,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "True", Null(), 
             ),  
         (0,0), ConditionSwitch(                                                                                 #Hair
+            "R_Hair == 'newhair'", "images/RogueDoggy/Rogue_Doggy_Hair_newhair.png",   
             "R_Water and R_HairColor == 'blackwhite'", "images/RogueDoggy/Rogue_Doggy_HairBlackwhiteWet.png",   
             "R_Water and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackWet.png",   
             "R_Water and R_HairColor == 'blondewhite'", "images/RogueDoggy/Rogue_Doggy_HairBlondewhiteWet.png",   
@@ -1098,7 +1123,7 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(                                                                                 #Panties back
-            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt) or R_BodySuit == 'classic uniform damaged'", Null(),  
+            "not R_PantiesDown or (PantsNum('Rogue') == 10 and not R_Upskirt) or R_BodySuit == 'classic uniform damaged'", Null(),  
             "R_Panties == 'shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
             "R_Panties == 'red shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
             "R_Panties == 'blue shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",    
@@ -1140,7 +1165,7 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "True", Null(),
             ),               
         (0,0), ConditionSwitch(                                                                                 #Panties if Down
-            "not R_PantiesDown or (R_Legs == 'pants' and not R_Upskirt) or R_BodySuit == 'classic uniform damaged'", Null(),
+            "not R_PantiesDown or (PantsNum('Rogue') == 10 and not R_Upskirt) or R_BodySuit == 'classic uniform damaged'", Null(),
             "R_Panties == 'shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_Shorts_Down_Wet.png",
             "R_Panties == 'red shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_RYShorts_Down_Wet.png",
             "R_Panties == 'blue shorts' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_BYShorts_Down_Wet.png", #fix turn this on when graphics fixed
@@ -1172,9 +1197,9 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
         (0,0), ConditionSwitch(                                                                                 #pubes              
             "not R_Pubes", Null(),         
             "P_Sprite and P_Cock == 'in'", Null(),
-            "(R_Legs == 'pants' or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt and (R_HairColor == 'black' or R_HairColor == 'blackwhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlack_Panties.png",   
-            "(R_Legs == 'pants' or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt and (R_HairColor == 'blonde' or R_HairColor == 'blondewhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlonde_Panties.png",   
-            "(R_Legs == 'pants' or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Pubes_Panties.png",   
+            "(PantsNum('Rogue') == 10 or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt and (R_HairColor == 'black' or R_HairColor == 'blackwhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlack_Panties.png",   
+            "(PantsNum('Rogue') == 10 or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt and (R_HairColor == 'blonde' or R_HairColor == 'blondewhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlonde_Panties.png",   
+            "(PantsNum('Rogue') == 10 or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Pubes_Panties.png",   
             "(PantsNum('Rogue') >= 5 or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt and (R_HairColor == 'black' or R_HairColor == 'blackwhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlack_Panties.png",   
             "(PantsNum('Rogue') >= 5 or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt and (R_HairColor == 'blonde' or R_HairColor == 'blondewhite')", "images/RogueDoggy/Rogue_Doggy_PubesBlonde_Panties.png",   
             "(PantsNum('Rogue') >= 5 or (R_BodySuit and R_BodySuit != 'classic uniform damaged' and not R_BodySuitOff)) and not R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Pubes_Panties.png",   
@@ -1295,6 +1320,9 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "(not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal' and P_Cock != 'plug')) and R_Legs == 'pants' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Down.png",            
             "(not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal' and P_Cock != 'plug')) and R_Legs == 'pants' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Wet.png",
             "(not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal' and P_Cock != 'plug')) and R_Legs == 'pants'", "images/RogueDoggy/Rogue_Doggy_Legs_Pants.png",
+            "(not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal' and P_Cock != 'plug')) and R_Legs == 'pants' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_LeatherPants_Down.png",            
+            "(not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal' and P_Cock != 'plug')) and R_Legs == 'pants' and R_Wet > 1", "images/RogueDoggy/Rogue_Doggy_LeatherPants_Wet.png",
+            "(not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal' and P_Cock != 'plug')) and R_Legs == 'pants'", "images/RogueDoggy/Rogue_Doggy_LeatherPants.png",
             "R_Legs == 'skirt' and R_Upskirt and P_Sprite and P_Cock == 'anal' and Speed" , "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_UpAnal.png",   
             "R_Legs == 'skirt' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_Up.png",   
             "R_Legs == 'skirt'", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt.png", 
@@ -3226,6 +3254,7 @@ image Rogue_Sex_Body = LiveComposite(
             #"R_Chest == 'white cami'", "images/RogueSex/Rogue_Sex_Under_WhiteCami.png",
             #"R_Chest == 'sports bra'", "images/RogueSex/Rogue_Sex_Under_SportsBra.png",
             #"R_Chest == 'purple bikini bra'", "images/RogueSex/Rogue_Sex_Under_Bikini1.png",
+            "R_Chest == 'green top'", "images/RogueSex/Rogue_Sex_GrnTop.png",
             "R_Chest == 'SR7 tank short'", "images/RogueSex/Rogue_Sex_SR7_Tank_Short.png",
             "R_Chest == 'bra'", "images/RogueSex/Rogue_Sex_Under_Bra.png",
             #"R_Chest == 'lace bra'", "images/RogueSex/Rogue_Sex_Under_LaceBra.png",
@@ -3262,6 +3291,7 @@ image Rogue_Sex_Body = LiveComposite(
             "not R_Over", Null(),
             "R_Over == 'armbinder'", "images/RogueSex/RogueSexArmbinderOvershirt.png",
             "R_Over == 'classic jacket'", "images/RogueSex/Rogue_Sex_Over_XJacket.png",           
+            "R_Over == 'jacket'", "images/RogueSex/Rogue_Sex_Body_Jacket.png",           
             "R_Over == 'SR7 mesh top'", "images/RogueSex/Rogue_Sex_Over_SR7_Mesh_Top.png",           
             "R_Over == 'blue dress'", "images/RogueSex/Rogue_Sex_Bluedress.png",           
             "R_Over == 'red dress'", "images/RogueSex/Rogue_Sex_Reddress.png",           
@@ -3293,6 +3323,7 @@ image Rogue_HairBack:
         (416,610),    
         (0,0), ConditionSwitch(                                                                         #Hair
             "renpy.showing('Rogue_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Rogue_TJ_Animation')", Null(),
+            "R_Hair == 'newhair'", Null(),
             "R_Hair == 'evo' and R_Water and R_HairColor == 'blackwhite'", "images/RogueSprite/Rogue_hairBlackwhite_wet.png",
             "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
             "R_Hair == 'evo' and R_Water and R_HairColor == 'blondewhite'", "images/RogueSprite/Rogue_hairBlondewhite_wet.png",
@@ -3328,6 +3359,10 @@ image Rogue_Head:
 #            ),    
         (0,0), ConditionSwitch(                                                                         #head 
             #"renpy.showing('Rogue_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Rogue_TJ_Animation')", Null(),
+            "R_Hair == 'newhair' and R_Water", "images/RogueSprite/Rogue_head_evowet_newhair.png",
+            "R_Hair == 'newhair' and R_Blush == 2", "images/RogueSprite/Rogue_hair_evo_blush2_newhair.png",
+            "R_Hair == 'newhair' and R_Blush", "images/RogueSprite/Rogue_hair_evo_blush_newhair.png",
+            "R_Hair == 'newhair'", "images/RogueSprite/Rogue_head_evo_newhair.png",
             "R_Tan and R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_thead_evowet.png",
             "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
             "R_Tan and R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_thead_evo_blush2.png",
@@ -3378,7 +3413,8 @@ image Rogue_Head:
             ),            
         (0,0), "Rogue Blink",  
         (0,0), ConditionSwitch(                                                                                 #Collar
-            "R_Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "R_Glasses == 'glasses'", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "R_Glasses == 'sunglasses'", "images/RogueSprite/Rogue_Sprite_Glasses_black.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),                                                                           #Eyes
         (0,0), ConditionSwitch(                                                                      
@@ -3387,6 +3423,8 @@ image Rogue_Head:
             ), 
         (0,0), ConditionSwitch(                                                                         #Hair
             "renpy.showing('Rogue_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Rogue_TJ_Animation')", Null(),
+            "R_Hair == 'newhair' and R_Water", "images/RogueSprite/Rogue_hair_wet_newhair.png",
+            "R_Hair == 'newhair'", "images/RogueSprite/Rogue_hair_evo_newhair.png",
             "R_Hair == 'evo' and R_Water and R_HairColor == 'blackwhite'", "images/RogueSprite/Rogue_hairBlackwhite_wet.png",
             "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
             "R_Hair == 'evo' and R_Water and R_HairColor == 'blondewhite'", "images/RogueSprite/Rogue_hairBlondewhite_wet.png",
@@ -3567,6 +3605,7 @@ image Rogue_BJ_Animation:#BJ_NewTest:                                           
     
 image BJ_HairBack:
     ConditionSwitch(                                                                            #Hair underlay
+            "R_Hair == 'newhair'", Null(),
             "R_Water and R_Hair == 'evo' and R_HairColor == 'blackwhite'", "images/RogueBJFace/Rogue_bj_hairBlackwhite_back_wet.png",
             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png",
             "R_Water and R_Hair == 'evo' and R_HairColor == 'blondewhite'", "images/RogueBJFace/Rogue_bj_hairBlondewhite_back_wet.png",
@@ -3590,6 +3629,7 @@ image BJ_Head:                                                                  
     LiveComposite(    
         (787,913),     
         (0,0), ConditionSwitch(                                                                 #Hair back
+            "R_Hair == 'newhair'", Null(),
             "R_Water and R_Hair == 'evo' and R_HairColor == 'blackwhite'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlackwhite_back_wet.png", "BJ_Backdrop"),
             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png", "BJ_Backdrop"),
             "R_Water and R_Hair == 'evo' and R_HairColor == 'blondewhite'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlondewhite_back_wet.png", "BJ_Backdrop"),
@@ -3603,6 +3643,8 @@ image BJ_Head:                                                                  
             "True", Null(),
             ),   
         (0,0), ConditionSwitch(                     
+            "R_Hair == 'newhair' and not Speed", "images/RogueBJFace/Rogue_bj_face_base_newhair.png",    
+            "R_Hair == 'newhair'", "images/RogueBJFace/Rogue_bj_face_base_s_newhair.png",
             "R_Tan and not Speed", "images/RogueBJFace/Rogue_tbj_face_base.png",    
             "not Speed", "images/RogueBJFace/Rogue_bj_face_base.png",    
             "R_Tan", "images/RogueBJFace/Rogue_tbj_face_base_s.png",
@@ -3691,7 +3733,8 @@ image BJ_Head:                                                                  
                 "True", Null(),
                 ),
         (0,0), ConditionSwitch(                                                                                 #Collar
-            "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "R_Glasses == 'glasses'", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "R_Glasses == 'sunglasses'", "images/RogueBJFace/Rogue_BJFace_Glasses_black.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
         (0,0), ConditionSwitch(                                                                      
@@ -3699,6 +3742,8 @@ image BJ_Head:                                                                  
             "True", Null(),
             ), 
         (0,0), ConditionSwitch(                                                                 #Hair overlay
+            "R_Water and R_Hair == 'newhair'", "images/RogueBJFace/Rogue_bj_hair_back_wet_newhair.png",
+            "R_Hair == 'newhair'", "images/RogueBJFace/Rogue_bj_hair_newhair.png",
             "R_Water and R_Hair == 'evo' and R_HairColor == 'blackwhite'", "images/RogueBJFace/Rogue_bj_hairBlackwhite_wet.png",
             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_wet.png",
             "R_Water and R_Hair == 'evo' and R_HairColor == 'blondewhite'", "images/RogueBJFace/Rogue_bj_hairBlondewhite_wet.png",
@@ -4006,16 +4051,22 @@ image Rogue_BJFace:
             "R_Blush and Trigger != 'blow'", "images/RogueBJFace/Rogue_bj_face_over_blush.png",
             "Trigger != 'blow'", Null(),
             "R_Tan and Speed == 3 and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_suckingB.png",
+            "R_Hair == 'newhair' and Speed == 3 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_suckingB_newhair.png",
             "Speed == 3 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_suckingB.png",
             "R_Tan and Speed == 3 and not R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_sucking.png",
+            "R_Hair == 'newhair' and Speed == 3 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_sucking_newhair.png",
             "Speed == 3 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_sucking.png",
             "R_Tan and Speed == 2 and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_headingB.png",
+            "R_Hair == 'newhair' and Speed == 2 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_headingB_newhair.png",
             "Speed == 2 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_headingB.png",
             "R_Tan and Speed == 2 and not R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_heading.png",
+            "R_Hair == 'newhair' and Speed == 2 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_heading_newhair.png",
             "Speed == 2 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_heading.png",
             "R_Tan and Speed == 4 and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_suckingB.png",
+            "R_Hair == 'newhair' and Speed == 4 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_suckingB_newhair.png",
             "Speed == 4 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_suckingB.png",
             "R_Tan and Speed == 4 and not R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_sucking.png",
+            "R_Hair == 'newhair' and Speed == 4 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_sucking_newhair.png",
             "Speed == 4 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_sucking.png",
             "R_Tan and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_blush.png",
             "R_Blush", "images/RogueBJFace/Rogue_bj_face_over_blush.png",
@@ -4038,7 +4089,8 @@ image Rogue_BJFace:
             #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking  
             ),
         (0,0), ConditionSwitch(                                                                                 #Collar
-            "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "R_Glasses == 'glasses'", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "R_Glasses == 'sunglasses'", "images/RogueBJFace/Rogue_BJFace_Glasses_black.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
         (0,0), ConditionSwitch(                                                                      
@@ -4058,6 +4110,7 @@ image Rogue_BJFace:
                 "True", Null(),
                 ),
         (0,0), ConditionSwitch(
+            "R_Hair == 'newhair'", "images/RogueBJFace/Rogue_bj_hair_newhair.png",
             "R_Hair == 'evo' and R_HairColor == 'blackwhite'", "images/RogueBJFace/Rogue_bj_hairBlackwhite.png",
             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack.png",
             "R_Hair == 'evo' and R_HairColor == 'blondewhite'", "images/RogueBJFace/Rogue_bj_hairBlondewhite.png",
@@ -4072,6 +4125,7 @@ image Rogue_BJChin:
     LiveComposite(
         (787,912),     
         (0,0), ConditionSwitch(
+            "R_Hair == 'newhair'", "images/RogueBJFace/Rogue_bj_face_base_newhair.png",
             "R_Tan", "images/RogueBJFace/Rogue_tbj_face_under.png",
             "True", "images/RogueBJFace/Rogue_bj_face_under.png",
             ),   
@@ -4083,6 +4137,7 @@ image Rogue_BJChin:
             "R_Gag == 'ballgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ball.png", 
             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png",
+            "R_Hair == 'newhair' and Speed == 2 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_heading_newhair.png", 
             "Speed == 2 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_heading.png", 
             "R_Tan == 'tan1' and Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_tbj_mouth_sucking.png",
             "Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png",
@@ -4164,7 +4219,8 @@ image Rogue_SelfieChin:
             "True", "images/RogueBJFace/Rogue_bj_face_eyes_normal.png",  
             ), 
         (0,0), ConditionSwitch(                                                                                 #Collar
-            "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "R_Glasses == 'glasses'", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "R_Glasses == 'sunglasses'", "images/RogueBJFace/Rogue_BJFace_Glasses_black.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
         # (0,0), ConditionSwitch(                                                                      
@@ -4244,6 +4300,7 @@ image Zero_Blowcock:
 image Rogue_TJ_Under: 
     contains:
         ConditionSwitch(
+            "R_Hair == 'newhair'", Null(),
             "R_HairColor == 'blackwhite'", "images/RogueBJFace/Rogue_bj_hairBlackwhite_back.png",
             "R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back.png",
             "R_HairColor == 'blondewhite'", "images/RogueBJFace/Rogue_bj_hairBlondewhite_back.png",

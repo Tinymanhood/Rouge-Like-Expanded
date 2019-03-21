@@ -1834,7 +1834,7 @@ label R_Dildo_Pussy:
 
     if R_DildoP: #You've done it before
         $ Tempmod += 15
-    if R_Legs == "pants": # she's got pants on.
+    if PantsNum("Rogue") == 10: # she's got pants on.
         $ Tempmod -= 20
         
     if R_Lust > 95:
@@ -1873,7 +1873,7 @@ label R_Dildo_Pussy:
                     elif R_Legs == "skirt":
                         "Rogue grabs her dildo, hiking up her skirt as she does."
                         $ R_Upskirt = 1
-                    elif R_Legs == "pants":
+                    elif PantsNum("Rogue") == 10:
                         "Rogue grabs her dildo, pulling down her pants as she does."              
                         $ R_Legs = 0
                     else:
@@ -2159,7 +2159,7 @@ label RDP_Prep: #Animation set-up
         return
         
     if not R_Forced and Situation != "auto":
-        $ Tempmod = 15 if R_Legs == "pants" else 0           
+        $ Tempmod = 15 if PantsNum("Rogue") == 10 else 0           
         call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off_22
         if "angry" in R_RecentActions:
             return    
@@ -2306,7 +2306,7 @@ label RDP_Cycle: #Repeating strokes
                                     jump RDP_After
         #End menu (if Line)
         
-        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
+        if R_Panties or PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
                 call R_Undress("auto") from _call_R_Undress_26
             
         call Sex_Dialog("Rogue",Partner) from _call_Sex_Dialog_86
@@ -2413,7 +2413,7 @@ label R_Dildo_Ass:
     elif (R_Anal + R_DildoA + R_Plug) > 0: #You've done it before
         $ Tempmod += 20   
         
-    if R_Legs == "pants": # she's got pants on.
+    if PantsNum("Rogue") == 10: # she's got pants on.
         $ Tempmod -= 20   
         
     if R_Lust > 95:
@@ -2453,7 +2453,7 @@ label R_Dildo_Ass:
                 elif R_Legs == "skirt":
                     "Rogue grabs her dildo, hiking up her skirt as she does."
                     $ R_Upskirt = 1
-                elif R_Legs == "pants":
+                elif PantsNum("Rogue") == 10:
                     "Rogue grabs her dildo, pulling down her pants as she does."              
                     $ R_Legs = 0
                 else:
@@ -2750,7 +2750,7 @@ label RDA_Prep: #Animation set-up
         return
         
     if not R_Forced and Situation != "auto":
-        $ Tempmod = 20 if R_Legs == "pants" else 0           
+        $ Tempmod = 20 if PantsNum("Rogue") == 10 else 0           
         call Rogue_Bottoms_Off from _call_Rogue_Bottoms_Off_23
         if "angry" in R_RecentActions:
             return    
@@ -2897,7 +2897,7 @@ label RDA_Cycle: #Repeating strokes
                                     jump RDA_After
         #End menu (if Line)
         
-        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
+        if R_Panties or PantsNum("Rogue") == 10 or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
                 call R_Undress("auto") from _call_R_Undress_28
             
         call Sex_Dialog("Rogue",Partner) from _call_Sex_Dialog_87
