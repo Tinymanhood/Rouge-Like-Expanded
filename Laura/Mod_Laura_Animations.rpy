@@ -1698,7 +1698,7 @@ label Laura_BJ_Launch(Line = 0):    # The sequence to launch the Laura BJ animat
     if renpy.showing("Laura_BJ_Animation"):
         return
     
-    call Laura_Hide
+    call Laura_Hide from _call_Laura_Hide
     if Line == "L" or Line == "cum":
         show Laura_Sprite at SpriteLoc(StageCenter) zorder newgirl["Laura"].GirlLayer:
             alpha 1
@@ -1736,7 +1736,7 @@ label Laura_BJ_Reset: # The sequence to the Laura animations from BJ to default
     if not renpy.showing("Laura_BJ_Animation"):
         return
 #    hide Laura_BJ_Animation
-    call Laura_Hide 
+    call Laura_Hide from _call_Laura_Hide_1 
     $ Speed = 0
     
     show Laura_Sprite at SpriteLoc(StageCenter) zorder newgirl["Laura"].GirlLayer:
@@ -1871,7 +1871,7 @@ label Laura_HJ_Launch(Line = 0):
     if renpy.showing("Laura_HJ_Animation"):        
         $ Trigger = "hand"
         return
-    call Laura_Hide
+    call Laura_Hide from _call_Laura_Hide_2
     if Line == "L":      
         show Laura_Sprite at SpriteLoc(StageRight) zorder newgirl["Laura"].GirlLayer:
             alpha 1
@@ -1900,7 +1900,7 @@ label Laura_HJ_Reset: # The sequence to the Rogue animations from handjob to def
     $ Speed = 0            
     $ newgirl["Laura"].Girl_Arms = 1
     hide Laura_HJ_Animation with easeoutbottom
-    call Laura_Hide 
+    call Laura_Hide from _call_Laura_Hide_3 
     show Laura_Sprite at SpriteLoc(newgirl["Laura"].SpriteLoc) zorder newgirl["Laura"].GirlLayer:
         alpha 1
         zoom 1.7 offset (-50,200)
@@ -1922,7 +1922,7 @@ label Laura_HJ_Reset: # The sequence to the Rogue animations from handjob to def
         
         
 label Laura_Kissing_Launch(T = Trigger):    
-    call Laura_Hide
+    call Laura_Hide from _call_Laura_Hide_4
     $ Trigger = T
     show Laura_Sprite at SpriteLoc(newgirl["Laura"].SpriteLoc) zorder newgirl["Laura"].GirlLayer
     show Laura_Sprite at SpriteLoc(StageCenter) zorder newgirl["Laura"].GirlLayer:
@@ -1930,18 +1930,18 @@ label Laura_Kissing_Launch(T = Trigger):
     return
     
 label Laura_Kissing_Smooch:   
-    call LauraFace("kiss")  
+    call LauraFace("kiss") from _call_LauraFace_183  
     show Laura_Sprite at SpriteLoc(StageCenter) zorder newgirl["Laura"].GirlLayer:
         ease 0.5 xpos StageCenter offset (0,0) zoom 2 alpha 1
         pause 1
         ease 0.5 xpos newgirl["Laura"].SpriteLoc zoom 1      
     show Laura_Sprite at SpriteLoc(newgirl["Laura"].SpriteLoc) zorder newgirl["Laura"].GirlLayer:
         zoom 1
-    call LauraFace("sexy")  
+    call LauraFace("sexy") from _call_LauraFace_184  
     return
             
 label Laura_Breasts_Launch(T = Trigger):    
-    call Laura_Hide
+    call Laura_Hide from _call_Laura_Hide_5
     $ Trigger = T
     show Laura_Sprite at SpriteLoc(newgirl["Laura"].SpriteLoc) zorder newgirl["Laura"].GirlLayer:
 #        ease 0.5 offset (-100,-200) zoom 2
@@ -1949,14 +1949,14 @@ label Laura_Breasts_Launch(T = Trigger):
     return
         
 label Laura_Pussy_Launch(T = Trigger):
-    call Laura_Hide    
+    call Laura_Hide from _call_Laura_Hide_6    
     $ Trigger = T
     show Laura_Sprite at SpriteLoc(newgirl["Laura"].SpriteLoc) zorder newgirl["Laura"].GirlLayer:
         ease 0.5 pos (700,-400) offset (0,0) zoom 2 alpha 1
     return
         
 label Laura_Pos_Reset(Pose = 0):    
-    call Laura_Hide 
+    call Laura_Hide from _call_Laura_Hide_7 
     show Laura_Sprite at SpriteLoc(newgirl["Laura"].SpriteLoc) zorder newgirl["Laura"].GirlLayer:
         ease .5 offset (0,0) anchor (0.5, 0.0) zoom 1 alpha 1
     show Laura_Sprite zorder newgirl["Laura"].GirlLayer:
@@ -1970,7 +1970,7 @@ label Laura_Pos_Reset(Pose = 0):
     
 label Laura_Hide:
         if renpy.showing("Laura_SexSprite"):
-            call Laura_Sex_Reset
+            call Laura_Sex_Reset from _call_Laura_Sex_Reset_3
         hide Laura_SexSprite
         hide Laura_HJ_Animation
         hide Laura_BJ_Animation
@@ -2458,11 +2458,11 @@ label LauraWardrobe:
             while True:
                 menu:
                     "Default":
-                        call Laura_Pos_Reset
+                        call Laura_Pos_Reset from _call_Laura_Pos_Reset
                     "Face":
-                        call Laura_Kissing_Launch(0)
+                        call Laura_Kissing_Launch(0) from _call_Laura_Kissing_Launch
                     "Body":
-                        call Laura_Pussy_Launch(0)
+                        call Laura_Pussy_Launch(0) from _call_Laura_Pussy_Launch
                     "Back":
                         jump LauraWardrobe 
         # Outfits
@@ -2598,7 +2598,7 @@ label LauraWardrobe:
                 menu: 
                     "Brows=[newgirl[Laura].Brows], Eyes=[newgirl[Laura].Eyes], Mouth=[newgirl[Laura].Mouth]"
                     "Emotions":
-                            call LauraEmotionEditor
+                            call LauraEmotionEditor from _call_LauraEmotionEditor
                     "Toggle Brows":
                             if newgirl["Laura"].Brows == "normal":
                                 $ newgirl["Laura"].Brows = "angry"
@@ -2744,64 +2744,64 @@ label LauraEmotionEditor(CountStore = "normal"):
             menu:
                 "Normal":
                     $ newgirl["Laura"].Emote = "normal"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_185
                 "Angry":
                     $ newgirl["Laura"].Emote = "angry"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_186
                 "Smiling":
                     $ newgirl["Laura"].Emote = "smile"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_187
                 "Sexy":
                     $ newgirl["Laura"].Emote = "sexy"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_188
                 "Suprised":
                     $ newgirl["Laura"].Emote = "surprised"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_189
                 "Bemused":
                     $ newgirl["Laura"].Emote = "bemused"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_190
                 "Manic":
                     $ newgirl["Laura"].Emote = "manic"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_191
                     
         "Emotions2: Sad Sucking Kiss Tongue Confused Closed Down.":  
             menu:
                 "Sad":
                     $ newgirl["Laura"].Emote = "sad"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_192
                 "Sucking":
                     $ newgirl["Laura"].Emote = "sucking"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_193
                 "kiss":
                     $ newgirl["Laura"].Emote = "kiss"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_194
                 "Tongue":
                     $ newgirl["Laura"].Emote = "tongue"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_195
                 "confused":
                     $ newgirl["Laura"].Emote = "confused"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_196
                 "Closed":
                     $ newgirl["Laura"].Emote = "closed"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_197
                 "Down":
                     $ newgirl["Laura"].Emote = "down"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_198
                     
         "Emotions3: Sadside Startled Perplexed Sly":  
             menu:
                 "Sadside":
                     $ newgirl["Laura"].Emote = "sadside"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_199
                 "Startled":
                     $ newgirl["Laura"].Emote = "startled"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_200
                 "Perplexed":
                     $ newgirl["Laura"].Emote = "perplexed"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_201
                 "Sly":
                     $ newgirl["Laura"].Emote = "sly"
-                    call LauraFace
+                    call LauraFace from _call_LauraFace_202
         "Toggle Mouth Spunk":
             if "mouth" in newgirl["Laura"].Spunk:
                 $ newgirl["Laura"].Spunk.remove("mouth")
