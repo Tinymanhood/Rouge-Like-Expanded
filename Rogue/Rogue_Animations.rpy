@@ -2377,6 +2377,7 @@ image Rogue_Sex_Legs:
         #     "True", Null(),                     
         #     ), 
         (0,0), ConditionSwitch(
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             "not P_Sprite or (P_Cock != 'in' and P_Cock != 'anal')", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "R_LegsUp", Null(),   
@@ -2417,6 +2418,7 @@ image Rogue_Sex_Legs:
             "True", Null(),                     
             ), 
         (0,0), ConditionSwitch(
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             "P_Sprite and (P_Cock == 'in' or P_Cock == 'anal')", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "R_LegsUp", Null(),   
@@ -2427,6 +2429,7 @@ image Rogue_Sex_Legs:
             ), 
         (0,0), ConditionSwitch(
             # "P_Sprite and (P_Cock == 'in' or P_Cock == 'anal')", Null(),
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "R_LegsUp", Null(),   
             # "R_BodySuit == 'classic uniform' and R_Wet", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_Wet.png",
@@ -2442,6 +2445,7 @@ image Rogue_Sex_Legs:
         #     "True", Null(),                     
         #     ), 
         (0,0), ConditionSwitch(
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "not R_LegsUp", Null(),   
             "R_BodySuit == 'classic uniform' and R_Wet", "images/RogueSex/Rogue_Sex_XCatsuit_Legs_LegsUp_Wet.png",
@@ -2520,6 +2524,7 @@ image Rogue_Sex_Feet = LiveComposite(
             "True", "images/RogueSex/Rogue_Sex_Feet.png",
             ),
         (0,0), ConditionSwitch(
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "not R_LegsUp", Null(),   
             "R_BodySuit == 'classic uniform'", "images/RogueSex/Rogue_Sex_XCatsuit_LegsUp.png",
@@ -2527,6 +2532,7 @@ image Rogue_Sex_Feet = LiveComposite(
             "True", Null(),                     
             ), 
         (0,0), ConditionSwitch(
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "R_LegsUp", Null(),   
             "R_BodySuit == 'classic uniform'", "images/RogueSex/Rogue_Sex_XCatsuit_Feet.png",
@@ -3221,17 +3227,18 @@ image Rogue_Sex_Body = LiveComposite(
             
             #"True and R_Tan == 'tan2'", "images/RogueSex/Rogue_Sex_T2Body.png",
             #"True and R_Tan == 'tan3'", "images/RogueSex/Rogue_Sex_T3Body.png",
-            "R_Over == 'bondage'", "images/RogueSex/Rogue_Sex_Body_BinderTop.png",             
-            "R_Over == 'bondage cuffs'", "images/RogueSex/Rogue_Sex_Body_ArmCuffs.png",   
-            "R_Over == 'armbinder'", "images/RogueSex/Rogue_Sex_Body_Armbinder.png",
-            "True and R_Tan == 'tan1' and R_Over == 'bondage'", "images/RogueSex/Rogue_t1Sex_Body_BinderTop.png.png",   
+            
+            "True and R_Tan == 'tan1' and R_Over == 'bondage'", "images/RogueSex/Rogue_t1Sex_Body_BinderTop.png",   
             "True and R_Tan == 'tan1' and R_Over == 'bondage cuffs'", "images/RogueSex/Rogue_t1Sex_Body_ArmCuffs.png",
             "True and R_Tan == 'tan1' and R_Over == 'armbinder'", "images/RogueSex/Rogue_t1Sex_Body_Armbinder.png",
             "True and R_Tan == 'tan1'", "images/RogueSex/Rogue_t1Sex_Body.png",       
             "True and R_Tan == 'tan' and R_Over == 'bondage'", "images/RogueSex/Rogue_tSex_Body_BinderTop.png",
             "True and R_Tan == 'tan' and R_Over == 'bondage cuffs'", "images/RogueSex/Rogue_tSex_Body_ArmCuffs.png",
             "True and R_Tan == 'tan' and R_Over == 'armbinder'", "images/RogueSex/Rogue_tSex_Body_Armbinder.png",             
-            "True and R_Tan == 'tan'", "images/RogueSex/Rogue_tSex_Body.png",                          
+            "True and R_Tan == 'tan'", "images/RogueSex/Rogue_tSex_Body.png", 
+            "R_Over == 'bondage'", "images/RogueSex/Rogue_Sex_Body_BinderTop.png",             
+            "R_Over == 'bondage cuffs'", "images/RogueSex/Rogue_Sex_Body_ArmCuffs.png",   
+            "R_Over == 'armbinder'", "images/RogueSex/Rogue_Sex_Body_Armbinder.png",                         
             "True", "images/RogueSex/Rogue_Sex_Body.png",             
             ), 
         (0,0), ConditionSwitch(                                                                                 #Body Base
@@ -3257,7 +3264,8 @@ image Rogue_Sex_Body = LiveComposite(
             "True", Null(),
             ),  
         (0,0), ConditionSwitch(                                                                                 #tanktop
-            "not R_Chest", Null(),        
+            "not R_Chest", Null(),   
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             #"R_Chest == 'cami'", "images/RogueSex/Rogue_Sex_Under_Cami.png",
             #"R_Chest == 'white cami'", "images/RogueSex/Rogue_Sex_Under_WhiteCami.png",
             #"R_Chest == 'sports bra'", "images/RogueSex/Rogue_Sex_Under_SportsBra.png",
@@ -3277,6 +3285,7 @@ image Rogue_Sex_Body = LiveComposite(
             "True", Null(),            
             ), 
         (0,0), ConditionSwitch(
+            "R_Over == 'bondage' or R_Over == 'bondage cuffs'", Null(),
             "R_BodySuitOff and R_BodySuit != 'classic uniform damaged'", Null(),  
             "R_BodySuit == 'classic uniform'", "images/RogueSex/Rogue_Sex_XCatsuit_Top.png",
             "R_BodySuit == 'classic uniform damaged'", "images/RogueSex/Rogue_Sex_XCatsuit_Top_Dmg.png",
