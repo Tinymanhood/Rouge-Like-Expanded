@@ -557,6 +557,15 @@ screen preferences():
                         action Play("sound", config.sample_sound)
                         style "soundtest_button"
 
+            frame:
+                style_group "pref"
+                has vbox
+
+                label _("Background")
+                textbutton _("Modded") action Preference("background choices", "modded1")
+                textbutton _("Modded Laura") action Preference("background choices", "modded2")
+                textbutton _("Original") action Preference("background choices", "original")
+
             if config.has_voice:
                 frame:
                     style_group "pref"

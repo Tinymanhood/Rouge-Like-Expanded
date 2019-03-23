@@ -17,6 +17,27 @@ image UI_Finger = "images/UI_Finger.png"
 image UI_Hand = "images/UI_Hand.png"
 image UI_GirlFinger = "images/UI_GirlFinger.png" 
 image UI_GirlHand = "images/UI_GirlHand.png" 
+image Background:
+
+    contains:
+        ConditionSwitch(                                                                          # Zero cock sucking
+            "renpy.game.preferences.background_choices == 'modded1'", "images/titleimage_new.jpg", 
+            "renpy.game.preferences.background_choices == 'original'", "images/titleimage.png", 
+            "renpy.game.preferences.background_choices == 'modded2'", "images/titleimage2.jpg", 
+            "True", "images/titleimage_new.jpg",
+            ),  
+    contains:
+        ConditionSwitch(                                                                          # Zero cock sucking
+            "renpy.game.preferences.background_choices == 'modded1'", Null(), 
+            "renpy.game.preferences.background_choices == 'original'", Null(), 
+            "renpy.game.preferences.background_choices == 'modded2'", "Laura_Sprite_BG", 
+            "True", Null(),
+            ),
+        pos (800,-100) 
+        offset (0,0) 
+        zoom 1.5 
+        alpha 1
+
 #image UI_GirlFinger:
 #    "images/UI_GirlFinger.png" 
 #    zoom .8
