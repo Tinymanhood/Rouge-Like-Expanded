@@ -563,7 +563,10 @@ screen preferences():
 
                 label _("Background")
                 textbutton _("Modded") action Preference("background choices", "modded1")
-                textbutton _("Modded Laura") action Preference("background choices", "modded2")
+                textbutton _("Modded Laura") action Preference("background choices", "modded_laura")
+                textbutton _("Modded Rogue") action Preference("background choices", "modded_rogue")
+                textbutton _("Modded Kitty") action Preference("background choices", "modded_kitty")
+                textbutton _("Modded Emma") action Preference("background choices", "modded_emma")
                 textbutton _("Original") action Preference("background choices", "original")
 
             if config.has_voice:

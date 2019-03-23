@@ -23,14 +23,20 @@ image Background:
         ConditionSwitch(                                                                          # Zero cock sucking
             "renpy.game.preferences.background_choices == 'modded1'", "images/titleimage_new.jpg", 
             "renpy.game.preferences.background_choices == 'original'", "images/titleimage.jpg", 
-            "renpy.game.preferences.background_choices == 'modded2'", "images/titleimage2.png", 
+            "renpy.game.preferences.background_choices == 'modded_laura'", "images/titleimage2.png", 
+            "renpy.game.preferences.background_choices == 'modded_rogue'", "images/menuimage.jpg", 
+            "renpy.game.preferences.background_choices == 'modded_kitty'", "images/titleimage2.png", 
+            "renpy.game.preferences.background_choices == 'modded_emma'", "images/titleimage2.png", 
             "True", "images/titleimage_new.jpg",
             ),  
     contains:
         ConditionSwitch(                                                                          # Zero cock sucking
             "renpy.game.preferences.background_choices == 'modded1'", Null(), 
             "renpy.game.preferences.background_choices == 'original'", Null(), 
-            "renpy.game.preferences.background_choices == 'modded2'", "Laura_Sprite_BG", 
+            "renpy.game.preferences.background_choices == 'modded_laura'", "Laura_Sprite_BG", 
+            "renpy.game.preferences.background_choices == 'modded_rogue'", "Rogue_BG", 
+            "renpy.game.preferences.background_choices == 'modded_kitty'", "Kitty_Sprite_BG", 
+            "renpy.game.preferences.background_choices == 'modded_emma'", "Emma_Sprite_BG", 
             "True", Null(),
             ),
         pos (800,-100) 
@@ -99,6 +105,8 @@ init -1:
     default newgirl = {"Mystique" : Girlnew("Mystique"),    #The LikeOtherGirl attribute should be set for each new girl
                        "Laura" : Girlnew("Laura")
                         }
+    
+    call Define_Outfit_BG
     
     #default newgirl["Jean"] = Girlnew("Jean")
     #default newgirl.update({"Jean" : Girlnew("Jean")})
