@@ -491,21 +491,7 @@ image Rogue_BG:
             "persistent.R_BG_Brows == 'confused'", "images/RogueSprite/Rogue_brows_confused.png",
             "True", "images/RogueSprite/Rogue_brows_normal.png",
             ),
-        (0,0), ConditionSwitch(  
-            "persistent.R_BG_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag.png",                                                                       #Mouths        
-            "persistent.R_BG_Gag == 'ballgag'", "images/RogueSprite/Rogue_mouth_Ballgag.png",                                                                       #Mouths        
-            "persistent.R_BG_Mouth == 'normal'", "images/RogueSprite/Rogue_mouth_normal.png",
-            "persistent.R_BG_Tan and persistent.R_BG_Mouth == 'lipbite'", "images/RogueSprite/Rogue_tmouth_lipbite.png",
-            "persistent.R_BG_Mouth == 'lipbite'", "images/RogueSprite/Rogue_mouth_lipbite.png",
-            "persistent.R_BG_Mouth == 'sucking'", "images/RogueSprite/Rogue_mouth_sucking.png",            
-            "persistent.R_BG_Mouth == 'kiss'", "images/RogueSprite/Rogue_mouth_kiss.png",
-            "persistent.R_BG_Mouth == 'sad'", "images/RogueSprite/Rogue_mouth_sad.png",
-            "persistent.R_BG_Mouth == 'smile'", "images/RogueSprite/Rogue_mouth_smile.png",
-            "persistent.R_BG_Mouth == 'surprised'", "images/RogueSprite/Rogue_mouth_surprised.png",            
-            "persistent.R_BG_Mouth == 'tongue'", "images/RogueSprite/Rogue_mouth_tongue.png",                
-            "persistent.R_BG_Mouth == 'grimace'", "images/RogueSprite/Rogue_mouth_grimace.png",           
-            "True", "images/RogueSprite/Rogue_mouth_normal.png",
-            ),            
+        (0,0), "Rogue Mouth_BG",  
         (0,0), "Rogue Blink_BG",  
         (0,0), ConditionSwitch(                                                                                 #Collar
             "persistent.R_BG_Glasses == 'glasses'", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
@@ -678,6 +664,28 @@ image Rogue Blink_BG:
         3    
     "images/RogueSprite/Rogue_eyes_closed.png"
     .25
+    repeat  
+
+image Rogue Mouth_BG:
+    ConditionSwitch(  
+    "persistent.R_BG_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag.png",                                                                       #Mouths        
+    "persistent.R_BG_Gag == 'ballgag'", "images/RogueSprite/Rogue_mouth_Ballgag.png",                                                                       #Mouths        
+    "persistent.R_BG_Tan", "images/RogueSprite/Rogue_tmouth_lipbite.png",
+    "True", "images/RogueSprite/Rogue_mouth_lipbite.png",
+    ), 
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3    
+    "images/RogueSprite/Rogue_mouth_smile.png"
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3 
     repeat                
 
 image Rogue_Squint_BG:
@@ -1083,22 +1091,7 @@ image Kitty_Head_BG:
             "persistent.K_BG_Brows == 'confused'", "images/KittySprite/Kitty_Sprite_Brows_Confused.png",
             "True", "images/KittySprite/Kitty_Sprite_Brows_Normal.png",
             ),
-        (0,0), ConditionSwitch(
-            "persistent.K_BG_Mouth == 'normal' and persistent.K_BG_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Normal.png",
-            "persistent.K_BG_Mouth == 'normal'", "images/KittySprite/Kitty_Sprite_Mouth_Normal.png",
-            "persistent.K_BG_Mouth == 'lipbite' and persistent.K_BG_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Lipbite.png",
-            "persistent.K_BG_Mouth == 'lipbite'", "images/KittySprite/Kitty_Sprite_Mouth_Lipbite.png",
-            "persistent.K_BG_Mouth == 'kiss' and persistent.K_BG_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Kiss.png",
-            "persistent.K_BG_Mouth == 'kiss'", "images/KittySprite/Kitty_Sprite_Mouth_Kiss.png",
-            "persistent.K_BG_Mouth == 'sad' and persistent.K_BG_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Sad.png",
-            "persistent.K_BG_Mouth == 'sad'", "images/KittySprite/Kitty_Sprite_Mouth_Sad.png",
-            "persistent.K_BG_Mouth == 'smile' and persistent.K_BG_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Smile.png",
-            "persistent.K_BG_Mouth == 'smile'", "images/KittySprite/Kitty_Sprite_Mouth_Smile.png",
-            "persistent.K_BG_Mouth == 'surprised'", "images/KittySprite/Kitty_Sprite_Mouth_Surprised.png",
-            "persistent.K_BG_Mouth == 'tongue'", "images/KittySprite/Kitty_Sprite_Mouth_Tongue.png",
-            "persistent.K_BG_Mouth == 'sucking'", "images/KittySprite/Kitty_Sprite_Mouth_Tongue.png", #fix add
-            "True", "images/KittySprite/Kitty_Sprite_Mouth_Normal.png",
-            ),      
+        (0,0), "Kitty Mouth_BG",
         (0,0), "Kitty Blink_BG",
         (0,0), ConditionSwitch(
             "persistent.K_BG_Blindfold", "images/KittySprite/Kitty_Sprite_Blindfold.png",  
@@ -1177,6 +1170,29 @@ image Kitty Blink_BG:
     # This randomizes the time between blinking.
     "images/KittySprite/Kitty_Sprite_Eyes_Closed.png"
     .25
+    repeat 
+
+image Kitty Mouth_BG:
+    ConditionSwitch(
+    "persistent.K_BG_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Smile.png",
+    "True", "images/KittySprite/Kitty_Sprite_Mouth_Smile.png",
+    ), 
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3
+    ConditionSwitch(
+    "persistent.K_BG_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Lipbite.png",
+    "True", "images/KittySprite/Kitty_Sprite_Mouth_Lipbite.png",
+    ), 
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3
     repeat 
     
 image Kitty_Squint_BG:
@@ -1579,21 +1595,7 @@ image EmmaSprite_Head_BG:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB2.png", #persistent.E_BG_Brows == 'normal'
             ),
         
-        (0,0), ConditionSwitch(
-            #Mouths        
-            "renpy.showing('Emma_BJ_Animation')", Null(),
-            "persistent.E_BG_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
-            "persistent.E_BG_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
-            "persistent.E_BG_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
-            "persistent.E_BG_Mouth == 'kiss'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Kiss.png",
-            "persistent.E_BG_Mouth == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Sad.png",
-            "persistent.E_BG_Mouth == 'smile'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",
-            "persistent.E_BG_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
-            "persistent.E_BG_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png",                
-            "persistent.E_BG_Mouth == 'grimace'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",                 
-            "persistent.E_BG_Mouth == 'smirk'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",         
-            "True", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
-            ),   
+        (0,0), "Emma Mouth_BG", #Mouth   
         (0,0), "Emma Blink_BG", #Eyes        
         (0,0), ConditionSwitch(                                                                         #brows
             "renpy.showing('Emma_BJ_Animation')", Null(),
@@ -1666,6 +1668,37 @@ image Emma Blink_BG:
         3    
     "images/EmmaSprite/EmmaSprite_Head_Eyes_Closed.png"
     .25
+    repeat    
+
+image Emma Mouth_BG:
+    ConditionSwitch(
+    #Mouths        
+    # "persistent.E_BG_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
+    # "persistent.E_BG_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
+    # "persistent.E_BG_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+    # "persistent.E_BG_Mouth == 'kiss'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Kiss.png",
+    # "persistent.E_BG_Mouth == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Sad.png",
+    # "persistent.E_BG_Mouth == 'smile'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",
+    # "persistent.E_BG_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+    # "persistent.E_BG_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png",                
+    # "persistent.E_BG_Mouth == 'grimace'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",                 
+    # "persistent.E_BG_Mouth == 'smirk'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",         
+    "True", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",
+    ), 
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3    
+    "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png"
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3    
+    "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png"
     repeat                
 
 image Emma_Squint_BG:
