@@ -36,7 +36,7 @@ image Background:
             "renpy.game.preferences.background_choices == 'modded_laura'", "Laura_Sprite_BG", 
             "renpy.game.preferences.background_choices == 'modded_rogue'", "Rogue_BG", 
             "renpy.game.preferences.background_choices == 'modded_kitty'", "Kitty_Sprite_BG", 
-            "renpy.game.preferences.background_choices == 'modded_emma'", "Emma_Sprite", 
+            "renpy.game.preferences.background_choices == 'modded_emma'", "Emma_Sprite_BG", 
             "True", Null(),
             ),
         pos (800,-100) 

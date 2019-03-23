@@ -169,7 +169,6 @@ image Laura_Sprite_BG:
     yoffset 15
     zoom .75                
 
-    
 image Laura_Sprite_Head_BG:            
     LiveComposite(
         (806,806),         
@@ -1200,6 +1199,496 @@ image Kitty_Squint_BG:
     repeat  
 # End Kitty Sprite / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
+# Start Emma Sprite / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+image Emma_Sprite_BG:
+    LiveComposite(
+        (402,965), 
+        (0,0), ConditionSwitch(
+            #hair back
+            "renpy.showing('Emma_BJ_Animation') or not E_BG_Hair", Null(),
+            "(E_BG_Hair == 'wet' or E_BG_Water) and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_HairbackWet_Red.png",
+            "(E_BG_Hair == 'wet' or E_BG_Water) and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_HairbackWet_White.png",
+            "(E_BG_Hair == 'wet' or E_BG_Water) and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_HairBlackbackWet.png",
+            "E_BG_Hair == 'wet' or E_BG_Water", "images/EmmaSprite/EmmaSprite_HairbackWet.png",
+            "E_BG_Hair and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Hairback_Red.png",   
+            "E_BG_Hair and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Hairback_White.png",   
+            "E_BG_Hair and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_HairBlackback.png",   
+            "E_BG_Hair", "images/EmmaSprite/EmmaSprite_Hairback.png",   
+            "True", Null(),        
+            ),  
+        (0,0), ConditionSwitch(
+            #nighty underlayer 
+            "E_BG_Over == 'nighty'", "images/EmmaSprite/EmmaSprite_Nighty_Under.png", 
+            "E_BG_Over == 'black cape'", "images/EmmaSprite/EmmaSprite_LongCape_Back_Black.png",   
+            "E_BG_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_Back.png",   
+            "True", Null(),        
+            ),
+        (0,0), ConditionSwitch(
+            #panties down back
+            "not E_BG_Panties or not E_BG_PantiesDown or (E_BG_Legs == 'pants' and not E_BG_Upskirt)", Null(),
+            "E_BG_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack_Black.png",   
+            "E_BG_Panties == 'sports panties'", "images/EmmaSprite/EmmaSprite_Panties_Sports_DownBack.png",   
+            "E_BG_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
+            "E_BG_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
+            "True", Null(),        
+            ),  
+        (0,0), ConditionSwitch(
+            #legs/torso
+            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Legs_Arms2.png",   
+            "True", "images/EmmaSprite/EmmaSprite_Legs_Arms1.png", #if E_BG_Arms == 1         
+            ),     
+        (0,0), ConditionSwitch(
+            #pubes 
+            "E_BG_Pubes", "images/EmmaSprite/EmmaSprite_Pubes.png",   
+            "True", Null(),        
+            ),  
+        (0,0), ConditionSwitch(
+            #nude lower piercings        
+            "not E_BG_Pierce", Null(),  
+            "E_BG_Panties and not E_BG_PantiesDown", Null(), 
+            "E_BG_Legs != 'skirt' and E_BG_Legs and not E_BG_Upskirt", Null(), #skirt if wearing a skirt
+            "E_BG_Pierce == 'ring'", "images/EmmaSprite/EmmaSprite_Pierce_Pussy_Ring.png",   
+            "E_BG_Pierce == 'barbell'", "images/EmmaSprite/EmmaSprite_Pierce_Pussy_Barbell.png",   
+            "True", Null(),        
+            ),     
+        (0,0), ConditionSwitch(
+            #Water effect 
+            "E_BG_Water", "images/EmmaSprite/EmmaSprite_Water_Legs.png",   
+            "True", Null(),        
+            ),  
+        (0,0), ConditionSwitch(
+            #boots
+            "not E_BG_Hose", Null(),
+            "E_BG_Hose == 'boots'", "images/EmmaSprite/EmmaSprite_Boots.png", 
+            "E_BG_Hose == 'white thigh high'", "images/EmmaSprite/Emma_Sprite_ThighHighsWhite.png", 
+            "E_BG_Hose == 'black thigh high'", "images/EmmaSprite/Emma_Sprite_ThighHighsBlack.png", 
+            "True", Null(), 
+            ), 
+        (0,0), ConditionSwitch(
+            #panties down if not wearing pants
+            "not E_BG_Panties or not E_BG_PantiesDown or (E_BG_Legs == 'pants' and not E_BG_Upskirt)", Null(), 
+            "E_BG_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Down_Black.png",  
+            "E_BG_Panties == 'sports panties'", "images/EmmaSprite/EmmaSprite_Panties_Sports_Down.png",  
+            "E_BG_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",
+            "E_BG_Panties == 'lace panties'", "images/EmmaSprite/EmmaSprite_Panties_Lace_Down.png",
+            "E_BG_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",
+            "True", Null(),        
+            ),   
+        (0,0), ConditionSwitch(
+            #panties up
+            "E_BG_PantiesDown or not E_BG_Panties", Null(),  
+            "E_BG_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Black.png",  
+            "E_BG_Panties == 'sports panties'", "images/EmmaSprite/EmmaSprite_Panties_Sports.png",  
+            "E_BG_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties.png",
+            "E_BG_Panties == 'lace panties'", "images/EmmaSprite/EmmaSprite_Panties_Lace.png",
+            "E_BG_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_BikiniBottom.png",  
+            "True", Null(),        
+            ),
+        (0,0), ConditionSwitch(
+            #pants    
+            "not E_BG_Legs", Null(),
+            "E_BG_Upskirt", ConditionSwitch(                   
+                    #if the skirt's up or pants down 
+                    "E_BG_Legs == 'skirt'", "images/EmmaSprite/EmmaSprite_SkirtUp.png",
+                    "E_BG_Legs == 'NewX'", "images/EmmaSprite/EmmaSprite_Pants_NewX_unzip.png", 
+                    "E_BG_Legs == 'NewX black'", "images/EmmaSprite/EmmaSprite_Pants_NewXBlack_unzip.png",
+                    "True", Null(),
+                    ),                    
+            "True", ConditionSwitch(                
+                    #if it's the ring pericings
+                    "E_BG_Wet", ConditionSwitch(   
+                        #if she's not wet
+                        "E_BG_Legs == 'pants' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants.png",
+                        "E_BG_Legs == 'black pants' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_Black.png",
+                        "E_BG_Legs == 'yoga pants' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_Yoga.png",
+                        "E_BG_Legs == 'red sports shorts' and not E_BG_Upskirt", "images/EmmaSprite/Emma_Sprite_ShortsRed.png",
+                        "E_BG_Legs == 'white sports shorts' and not E_BG_Upskirt", "images/EmmaSprite/Emma_Sprite_ShortsWhite.png",
+                        "E_BG_Legs == 'NewX' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewX.png", 
+                        "E_BG_Legs == 'NewX black' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewXBlack.png", 
+                        "E_BG_Legs == 'skirt' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Skirt.png", 
+                        ),
+                    "True", ConditionSwitch(   
+                        #if she's wet
+                        "E_BG_Legs == 'pants' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_PantsWet.png",
+                        "E_BG_Legs == 'black pants' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_BlackWet.png",
+                        "E_BG_Legs == 'yoga pants' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_YogaWet.png",
+                        "E_BG_Legs == 'red sports shorts' and not E_BG_Upskirt", "images/EmmaSprite/Emma_Sprite_ShortsRedWet.png",
+                        "E_BG_Legs == 'white sports shorts' and not E_BG_Upskirt", "images/EmmaSprite/Emma_Sprite_ShortsWhiteWet.png",
+                        "E_BG_Legs == 'NewX' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewXWet.png", 
+                        "E_BG_Legs == 'NewX black' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewXBlackWet.png", 
+                        "E_BG_Legs == 'skirt' and not E_BG_Upskirt", "images/EmmaSprite/EmmaSprite_Skirt.png",
+                        ),                    
+                    ),    
+            ),
+        (0,0), ConditionSwitch(
+            #Personal Wetness            
+            "E_BG_Legs or not E_BG_Wet", Null(),
+            #"E_BG_Panties == 'naked pool'", Null(),
+            "E_BG_Panties and E_BG_Panties != 'naked pool' and not E_BG_PantiesDown and E_BG_Wet < 2", Null(),
+            "E_BG_Panties and E_BG_Panties != 'naked pool' and not E_BG_PantiesDown", "images/EmmaSprite/EmmaSprite_Wet1.png",
+            "E_BG_Wet == 2", "images/EmmaSprite/EmmaSprite_Wet2.png",
+            "True", "images/EmmaSprite/EmmaSprite_Wet1.png",
+            ),     
+        (0,0), ConditionSwitch(
+            #Chest underlayer
+            "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_CorsetUnder_Black.png",   
+            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_CorsetUnder.png",   
+            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Bra_Sports_Under.png",   
+            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Bra_Lace_Under.png", 
+            "E_BG_Chest == 'NewX'", "images/EmmaSprite/EmmaSprite_CorsetUnder_NewX.png",   
+            "E_BG_Chest == 'NewX black'", "images/EmmaSprite/EmmaSprite_CorsetUnder_NewXBlack.png",   
+            "True", Null(),              
+            ), 
+        (0,0), ConditionSwitch(
+            #Towel underlayer
+            "E_BG_Over == 'nighty'", "images/EmmaSprite/EmmaSprite_Nighty_Under.png", 
+            "E_BG_Over == 'towel'", "images/EmmaSprite/EmmaSprite_Towel_Under.png",   
+            "True", Null(),              
+            ),
+        (0,0), ConditionSwitch(
+            #arms 
+            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Arms2.png",         # one hand up
+            "True", "images/EmmaSprite/EmmaSprite_Arms1.png", #if E_BG_Arms == 1   # Crossed        
+            ),  
+        (0,0), ConditionSwitch(
+            #Water effect on arms
+            "not E_BG_Water", Null(),             
+            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Water_Arms2.png",   
+            "True", "images/EmmaSprite/EmmaSprite_Water_Arms1.png", #if E_BG_Arms == 1      
+            ), 
+        (0,0), ConditionSwitch(
+            #gloves 
+            "not E_BG_Arms", Null(),  
+            "Emma_Arms == 2 and E_BG_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2_Black.png",   
+            "E_BG_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms1_Black.png", #if E_BG_Arms == 1         
+            "Emma_Arms == 2 and E_BG_Arms == 'white gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2.png",   
+            "E_BG_Arms == 'white gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms1.png",   
+            "True", "images/EmmaSprite/EmmaSprite_Gloves_Arms1.png", #if E_BG_Arms == 1         
+            ),   
+        (0,0), ConditionSwitch(
+            #tits      
+            "Emma_Arms == 1 or E_BG_Chest == 'corset' or E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_BG_TitsUp = 1
+            "E_BG_Chest == 'sports bra' or E_BG_Chest == 'red sports bra' or E_BG_Chest == 'white sports bra' or E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_BG_TitsUp = 1
+            "True", "images/EmmaSprite/EmmaSprite_TitsDown.png",   # E_BG_TitsUp = 0
+            ), 
+        (0,0), ConditionSwitch(
+            #nude peircings      
+            #something about this entry makes all subsequent entries mis-aligned
+            "not E_BG_Pierce", Null(),  
+            "E_BG_Pierce == 'barbell'", ConditionSwitch(   
+                    #if it's the barbell pericings
+                    "Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_Pierce_Up_Barbell.png",                     
+                    "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Barbell.png",
+                    "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Barbell.png",
+                    "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Barbell.png",
+                    "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Barbell.png",
+                    "E_BG_Chest == 'white sports bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Barbell.png",
+                    "E_BG_Chest == 'red sports bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Barbell.png",
+                    "True", "images/EmmaSprite/EmmaSprite_Pierce_Down_Barbell.png",        
+                    ),                        
+            "E_BG_Pierce == 'ring'", ConditionSwitch(                      
+                    #if it's the ring pericings                                 
+                    "Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_Pierce_Up_Ring.png", 
+                    "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Ring.png",
+                    "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Ring.png",
+                    "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Ring.png",
+                    "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Ring.png",
+                    "E_BG_Chest == 'white sports bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Ring.png",
+                    "E_BG_Chest == 'red sports bra'", "images/EmmaSprite/EmmaSprite_Pierce_Up_Ring.png",
+                    "True", "images/EmmaSprite/EmmaSprite_Pierce_Down_Ring.png", 
+                    ),       
+            "True", Null(),  
+            ),
+        (0,0), ConditionSwitch(
+            #Water effect 
+            "not E_BG_Water", Null(),             
+            "Emma_Arms == 1 or E_BG_Chest == 'corset' or E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Water_TitsUp.png",  
+            "True", "images/EmmaSprite/EmmaSprite_Water_TitsDown.png", #if E_BG_Arms == 1      
+            ), 
+        (0,0), ConditionSwitch(
+            #Chest layer
+            "not E_BG_Chest", Null(),
+            "E_BG_Chest == 'red sports bra'", "images/EmmaSprite/Emma_Sprite_Sportsbra_Red.png",   
+            "E_BG_Chest == 'white sports bra'", "images/EmmaSprite/Emma_Sprite_Sportsbra_White.png",   
+            "E_BG_Chest == 'black corset' and E_BG_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX_Black.png",   
+            "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_CorsetTits_Black.png",   
+            "E_BG_Chest == 'corset' and E_BG_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX.png",   
+            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_CorsetTits.png",  
+            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Bra_Sports.png",   
+            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Bra_Lace.png",   
+            "E_BG_Chest == 'NewX' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Up.png",   
+            "E_BG_Chest == 'NewX black' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewXBlack_Up.png",   
+            "E_BG_Chest == 'bikini' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_BikiniTits_Up.png",   
+            "E_BG_Chest == 'NewX' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Down.png",   
+            "E_BG_Chest == 'NewX black' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewXBlack_Down.png",   
+            "E_BG_Chest == 'bikini' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_BikiniTits_Down.png",   
+            "True", Null(),              
+            ),
+        (0,0), ConditionSwitch(
+            #cape layer       
+            "E_BG_Over or (E_BG_Chest != 'corset' and E_BG_Chest != 'black corset')", Null(),  
+            "Emma_Arms == 2 and E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Cape2.png",              
+            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Cape1.png", 
+            "Emma_Arms == 2 and E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Cape2_Black.png",              
+            "True", "images/EmmaSprite/EmmaSprite_Cape1_Black.png",
+            ), 
+        (0,0), ConditionSwitch(
+            #neck
+            "E_BG_Neck == 'black choker'", "images/EmmaSprite/EmmaSprite_Neck_Choker_Black.png",       
+            "E_BG_Neck == 'choker'", "images/EmmaSprite/EmmaSprite_Neck_Choker.png",       
+            "E_BG_Neck == 'NewX'", "images/EmmaSprite/EmmaSprite_Neck_NewX.png",       
+            "E_BG_Neck == 'NewX black'", "images/EmmaSprite/EmmaSprite_Neck_NewXBlack.png",       
+            "True", Null(), 
+            ),  
+        (0,0), ConditionSwitch(
+            #Overshirt layer
+            "not E_BG_Over", Null(),
+            "Emma_Arms == 2", ConditionSwitch(
+                    #if her arms are down, allowing her breasts to sink
+                    "E_BG_Over == 'jacket'", ConditionSwitch(
+                            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'NewX'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'NewX black'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",    
+                            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'white sports bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'red sports bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'bikini'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "True", "images/EmmaSprite/EmmaSprite_Jacket_2Down.png",
+                            ),
+                    "E_BG_Over == 'black jacket'", ConditionSwitch(
+                            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Jacket_2Up_Black.png",
+                            "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Jacket_2Up_Black.png",
+                            "E_BG_Chest == 'NewX'", "images/EmmaSprite/EmmaSprite_Jacket_2Up_Black.png",
+                            "E_BG_Chest == 'NewX black'", "images/EmmaSprite/EmmaSprite_Jacket_2Up_Black.png",
+                            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",    
+                            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'white sports bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'red sports bra'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "E_BG_Chest == 'bikini'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",
+                            "True", "images/EmmaSprite/EmmaSprite_Jacket_2Down_Black.png",
+                            ),
+                    "E_BG_Over == 'cape'", ConditionSwitch(
+                            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "E_BG_Chest == 'NewX'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "E_BG_Chest == 'NewX black'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",    
+                            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "E_BG_Chest == 'white sports bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "E_BG_Chest == 'red sports bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "E_BG_Chest == 'bikini'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+                            "True", "images/EmmaSprite/EmmaSprite_LongCape_TitsDown.png",
+                            ),
+                    "E_BG_Over == 'black cape'", ConditionSwitch(
+                            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "E_BG_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "E_BG_Chest == 'NewX'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "E_BG_Chest == 'NewX black'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",    
+                            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "E_BG_Chest == 'white sports bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "E_BG_Chest == 'red sports bra'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "E_BG_Chest == 'bikini'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+                            "True", "images/EmmaSprite/EmmaSprite_LongCape_TitsDown_Black.png",
+                            ),
+                    "E_BG_Over == 'nighty'", ConditionSwitch(
+                            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Nighty_2Up.png",
+                            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Nighty_2Up.png",    
+                            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Nighty_2Up.png",  
+                            "True", "images/EmmaSprite/EmmaSprite_Nighty_2Down.png",
+                            ),
+                    "E_BG_Over == 'towel'", ConditionSwitch(
+                            "E_BG_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Towel_Up2.png",
+                            "E_BG_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_Towel_Up2.png",
+                            "E_BG_Chest == 'sports bra'", "images/EmmaSprite/EmmaSprite_Towel_Up2.png",
+                            "True", "images/EmmaSprite/EmmaSprite_Towel_Down2.png",
+                            ),
+                    "True", Null(),
+                    ),
+            #if her arms are up, preventng her breasts from sinking
+            "E_BG_Over == 'jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up.png",
+            "E_BG_Over == 'black jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up_Black.png",
+            "E_BG_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",
+            "E_BG_Over == 'black cape'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",
+            "E_BG_Over == 'nighty'", "images/EmmaSprite/EmmaSprite_Nighty_1Up.png",      
+            "E_BG_Over == 'towel'", "images/EmmaSprite/EmmaSprite_Towel_Up1.png",               
+            "True", Null(), 
+            ),
+        (55,0), "EmmaSprite_Head_BG",  #Head
+        )
+    anchor (0.6, 0.0)                
+    zoom .75                
+
+image EmmaSprite_Head_BG:
+    LiveComposite(
+        (555,673), 
+        (0,0), ConditionSwitch(
+            #Face no blush not wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "E_BG_Blush or E_BG_Hair == 'wet' or E_BG_Water", Null(),        
+            "E_BG_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_Angry.png",
+            "E_BG_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_Sad.png",
+            "E_BG_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_Surprised.png",     
+            "E_BG_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_Confused.png", 
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_Normal.png", #E_BG_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(
+            #Face blush 1 not wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "E_BG_Blush != 1 or E_BG_Hair == 'wet' or E_BG_Water", Null(),        
+            "E_BG_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB1.png",
+            "E_BG_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB1.png",
+            "E_BG_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_SurprisedB1.png",   
+            "E_BG_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_ConfusedB1.png", 
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB1.png", #E_BG_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(
+            #Face blush 2 not wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "E_BG_Blush != 2 or E_BG_Hair == 'wet' or E_BG_Water", Null(),        
+            "E_BG_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB2.png",
+            "E_BG_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB2.png",
+            "E_BG_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_SurprisedB2.png",    
+            "E_BG_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_ConfusedB2.png", 
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB2.png", #E_BG_Brows == 'normal'
+            ),
+        
+         (0,0), ConditionSwitch(
+            #Face no blush wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "E_BG_Blush or (E_BG_Hair != 'wet' and not E_BG_Water)", Null(),        
+            "E_BG_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_Angry.png",
+            "E_BG_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_Sad.png",
+            "E_BG_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_Surprised.png",    
+            "E_BG_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_Confused.png",  
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_Normal.png", #E_BG_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(
+            #Face blush 1 wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "E_BG_Blush != 1 or (E_BG_Hair != 'wet' and not E_BG_Water)", Null(),        
+            "E_BG_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB1.png",
+            "E_BG_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB1.png",
+            "E_BG_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_SurprisedB1.png",    
+            "E_BG_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_ConfusedB1.png",    
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB1.png", #E_BG_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(
+            #Face blush 2 wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "E_BG_Blush != 2 or (E_BG_Hair != 'wet' and not E_BG_Water)", Null(),        
+            "E_BG_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB2.png",
+            "E_BG_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB2.png",
+            "E_BG_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_SurprisedB2.png",    
+            "E_BG_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_ConfusedB2.png",    
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB2.png", #E_BG_Brows == 'normal'
+            ),
+        
+        (0,0), ConditionSwitch(
+            #Mouths        
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "E_BG_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
+            "E_BG_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
+            "E_BG_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+            "E_BG_Mouth == 'kiss'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Kiss.png",
+            "E_BG_Mouth == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Sad.png",
+            "E_BG_Mouth == 'smile'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",
+            "E_BG_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+            "E_BG_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png",                
+            "E_BG_Mouth == 'grimace'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",                 
+            "E_BG_Mouth == 'smirk'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",         
+            "True", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
+            ),   
+        (0,0), "Emma Blink_BG", #Eyes        
+        (0,0), ConditionSwitch(                                                                         #brows
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            #"E_BG_Brows == 'normal' and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
+            #"E_BG_Brows == 'normal' and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
+            "E_BG_Brows == 'normal' and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
+            "E_BG_Brows == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
+            #"E_BG_Brows == 'angry' and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_White.png",
+            #"E_BG_Brows == 'angry' and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_Red.png",
+            "E_BG_Brows == 'angry' and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Angry.png",
+            "E_BG_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry.png",
+            #"E_BG_Brows == 'sad' and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_White.png",
+            #"E_BG_Brows == 'sad' and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_Red.png",
+            "E_BG_Brows == 'sad' and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Sad.png",
+            "E_BG_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad.png",
+            #"E_BG_Brows == 'surprised' and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_White.png",        
+            #"E_BG_Brows == 'surprised' and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_Red.png",        
+            "E_BG_Brows == 'surprised' and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Surprised.png",        
+            "E_BG_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised.png",        
+            #"E_BG_Brows == 'confused' and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_White.png",
+            #"E_BG_Brows == 'confused' and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_Red.png",
+            "E_BG_Brows == 'confused' and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Confused.png",
+            "E_BG_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused.png",
+            #"True and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
+            #"True and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
+            "True and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
+            "True", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
+            ),         
+        (0,0), ConditionSwitch(                                                                         #Hair
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "not E_BG_Hair", Null(),
+            "(E_BG_Hair == 'wet' or E_BG_Water) and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairWet_White.png",
+            "(E_BG_Hair == 'wet' or E_BG_Water) and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairWet_Red.png",
+            "(E_BG_Hair == 'wet' or E_BG_Water) and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackWet.png",
+            "E_BG_Hair == 'wet' or E_BG_Water", "images/EmmaSprite/EmmaSprite_Head_HairWet.png",
+            "E_BG_Hair and E_BG_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hair_White.png",
+            "E_BG_Hair and E_BG_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hair_Red.png",
+            "E_BG_Hair and E_BG_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlack.png",
+            "E_BG_Hair", "images/EmmaSprite/EmmaSprite_Head_Hair.png",
+            "True", Null(),
+            ),        
+        (0,0), ConditionSwitch(                                                                         #Hair Water
+            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "not E_BG_Water", Null(),
+            "E_BG_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+            "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+            ),
+        )
+    anchor (0.6, 0.0)                
+    zoom .5   
+
+image Emma Blink_BG:
+    ConditionSwitch(
+    "E_BG_Eyes == 'sexy'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Sexy.png",
+    "E_BG_Eyes == 'side'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Side.png",
+    "E_BG_Eyes == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Surprised.png",
+    "E_BG_Eyes == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Normal.png",    
+    "E_BG_Eyes == 'stunned'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Agao.png",
+    "E_BG_Eyes == 'down'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Down.png",
+    "E_BG_Eyes == 'closed'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Closed.png",
+    "E_BG_Eyes == 'manic'", "images/EmmaSprite/EmmaSprite_Head_Eyes_Surprised.png",
+    "E_BG_Eyes == 'squint'", "Emma_Squint_BG",
+    "True", "images/EmmaSprite/EmmaSprite_Head_Eyes_Normal.png", 
+    ),
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3    
+    "images/EmmaSprite/EmmaSprite_Head_Eyes_Closed.png"
+    .25
+    repeat                
+
+image Emma_Squint_BG:
+    "images/EmmaSprite/EmmaSprite_Head_Eyes_Sexy.png"
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3    
+    "images/EmmaSprite/EmmaSprite_Head_Eyes_Squint.png"
+    .25
+    repeat 
+# End Emma Sprite / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+
 label Define_Outfit_BG:
     default L_BG_Arms = "wrists"                  #her gloves
     default L_BG_Legs = "mesh pants"
@@ -1304,3 +1793,16 @@ label Define_Outfit_BG:
     default E_BG_Tan = 0
     # default E_BG_Gloves = "black gloves"
     default E_BG_DynamicTan = [0,0,0,0,0]
+    default E_BG_BodySuit = 0
+    default E_BG_Upskirt = 0
+    default E_BG_PantiesDown = 0
+    default E_BG_Brows = 0
+    default E_BG_Eyes = 0
+    default E_BG_Mouth = 0
+    default E_BG_Gag = 0
+    default E_BG_Blindfold = 0
+
+    default E_BG_Girl_Arms = 2
+    default E_BG_Wet = 0
+    default E_BG_Blush = 1
+    default E_BG_Water = 0
