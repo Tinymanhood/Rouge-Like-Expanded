@@ -1736,6 +1736,8 @@ label Emma_Offhand(TempLine=0):
         return    
     if not PrimaryLust:
         $ PrimaryLust = 0
+    if not TempFocus:
+        $ TempFocus = 0
     
     if Trigger2 == "kissing":
                 $ Line = renpy.random.choice([". Your lips gently slide across hers.", 
