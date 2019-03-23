@@ -504,6 +504,11 @@ init python:
                 LocalTempmod = Tempmod * 10
         
         TabM = 0 if TabM <= 0 else TabM #test this, makes sure TabM is positive
+
+        if Check:
+                #this returns the actual value of the tested stat.
+                Check = (L + O + I + Bonus + (TmpM * LocalTempmod) - (TabM * LocalTaboo))
+                return Check  
         
         if (L + O + I + Bonus + (TmpM * LocalTempmod) - (TabM * LocalTaboo)) >= (T + (2 * Spread)):                           
                 #She passes and loves it
