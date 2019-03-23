@@ -2144,6 +2144,22 @@ label Remove_Girl(Girl = 0, HideGirl = 1):
                 if HideGirl:
                     hide Mystique_Sprite
                     call Mystique_Hide from _call_Mystique_Hide
+
+    if Girl == "Laura" or Girl == "All": 
+            if "Laura" in Party:        
+                    $ Party.remove("Laura")
+            if "leaving" in newgirl["Laura"].RecentActions:
+                    call DrainWord("Laura","leaving")
+            if "arriving" in newgirl["Laura"].RecentActions:
+                    call DrainWord("Laura","arriving")
+            if bg_current == newgirl["Laura"].Loc: 
+                if bg_current == "bg Laura":
+                    $ newgirl["Laura"].Loc = "bg campus"
+                else:
+                    $ newgirl["Laura"].Loc = "bg Laura"
+                if HideGirl:
+                    hide Laura_Sprite
+                    call Laura_Hide
     #end of Remove Girl
     return
     
