@@ -22,8 +22,8 @@ image Background:
     contains:
         ConditionSwitch(                                                                          # Zero cock sucking
             "renpy.game.preferences.background_choices == 'modded1'", "images/titleimage_new.jpg", 
-            "renpy.game.preferences.background_choices == 'original'", "images/titleimage.png", 
-            "renpy.game.preferences.background_choices == 'modded2'", "images/titleimage2.jpg", 
+            "renpy.game.preferences.background_choices == 'original'", "images/titleimage.jpg", 
+            "renpy.game.preferences.background_choices == 'modded2'", "images/titleimage2.png", 
             "True", "images/titleimage_new.jpg",
             ),  
     contains:
