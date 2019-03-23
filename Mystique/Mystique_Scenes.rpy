@@ -18,7 +18,7 @@ label MystiqueMeet:
         
     "You enter the classroom and take a seat." 
     "The bell rings to class, but Professor McCoy seems to be late."
-    "A strange woman enters the room and heads to the podium with a regal stride."
+    "A woman enters the room and heads to the podium with a smile."
     call NewGirl_Face("Mystique","normal")
     show Mystique_Sprite at SpriteLoc(Mystique_SpriteLoc) with easeinright     
     $ newgirl["Mystique"].Loc = "bg classroom" 
@@ -43,7 +43,7 @@ label MystiqueMeet:
     call CleartheRoom("Mystique",0,1)
     $ newgirl["Mystique"].Loc = "bg classroom" 
     call Set_The_Scene
-    ch_m "All right students, class dismissed."
+    ch_m "All right students, you may leave."
     ch_m "[newgirl[Mystique].Petname], could you stay a moment, I have something to ask of you before your next class starts."    
     menu:
         extend ""
@@ -67,7 +67,7 @@ label MystiqueMeet:
                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 25, 15)  
                 ch_m "But also true, so I can't criticize you too harshly."
     
-    ch_m "I've heard about you from Professor Xavier and. . . others." 
+    ch_m "Professor Xavier and others told me about you." 
     
     if P_Rep <= 200:
         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)

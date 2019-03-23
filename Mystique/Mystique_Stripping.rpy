@@ -870,7 +870,7 @@ label Mystique_First_Topless(Silent = 0, TempLine = 0):
                 ch_m "I do aim to impress."
                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 40, 20)  
                 $ newgirl["Mystique"].Blush = 0
-            ". . . [[stunned]":            
+            ". . . [[EXCELSIOR!]":            
                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 20)
                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 70, 30)
                 ch_m "Yes, that would be the usual reaction."
@@ -1395,7 +1395,7 @@ label Mystique_First_Bottomless(Silent = 0):
         "You find yourself staring at Mystique's bare pussy."        
         menu:        
             extend ""
-            "Niiice. . .":            
+            "Delicious. . .":            
                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 20)
                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 60, 25)            
                 call MystiqueFace("smile")          
