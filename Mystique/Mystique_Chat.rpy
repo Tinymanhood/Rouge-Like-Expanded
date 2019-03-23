@@ -279,9 +279,6 @@ label Mystique_Chat:
 
         "Talk with Kitty" if K_Loc == bg_current:
                 jump Kitty_Chat
-
-        "Talk with Laura" if newgirl["Laura"].Loc == bg_current:
-                jump Laura_Chat
                 
         "Never mind.":
                    return
@@ -1122,7 +1119,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
 
     elif Options[0] == "sleepover":
             #Mystique's response after sleeping with the Player.
-            ch_m "I  totally can't stop thinking about the other night.  It was {i}so{/i} perfect."
+            ch_m "I can't stop thinking about the other night.  It was {i}so{/i} nice."
 
     elif Options[0] == "creampie":
             #Another of Mystique's responses after having sex with the Player.
@@ -1142,7 +1139,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
             call NewGirl_Face("Mystique","sly",2)
             ch_m "Y'know. . .after you fucked my ass, I'm kinda having trouble sitting down."
             call NewGirl_Face("Mystique","sexy",2)
-            ch_m "But i {i}really{/i} like it, though."
+            ch_m "But i {i}really{/i} like it."
             $ newgirl["Mystique"].Blush = 1
         
     elif Options[0] == "boyfriend?":
