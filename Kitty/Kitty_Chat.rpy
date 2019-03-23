@@ -3569,6 +3569,33 @@ label Kitty_Clothes:
                                 call Kitty_OutfitShame(9,1) 
                     "Never mind":
                                 pass
+        "Save as main menu background clothes.":
+                "This option will save this Kitty at the main menu background, are you sure?"
+                menu:
+                    "Yes":
+                        "do it"
+                        $ persistent.K_BG_Over = K_Over
+                        $ persistent.K_BG_Chest = K_Chest
+                        $ persistent.K_BG_Neck = K_Neck
+                        $ persistent.K_BG_Legs = K_Legs
+                        $ persistent.K_BG_Panties = K_Panties
+                        # $ persistent.K_BG_Arms = K_Arms  #arm pose
+                        $ persistent.K_BG_Gloves = K_Gloves
+                        $ persistent.K_BG_Tan = K_Tan
+                        $ persistent.K_BG_DynamicTan = K_DynamicTan
+                        $ persistent.K_BG_Pierce = K_Pierce
+                        $ persistent.K_BG_Hair = K_Hair
+                        $ persistent.K_BG_Water = K_Water
+                        $ persistent.K_BG_HairColor = K_HairColor
+                        $ persistent.K_BG_Pubes = K_Pubes
+                        $ persistent.K_BG_Hose = K_Hose
+                        $ persistent.K_BG_Headband = K_Headband
+                        $ persistent.K_BG_Gag = K_Gag
+                        $ persistent.K_BG_Blindfold = K_Blindfold
+                        # $ persistent.K_BG_Boots = K_Boots
+
+                    "No":
+                        pass
         "Never mind, you look good like that.":
                 if "wardrobe" not in K_RecentActions: 
                         #Apply stat boosts only if it's the first time this turn 

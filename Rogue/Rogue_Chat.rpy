@@ -4290,6 +4290,36 @@ label Rogue_Clothes:
                                 call Rogue_OutfitShame(9,1) from _call_Rogue_OutfitShame_9     
                     "Never mind":
                                 pass
+        "Save as main menu background clothes.":
+                "This option will save this Rogue at the main menu background, are you sure?"
+                menu:
+                    "Yes":
+                        "do it"
+                        $ persistent.R_BG_Over = R_Over
+                        $ persistent.R_BG_Chest = R_Chest
+                        $ persistent.R_BG_BodySuit = R_BodySuit
+                        $ persistent.R_BG_Neck = R_Neck
+                        $ persistent.R_BG_Legs = R_Legs
+                        $ persistent.R_BG_Panties = R_Panties
+                        $ persistent.R_BG_Arms = R_Arms
+                        $ persistent.R_BG_Accessory = R_Accessory
+                        $ persistent.R_BG_Glasses = R_Glasses
+                        # $ persistent.R_BG_Gloves = R_Gloves
+                        $ persistent.R_BG_Tan = R_Tan
+                        # $ persistent.R_BG_DynamicTan = R_DynamicTan
+                        $ persistent.R_BG_Pierce = R_Pierce
+                        $ persistent.R_BG_Hair = R_Hair
+                        $ persistent.R_BG_Water = R_Water
+                        $ persistent.R_BG_HairColor = R_HairColor
+                        $ persistent.R_BG_Pubes = R_Pubes
+                        $ persistent.R_BG_Hose = R_Hose
+                        $ persistent.R_BG_Headband = R_Headband
+                        $ persistent.R_BG_Gag = R_Gag
+                        # $ persistent.R_BG_Blindfold = R_Blindfold
+                        $ persistent.R_BG_Boots = R_Boots
+
+                    "No":
+                        pass
                                 
         "Never mind, you look good like that. [[return]":            
                 if "wardrobe" not in R_RecentActions:  

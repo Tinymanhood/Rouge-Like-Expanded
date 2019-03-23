@@ -3516,6 +3516,36 @@ label Laura_Clothes:
                                 call Laura_OutfitShame(9,1)
                     "Never mind":
                                 pass
+        "Save as main menu background clothes.":
+                "This option will save this Rogue at the main menu background, are you sure?"
+                menu:
+                    "Yes":
+                        "do it"
+                        $ persistent.L_BG_Over = newgirl["Laura"].Over
+                        $ persistent.L_BG_Chest = newgirl["Laura"].Chest
+                        # $ persistent.L_BG_BodySuit = newgirl["Laura"].BodySuit
+                        $ persistent.L_BG_Neck = newgirl["Laura"].Neck
+                        $ persistent.L_BG_Legs = newgirl["Laura"].Legs
+                        $ persistent.L_BG_Panties = newgirl["Laura"].Panties
+                        $ persistent.L_BG_Arms = newgirl["Laura"].Arms
+                        # $ persistent.L_BG_Accessory = newgirl["Laura"].Accessory
+                        # $ persistent.L_BG_Glasses = newgirl["Laura"].Glasses
+                        # $ persistent.L_BG_Gloves = newgirl["Laura"].Gloves
+                        # $ persistent.L_BG_Tan = newgirl["Laura"].Tan
+                        # $ persistent.L_BG_DynamicTan = newgirl["Laura"].DynamicTan
+                        $ persistent.L_BG_Pierce = newgirl["Laura"].Pierce
+                        $ persistent.L_BG_Hair = newgirl["Laura"].Hair
+                        # $ persistent.L_BG_Water = newgirl["Laura"].Water
+                        # $ persistent.L_BG_HairColor = newgirl["Laura"].HairColor
+                        $ persistent.L_BG_Pubes = newgirl["Laura"].Pubes
+                        $ persistent.L_BG_Hose = newgirl["Laura"].Hose
+                        # $ persistent.L_BG_Headband = newgirl["Laura"].Headband
+                        # $ persistent.L_BG_Gag = newgirl["Laura"].Gag
+                        # $ persistent.L_BG_Blindfold = newgirl["Laura"].Blindfold
+                        # $ persistent.L_BG_Boots = newgirl["Laura"].Boots
+
+                    "No":
+                        pass
 
         "Never mind, you look good like that.":
                 if "wardrobe" not in newgirl["Laura"].RecentActions: 
