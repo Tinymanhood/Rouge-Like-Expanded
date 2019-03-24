@@ -2178,7 +2178,7 @@ label Laura_Taboo(Cnt= 1):
         if Taboo > 20:
             if (Trigger == "kiss you" and not Trigger2 and not Trigger3):
                 pass
-            elif "Laura" not in Rules:
+            elif newgirl["Laura"].Rules:
                 #if Xavier is looking. . .
                 call LauraFace("surprised", 1)
                 if Trigger == "blow" or Trigger == "hand" or Trigger == "titjob":

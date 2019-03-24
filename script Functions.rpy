@@ -4492,7 +4492,18 @@ label LikeUpdater(Primary = "Rogue", Value = 1, Noticed = 1):
     return
     
 # End LikeUpdater / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
-      
+label Girls_Noticed(Primary="Rogue"):
+    #Checks to see if some other girl noticed the primary in action.
+    if R_Loc == bg_current and Primary != "Rogue":
+                call Rogue_Noticed(Primary)
+    if K_Loc == bg_current and Primary != "Kitty":
+                call Kitty_Noticed(Primary)
+    if newgirl["Laura"].Loc == bg_current and Primary != "Laura":
+                call Laura_Noticed(Primary)
+    if E_Loc == bg_current and Primary != "Emma":
+                call Emma_Noticed(Primary)
+    return
+
 label Partner_Threechange(Girl=0):  
         # this routine thorws it to the specific character's threresome activity change
         # Girl is the lead of the encounter, this is called from Threesome actions during sex scenes
@@ -5914,7 +5925,7 @@ label Failsafe:
     $ bg_current = "bg study" if "bg_current" not in globals().keys() else bg_current
     $ Party = [] if "Party" not in globals().keys() else Party
     $ Taboo = 0 if "Taboo" not in globals().keys() else Taboo
-    $ Rules = 1 if "Rules" not in globals().keys() else Rules
+    $ Rules = [] if "Rules" not in globals().keys() else Rules
     $ R_Rules = 1 if "R_Rules" not in globals().keys() else R_Rules
     $ K_Rules = 1 if "K_Rules" not in globals().keys() else K_Rules
     $ E_Rules = 1 if "E_Rules" not in globals().keys() else E_Rules

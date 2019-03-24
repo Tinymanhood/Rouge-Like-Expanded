@@ -134,7 +134,7 @@ init -1:
     default bg_current = "bg study"
     default Party = []
     default Taboo = 0
-    default Rules = 1
+    default Rules = []
     default R_Rules = 1
     default K_Rules = 1
     default E_Rules = 1
@@ -693,6 +693,8 @@ label VersionNumber:
     # if SaveVersion < 978:
     # if "Jean" not in newgirl.keys():
     #     $ newgirl["Jean"] = Girlnew("Jean")
+    if Rules == 1:
+        $ Rules = []
     if R_Gym == [2,"gloved",0,"hoodie",0,"sports bra","shorts",0,0,0,0,0,0,0,0,0,0]:
         $ R_Gym = [2,"gloved","shorts","hoodie",0,"sports bra",0,0,0,0,0,0,0,0,0,0,0]
     if len(R_Custom) < 16:
