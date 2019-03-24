@@ -274,7 +274,7 @@ label Laura_HJ_Prep:
         $ newgirl["Laura"].Eyes = "sexy"
         $ newgirl["Laura"].Mouth = "smile"
     
-    call Seen_First_Peen("Laura",Partner)
+    call Seen_First_Peen(1)
     call Laura_HJ_Launch("L")
     if not newgirl["Laura"].Hand:        
         if newgirl["Laura"].Forced:
@@ -872,7 +872,7 @@ label Laura_TJ_Prep:
         $ newgirl["Laura"].Eyes = "sexy"
         $ newgirl["Laura"].Mouth = "smile"
         
-    call Seen_First_Peen("Laura",Partner)
+    call Seen_First_Peen(1)
     call Laura_TJ_Launch("L")    
     if not newgirl["Laura"].Tit:        
         if newgirl["Laura"].Forced:
@@ -1469,7 +1469,7 @@ label Laura_BJ_Prep:
         $ newgirl["Laura"].Eyes = "sexy"
         $ newgirl["Laura"].Mouth = "smile"
     
-    call Seen_First_Peen("Laura",Partner)
+    call Seen_First_Peen(1)
     call Laura_BJ_Launch("L")
     if not newgirl["Laura"].Blow:        
         if newgirl["Laura"].Forced:
@@ -3329,7 +3329,7 @@ label Laura_FJ_Prep:
         $ newgirl["Laura"].Eyes = "sexy"
         $ newgirl["Laura"].Mouth = "smile"
     
-    call Seen_First_Peen("Laura",Partner)
+    call Seen_First_Peen(1)
     
     if not newgirl["Laura"].Foot:        
         if newgirl["Laura"].Forced:
@@ -3689,7 +3689,7 @@ label Laura_Les_Interupted:
                             else:
                                     $ Tempmod -= 10
                                     $ newgirl["Laura"].Lust = Statupdate("Laura", "Lust", newgirl["Laura"].Lust, 200, -5)
-                call Seen_First_Peen("Laura",Partner) 
+                call Seen_First_Peen(1) 
         else:         
                 #you haven't been jacking it         
                 menu:                    

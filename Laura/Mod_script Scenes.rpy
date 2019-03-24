@@ -1070,7 +1070,7 @@ label Sleepover_MorningWood:
         $ Count = 3
         $ Line = 0
         $ P_RecentActions.append("cockout")
-        call Seen_First_Peen(Party[0],Partner,1,1,1)
+        call Seen_First_Peen(1)
                          
         while Count > 0:
                 #Looping portion

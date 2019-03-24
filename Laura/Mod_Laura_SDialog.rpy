@@ -2367,7 +2367,7 @@ label Laura_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                         $ Action = "masturbation"  
                         call Laura_Self_Lines("T5",Trigger5)
             elif Options[0] == "hand":
-                        call Seen_First_Peen("Laura",ActiveGirl,React=1)
+                        call Seen_First_Peen(1)
                         $ Line = Line + " before she slides her hand down and firmly grabs your dick"
                         $ Action = "hand"   
                         show Laura zorder newgirl["Laura"].GirlLayer:
@@ -2379,7 +2379,7 @@ label Laura_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                         $ TempLust += 2 if newgirl["Laura"].Hand > 2 else 0
                         $ newgirl["Laura"].Addict -= 1 if D20 > 10 else 2
             elif Options[0] == "blow":
-                        call Seen_First_Peen("Laura",ActiveGirl,React=1)
+                        call Seen_First_Peen(1)
                         $ Line = Line + " before she slides down and begins to slowly lick your cock"
                         show Laura zorder newgirl["Laura"].GirlLayer:
                                 ease 1 ypos 200 

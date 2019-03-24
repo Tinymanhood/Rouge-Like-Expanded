@@ -383,7 +383,7 @@ label Laura_Jackin(Cnt = 0, TempVar = 0):
             else:
                     "You whip out your cock and start working it." 
                     $ P_RecentActions.append("cockout")
-                    call Seen_First_Peen("Laura",Partner) 
+                    call Seen_First_Peen(1) 
             
             $ Trigger2 = "jackin"
             if "jackin" in newgirl["Laura"].RecentActions:
@@ -1814,7 +1814,7 @@ label LM_Interupted:
                                     else:
                                             $ Tempmod -= 10
                                             $ newgirl["Laura"].Lust = Statupdate("Laura", "Lust", newgirl["Laura"].Lust, 200, -5)
-                        call Seen_First_Peen("Laura",Partner) 
+                        call Seen_First_Peen(1) 
                                     
                 #you haven't been jacking it                    
                 else:         
