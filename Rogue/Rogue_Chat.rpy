@@ -2922,7 +2922,63 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 if Taboo:              
                     call Quick_Taboo("Emma") from _call_Quick_Taboo_6
     # End Emma's options
-    
+    elif chr == "Laura":
+                $ Store = newgirl["Laura"].Legs
+                $ Store2 = newgirl["Laura"].Hose
+                
+                if newgirl["Laura"].Legs == "pants" or newgirl["Laura"].Legs == "yoga pants":    
+                    $ newgirl["Laura"].Legs = 0        
+                if newgirl["Laura"].Legs == "skirt": 
+                    $ newgirl["Laura"].Upskirt = 1
+                if HoseNum("Laura") >= 5:
+                    $ newgirl["Laura"].Hose = 0        
+                $ newgirl["Laura"].Panties = 0  
+                    
+                if Taboo:
+                        if Store == "pants" or newgirl["Laura"].Legs == "yoga pants":
+                            "Laura looks around, but pulls her pants clean off and her panties with them."
+                        elif Store == "skirt" and Store2 != newgirl["Laura"].Hose:
+                            "Laura looks around, hikes up her skirt, pulls her [Store2] clean off and her panties with them."
+                        elif Store == "skirt":               
+                            "Laura looks around, reaches under her skirt, and pulls her panties down."
+                        elif Store2 != newgirl["Laura"].Hose:  
+                            "Laura looks around, but pulls her [Store2] clean off and her panties with them." 
+                        else:  
+                            "Laura looks around, but pulls her panties off." 
+                else: #Not Taboo
+                        if Store == "pants" or newgirl["Laura"].Legs == "yoga pants":
+                            "Laura glances at you and pulls her pants clean off and her panties with them."
+                        elif Store == "skirt" and Store2 != newgirl["Laura"].Hose:
+                            "Laura glances at you, hikes up her skirt, pulls her [Store2] clean off and her panties with them."
+                        elif Store == "skirt":
+                            "Laura glances at you, reaches under her skirt, and pulls her panties down."
+                        elif Store2 != newgirl["Laura"].Hose:
+                            "Laura glances at you and pulls her [Store2] clean off and her panties with them."
+                        else:
+                            "Laura glances at you and pulls her panties off."
+                        
+                $ newgirl["Laura"].Legs = Store  
+                $ newgirl["Laura"].Hose = Store2      
+                if newgirl["Laura"].Legs == "pants" or newgirl["Laura"].Legs == "yoga pants":
+                    "She hands you the panties and then pulls her pants back on."
+                elif newgirl["Laura"].Legs == "skirt" and HoseNum("Laura") >= 5:
+                    "She hands you the panties and then pulls her [newgirl[Laura].Hose] back on and her skirt back down."  
+                    $ newgirl["Laura"].Upskirt = 0
+                elif newgirl["Laura"].Legs == "skirt":        
+                    "She hands you the panties and then pulls her skirt back down."  
+                    $ newgirl["Laura"].Upskirt = 0    
+                elif HoseNum("Laura") >= 5:
+                    "She hands you the panties and then pulls her [newgirl[Laura].Hose] back on."  
+                else:
+                    "Laura hands them to you in a ball." 
+                
+                call Laura_First_Bottomless(1) 
+                $ newgirl["Laura"].DailyActions.append("pantyless")
+                call LauraOutfit
+                if Taboo:              
+                    call Quick_Taboo("Laura")
+    # End Laura's options
+
     return
     # End Ask for Panties //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     

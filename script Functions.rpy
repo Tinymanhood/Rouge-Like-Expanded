@@ -771,6 +771,42 @@ init python:
                         if newgirl[Chr].Panties:
                             C += 1
                 return C 
+
+    def GirlLikeCheck(GirlA=0,GirlB=0):
+            # returns how much A likes B
+            # if GirlLikeCheck("Rogue","Kitty") >= 500:
+            
+            if GirlA == "Rogue":  
+                    if GirlB == "Kitty":
+                                return R_LikeKitty
+                    elif GirlB == "Emma":
+                                return R_LikeEmma
+                    elif GirlB in ModdedGirls:
+                                return R_LikeNewGirl[GirlB]
+            elif GirlA == "Kitty":  
+                    if GirlB == "Rogue":
+                                return K_LikeRogue
+                    elif GirlB == "Emma":
+                                return K_LikeEmma
+                    elif GirlB in ModdedGirls:
+                                return K_LikeNewGirl[GirlB]
+            elif GirlA == "Emma":  
+                    if GirlB == "Rogue":
+                                return E_LikeRogue
+                    elif GirlB == "Kitty":
+                                return E_LikeKitty
+                    elif GirlB in ModdedGirls:
+                                return E_LikeNewGirl[GirlB]
+            elif GirlA in ModdedGirls:  
+                    if GirlB == "Rogue":
+                                return newgirl[GirlA].LikeRogue
+                    elif GirlB == "Kitty":
+                                return newgirl[GirlA].LikeKitty
+                    elif GirlB == "Emma":
+                                return newgirl[GirlA].LikeEmma
+                    elif GirlB in ModdedGirls:
+                                return newgirl[GirlA].LikeNewGirl[GirlB]
+            return 0
             
 
 
@@ -2002,6 +2038,11 @@ label Present_Check(Present = []):
         $ newgirl["Mystique"].Loc = bg_current
     elif newgirl["Mystique"].Loc == bg_current:       
                     $ Present.append("Mystique")
+
+    if "Laura" in Party: 
+        $ newgirl["Laura"].Loc = bg_current
+    elif newgirl["Laura"].Loc == bg_current:       
+                    $ Present.append("Laura")
         
     
     $ renpy.random.shuffle(Present) #Randomizes pool
@@ -2070,10 +2111,10 @@ label Present_Check(Present = []):
                 call Shift_Focus("Emma") from _call_Shift_Focus_109
             elif "Mystique" in Present:
                 call Shift_Focus("Mystique") from _call_Shift_Focus_110
-    else: #Ch_Focus == "Mystique":
+    else: #Ch_Focus == "Mystique" or "Laura":
             # if the focus is not one of the above, if Kitty or Emma are around, 
             # and Rogue isn't, swap, otherwise don't. 
-            if "Mystique" in Present:
+            if Ch_Focus in Present:
                 pass        
             elif "Kitty" in Present:
                 call Shift_Focus("Kitty") from _call_Shift_Focus_111

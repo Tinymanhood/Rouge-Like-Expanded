@@ -4030,7 +4030,7 @@ label Laura_Clothes:
             ch_l "Ok."
             $ newgirl["Laura"].Chest = "leather bra"           
             
-        "I like that corset." if newgirl["Laura"].Chest != "corset":
+        "I like that corset." if newgirl["Laura"].Chest != "corset" and "corset" in newgirl["Laura"].Inventory:
             if newgirl["Laura"].SeenChest or ApprovalCheck("Laura", 1300, TabM=2):
                 ch_l "K."   
                 $ newgirl["Laura"].Chest = "corset"         

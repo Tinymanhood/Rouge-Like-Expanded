@@ -406,7 +406,7 @@ label EHJ_Cycle:
                                             else:
                                                 ch_e "Actually I'm getting a bit worn out, let's finish up here. . ."
                                        
-                        "I also want to fondle her breasts." if E_Action and MultiAction:
+                        "I also want to fondle her breasts." if E_Action and MultiAction and Trigger2 != "fondle breasts":
                                     $ Trigger2 = "fondle breasts"
                                     $ Situation = "auto"
                                     call E_Fondle_Breasts from _call_E_Fondle_Breasts
@@ -989,7 +989,7 @@ label EBJ_Cycle: #Repeating strokes
                                             ch_e "I'm kinda tired, could we just wrap this up. . ."
                         
                                         
-                        "I also want to fondle her breasts.":
+                        "I also want to fondle her breasts." if Trigger2 != "fondle breasts":
                                 if E_Action and MultiAction:
                                     $ Trigger2 = "fondle breasts"
                                     "You start to fondle her breasts."
@@ -1566,7 +1566,7 @@ label ETJ_Cycle: #Repeating strokes
                     call E_Handjob from _call_E_Handjob_2
                 else:
                     ch_e "Actually I'm getting a bit worn out, let's finish up here. . ."
-            "I also want to fondle her breasts." if E_Action and MultiAction:
+            "I also want to fondle her breasts." if E_Action and MultiAction and Trigger2 != "fondle breasts":
                 $ Trigger2 = "fondle breasts"
                 $ Situation = "auto"
                 call E_Fondle_Breasts from _call_E_Fondle_Breasts_1

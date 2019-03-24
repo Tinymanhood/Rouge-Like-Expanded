@@ -568,7 +568,7 @@ init -1:
     default E_Custom5 = [0,0,0,0,0,0,0,0,0,0,0]    
     default E_Custom6 = [0,0,0,0,0,0,0,0,0,0,0]    
     default E_Custom7 = [0,0,0,0,0,0,0,0,0,0,0]    
-    default E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]
+    default E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,"white thigh high",0]
     default E_Sleepwear = [0,0,0,0,0,"corset","white panties",0,0,0]
     default E_Schedule = [0,0,0,0,0,0,0,0,4,0]                      #chooses when she wears what
     default EmmaLayer = 101

@@ -1736,78 +1736,85 @@ label Rogue_Daddy:
 
 # end Rogue_Daddy//////////////////////////////////////////////////////////
 
-# Start RogueBreakup //////////////////////////////////////////////////////////   
-
-label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, you want this over 2 at least. B is the bonus modifier
+label Rogue_Cheated(Other = "Kitty", Resolution = 0, B = 0):  #Resolution is Resolution count, you want this over 2 at least. B is the bonus modifier
     $ R_DailyActions.append("relationship")
-    call Shift_Focus("Rogue") from _call_Shift_Focus_77
+    call Shift_Focus("Rogue")
     
-    call RogueFace("angry") from _call_RogueFace_215 
+    call RogueFace("angry") 
     if R_Loc != bg_current and "Rogue" not in Party:
         "Suddenly, Rogue shows up and says she needs to talk to you."   
     $ Rogue_Arms = 1        
     $ R_Loc = bg_current
-    call Set_The_Scene(0) from _call_Set_The_Scene_106
-    call Display_Rogue from _call_Display_Rogue_12
-    call CleartheRoom("Rogue") from _call_CleartheRoom_11
-    call Taboo_Level from _call_Taboo_Level_29
+    call Set_The_Scene(0)
+    call Display_Rogue
+    call CleartheRoom("Rogue")
+    call Taboo_Level
     
-    if "saw with kitty" in R_Traits:
+    if Other == "Kitty":
         if R_LikeKitty >= 900:
             $ Resolution += 2
         elif R_LikeKitty >= 800:
             $ Resolution += 1
-        $ B = int((R_LikeKitty - 500)/2)
-    
+        $ B = int((R_LikeKitty - 500)/2)     
+    elif Other == "Emma":
+        if R_LikeEmma >= 900:
+            $ Resolution += 2
+        elif R_LikeEmma >= 800:
+            $ Resolution += 1
+        $ B = int((R_LikeEmma - 500)/2)  
+    elif Other == "Laura":
+        if R_LikeNewGirl["Laura"] >= 900:
+            $ Resolution += 2
+        elif R_LikeNewGirl["Laura"] >= 800:
+            $ Resolution += 1
+        $ B = int((R_LikeNewGirl["Laura"] - 500)/2)  
+        
     $ Resolution -= R_Cheated if R_Cheated <= 3 else 3 #Adds to Resolution 3 or less based on cheating
     
     if R_Cheated:
-        $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -50) 
-        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -20)
-        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, -50)    
+        call Statup("Rogue", "Love", 200, -50) 
+        call Statup("Rogue", "Obed", 80, -20)
+        call Statup("Rogue", "Inbt", 50, -50)    
         ch_r "Why're you screw'in around on me again?"
     else:
-        $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -100) 
-        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -30)
-        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, -20)  
+        call Statup("Rogue", "Love", 200, -100) 
+        call Statup("Rogue", "Obed", 80, -30)
+        call Statup("Rogue", "Inbt", 50, -20)  
         ch_r "What the hell was that about earlier?"  
         
     menu:
             extend ""
             "I'm sorry.":
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 30) 
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -10)
+                call Statup("Rogue", "Love", 90, 30) 
+                call Statup("Rogue", "Obed", 80, -10)
                 $ Line = "sorry"     
                 $ Resolution += 1
                 
             "What do you mean?":
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10) 
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 15)
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 5)   
+                call Statup("Rogue", "Love", 200, -10) 
+                call Statup("Rogue", "Obed", 80, 15)
+                call Statup("Rogue", "Inbt", 80, 5)   
                 
-                if "saw with kitty" in R_Traits:
-                    ch_r "I {i}mean{/i} you screwing around with Kitty like that."
-                else:
-                    ch_r "You {i}know{/i} what I mean."
+                ch_r "I {i}mean{/i} you screwing around with [Other]!"
                     
                 menu:
                         extend ""
                         "Oh! I'm sorry!":         
-                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 20) 
-                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -10)           
+                            call Statup("Rogue", "Love", 90, 20) 
+                            call Statup("Rogue", "Obed", 80, -10)           
                             $ Line = "sorry"
                         "Oh, that. Yeah.":
-                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -20) 
-                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 10)  
+                            call Statup("Rogue", "Love", 200, -20) 
+                            call Statup("Rogue", "Obed", 80, 10)  
                             $ Line = "yeah"
                             $ Resolution -= 1
                         
-            "You mean with Kitty?" if "saw with kitty" in R_Traits:
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -15) 
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 20)
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 10)  
+            "You mean with [Other]?":
+                call Statup("Rogue", "Love", 200, -15) 
+                call Statup("Rogue", "Obed", 80, 20)
+                call Statup("Rogue", "Inbt", 80, 10)  
                 
-                ch_r "Yes, \"I mean with Kitty.\"" 
+                ch_r "Yes, \"I mean with [Other].\"" 
                 if R_Cheated:
                     ch_r "Y'all were screwing around behind my back! Again!"
                 else:
@@ -1815,21 +1822,18 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
                 menu: 
                         extend ""
                         "Oh! I'm sorry!":
-                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 15) 
-                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -10)                            
+                            call Statup("Rogue", "Love", 90, 15) 
+                            call Statup("Rogue", "Obed", 80, -10)                            
                             $ Line = "sorry"
                         "Oh, yeah.":
-                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -20) 
-                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 10)  
+                            call Statup("Rogue", "Love", 200, -20) 
+                            call Statup("Rogue", "Obed", 80, 10)  
                             $ Line = "yeah"
                             $ Resolution -= 2
     
     if Line == "sorry":  
         $ R_Eyes = "side"
-        if "saw with kitty" in R_Traits:
-            ch_r "Well 'course you are, but that don't make it right. Screwing around with Kitty like that. . ."
-        else:
-            ch_r "Well 'course you are, but that don't make it right."        
+        ch_r "Well 'course you are, but that don't make it right. Screwing around with [Other] like that. . ."           
         $ R_Eyes = "sexy"
     else:
         ch_r "Oh? So what do you have to say for yourself?"
@@ -1837,47 +1841,53 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
     menu:
             extend ""
             "I really hurt you, and I'm sorry.":
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 25) 
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
+                call Statup("Rogue", "Love", 90, 25) 
+                call Statup("Rogue", "Obed", 80, -5)
                 "Well at least you're owning up to it."
                 $ Resolution += 2
                 
             "We were just messing around, nothing serious.":
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -25) 
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 30)
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 10)  
+                call Statup("Rogue", "Love", 200, -25) 
+                call Statup("Rogue", "Obed", 80, 30)
+                call Statup("Rogue", "Inbt", 80, 10)  
                 ch_r "\"Nothing serious?\" You did {i}not{/i} just tell me that."
                 if not ApprovalCheck("Rogue", 700, "O", Bonus = (B/3)):
                     $ Resolution -= 2
                 
             "I think she's really cute.":
-                if R_LikeKitty >= 700 or ApprovalCheck("Rogue", 500, "I", Bonus = (B/3)):                    
+                if B >= 100 or ApprovalCheck("Rogue", 500, "I", Bonus = (B/3)):  
+                    # if Like trait is 700 or more. . .
                     $ R_Eyes = "side"
                     $ R_Brows = "confused"
-                    ch_r "Well. . . yeah, she is kinda cute, but so what?"                     
-                    $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5)
+                    if Other == "Kitty":
+                            ch_r "Well. . . yeah, she is kinda cute, but so what?"      
+                    else:
+                            ch_r "Well. . . yeah, she is kinda hot, but so what?"                  
+                    call Statup("Rogue", "Lust", 90, 5)
                     $ Line = "threeway"  
                 else:
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -20) 
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 30)
+                    call Statup("Rogue", "Love", 200, -20) 
+                    call Statup("Rogue", "Obed", 80, 30)
                     ch_r "Well that don't mean shit, [Playername], you're with me!"
                     $ Resolution -= 2
                 
             "Don't you like her?":
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 30)
-                if R_LikeKitty >= 700 or R_Inbt >= 500:                    
+                call Statup("Rogue", "Obed", 80, 30)
+                if B >= 100 or R_Inbt >= 500:        
+                    # if Like trait is 700 or more. . .            
                     $ R_Eyes = "side"
                     $ R_Brows = "confused"
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 25)                  
-                    $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5)
+                    call Statup("Rogue", "Inbt", 90, 25)                  
+                    call Statup("Rogue", "Lust", 90, 5)
                     ch_r "I mean, sorta. Not like that really though. . ."   
                     $ Line = "threeway" 
-                elif R_LikeKitty >= 600:    
+                elif B >= 50:    
+                    # if Like trait is 600 or more. . .  
                     $ R_Brows = "confused" 
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)
+                    call Statup("Rogue", "Love", 200, -10)
                     ch_r "We're friends, but that doesn't mean I'm cool with her hooking up with my man!"
                 else:
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -20) 
+                    call Statup("Rogue", "Love", 200, -20) 
                     ch_r "Whether I like her or not, don't give you rights to hook up with her."
                     $ Resolution -= 1
                  
@@ -1886,79 +1896,75 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
             extend ""
             "I won't do it again.":
                 if R_Cheated:        
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)  
+                    call Statup("Rogue", "Love", 90, 5)  
                     ch_r "Like last time you told me that, you mean?"                    
                     $ Resolution -= 1
                 else:
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 20) 
+                    call Statup("Rogue", "Love", 90, 20) 
                     $ R_Brows = "angry"
                     $ Resolution += 2 if Resolution < 3 else 0
                     ch_r "I'll hold you to that."
                     
             "I can't make any promises, she's pretty hot.":
                 $ R_Brows = "angry"
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -40) 
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 40)
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 10)  
+                call Statup("Rogue", "Love", 200, -40) 
+                call Statup("Rogue", "Obed", 90, 40)
+                call Statup("Rogue", "Inbt", 90, 10)  
                 ch_r "Then I don't know what you tell you, I think we're through."
                 $ Resolution -= 2
                 
             "Have you considered maybe letting her join us?":
-                call RogueFace("oh") from _call_RogueFace_216
+                call RogueFace("oh")
                 if ApprovalCheck("Rogue", 2200, Bonus = B) or ApprovalCheck("Rogue", 950, "L", Bonus = (B/3)):
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 30)                  
-                    $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 89, 10)
+                    call Statup("Rogue", "Inbt", 90, 30)                  
+                    call Statup("Rogue", "Lust", 89, 10)
                     $ Resolution += 2
                 elif ApprovalCheck("Rogue", 1500, Bonus = B) or R_LikeKitty >= 700:
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 10)                  
-                    $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5)
+                    call Statup("Rogue", "Inbt", 90, 10)                  
+                    call Statup("Rogue", "Lust", 90, 5)
                 else:
                     $ Resolution -= 3
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -25) 
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 10) 
+                    call Statup("Rogue", "Love", 200, -25) 
+                    call Statup("Rogue", "Inbt", 90, 10) 
                     
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 40) 
+                call Statup("Rogue", "Obed", 90, 40) 
                 ch_r "I don't know what to do with that, you talk'in a three-way?"
-                call RogueFace("startled") from _call_RogueFace_217
+                call RogueFace("startled")
                 $ Line = "threeway"
     
     if Resolution >= 5 and Line == "threeway": #she agrees to a threeway
                     if R_Cheated:
-                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 25) 
-                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 30)
-                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 60)   
+                        call Statup("Rogue", "Love", 90, 25) 
+                        call Statup("Rogue", "Obed", 90, 30)
+                        call Statup("Rogue", "Inbt", 90, 60)   
                     else:
-                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 50) 
-                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 40)
-                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 40)  
+                        call Statup("Rogue", "Love", 90, 50) 
+                        call Statup("Rogue", "Obed", 90, 40)
+                        call Statup("Rogue", "Inbt", 90, 40)  
                     ch_r "So I catch you fool'in around on me, and you want to make it official?"
-                    if "saw with kitty" in R_Traits:                         
-                        ch_r "I guess I could live with that, I'll talk to Kitty."
-                        $ R_Traits.append("poly kitty")
-                        $ R_Traits.append("ask kitty")
+                    ch_r "Maybe I could live with that, I'll talk to [Other]."
+                    $ Line = "poly"
                         
     elif Resolution >= 5: #she suggests a threeway
                     if R_Cheated:
-                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 20) 
-                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
-                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 100)   
+                        call Statup("Rogue", "Love", 90, 20) 
+                        call Statup("Rogue", "Obed", 90, 10)
+                        call Statup("Rogue", "Inbt", 90, 100)   
                     else:
-                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 40) 
-                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
-                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 60)   
+                        call Statup("Rogue", "Love", 90, 40) 
+                        call Statup("Rogue", "Obed", 90, 10)
+                        call Statup("Rogue", "Inbt", 90, 60)   
                     ch_r "You're just a regular polecat in heat. I guess I can't tame you."
-                    if "saw with kitty" in R_Traits: 
-                        ch_r "Not alone, at least. Maybe me and Kitty can work something out."
-                        $ R_Traits.append("poly kitty")
-                        $ R_Traits.append("ask kitty")
+                    ch_r "Not alone, at least. Maybe me and [Other] can work something out."
+                    $ Line = "poly"
                         
     elif Resolution >= 2: #she agrees to forgive you   
                 if R_Cheated:     
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 25)       
+                    call Statup("Rogue", "Obed", 80, 25)       
                     ch_r "I've given you a chance to do right by me, and you keep screwing it up."
                     ch_r "I don't know how many more chances I can give you here."
                 else:
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 40) 
+                    call Statup("Rogue", "Obed", 80, 40) 
                     ch_r "You betrayed my trust, [R_Petname]."
                     ch_r "Don't let it happen again." 
                     
@@ -1966,13 +1972,13 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
                 if Line == "threeway":
                     ch_r "I can't even believe you would suggest a fucking {i}threeway!{/i}"
                 if R_Cheated:         
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, -50)
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 30)  
+                    call Statup("Rogue", "Obed", 90, -50)
+                    call Statup("Rogue", "Inbt", 90, 30)  
                     ch_r "You done this too many times for me to keep let'in you back."
                     ch_r "Sorry, [R_Petname], this is the end."
                 else:
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, -50)
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 20)  
+                    call Statup("Rogue", "Obed", 90, -50)
+                    call Statup("Rogue", "Inbt", 90, 20)  
                     ch_r "I just don't think I can trust you anymore, [R_Petname]."
                     ch_r "This is it for us." 
                 $ R_Traits.remove("dating")
@@ -1982,68 +1988,87 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
                     
         
     $ R_Cheated += 1
-    if "saw with kitty" in R_Traits:                                    #Clean up the trait for this event
-        $ R_Traits.remove("saw with kitty")
-        if "poly kitty" not in R_Traits:
-            $ R_LikeKitty -= 50
-            
+    
+    if Other == "Kitty":    
+        $ R_Traits.remove("saw with Kitty")              
+        if Line == "poly":       
+                $ R_Traits.append("poly Kitty")
+                $ R_Traits.append("ask Kitty")
+        else:
+                $ R_LikeKitty -= 50
+    elif Other == "Emma":                   
+        $ R_Traits.remove("saw with Emma")              
+        if Line == "poly":       
+                $ R_Traits.append("poly Emma")
+                $ R_Traits.append("ask Emma")
+        else:
+                $ R_LikeEmma -= 50
+    elif Other == "Laura":                 
+        $ R_Traits.remove("saw with Laura")              
+        if Line == "poly":       
+                $ R_Traits.append("poly Laura")
+                $ R_Traits.append("ask Laura")
+        else:
+                $ R_LikeNewGirl["Laura"] -= 50
+                      
+                      
     if "dating" in R_Traits:
         menu:
             extend ""
             "I'm glad we could work this out." if "dating" in R_Traits:
-                call RogueFace("sad") from _call_RogueFace_218 
+                call RogueFace("sad") 
                 if Resolution >= 3:            
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 10) 
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 5)    
+                    call Statup("Rogue", "Love", 90, 10) 
+                    call Statup("Rogue", "Obed", 90, 5)    
                     ch_r "I am too, [R_Petname]."
                 else:
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5) 
+                    call Statup("Rogue", "Love", 90, 5) 
                     ch_r "Yeah, we'll see, [R_Petname]."
                     
             "Want to fool around a bit?" if "dating" in R_Traits and not Taboo:
                 if (R_Obed + R_Inbt) >= (1 * R_Love) or R_Lust >= 70:
-                    call RogueFace("sly") from _call_RogueFace_219
+                    call RogueFace("sly")
                     $ R_Eyes = "side"
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 20) 
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 10)
+                    call Statup("Rogue", "Love", 90, 20) 
+                    call Statup("Rogue", "Obed", 90, 10)
+                    call Statup("Rogue", "Inbt", 90, 10)
                     ch_r "Sure, whatever."
-                    call Rogue_SexMenu from _call_Rogue_SexMenu_9
+                    call Rogue_SexMenu
                 else:        
-                    call RogueFace("sad") from _call_RogueFace_220             
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -10) 
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, -10)
+                    call RogueFace("sad")             
+                    call Statup("Rogue", "Love", 90, -10) 
+                    call Statup("Rogue", "Obed", 90, -10)
                     ch_r "It's still too raw, [R_Petname]."
                     
             "I'm sorry it didn't work out." if "dating" not in R_Traits: 
-                    call RogueFace("sad") from _call_RogueFace_221 
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 10) 
+                    call RogueFace("sad") 
+                    call Statup("Rogue", "Love", 90, 10) 
                     ch_r "I am too, [R_Petname]."
                     
             "Want to have some break-up sex?" if "dating" not in R_Traits and not Taboo:
-                call RogueFace("angry") from _call_RogueFace_222
+                call RogueFace("angry")
                 if (R_Obed + R_Inbt) >= (1.5 * R_Love) or R_Lust >= 70:
                     $ R_Eyes = "side"
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 10)
+                    call Statup("Rogue", "Obed", 90, 10)
+                    call Statup("Rogue", "Inbt", 90, 10)
                     ch_r "Sure, whatever." 
-                    call DrainWord("Rogue","angry",0,1) from _call_DrainWord_48
-                    call Rogue_SexMenu from _call_Rogue_SexMenu_10
+                    call DrainWord("Rogue","angry",0,1)
+                    call Rogue_SexMenu
                     $ R_DailyActions.append("angry")
                 else:
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -20) 
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, -10)
+                    call Statup("Rogue", "Love", 90, -20) 
+                    call Statup("Rogue", "Obed", 90, -10)
                     ch_r "You have got to be kidding me."
                     
             "Let me know if you change your mind." if "dating" not in R_Traits:
-                call RogueFace("angry") from _call_RogueFace_223
+                call RogueFace("angry")
                 $ R_Eyes = "side"
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5) 
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
+                call Statup("Rogue", "Love", 90, -5) 
+                call Statup("Rogue", "Obed", 90, 10)
                 ch_r "Yeah, I'll get right on that."
                 
             "Ok, see you later then.":
-                call RogueFace("confused") from _call_RogueFace_224
+                call RogueFace("confused")
                 
                 
     if bg_current == "bg rogue":                                        #remove Rogue from the scene (or the player)
@@ -2053,10 +2078,10 @@ label Rogue_Cheated(Resolution = 0, B = 0):  #Resolution is Resolution count, yo
         jump Player_Room
     else:
         ch_r "I need some time alone, [R_Petname]. I'll see you later."
-        call Remove_Girl("Rogue") from _call_Remove_Girl_44
+        call Remove_Girl("Rogue")
     return
 
-# end RogueBreakup //////////////////////////////////////////////////////////    
+# end RogueBreakup //////////////////////////////////////////////////////////       
  
 # start Tutorial //////////////////////////////////////////////////////////
 

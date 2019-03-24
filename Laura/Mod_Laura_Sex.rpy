@@ -61,7 +61,7 @@ label Laura_SexMenu:
     $ Trigger3 = 0
     $ Situation = 0
     call Laura_Hide    
-    $ newgirl["Laura"].Arms = 1
+    $ newgirl["Laura"].Girl_Arms = 1
     call Set_The_Scene(1,0,0,0,1)
     if not P_Semen:
         "You're a little out of juice at the moment, you might want to wait a bit." 
