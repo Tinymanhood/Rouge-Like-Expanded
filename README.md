@@ -3,7 +3,7 @@
 It has several contributors and aims to add several new things to the game, such as clothes, characters, events/locations and new features.
 
 ## How to play the Github version:
-1. Download Ren'Py 6.99.13 [here](https://www.renpy.org/release/6.99.13).
+1. Download Ren'Py 6.99.13 [here](https://www.renpy.org/release/6.99.13) and extract it somewhere.
 2. Create a folder called "Projects" or something else you'll remember. 
 3. Start up Ren'Py and click on "preferences". 
 4. Redirect the path of the "Projects Directory" to the newly created folder. 
