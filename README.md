@@ -4,12 +4,12 @@ It has several contributors and aims to add several new things to the game, such
 
 ## How to play the Github version:
 1. Download Ren'Py 6.99.13 [here](https://www.renpy.org/release/6.99.13) and extract it somewhere.
-2. Create a folder called "Projects" or something else you'll remember. 
+2. Create a folder called "Projects" or something else you'll remember. Create another folder inside the projects folder and call it something like "Rogue-Like-Github". 
 3. Start up Ren'Py and click on "preferences". 
-4. Redirect the path of the "Projects Directory" to the newly created folder. 
+4. Redirect the path of the "Projects Directory" to the newly created projects folder. 
 5. Download the master branch from the Github repository.
-6. Unzip the master branch into the new created folder.
-7. Go to the "Projects\Rouge-Like-Expanded-master\game" and create a folder called "images".
+6. Unzip the master branch into the "Rogue-Like-Github" folder and rename "Rouge-Like-Expanded-master" to "game".
+7. Go to "Projects\Rogue-Like-Github\game" and create a folder called "images".
 8. Download the image files [here](https://mega.nz/#F!QfoRhATA!VWBVBhoE_NabSQ979FY3rg).
 9. Extract the files and folders into the newly created "images" folder. 
 10. Start up Ren'Py and launch the project. 
