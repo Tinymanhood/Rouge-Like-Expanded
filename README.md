@@ -14,8 +14,6 @@ It has several contributors and aims to add several new things to the game, such
 9. Extract the files and folders into the newly created "images" folder. 
 10. Start up Ren'Py and launch the project. 
 
-Repeat step 5, 6, 8 and 9 in order to update. 
-
 
 ## Features:
 **New hair colors**:
