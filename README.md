@@ -12,7 +12,8 @@ It has several contributors and aims to add several new things to the game, such
 7. Go to "Projects\Rogue-Like-Github\game" and create a folder called "images".
 8. Download the image files [here](https://mega.nz/#F!QfoRhATA!VWBVBhoE_NabSQ979FY3rg).
 9. Extract the files and folders into the newly created "images" folder. 
-10. Start up Ren'Py and launch the project. 
+10. Download [this](https://mega.nz/#!hTYDUIqZ!_meQOlSE-ixZzYAM-IcZcGllFJNIuSuI-zitwHm00Go) file and extract into "renpy-6.99.13-sdk\renpy\common" and also into "Rogue-Like-Github\renpy\common".
+11. Start up Ren'Py and launch the project. 
 
 
 ## Features:
