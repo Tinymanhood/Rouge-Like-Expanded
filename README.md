@@ -9,7 +9,7 @@ It has several contributors and aims to add several new things to the game, such
 4. Redirect the path of the "Projects Directory" to the newly created folder. 
 5. Download the master branch from the Github repository.
 6. Unzip the master branch into the new created folder.
-7. Go to the "Projects\Rouge-Like-Expanded-master" and create a folder called "images".
+7. Go to the "Projects\Rouge-Like-Expanded-master\game" and create a folder called "images".
 8. Download the image files [here](https://mega.nz/#F!QfoRhATA!VWBVBhoE_NabSQ979FY3rg).
 9. Extract the files and folders into the newly created "images" folder. 
 10. Start up Ren'Py and launch the project. 
