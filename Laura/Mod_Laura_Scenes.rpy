@@ -367,21 +367,21 @@ label Laura_Caught(TotalCaught=0):
     
     if R_Loc == bg_current:             #fix, might not currently work?
         call RogueFace("surprised",2)
-        if "Rogue" not in Rules:
+        if not R_Rules:
             ch_x "And. . .hm, I could have sworn there was someone else. . ."  
         else:
             ch_x "And Rogue, you were just watching this occur!"        
         call RogueFace("bemused",1, Eyes="side")
     elif K_Loc == bg_current:             #fix, might not currently work?
         call KittyFace("surprised",2)
-        if "Kitty" not in Rules:
+        if not K_Rules:
             ch_x "And. . .hm, I could have sworn there was someone else. . ."  
         else:
             ch_x "And Kitty, you were just watching this occur!"        
         call KittyFace("bemused",1,Eyes="side")
     elif E_Loc == bg_current:             #fix, might not currently work?
         call EmmaFace("surprised",2)
-        if "Emma" not in Rules:
+        if not E_Rules:
             ch_x "And. . .hm, I could have sworn there was someone else. . ."  
         else:
             ch_x "And Emma, you were just watching this occur!" 
@@ -570,10 +570,11 @@ label Plan_Chi:
             ch_l "Well, [newgirl[Laura].Petname], what should we ask for?"
             "Don't bother us anymore when we're having fun." if "Laura" not in Rules:
                     ch_x "Very well. . . I could offer you some. . . discretion. . ."
+                    $ newgirl["Laura"].Rules = 0
                     $ Rules.append("Laura")
             "You know, it's kinda fun dodging you, catch us if you can." if "Laura" in Rules:
                     ch_x "If you. . . want me to, I suppose. . ."
-                    $ Rules.remove("Laura")
+                    $ newgirl["Laura"].Rules = 1
             "Raise my stipend." if P_Income < 30 and "Chi" not in P_Traits:    
                     ch_x "Very well. . . but I can only raise it by so much. . ."        
                     $ P_Income += 2
