@@ -3517,7 +3517,7 @@ label Laura_Clothes:
                     "Never mind":
                                 pass
         "Save as main menu background clothes.":
-                "This option will save this Rogue at the main menu background, are you sure?"
+                "This option will save this Laura at the main menu background, are you sure?"
                 menu:
                     "Yes":
                         "do it"
