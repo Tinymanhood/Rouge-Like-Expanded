@@ -1,6 +1,8 @@
 ﻿
 # star Emma chat interface
 label Emma_Chat:
+    if "classcaught" not in E_History:
+            call Emma_Chat_Minimal
     call EmmaFace from _call_EmmaFace_550    
     call Shift_Focus("Emma") from _call_Shift_Focus_155
     call Change_Focus("Emma") from _call_Change_Focus_11

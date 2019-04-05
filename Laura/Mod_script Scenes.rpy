@@ -3045,14 +3045,15 @@ label Frisky_Study(Prime_Bonus=0,Second=0,Line=0,Second_Bonus=0):
 label Group_Strip(Girl=0,Tempmod = Tempmod,Tempmod0=0,Tempmod1=0): 
     #Note, this event would break during a date, since it manipulates Adjacent. Perhaps use unique list?
     $ Adjacent = []
-    if R_Loc == bg_current:
-            $ Adjacent.append("Rogue")
-    if K_Loc == bg_current:
-            $ Adjacent.append("Kitty")
-    if E_Loc == bg_current:
-            $ Adjacent.append("Emma")
-    if newgirl["Laura"].Loc == bg_current:
-            $ Adjacent.append("Laura")
+    $ Adjacent.append(Girl)
+    # if R_Loc == bg_current:
+    #         $ Adjacent.append("Rogue")
+    # if K_Loc == bg_current:
+    #         $ Adjacent.append("Kitty")
+    # if E_Loc == bg_current:
+    #         $ Adjacent.append("Emma")
+    # if newgirl["Laura"].Loc == bg_current:
+    #         $ Adjacent.append("Laura")
     if not Adjacent:
             "Nobody's here."
             "You dance alone."
@@ -3309,13 +3310,13 @@ label Group_Stripping:
         $ Round -= 2 if Round > 2 else Round
         
         
-        if Adjacent[Count] == "Rogue": 
-                call R_Stripping
-        elif Adjacent[Count] == "Kitty": 
-                call K_Stripping
-        elif Adjacent[Count] == "Emma": 
-                call E_Stripping
-        elif Adjacent[Count] == "Laura": 
+        # if Adjacent[Count] == "Rogue": 
+        #         call R_Stripping from _call_R_Stripping
+        # elif Adjacent[Count] == "Kitty": 
+        #         call K_Stripping from _call_K_Stripping
+        # elif Adjacent[Count] == "Emma": 
+        #         call E_Stripping from _call_E_Stripping
+        if Adjacent[Count] == "Laura": 
                 call Laura_Stripping
         
         $ Trigger = "strip"
