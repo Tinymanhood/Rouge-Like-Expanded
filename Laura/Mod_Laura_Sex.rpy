@@ -849,8 +849,9 @@ label Laura_Slap_Ass:
     if renpy.showing("Laura_SexSprite"):
             show Laura_SexSprite #fix, test this
             with vpunch
-    elif renpy.showing("Laura_BJ_Animation"):           #fix, make this animation work better when paused for this effect.
-            show Laura_BJ_Animation
+    elif LauraBJShowing:           #fix, make this animation work better when paused for this effect.
+            #show Laura_BJ_Animation
+            $ renpy.show("Laura_BJ_Body_" + str(Speed))
             with vpunch
     elif renpy.showing("Laura_TJ_Animation"):
             show Laura_TJ_Animation  

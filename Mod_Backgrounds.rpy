@@ -6,6 +6,7 @@ image Laura_Sprite_BG:
             #hair back 
             "not persistent.L_BG_Hair", Null(),
             "renpy.showing('Laura_BJ_Animation')", Null(), 
+            "renpy.showing('Laura_BJ_Body_0') or renpy.showing('Laura_BJ_Body_1') or renpy.showing('Laura_BJ_Body_2') or renpy.showing('Laura_BJ_Body_3') or renpy.showing('Laura_BJ_Body_4') or renpy.showing('Laura_BJ_Body_5') or renpy.showing('Laura_BJ_Body_6')", Null(), 
             "persistent.L_BG_Hair", "Laura_Sprite_HairBack",   
             "True", Null(),        
             ),   
@@ -142,6 +143,7 @@ image Laura_Sprite_BG:
         (0,0), ConditionSwitch(
             # head
             "renpy.showing('Laura_BJ_Animation')", Null(),  
+            "renpy.showing('Laura_BJ_Body_0') or renpy.showing('Laura_BJ_Body_1') or renpy.showing('Laura_BJ_Body_2') or renpy.showing('Laura_BJ_Body_3') or renpy.showing('Laura_BJ_Body_4') or renpy.showing('Laura_BJ_Body_5') or renpy.showing('Laura_BJ_Body_6')", Null(), 
             "True", "Laura_Sprite_Head_BG",   
             ),         
         (0,0), ConditionSwitch(

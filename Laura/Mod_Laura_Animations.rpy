@@ -1760,7 +1760,7 @@ label Laura_BJ_Launch(Line = 0):    # The sequence to launch the Laura BJ animat
         pos (645,510) 
     return
     
-label Laura_BJ_Reset: # The sequence to the Laura animations from BJ to default
+label Laura_BJ_Reset_: # The sequence to the Laura animations from BJ to default
     if not renpy.showing("Laura_BJ_Animation"):
         return
 #    hide Laura_BJ_Animation
@@ -1850,7 +1850,8 @@ label Laura_BJ_Launch_(Line = 0, Speed = 0):    # The sequence to launch the Lau
 
     return
     
-label Laura_BJ_Reset_(Speed = 0): # The sequence to the Laura animations from BJ to default
+# label Laura_BJ_Reset_(Speed = 0): # The sequence to the Laura animations from BJ to default
+label Laura_BJ_Reset: # The sequence to the Laura animations from BJ to default
     $ Animation_Speed = "Laura_BJ_Body_" + str(Speed)
     if not renpy.showing(Animation_Speed):
         return
@@ -2166,6 +2167,7 @@ label Laura_Hide:
             call Laura_Sex_Reset from _call_Laura_Sex_Reset_3
         hide Laura_SexSprite
         hide Laura_HJ_Animation
+        call Laura_Hide_
         hide Laura_BJ_Animation
         hide Laura_TJ_Animation 
         return
