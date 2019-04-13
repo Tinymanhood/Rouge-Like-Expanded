@@ -13,6 +13,7 @@ image Laura_Sprite:
             "not newgirl['Laura'].Hair", Null(),
 #            "newgirl['Laura'].Hair == 'wet' or newgirl['Laura'].Water", "images/LauraSprite/Laura_Sprite_HairbackWet.png",
             "renpy.showing('Laura_BJ_Animation')", Null(), 
+            "renpy.showing('Laura_BJ_Body_0') or renpy.showing('Laura_BJ_Body_1') or renpy.showing('Laura_BJ_Body_2') or renpy.showing('Laura_BJ_Body_3') or renpy.showing('Laura_BJ_Body_4') or renpy.showing('Laura_BJ_Body_5') or renpy.showing('Laura_BJ_Body_6')", Null(), 
             "newgirl['Laura'].Hair", "Laura_Sprite_HairBack",   
             "True", Null(),        
             ),   
@@ -274,6 +275,7 @@ image Laura_Sprite:
         (0,0), ConditionSwitch(
             # head
             "renpy.showing('Laura_BJ_Animation')", Null(),  
+            "renpy.showing('Laura_BJ_Body_0') or renpy.showing('Laura_BJ_Body_1') or renpy.showing('Laura_BJ_Body_2') or renpy.showing('Laura_BJ_Body_3') or renpy.showing('Laura_BJ_Body_4') or renpy.showing('Laura_BJ_Body_5') or renpy.showing('Laura_BJ_Body_6')", Null(), 
             "True", "Laura_Sprite_Head",   
             ),         
         (0,0), ConditionSwitch(
@@ -461,10 +463,13 @@ image Laura_Sprite_Head:
         (0,0), ConditionSwitch(#chin spunk
             "'chin' not in newgirl['Laura'].Spunk", Null(),
             "renpy.showing('Laura_BJ_Animation') and Speed >= 2", Null(),
+            "Speed >= 2 and (renpy.showing('Laura_BJ_Body_0') or renpy.showing('Laura_BJ_Body_1') or renpy.showing('Laura_BJ_Body_2') or renpy.showing('Laura_BJ_Body_3') or renpy.showing('Laura_BJ_Body_4') or renpy.showing('Laura_BJ_Body_5') or renpy.showing('Laura_BJ_Body_6'))", Null(), 
+
             "True", "images/LauraSprite/Laura_Sprite_Spunk_Chin.png",
             ),    
         (0,0), ConditionSwitch(#Mouths 
             "renpy.showing('Laura_BJ_Animation')", "images/LauraSprite/Laura_Sprite_Mouth_SuckingBJ.png", #and Speed >= 2
+            "renpy.showing('Laura_BJ_Body_0') or renpy.showing('Laura_BJ_Body_1') or renpy.showing('Laura_BJ_Body_2') or renpy.showing('Laura_BJ_Body_3') or renpy.showing('Laura_BJ_Body_4') or renpy.showing('Laura_BJ_Body_5') or renpy.showing('Laura_BJ_Body_6')", "images/LauraSprite/Laura_Sprite_Mouth_SuckingBJ.png", #and Speed >= 2
             "newgirl['Laura'].Mouth == 'normal'", "images/LauraSprite/Laura_Sprite_Mouth_Normal.png",
             "newgirl['Laura'].Mouth == 'lipbite'", "images/LauraSprite/Laura_Sprite_Mouth_Lipbite.png",
             "newgirl['Laura'].Mouth == 'sucking'", "images/LauraSprite/Laura_Sprite_Mouth_Sucking.png",            
@@ -481,6 +486,7 @@ image Laura_Sprite_Head:
         (0,0), ConditionSwitch(#Mouth spunk 
             "'mouth' not in newgirl['Laura'].Spunk", Null(),
             "renpy.showing('Laura_BJ_Animation')", "images/LauraSprite/Laura_Sprite_Spunk_MouthSuck.png", #and Speed >= 2
+            "renpy.showing('Laura_BJ_Body_0') or renpy.showing('Laura_BJ_Body_1') or renpy.showing('Laura_BJ_Body_2') or renpy.showing('Laura_BJ_Body_3') or renpy.showing('Laura_BJ_Body_4') or renpy.showing('Laura_BJ_Body_5') or renpy.showing('Laura_BJ_Body_6')", "images/LauraSprite/Laura_Sprite_Spunk_MouthSuck.png", #and Speed >= 2
             "newgirl['Laura'].Mouth == 'normal'", "images/LauraSprite/Laura_Sprite_Spunk_MouthNeutral.png",
             "newgirl['Laura'].Mouth == 'lipbite'", "images/LauraSprite/Laura_Sprite_Spunk_MouthSmirk.png",
             "newgirl['Laura'].Mouth == 'sucking'", "images/LauraSprite/Laura_Sprite_Spunk_MouthTongue.png",            
@@ -829,6 +835,10 @@ image Laura_BJ_Body_0:
                 pause 0.4
                 ease 1.95 pos (420,292) #top 412
                 repeat
+    zoom 1.35            
+    anchor (.5,.5)                 
+    pos (600,605) 
+
     #End BJ animation Speed 0
     
 
@@ -943,6 +953,9 @@ image Laura_BJ_Body_1:
                 pause 0.4
                 ease 1.2 pos (412,292) #top
                 repeat
+    zoom 1.35            
+    anchor (.5,.5)                 
+    pos (600,605) 
     #End BJ animation Speed 1
     
 image Laura_BJ_Body_2:                                                                        
@@ -1082,6 +1095,9 @@ image Laura_BJ_Body_2:
                 pause 0.1
                 ease 1.4 ypos 355 #top
                 repeat   
+    zoom 1.35            
+    anchor (.5,.5)                 
+    pos (600,605) 
     #End BJ animation Speed 2
     
 
@@ -1236,6 +1252,9 @@ image Laura_BJ_Body_3:
 #                pause 0.1
                 ease 1 ypos 380 #top
                 repeat   
+    zoom 1.35            
+    anchor (.5,.5)                 
+    pos (600,605) 
     #End BJ animation Speed 3
     
     
@@ -1389,6 +1408,9 @@ image Laura_BJ_Body_4:
                 pause 0.1
                 ease 1.4 ypos 380 #top
                 repeat  
+    zoom 1.35            
+    anchor (.5,.5)                 
+    pos (600,605) 
     #End BJ animation Speed 4
     
     
@@ -1533,6 +1555,9 @@ image Laura_BJ_Body_5:
                 easein .5 ypos 375 #bottom
                 pause .5
                 repeat   
+    zoom 1.35            
+    anchor (.5,.5)                 
+    pos (600,605) 
     #End BJ animation Speed 5
     
 image Laura_BlowCock_Mask_6:   
@@ -1689,6 +1714,9 @@ image Laura_BJ_Body_6:
                 easein .5 ypos 500 #bottom
                 pause .5
                 repeat  
+    zoom 1.35            
+    anchor (.5,.5)                 
+    pos (600,605) 
     #End BJ animation Speed 6
 #Head and Body Animations for Laura's BJ Scenes / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
                                                                #BJ Launchers  
@@ -1756,6 +1784,171 @@ label Laura_BJ_Reset: # The sequence to the Laura animations from BJ to default
 
 # End Laura Blowjob Animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+label Laura_BJ_Launch_(Line = 0, Speed = 0):    # The sequence to launch the Laura BJ animations
+
+    $ Animation_Speed = "Laura_BJ_Body_" + str(Speed)
+    if renpy.showing(Animation_Speed):
+        return
+    
+    call Laura_Hide
+    if not Speed:
+        if Line == "L" or Line == "cum":
+            show Laura_Sprite at SpriteLoc(StageCenter) zorder newgirl["Laura"].GirlLayer:
+                alpha 1
+                ease 1 zoom 2.5 offset (150,80) 
+            with dissolve
+        else:
+            show Laura_Sprite at SpriteLoc(StageCenter) zorder newgirl["Laura"].GirlLayer:
+                alpha 1
+                zoom 2.5 offset (150,80) 
+            with dissolve
+        
+    # $ Speed = 0
+    if Taboo and Line == "L": # Laura gets started. . .
+            if R_Loc == bg_current:
+                "Laura looks back at Rogue to see if she's watching."
+            elif K_Loc == bg_current:
+                "Laura looks back at Kitty to see if she's watching."
+            else:
+                "Laura casually glaces around to see if anyone notices what she's doing"
+            "She then bends down and puts your cock to her mouth."
+    elif Line == "L":    
+            "Laura smoothly bends down and places your cock against her cheek."    
+            
+    
+    if Line != "cum":
+        $ Trigger = "blow"
+    
+    show Laura_Sprite zorder newgirl["Laura"].GirlLayer:
+        alpha 0
+
+    $ renpy.show(Animation_Speed, zorder = 150)
+    # if Speed == 0:
+    #     show Laura_BJ_Body_0 zorder 150: 
+    #         # pos (645,510) 
+    # elif Speed == 1:
+    #     show Laura_BJ_Body_1 zorder 150: 
+    #         # pos (645,510) 
+    # elif Speed == 2:
+    #     show Laura_BJ_Body_2 zorder 150: 
+    #         # pos (645,510) 
+    # elif Speed == 3:
+    #     show Laura_BJ_Body_3 zorder 150: 
+    #         # pos (645,510) 
+    # elif Speed == 4:
+    #     show Laura_BJ_Body_4 zorder 150: 
+    #         # pos (645,510) 
+    # elif Speed == 5:
+    #     show Laura_BJ_Body_5 zorder 150: 
+    #         # pos (645,510) 
+    # elif Speed == 6:
+    #     show Laura_BJ_Body_6 zorder 150: 
+    #         # pos (645,510) 
+    call Laura_Hide_(Speed)
+
+    return
+    
+label Laura_BJ_Reset_(Speed = 0): # The sequence to the Laura animations from BJ to default
+    $ Animation_Speed = "Laura_BJ_Body_" + str(Speed)
+    if not renpy.showing(Animation_Speed):
+        return
+#    hide Laura_BJ_Animation
+    call Laura_Hide
+    $ renpy.hide(Animation_Speed)
+    # if Speed == 0:
+    #     hide Laura_BJ_Body_0
+    # elif Speed == 1:
+    #     hide Laura_BJ_Body_1
+    # elif Speed == 2:
+    #     hide Laura_BJ_Body_2
+    # elif Speed == 3:
+    #     hide Laura_BJ_Body_3
+    # elif Speed == 4:
+    #     hide Laura_BJ_Body_4
+    # elif Speed == 5:
+    #     hide Laura_BJ_Body_5
+    # elif Speed == 6:
+    #     hide Laura_BJ_Body_6
+    $ Speed = 0
+    
+    show Laura_Sprite at SpriteLoc(StageCenter) zorder newgirl["Laura"].GirlLayer:
+        alpha 1
+        zoom 2.5 offset (150,80) 
+    with dissolve
+    
+    show Laura_Sprite zorder newgirl["Laura"].GirlLayer:
+        alpha 1
+        ease 1 zoom 1.5 offset (-50,50)
+        pause .5
+        ease .5 zoom 1 offset (0,0)      
+    show Laura_Sprite at SpriteLoc(newgirl["Laura"].SpriteLoc) zorder newgirl["Laura"].GirlLayer:
+        alpha 1
+        zoom 1 offset (0,0)    
+    return  
+
+label Laura_Hide_(Speed = 0):
+    $ Speed_Count = 0
+
+    while Speed_Count < 7:
+        if Speed_Count != Speed:
+            $ renpy.hide("Laura_BJ_Body_" + str(Speed_Count))
+        # "[Speed_Count]"
+        $ Speed_Count += 1
+    # if Speed == 0:
+    #     hide Laura_BJ_Body_1
+    #     hide Laura_BJ_Body_2
+    #     hide Laura_BJ_Body_3
+    #     hide Laura_BJ_Body_4
+    #     hide Laura_BJ_Body_5
+    #     hide Laura_BJ_Body_6
+    # elif Speed == 1:
+    #     hide Laura_BJ_Body_0
+    #     hide Laura_BJ_Body_2
+    #     hide Laura_BJ_Body_3
+    #     hide Laura_BJ_Body_4
+    #     hide Laura_BJ_Body_5
+    #     hide Laura_BJ_Body_6
+    # elif Speed == 2:
+    #     hide Laura_BJ_Body_0
+    #     hide Laura_BJ_Body_1
+    #     hide Laura_BJ_Body_3
+    #     hide Laura_BJ_Body_4
+    #     hide Laura_BJ_Body_5
+    #     hide Laura_BJ_Body_6
+    # elif Speed == 3:
+    #     hide Laura_BJ_Body_0
+    #     hide Laura_BJ_Body_1
+    #     hide Laura_BJ_Body_2
+    #     hide Laura_BJ_Body_4
+    #     hide Laura_BJ_Body_5
+    #     hide Laura_BJ_Body_6
+    # elif Speed == 4:
+    #     hide Laura_BJ_Body_0
+    #     hide Laura_BJ_Body_1
+    #     hide Laura_BJ_Body_2
+    #     hide Laura_BJ_Body_3
+    #     hide Laura_BJ_Body_5
+    #     hide Laura_BJ_Body_6
+    # elif Speed == 5:
+    #     hide Laura_BJ_Body_0
+    #     hide Laura_BJ_Body_1
+    #     hide Laura_BJ_Body_2
+    #     hide Laura_BJ_Body_3
+    #     hide Laura_BJ_Body_4
+    #     hide Laura_BJ_Body_6
+    # elif Speed == 6:
+    #     hide Laura_BJ_Body_0
+    #     hide Laura_BJ_Body_1
+    #     hide Laura_BJ_Body_2
+    #     hide Laura_BJ_Body_3
+    #     hide Laura_BJ_Body_4
+    #     hide Laura_BJ_Body_5
+    return
+
+
+# End Laura Blowjob Animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 
 # Start Emma Handjob Animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /

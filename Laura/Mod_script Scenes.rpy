@@ -1037,7 +1037,7 @@ label Sleepover_MorningWood:
                 $ X_Psychic = E_Pet
         elif Party[0] == "Laura":
                 $ newgirl["Laura"].RecentActions.append("blanket")           
-                call Laura_BJ_Launch   
+                call Laura_BJ_Launch_   
                 $ X_Psychic = newgirl["Laura"].Pet                                 
         
         $ P_RecentActions.append("cockout")

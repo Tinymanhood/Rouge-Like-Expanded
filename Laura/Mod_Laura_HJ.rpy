@@ -1470,7 +1470,7 @@ label Laura_BJ_Prep:
         $ newgirl["Laura"].Mouth = "smile"
     
     call Seen_First_Peen(1)
-    call Laura_BJ_Launch("L")
+    call Laura_BJ_Launch_("L",0)
     if not newgirl["Laura"].Blow:        
         if newgirl["Laura"].Forced:
             $ newgirl["Laura"].Love = Statupdate("Laura", "Love", newgirl["Laura"].Love, 90, -70)
@@ -1495,7 +1495,7 @@ label Laura_BJ_Prep:
 label Laura_BJ_Cycle: #Repeating strokes  
     while Round >=0:  
         call Shift_Focus("Laura") 
-        call Laura_BJ_Launch    
+        call Laura_BJ_Launch_(Speed = Speed)    
         call LauraLust   
         
         if P_Focus < 100:                                                   
@@ -1506,16 +1506,19 @@ label Laura_BJ_Cycle: #Repeating strokes
                           
                         "Lick it. . ." if Speed != 1:
                                 $ Speed = 1   
+                                call Laura_BJ_Launch_(Speed = Speed)
                         "Lick it. . . (locked)" if Speed == 1:
                                 pass  
                             
                         "Just the head. . ." if Speed != 2:
                             $ Speed = 2
+                            call Laura_BJ_Launch_(Speed = Speed)
                         "Just the head. . . (locked)" if Speed == 2:
                                 pass
                             
                         "Suck on it." if Speed != 3:
                                 $ Speed = 3  
+                                call Laura_BJ_Launch_(Speed = Speed)
                                 if Trigger2 == "jackin":
                                     "She dips her head a bit lower, and you move your hand out of the way."
                                     
@@ -1526,6 +1529,7 @@ label Laura_BJ_Cycle: #Repeating strokes
                                     if Trigger2 == "jackin" and Speed != 3:
                                         "She takes it to the root, and you move your hand out of the way."
                                     $ Speed = 4  
+                                    call Laura_BJ_Launch_(Speed = Speed)
                         "Take it deeper. (locked)" if Speed == 4:
                                 pass
                             
@@ -1541,14 +1545,18 @@ label Laura_BJ_Cycle: #Repeating strokes
                                     
                                 if D20 > 15:
                                     $ Speed = 4              
+                                    call Laura_BJ_Launch_(Speed = Speed)
                                     if "setpace" not in newgirl["Laura"].RecentActions:      
                                         $ newgirl["Laura"].Inbt = Statupdate("Laura", "Inbt", newgirl["Laura"].Inbt, 80, 3) 
                                 elif D20 > 10:
                                     $ Speed = 3
+                                    call Laura_BJ_Launch_(Speed = Speed)
                                 elif D20 > 5:
                                     $ Speed = 2
+                                    call Laura_BJ_Launch_(Speed = Speed)
                                 else:
                                     $ Speed = 1
+                                    call Laura_BJ_Launch_(Speed = Speed)
                                 $ newgirl["Laura"].RecentActions.append("setpace")
                                 
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
