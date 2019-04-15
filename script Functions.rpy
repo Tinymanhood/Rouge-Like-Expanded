@@ -812,7 +812,7 @@ init python:
         if renpy.showing("Laura_BJ_Body_0") or renpy.showing("Laura_BJ_Body_1") or renpy.showing("Laura_BJ_Body_2") or renpy.showing("Laura_BJ_Body_3") or renpy.showing("Laura_BJ_Body_4") or renpy.showing("Laura_BJ_Body_5") or renpy.showing("Laura_BJ_Body_6"):
             return True
         else:
-            return 0
+            return False
 
 
 label Statup(Name=0, Flavor=0, Check=100, Value=1, Greater=0, Type=0, Overflow=0, BStat=0, XPOS = 0.75):

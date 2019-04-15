@@ -849,7 +849,7 @@ label Laura_Slap_Ass:
     if renpy.showing("Laura_SexSprite"):
             show Laura_SexSprite #fix, test this
             with vpunch
-    elif LauraBJShowing:           #fix, make this animation work better when paused for this effect.
+    elif LauraBJShowing():           #fix, make this animation work better when paused for this effect.
             #show Laura_BJ_Animation
             $ renpy.show("Laura_BJ_Body_" + str(Speed))
             with vpunch
@@ -1011,7 +1011,7 @@ label Laura_KissCycle:
         if  P_Focus < 100:                                                    
                     #Player Command menu
                     menu:
-                        "Keep going. . .":
+                        "Keep goinga. . .":
                                 pass                
                         "Slap her ass":                     
                                     call Laura_Slap_Ass  

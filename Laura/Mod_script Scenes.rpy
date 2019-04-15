@@ -219,6 +219,7 @@ label Sleepover(Lead=0,Sleep=0,Room=0,Line = 0):
                             
                             
             else:
+                "[Room]"
                 #if she didn't offer to sleep over
                 menu: 
                     extend ""

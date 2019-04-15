@@ -81,22 +81,22 @@ label PLaura_Cumming:
                 jump Laura_SpunkBelly
             
         "Pull back":
-            if LauraBJShowing:
+            if LauraBJShowing():
                     if newgirl["Laura"].Addict >= 60 and ApprovalCheck("Laura", 1000, "I", Bonus = ((newgirl["Laura"].Addict*10)- newgirl["Laura"].Obed)) and newgirl["Laura"].Swallow:
                             $ newgirl["Laura"].Eyes = "manic"
                             $ Speed = 0
-                            if LauraBJShowing:
+                            if LauraBJShowing():
                                 call Laura_BJ_Launch_(Speed = Speed)
                             "You pull out of her mouth with a pop, and her eyes widen in surprise."
                             $ newgirl["Laura"].Mouth = "sucking"
                             $ newgirl["Laura"].Spunk.append("mouth")
                             $ newgirl["Laura"].Spunk.append("chin")
                             $ Speed = 4
-                            if LauraBJShowing:
+                            if LauraBJShowing():
                                 call Laura_BJ_Launch_(Speed = Speed)
                             "She leaps at your cock and sucks it deep, draining your fluids hungrily." 
                             $ Speed = 0
-                            if LauraBJShowing:
+                            if LauraBJShowing():
                                 call Laura_BJ_Launch_(Speed = Speed)
                             $ newgirl["Laura"].Mouth = "lipbite"
                             "When she finishes, she draws her hand across her lips."
@@ -116,7 +116,7 @@ label PLaura_Cumming:
                     $ newgirl["Laura"].Eyes = "manic"
                     $ newgirl["Laura"].Mouth = "kiss"
                     $ Speed = 0
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "Her eyes widen in panic."
                     ch_l "You wouldn't reconsider, [newgirl[Laura].Petname]?" 
@@ -128,7 +128,7 @@ label PLaura_Cumming:
                                     call Laura_BJ_Launch_("cum")
                                 call LauraFace("sucking") 
                                 $ Speed = 4
-                                if LauraBJShowing:
+                                if LauraBJShowing():
                                     call Laura_BJ_Launch_(Speed = Speed)
                                 "She nods and puts the tip into her mouth. as you release she gulps it down hungrily."
                                 call LauraFace("sexy")                      
@@ -137,7 +137,7 @@ label PLaura_Cumming:
                                 $ newgirl["Laura"].Spunk.append("chin")
                                 ". . ."
                                 $ Speed = 0
-                                if LauraBJShowing:
+                                if LauraBJShowing():
                                             call Laura_BJ_Launch_(Speed = Speed)
                                 call LauraFace("sad")                       
                                 $ newgirl["Laura"].Mouth = "lipbite"
@@ -156,11 +156,11 @@ label PLaura_Cumming:
                                         if Trigger != "blow":
                                             call Laura_BJ_Launch_("cum")
                                             $ Speed = 4
-                                            if LauraBJShowing:
+                                            if LauraBJShowing():
                                                 call Laura_BJ_Launch_(Speed = Speed)
                                         "She dives down on you and you can't resist filling her throat."
                                         $ Speed = 0
-                                        if LauraBJShowing:
+                                        if LauraBJShowing():
                                             call Laura_BJ_Launch_(Speed = Speed)
                                         ch_l "Now we are."
                                         jump Laura_Swallowed                                
@@ -216,16 +216,16 @@ label Laura_Warn_Her:
                     call Laura_BJ_Launch_("cum")   
                     "She grins and pulls out with a pop, and begins to suck you off."
                 $ Speed = 4
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 call LauraFace("sucking")       
                 ". . ."
                 $ Speed = 0
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 $ newgirl["Laura"].Spunk.append("mouth")
                 $ newgirl["Laura"].Spunk.append("chin")
-                if not LauraBJShowing:
+                if not LauraBJShowing():
                     "She smiles and then puts your tip in her mouth. When you finish filling her mouth, she quickly gulps it down and wipes her lips."
                 else:                    
                     "She makes a little humming sound, but keeps sucking. When you finish filling her mouth, she quickly gulps it down and wipes her lips."        
@@ -242,7 +242,7 @@ label Laura_Warn_Her:
                 $ newgirl["Laura"].Spunk.append("in")
                 $ P_Spunk = "in"
                 $ Speed = 0
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She smiles and speeds up her actions, causing you to erupt inside her."   
                 if newgirl["Laura"].Lust >= 85: 
@@ -256,7 +256,7 @@ label Laura_Warn_Her:
                 $ newgirl["Laura"].Spunk.append("in")
                 $ P_Spunk = "in"
                 $ Speed = 0
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She gets a michevious look and speeds up, you burst inside her."          
                 if newgirl["Laura"].Lust >= 85: 
@@ -270,7 +270,7 @@ label Laura_Warn_Her:
                 $ newgirl["Laura"].Spunk.append("anal")
                 $ P_Spunk = "anal"
                 $ Speed = 0
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She smiles and speeds up her actions, causing you to erupt inside her."         
                 if newgirl["Laura"].Lust >= 85: 
@@ -284,7 +284,7 @@ label Laura_Warn_Her:
                 $ newgirl["Laura"].Spunk.append("anal")
                 $ P_Spunk = "anal"
                 $ Speed = 0
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She gets a michevious look and speeds up, you burst inside her."    
                 if newgirl["Laura"].Lust >= 85: 
@@ -297,40 +297,40 @@ label Laura_Warn_Her:
                         if newgirl["Laura"].Blow >= 5 or Speed >= 3:          
                                 call LauraFace("tongue")
                                 $ Speed = 5 #shallow animation
-                                if LauraBJShowing:
+                                if LauraBJShowing():
                                     call Laura_BJ_Launch_(Speed = Speed)
                                 $ newgirl["Laura"].Spunk.append("mouth")
                                 $ newgirl["Laura"].Spunk.append("chin")
                                 "She makes a little humming sound, but keeps sucking."
                         else: 
                                 jump Laura_Facial
-                elif LauraBJShowing:            
+                elif LauraBJShowing():            
                         call LauraFace("sucking")
                         $ newgirl["Laura"].Spunk.append("mouth")
                         $ newgirl["Laura"].Spunk.append("chin")
                         $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "She makes a little humming sound, but keeps sucking."
                         $ Speed = 0
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "When you finish filling her mouth, she quickly gulps it down and wipes her lips."
                 else:
                         call Laura_BJ_Launch_("cum")
                         $ Speed = 2
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         call LauraFace("sucking")
                         $ newgirl["Laura"].Spunk.append("mouth")
                         $ newgirl["Laura"].Spunk.append("chin")
                         "She smiles and then puts your tip in her mouth."
                         $ Speed = 5
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "When you finish filling her mouth, she quickly gulps it down and wipes her lips."                
                 $ Speed = 0
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 call LauraFace("sexy")
                 $ newgirl["Laura"].Mouth = "smile"
@@ -343,31 +343,31 @@ label Laura_Warn_Her:
                     call Laura_HJ_Launch("cum") 
                     "She grins and pulls out with a pop, and begins to stroke you off."
                 $ Speed = 2
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
-                if renpy.showing("Laura_TJ_Animation") or LauraBJShowing: 
+                if renpy.showing("Laura_TJ_Animation") or LauraBJShowing(): 
                     if renpy.showing("Laura_TJ_Animation"): 
                         if newgirl["Laura"].Blow >= 5 or Speed >= 3:          
                                 call LauraFace("tongue")
                                 $ Speed = 5 #shallow animation
-                                if LauraBJShowing:
+                                if LauraBJShowing():
                                     call Laura_BJ_Launch_(Speed = Speed)
                                 $ newgirl["Laura"].Spunk.append("mouth")
                                 $ newgirl["Laura"].Spunk.append("chin")
                         else: 
                                 jump Laura_Facial
-                    elif LauraBJShowing: 
+                    elif LauraBJShowing(): 
                             #if she's blowing
                             call LauraFace("sucking")
                             $ newgirl["Laura"].Spunk.append("mouth")
                             $ newgirl["Laura"].Spunk.append("chin")
                     $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "She makes a little humming sound, but keeps sucking."
                     "When you finish filling her mouth, she gags a little, but manages to swallow it."
                     $ Speed = 0
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     call LauraFace("sexy")
                     $ newgirl["Laura"].Mouth = "smile"
@@ -393,7 +393,7 @@ label Laura_Warn_Her:
         
                 if renpy.showing("Laura_HJ_Animation") and newgirl["Laura"].Hand:
                         jump Laura_Handy_Finish
-                elif LauraBJShowing and newgirl["Laura"].Blow:
+                elif LauraBJShowing() and newgirl["Laura"].Blow:
                         jump Laura_Handy_Finish
                 elif renpy.showing("Laura_TJ_Animation") and newgirl["Laura"].Tit:
                         jump Laura_TitSpunk
@@ -433,13 +433,13 @@ label Laura_In_Mouth:
                 $ Situation = 0
                 if renpy.showing("Laura_TJ_Animation"):         
                         call LauraFace("tongue")
-                elif not LauraBJShowing:
+                elif not LauraBJShowing():
                         call Laura_BJ_Launch_("cum")
                 $ newgirl["Laura"].Eyes = "down"
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
-                if LauraBJShowing:
+                if LauraBJShowing():
                     call Laura_BJ_Launch_(Speed = Speed)
                 "You grab her head and cum in her mouth"  
                 $ newgirl["Laura"].Eyes = "closed"      
@@ -456,7 +456,7 @@ label Laura_In_Mouth:
                         $ newgirl["Laura"].Spunk.append("mouth")
                         $ newgirl["Laura"].Spunk.append("chin")
                         $ Speed = 0
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "She gags a little, but manages to swallow it."
                         $ newgirl["Laura"].Spunk.remove("mouth")
@@ -471,7 +471,7 @@ label Laura_In_Mouth:
                         "She quickly gulps it down and wipes her mouth."
                         $ newgirl["Laura"].Spunk.remove("mouth")
                         $ Speed = 0
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         ch_l "Yum."
                         call LauraFace
@@ -480,7 +480,7 @@ label Laura_In_Mouth:
                         $ newgirl["Laura"].Spunk.append("mouth")
                         $ newgirl["Laura"].Spunk.append("chin")
                         $ Speed = 0
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "She gags a little, but manages to swallow it."
                         $ newgirl["Laura"].Spunk.remove("mouth")
@@ -494,7 +494,7 @@ label Laura_In_Mouth:
                         $ newgirl["Laura"].Spunk.remove("mouth")
                         $ newgirl["Laura"].Spunk.append("hand")
                         $ Speed = 0
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "She gags and spits it into her palm. Then she licks her lips, looks down at her dripping hand, blushes, and quickly wipes it off."
                         $ newgirl["Laura"].Spunk.remove("hand")
@@ -513,7 +513,7 @@ label Laura_In_Mouth:
                         $ newgirl["Laura"].Spunk.remove("mouth")
                         $ newgirl["Laura"].Spunk.append("hand")
                         $ Speed = 0
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "She gags and spits it into her palm. Then she licks her lips, looks down, and drinks up what's in her palm."
                         $ newgirl["Laura"].Spunk.remove("hand")
@@ -532,7 +532,7 @@ label Laura_In_Mouth:
                         ". . ."
                         $ newgirl["Laura"].Spunk.append("hand")
                         $ Speed = 0
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         "She gags and spits it into her palm."   
                         menu:
@@ -606,21 +606,21 @@ label Laura_In_Mouth:
             if renpy.showing("Laura_TJ_Animation"):         
                 call LauraFace("tongue",Eyes="down")
                 $ Speed = 5 #shallow animation
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She nods and bends down to put the tip between her lips."
-            elif not LauraBJShowing:
+            elif not LauraBJShowing():
                 call Laura_BJ_Launch_("cum")           
                 call LauraFace("tongue",Eyes="down")
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She nods and bends down to put the tip between her lips."
             else:                 
                 call LauraFace("tongue",Eyes="down")
                 $ newgirl["Laura"].Brows = "confused"
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She nods and hums a \"yes\" sound."   
             $ newgirl["Laura"].Spunk.append("mouth")
@@ -629,7 +629,7 @@ label Laura_In_Mouth:
             ". . ."
             call LauraFace("sexy")            
             $ Speed = 0
-            if LauraBJShowing:
+            if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
             ch_l "Yum."
             $ newgirl["Laura"].Spunk.remove("mouth")
@@ -640,21 +640,21 @@ label Laura_In_Mouth:
             if renpy.showing("Laura_TJ_Animation"):         
                 call LauraFace("tongue",Eyes="down")
                 $ Speed = 5 #shallow animation
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She gently puts the tip to her lips, just as you blow."
-            elif not LauraBJShowing:
+            elif not LauraBJShowing():
                 call Laura_BJ_Launch_("cum")           
                 call LauraFace("tongue",Eyes="down")
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She gently puts the tip to her lips, just as you blow."
             else:                 
                 call LauraFace("tongue",Eyes="down")
                 $ newgirl["Laura"].Brows = "confused"
                 $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 "She nods and hums a \"yes\" sound."                    
             $ newgirl["Laura"].Spunk.append("mouth")
@@ -662,7 +662,7 @@ label Laura_In_Mouth:
             "She gags a little, but quickly swallows it."
             ". . ."
             $ Speed = 0
-            if LauraBJShowing:
+            if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
             call LauraFace("sexy")
             $ newgirl["Laura"].Mouth = "smile"
@@ -676,21 +676,21 @@ label Laura_In_Mouth:
                 if renpy.showing("Laura_TJ_Animation"):         
                     call LauraFace("tongue",Eyes="down")
                     $ Speed = 5 #shallow animation
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "She gently puts the tip to her lips, just as you blow."
-                elif not LauraBJShowing:
+                elif not LauraBJShowing():
                     call Laura_BJ_Launch_("cum")           
                     call LauraFace("tongue",Eyes="down")
                     $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "She gently puts the tip to her lips, just as you blow."
                 else:                 
                     call LauraFace("tongue",Eyes="down")
                     $ newgirl["Laura"].Brows = "confused"
                     $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "She tilts her head and hums a \"hmm?\" sound."
                 $ newgirl["Laura"].Spunk.append("mouth")
@@ -699,7 +699,7 @@ label Laura_In_Mouth:
                 $ newgirl["Laura"].Eyes = "sexy"
                 ". . ."
                 $ Speed = 0
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 call LauraFace("sexy")
                 $ newgirl["Laura"].Spunk.append("mouth")
@@ -717,7 +717,7 @@ label Laura_In_Mouth:
         call LauraFace("angry")
         
     $ Speed = 0    
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     
     if "full" in newgirl["Laura"].RecentActions:
@@ -782,13 +782,13 @@ label Laura_In_Mouth:
                 if renpy.showing("Laura_TJ_Animation"):         
                     call LauraFace("tongue")
                     $ Speed = 5 #shallow animation
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 else:
                     $ newgirl["Laura"].Mouth = "sucking"
                     call Laura_BJ_Launch_("cum")            
                     $ Speed = 5 
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 50, 10)
                 $ newgirl["Laura"].Obed = Statupdate("Laura", "Obed", newgirl["Laura"].Obed, 70, 5)
@@ -796,12 +796,12 @@ label Laura_In_Mouth:
     if renpy.showing("Laura_TJ_Animation"):          
         call LauraFace("tongue")
         $ Speed = 5 #shallow animation                         
-        if LauraBJShowing:
+        if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
-    elif not LauraBJShowing:
+    elif not LauraBJShowing():
         call Laura_BJ_Launch_("cum")     
         $ Speed = 6 if Speed == 4 else 5 #6 if deep throating, 5 if not
-        if LauraBJShowing:
+        if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     $ newgirl["Laura"].Spunk.append("mouth")
     $ newgirl["Laura"].Spunk.append("chin")
@@ -817,7 +817,7 @@ label Laura_In_Mouth:
     $ newgirl["Laura"].Mouth = "sucking"
     ". . ."   
     $ Speed = 0            
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     call LauraFace("sexy") 
     
@@ -843,7 +843,7 @@ label Laura_Creampie_P:
                 $ newgirl["Laura"].Spunk.append("in")
                 $ P_Spunk = "in"
                 $ Speed = 4
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 if ApprovalCheck("Laura", 1300) or newgirl["Laura"].CreamP:              
                         call LauraFace("surprised", Eyes="down")
@@ -878,7 +878,7 @@ label Laura_Creampie_P:
                 $ newgirl["Laura"].Spunk.append("in")
                 $ P_Spunk = "in"
                 $ Speed = 4
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 if newgirl["Laura"].Lust >= 85: 
                     call Laura_Cumming  
@@ -900,7 +900,7 @@ label Laura_Creampie_A:
                 $ newgirl["Laura"].Spunk.append("anal")
                 $ P_Spunk = "anal"
                 $ Speed = 4
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 if ApprovalCheck("Laura", 1200) or newgirl["Laura"].CreamP:              
                     call LauraFace("surprised", 1, Eyes="down")
@@ -934,7 +934,7 @@ label Laura_Creampie_A:
                 $ newgirl["Laura"].Spunk.append("anal")
                 $ P_Spunk = "anal"
                 $ Speed = 4
-                if LauraBJShowing:
+                if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                 if newgirl["Laura"].Lust >= 85: 
                     call Laura_Cumming  
@@ -949,23 +949,23 @@ label Laura_Creampie_A:
             
 #Start Facial  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /    
 label Laura_Facial: 
-    if LauraBJShowing:       
+    if LauraBJShowing():       
             if newgirl["Laura"].Addict >= 60 and ApprovalCheck("Laura", 1000, "I", Bonus = ((newgirl["Laura"].Addict*10)- newgirl["Laura"].Obed)) and newgirl["Laura"].Swallow:
                     $ newgirl["Laura"].Eyes = "manic"
                     $ newgirl["Laura"].Blush = 1
                     $ Speed = 0
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "You pull out of her mouth with a pop, and her eyes widen in surprise." 
                     $ Speed = 4
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     $ newgirl["Laura"].Spunk.append("mouth")
                     $ newgirl["Laura"].Spunk.append("chin")
                     "She leaps at your cock and sucks it deep, draining your fluids hungrily."
                     $ newgirl["Laura"].Mouth = "lipbite"
                     $ Speed = 0
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "When she finishes, she draws her hand across her lips."
                     call LauraFace("bemused")
@@ -976,7 +976,7 @@ label Laura_Facial:
                     jump Laura_Swallowed
             call Laura_HJ_Launch("cum")
             $ Speed = 2
-            if LauraBJShowing:
+            if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
             if "hair" in newgirl["Laura"].Spunk:
                 pass
@@ -986,14 +986,14 @@ label Laura_Facial:
                 $ newgirl["Laura"].Spunk.append("facial")
             "You pull out of her mouth with a pop, and she strokes you off. You spray all over her face."
             $ Speed = 0
-            if LauraBJShowing:
+            if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
             jump Laura_Orgasm_After
     
     if not renpy.showing("Laura_TJ_Animation") and not renpy.showing("Laura_HJ_Animation"):      
             call Laura_HJ_Launch("cum")
             $ Speed = 2
-            if LauraBJShowing:
+            if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     if "hair" in newgirl["Laura"].Spunk:
         pass
@@ -1003,7 +1003,7 @@ label Laura_Facial:
         $ newgirl["Laura"].Spunk.append("facial")
     "As you're about to finish, you pull out, aim squarely at her face, and spray all over it."
     $ Speed = 0
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
 
     if Situation == "warn":
@@ -1015,23 +1015,23 @@ label Laura_Facial:
 
 #Start titjob spunk  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /    
 label Laura_TitSpunk: 
-    if LauraBJShowing:       
+    if LauraBJShowing():       
             if newgirl["Laura"].Addict >= 60 and ApprovalCheck("Laura", 1000, "I", Bonus = ((newgirl["Laura"].Addict*10)- newgirl["Laura"].Obed)) and newgirl["Laura"].Swallow:
                     $ newgirl["Laura"].Eyes = "manic"
                     $ newgirl["Laura"].Blush = 1
                     $ Speed = 0
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "You pull out of her mouth with a pop, and her eyes widen in surprise." 
                     $ Speed = 4
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     $ newgirl["Laura"].Spunk.append("mouth")
                     $ newgirl["Laura"].Spunk.append("chin")
                     "She leaps at your cock and sucks it deep, draining your fluids hungrily."
                     $ newgirl["Laura"].Mouth = "lipbite"
                     $ Speed = 0
-                    if LauraBJShowing:
+                    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
                     "When she finishes, she draws her hand across her lips."
                     call LauraFace("bemused")
@@ -1041,11 +1041,11 @@ label Laura_TitSpunk:
                     $ newgirl["Laura"].Inbt = Statupdate("Laura", "Inbt", newgirl["Laura"].Inbt, 200, 10)
                     jump Laura_Swallowed
                
-    if not renpy.showing("Laura_TJ_Animation") and not renpy.showing("Laura_HJ_Animation") and not LauraBJShowing:      
+    if not renpy.showing("Laura_TJ_Animation") and not renpy.showing("Laura_HJ_Animation") and not LauraBJShowing():      
             call Laura_TJ_Launch("cum")
     $ newgirl["Laura"].Spunk.append("tits")
     $ Speed = 0
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     "As you're about to finish, you speed up and spray all over her chest."
 
@@ -1080,7 +1080,7 @@ label Laura_SpunkBelly:
     $ P_Cock = "out"
     $ P_Spunk = "out"    
     $ Speed = 4
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     $ newgirl["Laura"].Spunk.append("belly")
     if Trigger == "sex":
@@ -1118,7 +1118,7 @@ label Laura_Handy_Finish:
         call Laura_Sex_Reset
     call Laura_HJ_Launch("cum")
     $ Speed = 2        
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     $ newgirl["Laura"].Spunk.append("hand")  
     if renpy.showing("Laura_HJ_Animation"):                                  
@@ -1126,7 +1126,7 @@ label Laura_Handy_Finish:
     else:
             "She grins and starts jerking you off, placing her left hand over your tip. You burst all over her hands." 
     $ Speed = 0
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     
     if newgirl["Laura"].Addict > 80 or "hungry" in newgirl["Laura"].Traits:
@@ -1201,7 +1201,7 @@ label Laura_Orgasm_After:
         $ P_Semen -= 1
         $ P_Focus = 0
         $ Speed = 0  
-        if LauraBJShowing:
+        if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
         menu:
                 "Want her to clean you off?"
@@ -1221,7 +1221,7 @@ label Laura_CleanCock:
             $ newgirl["Laura"].Girl_Arms = 1
         $ P_Cock = "out"
         $ Speed = 0    
-        if LauraBJShowing:
+        if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
         if Trigger == "anal" and not ApprovalCheck("Laura", 1600, TabM=1) and not newgirl["Laura"].Addict >= 80:
                 "She wipes your cock clean."
@@ -1232,7 +1232,7 @@ label Laura_CleanCock:
                 if ApprovalCheck("Laura", 1200, TabM=1) or newgirl["Laura"].Addict >= 60:
                         call Laura_BJ_Launch_("cum")
                         $ Speed = 1
-                        if LauraBJShowing:
+                        if LauraBJShowing():
                             call Laura_BJ_Launch_(Speed = Speed)
                         call LauraFace("sucking", 1) 
                         if ApprovalCheck("Laura", 1500, TabM=1):
@@ -1352,12 +1352,12 @@ label Laura_Cumming:
     $ newgirl["Laura"].Blush = 1
     ch_l ". . . !"
     $ Speed = 0
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     if renpy.showing("Laura_SexSprite"):
             show Laura_SexSprite #fix, test this
             with vpunch
-    elif LauraBJShowing:           #fix, make this animation work better when paused for this effect.
+    elif LauraBJShowing():           #fix, make this animation work better when paused for this effect.
             # show Laura_BJ_Animation
             call Laura_BJ_Launch_(Speed = Speed)
             with vpunch
@@ -1371,7 +1371,7 @@ label Laura_Cumming:
             show Laura_Sprite
             with vpunch
     $ Speed = 1
-    if LauraBJShowing:
+    if LauraBJShowing():
                         call Laura_BJ_Launch_(Speed = Speed)
     $ Line = renpy.random.choice(["Laura is suddenly rocked with spasms, holding back a muffled scream.", 
                 "Laura grabs on tightly as her body shakes with pleasure.", 
