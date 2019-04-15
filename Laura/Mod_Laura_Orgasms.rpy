@@ -448,7 +448,7 @@ label Laura_In_Mouth:
                         with vpunch
                 else:
                         #show Laura_BJ_Animation
-                        $ renpy.show("Laura_BJ_Body_" + str(Speed))
+                        call Laura_BJ_Launch_(Speed = Speed)
                         with vpunch
                 if "full" in newgirl["Laura"].RecentActions:
                         #if she's had enough
@@ -1359,7 +1359,7 @@ label Laura_Cumming:
             with vpunch
     elif LauraBJShowing:           #fix, make this animation work better when paused for this effect.
             # show Laura_BJ_Animation
-            $ renpy.show("Laura_BJ_Body_" + str(Speed))
+            call Laura_BJ_Launch_(Speed = Speed)
             with vpunch
     elif renpy.showing("Laura_TJ_Animation"):
             show Laura_TJ_Animation  
