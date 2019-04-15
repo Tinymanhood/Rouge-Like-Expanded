@@ -4644,7 +4644,17 @@ label Partner_Like(Girl=0,Value=1,AltValue=1,Measure=800,Backsies=0,Partner=Part
         return
 #End Partner_Like
 
-
+label Trig_Reset(Visual=0):
+    # Resets all triggers, and sprites if Visual
+    $ Trigger = 0    
+    $ Trigger2 = 0
+    $ Trigger3 = 0
+    $ Trigger4 = 0
+    $ Trigger5 = 0
+    $ Situation = 0
+    if Visual:
+            call AllReset
+    return
     
 # Start Primary Sex Dialog / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
 label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust = 0, SecondaryLust = 0, Line1 = 0, Line2 = 0, Line3 = 0, Line4 = 0, D20S = 0): #call Sex_Dialog("Rogue","Kitty") 
