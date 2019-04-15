@@ -1824,7 +1824,7 @@ label Laura_BJ_Launch_(Line = 0, Speed = 0):    # The sequence to launch the Lau
     show Laura_Sprite zorder newgirl["Laura"].GirlLayer:
         alpha 0
 
-    $ renpy.show(Animation_Speed, zorder = 150)
+    $ renpy.show(Animation_Speed, zorder = 150, at_list=[Transform(pos=(645, 510))])
     # if Speed == 0:
     #     show Laura_BJ_Body_0 zorder 150: 
     #         # pos (645,510) 

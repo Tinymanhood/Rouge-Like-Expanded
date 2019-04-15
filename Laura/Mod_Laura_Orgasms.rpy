@@ -1,4 +1,4 @@
-﻿# Start You Cumming //////////////////////////////////////////////////////////////////////////////////
+# Start You Cumming //////////////////////////////////////////////////////////////////////////////////
 
 label PLaura_Cumming:
     call Shift_Focus("Laura")
@@ -531,13 +531,9 @@ label Laura_In_Mouth:
                         $ newgirl["Laura"].Spunk.append("chin")
                         ". . ."
                         $ newgirl["Laura"].Spunk.append("hand")
-                        "a"
                         $ Speed = 0
-                        "b"
                         if LauraBJShowing:
-                            "c"
                             call Laura_BJ_Launch_(Speed = Speed)
-                            "d"
                         "She gags and spits it into her palm."   
                         menu:
                             ch_l "What's the deal just cumming in my mouth like that?"
