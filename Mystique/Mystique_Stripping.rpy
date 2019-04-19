@@ -37,6 +37,17 @@ label Mystique_Strip(Tempmod = Tempmod):
 label Mystique_Stripping: 
     
     while Round >=0:  
+        menu:
+            extend ""
+            "Keep dancing":                            
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, 2)
+                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 2)
+                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 2)
+            "That's ok, you can stop.":                            
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, 2)
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 2)
+                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 2)
+                jump Mystique_Strip_End
         if Round <= 10:
             ch_m "It's getting late, we should stop for now."
             $ Count = 0

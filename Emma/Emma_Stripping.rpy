@@ -37,6 +37,17 @@ label E_Strip(Tempmod = Tempmod):
 label E_Stripping: 
     
     while Round >=0:  
+        menu:
+            extend ""
+            "Keep dancing":                            
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
+                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 2)
+            "That's ok, you can stop.":                            
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 2)
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 2)
+                jump E_Strip_End
         if Round <= 10:
             ch_e "It's getting late, we should stop for now."
             $ Count = 0

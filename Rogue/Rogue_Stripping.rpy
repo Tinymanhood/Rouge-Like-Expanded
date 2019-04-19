@@ -37,6 +37,17 @@ label R_Strip(Tempmod = Tempmod):
 label R_Stripping: 
     
     while Round >=0:  
+        menu:
+            extend ""
+            "Keep dancing":                            
+                $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, 2)
+                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
+                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2)
+            "That's ok, you can stop.":                            
+                $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, 2)
+                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 2)
+                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2)
+                jump R_Strip_End
         if Round <= 10:
             ch_r "It's getting late, we should stop for now."
             $ Count = 0

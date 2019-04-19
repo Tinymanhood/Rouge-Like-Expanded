@@ -37,6 +37,17 @@ label K_Strip(Tempmod = Tempmod):
 label K_Stripping: 
     
     while Round >=0:  
+        menu:
+            extend ""
+            "Keep dancing":                            
+                $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, 2)
+                $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
+                $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
+            "That's ok, you can stop.":                            
+                $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, 2)
+                $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 2)
+                $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
+                jump K_Strip_End
         if Round <= 10:
             ch_k "It's getting late, we should stop for now."
             $ Count = 0
@@ -77,7 +88,7 @@ label K_Stripping:
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 2)
                         $ K_SeenPanties = 1                
                 else:
-                    jump K_Strip_Ultimatum          
+                    jump K_Strip_Ultimatum
                     
             elif K_Hose: 
                 # Will she lose the hose?
