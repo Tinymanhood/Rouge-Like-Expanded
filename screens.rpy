@@ -170,7 +170,9 @@ screen choice(items):
         fixed pos (20,0.43) xysize (310,530):
             viewport:
                 yinitial 0
-                #scrollbars "vertical"
+                #if not ("RENPY_IOS" in os.environ or "ANDROID_PRIVATE" in os.environ):
+                if renpy.mobile:
+                    scrollbars "vertical"
                 arrowkeys True
                 mousewheel True
                 draggable True

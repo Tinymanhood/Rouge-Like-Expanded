@@ -5494,8 +5494,9 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif K_Over == "black dress":
                     pass
             elif K_Loc == "bg showerroom":
-                    ch_k "One sec, I gotta change real quick."
-                    $ K_Outfit = renpy.random.choice(["pink outfit", "red outfit"])
+                    ch_k "One sec, I gotta put on something."
+                    #$ K_Outfit = renpy.random.choice(["pink outfit", "red outfit"])
+                    $ K_Outfit = "towel"
                     #$ K_Water = 0
                     call KittyOutfit(Changed = 1) 
                     ch_k "I wouldn't want to be seen like that."

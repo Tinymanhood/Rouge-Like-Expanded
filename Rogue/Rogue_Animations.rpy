@@ -141,11 +141,7 @@ image Rogue:
 #            "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved.png",
 #            "True", "images/RogueSprite/Rogue_arms2b_bare.png",          
             ), 
-        (0,0), ConditionSwitch(                                                                         #Arms and gloves
-            "Rogue_Arms == 1 and R_Arms == 'classic gloves'", "images/RogueSprite/Rogue_Sprite_XGloves1.png",                                     #Gloves, no collar
-            "R_Arms == 'classic gloves'", "images/RogueSprite/Rogue_Sprite_XGloves2.png",                                                         #Gloved, no collar
-            "True", Null(),                                                                         #No gloves, no collar
-            ), 
+        
         (0,0), ConditionSwitch(                                                                         #chest layer
             "R_Tan == 'tan1' and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_t1chest_barbell.png",            
             "R_Tan == 'tan' and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_tchest_barbell.png",            
@@ -207,6 +203,12 @@ image Rogue:
             #"R_Chest == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2_Top.png",
             "R_Chest == 'cheerleader'", "images/RogueSprite/Rogue_Cheerleader_Outfit.png",
             "True", Null(),               
+            ), 
+
+        (0,0), ConditionSwitch(                                                                         #Arms and gloves
+            "Rogue_Arms == 1 and R_Arms == 'classic gloves'", "images/RogueSprite/Rogue_Sprite_XGloves1.png",                                     #Gloves, no collar
+            # "R_Arms == 'classic gloves'", "images/RogueSprite/Rogue_Sprite_XGloves2.png",                                                         #Gloved, no collar
+            "True", Null(),                                                                         #No gloves, no collar
             ), 
         (0,0), ConditionSwitch(                                                                         #full hose/tights              
             "R_PantiesDown", Null(), 
@@ -328,13 +330,26 @@ image Rogue:
             "R_Tan", "images/RogueSprite/Rogue_tarms2b_bare_.png",                                                                         #No gloves, no collar
             "True", "images/RogueSprite/Rogue_arms2b_bare_.png",  
             ), 
-        
+
         (0,0), ConditionSwitch(                                                                         #Arms and gloves
             "Rogue_Arms == 1", Null(),                                                             
             "R_BodySuitOff", Null(),
             "R_BodySuit == 'classic uniform' or R_BodySuit == 'classic uniform damaged'", "images/RogueSprite/Rogue_Sprite_XCatsuit2_.png",
             "True", Null(),
-            ),                 
+            ),  
+
+        (0,0), ConditionSwitch(                                                                         #Arms and gloves
+            "Rogue_Arms == 1", Null(),                                                              #No gloves, no collar
+            "R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms2_.png", 
+            "R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms2_.png", 
+            "True", Null(),
+            ),  
+        (0,0), ConditionSwitch(                                                                         #Arms and gloves
+            "Rogue_Arms == 1", Null(),                                                              #No gloves, no collar
+            "R_Arms == 'classic gloves'", "images/RogueSprite/Rogue_Sprite_XGloves2.png",                                                         #Gloved, no collar
+            "True", Null(),                                                                         #No gloves, no collar
+            ), 
+
         (0,0), ConditionSwitch(                                                                         #water
             "R_Water and Rogue_Arms == 1", "images/RogueSprite/Rogue_body_wet1.png",
             "R_Water", "images/RogueSprite/Rogue_body_wet2.png",
