@@ -746,7 +746,7 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
 label NewGirl_Self_Lines(Girl_ = "Mystique", Mode = "T3", Action = Trigger3, TempLustX = 0): 
     # The Mode can be T3 for Trigger 3 for a masturbation option, or T5/Trigger5 if it's setting a Threeway action. 
     # call NewGirl_Self_Lines("T5",Trigger5) 
-    # This sets a Action if there isn't one, or sets an intitial line
+    # This sets a Action if there isn't one, or sets an initial line
     $ Line = 0
     if not Action or D20S >= 15: 
             if Trigger != "masturbation" and "passive" in newgirl[Girl_].Traits:

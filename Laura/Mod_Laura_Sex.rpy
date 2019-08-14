@@ -338,7 +338,7 @@ label Laura_Cheat_Menu:
                 $ newgirl["Laura"].Obed = 1000
                 $ newgirl["Laura"].Lust = 50
                 $ newgirl["Laura"].Addict = 0 #how addicted she is
-                $ newgirl["Laura"].Addictionrate = 0 #How faster her addiciton rises
+                $ newgirl["Laura"].Addictionrate = 0 #How faster her addiction rises
                 $ newgirl["Laura"].Kissed = 1 #How many times they've kissed
                 $ newgirl["Laura"].Swallow = 0
         "50\%":
@@ -347,7 +347,7 @@ label Laura_Cheat_Menu:
                 $ newgirl["Laura"].Obed = 500
                 $ newgirl["Laura"].Lust = 65
                 $ newgirl["Laura"].Addict = 0 #how addicted she is
-                $ newgirl["Laura"].Addictionrate = 10 #How faster her addiciton rises
+                $ newgirl["Laura"].Addictionrate = 10 #How faster her addiction rises
                 $ newgirl["Laura"].Kissed = 10 #How many times they've kissed
                 $ newgirl["Laura"].Swallow = 0
         "25\%":
@@ -356,7 +356,7 @@ label Laura_Cheat_Menu:
                 $ newgirl["Laura"].Obed = 250
                 $ newgirl["Laura"].Lust = 85
                 $ newgirl["Laura"].Addict = 10 #how addicted she is
-                $ newgirl["Laura"].Addictionrate = 50 #How faster her addiciton rises
+                $ newgirl["Laura"].Addictionrate = 50 #How faster her addiction rises
                 $ newgirl["Laura"].Kissed = 10 #How many times they've kissed
                 $ newgirl["Laura"].Swallow = 0
         "Juice up":
@@ -1378,10 +1378,10 @@ label Laura_Masturbate: #(Situation = Situation):
                                     return            
                         jump LM_Prep
                 else:                
-                        $ Tempmod = 0                               # fix, add laura auto stuff here
+                        $ Tempmod = 0                               # fix, add Laura auto stuff here
                         $ Trigger2 = 0
                 return            
-    #End if Laura intitiates this action
+    #End if Laura initiates this action
     
     #first time
     if not newgirl["Laura"].Mast:                                                                
@@ -1982,14 +1982,14 @@ label Laura_Offhand(TempLine=0):
                         " You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         " Her legs twitch a bit as you press your thumb against her.",
                         " She gasps as you reach under her and lightly stroke her ass.",
-                        " You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        " You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             else:
                 $ Line = renpy.random.choice([" You reach out and brush your hands across her ass.", 
                         " You put your hand against her firm rear and grind against it.", 
                         " You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         " Her legs twitch a bit as you press your thumb against her.",
                         " She gasps as you reach under her and lightly stroke her ass.",
-                        " You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        " You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             $ PrimaryLust += 2 if newgirl["Laura"].Lust < 50 else 1
             $ TempFocus += 1 if P_Focus < 50 else 0  
             $ TempFocus += 1 if P_Focus < 80 else 0   

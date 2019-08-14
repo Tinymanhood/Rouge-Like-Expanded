@@ -1666,7 +1666,7 @@ label ETJ_Cycle: #Repeating strokes
             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 60, 2)
             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 3) 
     
-    call Emma_Offhand from _call_Emma_Offhand                                                            #Offhand and reduce addiciton per stroke        
+    call Emma_Offhand from _call_Emma_Offhand                                                            #Offhand and reduce addiction per stroke        
     $ E_Addict -= 2          
     
     if P_Focus >= 100 or E_Lust >= 100:                                     #If either of you could cum    

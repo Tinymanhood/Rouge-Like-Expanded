@@ -326,7 +326,7 @@ label Mystique_Cheat_Menu:
                 $ newgirl["Mystique"].Obed = 1000
                 $ newgirl["Mystique"].Lust = 50
                 $ newgirl["Mystique"].Addict = 0 #how addicted she is
-                $ newgirl["Mystique"].Addictionrate = 0 #How faster her addiciton rises
+                $ newgirl["Mystique"].Addictionrate = 0 #How faster her addiction rises
                 $ newgirl["Mystique"].Kissed = 1 #How many times they've kissed
                 $ newgirl["Mystique"].Swallow = 0
         "50\%":
@@ -335,7 +335,7 @@ label Mystique_Cheat_Menu:
                 $ newgirl["Mystique"].Obed = 500
                 $ newgirl["Mystique"].Lust = 65
                 $ newgirl["Mystique"].Addict = 0 #how addicted she is
-                $ newgirl["Mystique"].Addictionrate = 10 #How faster her addiciton rises
+                $ newgirl["Mystique"].Addictionrate = 10 #How faster her addiction rises
                 $ newgirl["Mystique"].Kissed = 10 #How many times they've kissed
                 $ newgirl["Mystique"].Swallow = 0
         "25\%":
@@ -344,7 +344,7 @@ label Mystique_Cheat_Menu:
                 $ newgirl["Mystique"].Obed = 250
                 $ newgirl["Mystique"].Lust = 85
                 $ newgirl["Mystique"].Addict = 10 #how addicted she is
-                $ newgirl["Mystique"].Addictionrate = 50 #How faster her addiciton rises
+                $ newgirl["Mystique"].Addictionrate = 50 #How faster her addiction rises
                 $ newgirl["Mystique"].Kissed = 10 #How many times they've kissed
                 $ newgirl["Mystique"].Swallow = 0
         "Juice up":
@@ -1247,7 +1247,7 @@ label Mystique_Masturbate: #(Situation = Situation):
                         $ Tempmod = 0                               # fix, add Mystique auto stuff here
                         $ Trigger2 = 0
                 return            
-    #End if Mystique intitiates this action
+    #End if Mystique initiates this action
     
     #first time
     if not newgirl["Mystique"].Mast:                                                                
@@ -1807,14 +1807,14 @@ label Mystique_Offhand(TempLine=0):
                         ". You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         ". Her legs twitch a bit as you press your thumb against her.",
                         ". She gasps as you reach under her and lightly stroke her ass.",
-                        ". You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        ". You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             else:
                 $ Line = renpy.random.choice([". You reach out and brush your hands across her ass.", 
                         ". You put your hand against her firm rear and grind against it.", 
                         ". You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         ". Her legs twitch a bit as you press your thumb against her.",
                         ". She gasps as you reach under her and lightly stroke her ass.",
-                        ". You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        ". You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             $ PrimaryLust += 2 if newgirl["Mystique"].Lust < 50 else 1
             $ TempFocus += 1 if P_Focus < 50 else 0  
             $ TempFocus += 1 if P_Focus < 80 else 0   

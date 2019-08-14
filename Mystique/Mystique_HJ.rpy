@@ -1666,7 +1666,7 @@ label Mystique_BJAfter:
 #             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 60, 2)
 #             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 200, 3) 
     
-#     call Mystique_Offhand                                                            #Offhand and reduce addiciton per stroke        
+#     call Mystique_Offhand                                                            #Offhand and reduce addiction per stroke        
 #     $ newgirl["Mystique"].Addict -= 2          
     
 #     if P_Focus >= 100 or newgirl["Mystique"].Lust >= 100:                                     #If either of you could cum    

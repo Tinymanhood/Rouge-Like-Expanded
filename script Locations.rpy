@@ -2522,7 +2522,7 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "No, [R_Petname], I think I'm covered."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
-                                ch_k "Ha, I'm squeeky clean, [K_Petname], see you later."
+                                ch_k "Ha, I'm squeaky clean, [K_Petname], see you later."
                             if EmmaCount == 1:                                   #Kitty/Rogue agreed, Emma refused
                                 ch_e "Not this time, [R_Petname]."
                         

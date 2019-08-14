@@ -1168,14 +1168,14 @@ label Date_Movies:
         
     if "romcom" in P_RecentActions:    
         $ Line = renpy.random.choice(["You watch the movie, which is about an adorkable girl who can't choose between two hunky guys. She picks the other one.", 
-                    "You watch the movie, which is about a girl who is mercilessly stalked by some weird guy, until she eventually decides she loves him. They live hapily ever after.", 
+                    "You watch the movie, which is about a girl who is mercilessly stalked by some weird guy, until she eventually decides she loves him. They live happily ever after.", 
                     "In this movie, the lead goes to all her friend's weddings, but can't get it together herself. She dies alone. Just kidding, she gets married at the end.", 
                     "You watch the movie, in which a bunch of college girls go on a wild adventure and have lots of random sex.",
                     "This movie is about a girl who's convinced to live in a sex dungeon, and really seems to enjoy it.",
                     "This movie is about a girl who works for a fashion house and is bullied by her boss, until they become friends."])        
     elif "action" in P_RecentActions: 
         $ Line = renpy.random.choice(["You watch the movie, which is about an ex marine fighting aliens.", 
-                    "You watch the movie, which is about a girl who is mercilessly stalked by some weird guy, until she eventually decides she loves him. They live hapily ever after. There are also a lot of explosions.", 
+                    "You watch the movie, which is about a girl who is mercilessly stalked by some weird guy, until she eventually decides she loves him. They live happily ever after. There are also a lot of explosions.", 
                     "In this movie, giant robots are fighting animal mash-ups, with the fate of the world in the balance.", 
                     "You watch the movie, in which a team of non-mutant superhumans are apparently fighting some sort of silvery robots in Eastern Europe.",
                     "This movie is about a superhuman powerhouse that nearly wrecks a town, and yet is not arrested for it by the humans. Must be the hammer.",

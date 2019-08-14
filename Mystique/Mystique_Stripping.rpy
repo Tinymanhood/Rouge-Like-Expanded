@@ -662,7 +662,7 @@ label Mystique_Top_Off(Intro = 1, Line = 0, Cnt = 0):                           
         extend ""
         "Sorry, sorry." if "no topless" in newgirl["Mystique"].RecentActions:  
             call MystiqueFace("bemused", 1)   
-            ch_m "I can't blame you for your persistance, but learn from your errors."
+            ch_m "I can't blame you for your persistence, but learn from your errors."
         "Ok, that's fine." if "no topless" not in newgirl["Mystique"].RecentActions: 
             if "ask topless" not in newgirl["Mystique"].DailyActions:
                 $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 80, 3)

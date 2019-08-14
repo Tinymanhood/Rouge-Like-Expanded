@@ -1119,7 +1119,7 @@ label Kitty_Chitchat(O=0, Options = ["default","default","default"]):
                                 call KittyFace("sly",1) 
                                 ch_k "Yeah?  {i}Maybe{/i} you should[K_like]have accidents like that more often."
                             call KittyFace("smile") 
-                            ch_k "It's cool, [K_Petname]. Eveybody makes mistakes. . . sometimes."
+                            ch_k "It's cool, [K_Petname]. Everybody makes mistakes. . . sometimes."
                     "Just you.":        
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 5)   
                             if ApprovalCheck("Kitty", 1000) or ApprovalCheck("Kitty", 700, "L"):      
@@ -1311,7 +1311,7 @@ label Kitty_Chitchat(O=0, Options = ["default","default","default"]):
                     ch_k "Wow! Isn't it[K_like]{i}so{/i} nice out right now?"
             elif D20 == 6:
                     call KittyFace("startled") 
-                    ch_k "I had[K_like]the worst nightmare last night. I dreamed the N'Garai demon was chasing me throught the Mansion!"
+                    ch_k "I had[K_like]the worst nightmare last night. I dreamed the N'Garai demon was chasing me through the Mansion!"
             elif D20 == 7:
                     call KittyFace("smile") 
                     ch_k "So awesome. I have[K_like]a lunch date tomorrow with my total bestie!"
@@ -4376,7 +4376,7 @@ label Kitty_Clothes:
                     $ Line = K_Panties
                     $ K_Panties = 0  
                     if K_Legs:
-                        "She reaches into her pocket, grabs hold of something, and then pulls her [Line] out, droping them to the ground."                
+                        "She reaches into her pocket, grabs hold of something, and then pulls her [Line] out, dropping them to the ground."                
                     else:
                         "She lets her [Line] drop to the ground."
                         call Kitty_First_Bottomless 
@@ -4801,7 +4801,7 @@ label Kitty_Clothes:
             else: 
                 call KittyFace("surprised") 
                 $ K_Brows = "angry"
-                ch_k "Well {i}I{/i} kinda like'em."
+                ch_k "Well {i}I{/i} kinda like 'em."
                 jump Kitty_Clothes            
             $ K_Pierce = 0 
         "Why don't you try on that gold necklace." if K_Neck != "gold necklace":
@@ -5532,7 +5532,7 @@ label KittyLike:
         "Like":
             $ K_like = ", like, "
             $ K_Like = "Like, "
-            ch_k "I guess I do[K_like]say that alot, huh?"           
+            ch_k "I guess I do[K_like]say that a lot, huh?"           
         "Um":
             $ K_like = ", um, "
             $ K_Like = "Um, "

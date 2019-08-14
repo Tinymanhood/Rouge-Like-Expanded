@@ -900,7 +900,7 @@ label Plan_Omega:
     "Xavier realizes with a shock that with your powers, his telepathy is useless."    
     show Rogue at SpriteLoc(StageLeft+100,85) zorder 24 with ease
     "Rogue moves in and also grabs his head, duplicating his powers as he watches helplessly."
-    "Now that she posesses his full power, while his are negated, he has no defenses."
+    "Now that she possesses his full power, while his are negated, he has no defenses."
     if K_Loc == bg_current:        
         call KittyFace("surprised") from _call_KittyFace_26      
         "Kitty looks a bit caught off guard, but goes along with the idea."        
@@ -1024,7 +1024,7 @@ label Rogue_BF:
             $ R_Petnames.append("boyfriend")
             $ R_Traits.append("dating")
             $R_Brows = "confused"
-            "Rogue is a bit put off by your casual acceptence of reality, but takes it as a positive sign and hugs you."    
+            "Rogue is a bit put off by your casual acceptance of reality, but takes it as a positive sign and hugs you."    
         "I'm with Kitty now." if "dating" in K_Traits:             
             call RogueFace("sad",1) from _call_RogueFace_173    
             ch_r "I know, I know, i just thought maybe you could go out with me too?"
@@ -1107,7 +1107,7 @@ label Rogue_Love:
         if R_Loc == bg_current or "Rogue" in Party:
             "Suddenly, Rogue says she wants to talk to you in her room and drags you over there."
         else:
-            "Rogue shows up, hurridly says she wants to talk to you in her room and drags you over there."
+            "Rogue shows up, hurriedly says she wants to talk to you in her room and drags you over there."
     else:
         "Rogue suddenly stares at you very intently."
     
@@ -1176,7 +1176,7 @@ label Rogue_Love:
     call RogueFace("sexy") from _call_RogueFace_189
     $ R_Petnames.append("lover")
     if not R_Sex:
-        ch_r "So. . . did you want to . . . consumate this?"
+        ch_r "So. . . did you want to . . . consummate this?"
         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 10)
         menu:
             extend ""
@@ -2219,7 +2219,7 @@ label SpecialMenu:
                 jump Tutorial                        
             "Statchecker":
                     "This element will check all the stats and make sure that they work in your current savegame."
-                    "This is a good idea if you're getting 'variable not found' syle errors."
+                    "This is a good idea if you're getting 'variable not found' style errors."
                     menu:
                         "Do you want to do this?"
                         "Yes":
@@ -2286,7 +2286,7 @@ label SpecialMenu:
 # start Hank's Lab//////////////////////////////////////////////////////////
 label Hanks_Lab(Line=0):
     "This is Professor McCoy's lab. You can do various self-modifications here."
-    "The changes will be so seemless, it's almost like nobody will even notice!"
+    "The changes will be so seamless, it's almost like nobody will even notice!"
     while True:
         $ Line = 0
         menu:
@@ -2307,7 +2307,7 @@ label Hanks_Lab(Line=0):
                         "You down it in a single gulp, and within minutes your skin tone shifts to be more [P_Color]ish."
                 
             "Change my name.":
-                    "You log in to McCoy's high end computer, this should allow you to change your name in all offical databases."  
+                    "You log in to McCoy's high end computer, this should allow you to change your name in all official databases."  
                     $ Playername = renpy.input("What name would you like?", default="Zero", length = 10)
                     $ Playername = Playername.strip()        
                     if not Playername:
@@ -2319,7 +2319,7 @@ label Hanks_Lab(Line=0):
                     call LastNamer from _call_LastNamer_1                         
                     $ E_Petnames.append(_return)
                     $ E_Petname = _return
-                    "That should do it, your name has been updated and an email has been sent out to everyne on campus about the change."
+                    "That should do it, your name has been updated and an email has been sent out to everyone on campus about the change."
                     
             "Leave.":
                     return

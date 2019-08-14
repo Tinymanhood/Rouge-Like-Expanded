@@ -261,7 +261,7 @@ label K_Date_Dinner:
         $ K_DailyActions.append("sex") 
     elif Options[0] == "blow":
         "Halfway through the meal, Kitty gets a sly look on her face, then knocks her fork off the table."
-        "She ducks under the table after it, and unzips your pants. She then procedes to blow you for several minutes until you cum."
+        "She ducks under the table after it, and unzips your pants. She then proceeds to blow you for several minutes until you cum."
         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 6)
         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 2)
         $ K_RecentActions.append("blow")                      
@@ -399,7 +399,7 @@ label K_Date_Movies:
     if "romcom" in K_RecentActions:      
         $ Count += 2
         $ Line = renpy.random.choice(["You watch the movie, which is about an adorkable girl who can't choose between two hunky guys. She picks the other one.", 
-                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live hapily ever after.", 
+                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live happily ever after.", 
                     "In this movie, the lead goes to all her friend's weddings, but can't get it together herself. She dies alone. Just kidding, she gets married at the end.", 
                     "You watch the movie, in which a bunch of college girls go on a wild adventure and have lots of random sex.",
                     "This movie is about a girl who's convinced to live in a sex dungeon, and really seems to enjoy it.",
@@ -407,11 +407,11 @@ label K_Date_Movies:
     elif "action" in K_RecentActions: 
         $ Count += 1
         $ Line = renpy.random.choice(["You watch the movie, which is about an ex marine fighting aliens.", 
-                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live hapily ever after. There are also a lot of explosions.", 
+                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live happily ever after. There are also a lot of explosions.", 
                     "In this movie, giant robots are fighting animal mash-ups, with the fate of the world in the balance.", 
                     "You watch the movie, in which a team of non-mutant superhumans are apparently fighting some sort of silvery robots in Eastern Europe.",
                     "This movie is about a superhuman powerhouse that nearly wrecks a town, and yet is not arrested for it by the humans. Must be the hammer.",
-                    "This movie is about 90 minutes of constant explosions and lensflares."])
+                    "This movie is about 90 minutes of constant explosions and lens flares."])
     elif "horror" in K_RecentActions: 
         $ Count += 4
         $ Line = renpy.random.choice(["You watch the movie, which is about an adorkable girl who can't choose between two hunky guys. She picks the other one. The guys are a fishman and a skeleton.", 
@@ -526,7 +526,7 @@ label K_Date_Movies:
                         $ K_DailyActions.append("swallowed") 
                     else:
                         "You cum into the popcorn bucket, which she phases into the floor."
-                        ch_k "That should give archeolgists a surprise."
+                        ch_k "That should give archaeologists a surprise."
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 40, 3)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 2)
                     $ K_SeenPeen += 1
@@ -560,7 +560,7 @@ label K_Date_Movies:
                             $ K_DailyActions.append("swallowed") 
                     else:
                         "You cum into the popcorn bucket, which she phases into the floor."
-                        ch_k "That should give archeolgists a surprise."
+                        ch_k "That should give archaeologists a surprise."
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 2)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 40, 3)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 2)
@@ -584,7 +584,7 @@ label K_Date_Movies:
                             $ K_DailyActions.append("swallowed") 
                     else:
                         "You cum into the popcorn bucket, which she phases into the floor."
-                        ch_k "That should give archeolgists a surprise."
+                        ch_k "That should give archaeologists a surprise."
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 40, 2)
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 2)
                     $ K_SeenPeen += 1

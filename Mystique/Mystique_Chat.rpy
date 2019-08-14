@@ -994,7 +994,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
                                 call NewGirl_Face("Mystique","sly",1)
                                 ch_m "Yeah?  {i}Maybe{/i} you should have accidents like that more often."
                             call NewGirl_Face("Mystique","smile")
-                            ch_m "It's cool, [newgirl[Mystique].Petname]. Eveybody makes mistakes. . . sometimes."
+                            ch_m "It's cool, [newgirl[Mystique].Petname]. Everybody makes mistakes. . . sometimes."
                     "Just you.":        
                             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 40, 5)   
                             if ApprovalCheck("Mystique", 1000) or ApprovalCheck("Mystique", 700, "L"):      
@@ -4259,7 +4259,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
             $ newgirl["Mystique"].Panties = 0  
             if newgirl["Mystique"].Legs:
                 if Taboo or ApprovalCheck("Mystique", 1100) or newgirl["Mystique"].SeenPussy:
-                    "She pulls off her [newgirl[Mystique].Legs] then pulls her [Line] off, droping them to the ground, before putting them back on." 
+                    "She pulls off her [newgirl[Mystique].Legs] then pulls her [Line] off, dropping them to the ground, before putting them back on." 
                     call Mystique_First_Bottomless
                 else:
                     "She asks you to turn around. After a few seconds, you turn back to her as she drops the [Line] to the ground."               

@@ -362,7 +362,7 @@ label Kitty_Cheat_Menu:
                 $ K_Obed = 1000
                 $ K_Lust = 50
                 $ K_Addict = 0 #how addicted she is
-                $ K_Addictionrate = 0 #How faster her addiciton rises
+                $ K_Addictionrate = 0 #How faster her addiction rises
                 $ K_Kissed = 1 #How many times they've kissed
                 $ K_Swallow = 0
         "50\%":
@@ -371,7 +371,7 @@ label Kitty_Cheat_Menu:
                 $ K_Obed = 500
                 $ K_Lust = 65
                 $ K_Addict = 0 #how addicted she is
-                $ K_Addictionrate = 10 #How faster her addiciton rises
+                $ K_Addictionrate = 10 #How faster her addiction rises
                 $ K_Kissed = 10 #How many times they've kissed
                 $ K_Swallow = 0
         "25\%":
@@ -380,7 +380,7 @@ label Kitty_Cheat_Menu:
                 $ K_Obed = 250
                 $ K_Lust = 85
                 $ K_Addict = 10 #how addicted she is
-                $ K_Addictionrate = 50 #How faster her addiciton rises
+                $ K_Addictionrate = 50 #How faster her addiction rises
                 $ K_Kissed = 10 #How many times they've kissed
                 $ K_Swallow = 0
         "Juice up":
@@ -1260,7 +1260,7 @@ label K_Masturbate: #(Situation = Situation):
                         $ Tempmod = 0                               # fix, add kitty auto stuff here
                         $ Trigger2 = 0
                 return            
-    #End if Kitty intitiates this action
+    #End if Kitty initiates this action
     
     #first time
     if not K_Mast:                                                                
@@ -1816,14 +1816,14 @@ label Kitty_Offhand(TempLine=0):
                         ". You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         ". Her legs twitch a bit as you press your thumb against her.",
                         ". She gasps as you reach under her and lightly stroke her ass.",
-                        ". You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        ". You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             else:
                 $ Line = renpy.random.choice([". You reach out and brush your hands across her ass.", 
                         ". You put your hand against her firm rear and grind against it.", 
                         ". You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         ". Her legs twitch a bit as you press your thumb against her.",
                         ". She gasps as you reach under her and lightly stroke her ass.",
-                        ". You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        ". You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             $ PrimaryLust += 2 if K_Lust < 50 else 1
             $ TempFocus += 1 if P_Focus < 50 else 0  
             $ TempFocus += 1 if P_Focus < 80 else 0   

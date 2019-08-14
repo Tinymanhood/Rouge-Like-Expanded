@@ -40,7 +40,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                     
             else:                       #below 5th time
                         if Speed <= 1:                      #slow
-                            $ Line = Line + renpy.random.choice(["She's begining to figure out what you like, her fingers cause tingles as they caress the shaft", 
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure out what you like, her fingers cause tingles as they caress the shaft", 
                                     "She's quickly learning your hot spots. Those gloves sure do keep her hands smooth", 
                                     "She has a smooth motion going now, gentle and precise",
                                     "She gently caresses the shaft, and cups the balls in her other hand, giving them a warm massage"])  
@@ -48,7 +48,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                             $ TempFocus += 15 if P_Focus > 60 else 5
                             
                         else:                               #fast
-                            $ Line = Line + renpy.random.choice(["She's begining to figure you out, her fingers cause tingles as they caress the shaft", 
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure you out, her fingers cause tingles as they caress the shaft", 
                                     "Her hands move quickly. Those gloves sure do keep her hands smooth", 
                                     "Her hands glide smoothly across your cock",
                                     "She has a smooth motion going now, gentle and precise",
@@ -69,7 +69,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         if newgirl["Mystique"].Tit > 2:
                             $ Line = "Mystique begins to bounce her breasts up and down"
                         else:
-                            $ Line = "Mystique squeezes her breasts togather and slowly moves them along your shaft"
+                            $ Line = "Mystique squeezes her breasts together and slowly moves them along your shaft"
                         $ Speed = 1
                         $ TempFocus += 12 if P_Focus < 60 else 6                      
                         $ TempLust += 6 if newgirl["Mystique"].Lust > 60 else 3 
@@ -164,12 +164,12 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She's really something of an expert, displaying years of expertise",
                                     "She's really good at this, alternating between deep suction and gentle licks",
                                     "She moves very smoothly, tongue dancing casually and very gently. Clearly she's been doing this for years",
-                                    "She puts the tip into her mouth and her tounge dances around it"])  
+                                    "She puts the tip into her mouth and her tongue dances around it"])  
                             $ TempFocus += 23 if P_Focus < 70 else 17
                             $ TempLust += 2
                         
                     else:                                                                #After the 2nd time
-                            $ Line = Line + renpy.random.choice(["She's begining to figure you out, her tongue makes your hair stand on end", 
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure you out, her tongue makes your hair stand on end", 
                                     "She's settled into a gentle licking pace that washes over you like a warm bath",
                                     "She licks gently up and down the shaft. She's still figuring out what works for you", 
                                     "Her tongue moves carefully along the shaft",
@@ -186,12 +186,12 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She's really something of an expert, displaying years of expertise",
                                     "She's really good at this, alternating between deep suction and quick licks across the head",
                                     "She moves very smoothly, bobbing in and out. Clearly she's been doing this for years",
-                                    "She puts the tip into her mouth and her tounge swirls rapidly around it"]) 
+                                    "She puts the tip into her mouth and her tongue swirls rapidly around it"]) 
                             $ TempFocus += 22 if P_Focus < 80 else 12                      
                             $ TempLust += 2   
                         
                     else:                                                                #After the 2nd time
-                            $ Line = Line + renpy.random.choice(["She's begining to figure you out, she bobs carefully up and down the head", 
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure you out, she bobs carefully up and down the head", 
                                     "Her lips envelope you like a warm bath as she bobs in and out",
                                     "She's really starting to apply some clever tricks to making you feel good",
                                     "She rapidly licks her way around the head",
@@ -208,12 +208,12 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She gobbles you up all the way to the base, then quickly draws out and plunges back in",
                                     "She's really good at this, alternating between deep suction and quick licks across the head",
                                     "She moves very smoothly, bobbing in and out. She's clearly been doing this for years",
-                                    "She puts the shaft into her mouth and her tounge swirls rapidly around it"]) 
+                                    "She puts the shaft into her mouth and her tongue swirls rapidly around it"]) 
                             $ TempFocus += 24 if P_Focus > 40 else 14                      
                             $ TempLust += 4 if newgirl["Mystique"].Lust > 60 else 2    
                         
                     else:                                                                #After the 2nd time
-                            $ Line = Line + renpy.random.choice(["She's begining to figure you out, she bobs carefully up and down the shaft",
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure you out, she bobs carefully up and down the shaft",
                                     "Her lips envelope you like a warm bath as she bobs in and out",
                                     "She slowly draws you in to the base of your cock, then pulls back at the last second",
                                     "She's really starting to learn some clever tricks to making you feel good",
@@ -232,12 +232,12 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She gobbles you up all the way to the base, then quickly draws out and plunges back in",
                                     "She's really good at this, alternating between deep suction and quick licks across the head",
                                     "She moves very smoothly, bobbing in and out. She's clearly been doing this for years",
-                                    "She puts the entire shaft into her mouth and her tounge swirls rapidly around it"])  
+                                    "She puts the entire shaft into her mouth and her tongue swirls rapidly around it"])  
                             $ TempFocus += 25 if P_Focus > 40 else 10                      
                             $ TempLust += 3 if newgirl["Mystique"].Lust > 60 else 2    
                         
                     else:                                                                #After the 2nd time
-                            $ Line = Line + renpy.random.choice(["She's begining to figure you out, she bobs carefully up and down the shaft", 
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure you out, she bobs carefully up and down the shaft", 
                                     "Her lips envelope you like a warm bath as she bobs in and out",
                                     "She slowly draws you in to the base of your cock, then pulls back at the last second",
                                     "She's really starting to apply some clever tricks to making you feel good",
@@ -347,7 +347,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
             else: #If you haven't done hotdog before       
                 if Speed > 1:       #fast
                     $ Line = Line + renpy.random.choice(["She bounces rapidly against your cock", 
-                        "You thrust into her and she squeeks in surprise",
+                        "You thrust into her and she squeaks in surprise",
                         "You quickly grind back and forth against her but she doesn't seem to have the rhythm down",
                         "She bounces rapidly against your cock, occasionally sliding out and having to stick it back in",
                         "You pound away at her",    
@@ -565,7 +565,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You lift her leg a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath your hands",
                                         "She gasps as you stroke her warm thighs",
-                                        "You slide a hand up her inner thigh, the smooth faberic creasing",
+                                        "You slide a hand up her inner thigh, the smooth fabric creasing",
                                         "You slide a hand up her inner thigh, to just below her. . ."])
                                 $ TempFocus += 2 if P_Focus < 40 else 0  
                                 $ TempLust += 2 if newgirl["Mystique"].Lust < 40 else 0                               
@@ -679,7 +679,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])  
                                     elif HoseNum("Mystique") >= 5: #just hose
                                             $ Line = renpy.random.choice(["You reach out and brush your hands across her cleft through the thin fabric", 
-                                                    "You grab her hose and pull them taut, elliciting a small gasp",
+                                                    "You grab her hose and pull them taut, eliciting a small gasp",
                                                     "You put your hand against her mound and grind against it", 
                                                     "You reach into her gap and she gasps as you slide your hand across and stroke her lips through the thin material", 
                                                     "Her legs twitch a bit as you press your thumb against her",
@@ -711,7 +711,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                             elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                         $ Line = renpy.random.choice(["You reach out and brush your hands across her panties", 
-                                                "You grab her panties and pull them taut, elliciting a small gasp",
+                                                "You grab her panties and pull them taut, eliciting a small gasp",
                                                 "You put your hand against her mound and grind against it", 
                                                 "You reach into her gap and she gasps as you slide your hand across and stroke her lips through the thin material", 
                                                 "Her legs twitch a bit as you press your thumb against her",
@@ -719,7 +719,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                             elif HoseNum("Mystique") >= 5: #just hose
                                         $ Line = renpy.random.choice(["You reach out and brush your hands across her cleft through the thin fabric", 
-                                                "You grab her hose and pull them taut, elliciting a small gasp",
+                                                "You grab her hose and pull them taut, eliciting a small gasp",
                                                 "You put your hand against her mound and grind against it", 
                                                 "You reach into her gap and she gasps as you slide your hand across and stroke her lips through the thin material", 
                                                 "Her legs twitch a bit as you press your thumb against her",
@@ -892,7 +892,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You reach into her gap and she gasps as you slide your hand across and stroke her warm mound", 
                                                 "As you dig your thumb into her, she gasps and raises up a bit",
                                                 "She gasps as you reach under her and lightly stroke her ass through the jeans",
-                                                "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])  
+                                                "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])  
                                             
                         elif newgirl["Mystique"].Legs == "skirt":
                                 if newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: #shorts on
@@ -901,28 +901,28 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You lift her skirt a bit and she gasps as you pull her shorts aside and stroke across her butt", 
                                                 "Her legs twitch a bit beneath her skirt as you give her cheeks a firm squeeze",
                                                 "She gasps as you stroke her asshole through her shorts",
-                                                "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])   
+                                                "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])   
                                 elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                         $ Line = renpy.random.choice(["You reach under skirt and brush across her panties", 
                                                 "You lift her skirt a bit and grind against her panties", 
                                                 "You lift her skirt a bit and she gasps as you pull her panties aside and stroke across her butt", 
                                                 "Her legs twitch a bit beneath her skirt as you give her cheeks a firm squeeze",
                                                 "She gasps as you stroke her asshole through her panties",
-                                                "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])   
+                                                "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])   
                                 elif HoseNum("Mystique") >= 5: #just hose
                                         $ Line = renpy.random.choice(["You reach under skirt and brush across her hose", 
                                                 "You lift her skirt a bit and grind against her hose", 
                                                 "You lift her skirt a bit and she gasps as you pull her hose aside and stroke across her butt", 
                                                 "Her legs twitch a bit beneath her skirt as you give her cheeks a firm squeeze",
                                                 "She gasps as you stroke her asshole through her hose",
-                                                "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])   
+                                                "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])   
                                 else: #skirt, but nothing else
                                         $ Line = renpy.random.choice(["You reach under skirt and brush across her bare ass", 
                                                 "You lift her skirt a bit and grind against her warm cheeks", 
                                                 "You lift her skirt a bit and she gasps as you stroke asshole", 
                                                 "Her legs twitch a bit beneath her skirt as you press your thumb against her firm rear",
                                                 "She gasps as you rub her bare hole",
-                                                "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"]) 
+                                                "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"]) 
                                         if D20S <= 10:
                                             $ TempFocus += 2 if P_Focus < 70 else 1  
                                             $ TempLust += 3 if newgirl["Mystique"].Lust > 40 else 2
@@ -934,32 +934,32 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         #no skirt or pants
                         elif newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: # just shorts on
                                     $ Line = renpy.random.choice(["You reach out and brush your hands across her lightly covered cheeks", 
-                                            "You grab her shorts and pull them taut, elliciting a small gasp",
+                                            "You grab her shorts and pull them taut, eliciting a small gasp",
                                             "You reach into her gap and she gasps as you slide your hand across and stroke her hole through the thin material", 
                                             "Her legs twitch a bit as you grind her puckered hole",
                                             "She gasps as you reach under her shorts and lightly stroke her warm flesh",
-                                            "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])                                      
+                                            "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])                                      
                         elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: # panties   
                                     $ Line = renpy.random.choice(["You reach out and brush your hands across her barely covered cheeks", 
-                                            "You grab her panties and pull them taut, elliciting a small gasp",
+                                            "You grab her panties and pull them taut, eliciting a small gasp",
                                             "You reach into her gap and she gasps as you slide your hand across and stroke her hole through the thin material", 
                                             "Her legs twitch a bit as you grind her puckered hole",
                                             "She gasps as you reach under her panties and lightly stroke her warm flesh",
-                                            "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])  
+                                            "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])  
                         elif HoseNum("Mystique") >= 5: #just hose
                                     $ Line = renpy.random.choice(["You reach out and brush your hands across her barely covered cheeks", 
-                                            "You grab her hose and pull them taut, elliciting a small gasp",
+                                            "You grab her hose and pull them taut, eliciting a small gasp",
                                             "You reach into her gap and she gasps as you slide your hand across and stroke her hole through the thin material", 
                                             "Her legs twitch a bit as you grind her puckered hole",
                                             "She gasps as you reach under her hose and lightly stroke her warm flesh",
-                                            "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])  
+                                            "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])  
                         else: #nothing
                                     $ Line = renpy.random.choice(["You reach out and brush your hands across her bare ass", 
                                             "You put your hand against her firm rear and grind against it", 
                                             "You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole", 
                                             "Her legs twitch a bit as you press your thumb against her",
                                             "She gasps as you reach under her and lightly stroke her ass",
-                                            "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])   
+                                            "You slide a hand up her inner thigh, she moans a little as it slides between her cheeks"])   
                                     if D20S <= 10:
                                         $ TempFocus += 2 if P_Focus < 70 else 1  
                                         $ TempLust += 3 if newgirl["Mystique"].Lust > 40 else 2
@@ -1365,7 +1365,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 
                         elif newgirl["Mystique"].Foot >= 3:                       #third through 5th time
                                     if Speed <= 1:                      #slow
-                                        $ Line = Line + renpy.random.choice(["She's begining to figure things out, her toes cause tingles as they caress the shaft", 
+                                        $ Line = Line + renpy.random.choice(["She's beginning to figure things out, her toes cause tingles as they caress the shaft", 
                                                 "She's still learning, but learning fast", 
                                                 "She has a smooth motion going now, gentle and precise",
                                                 "Her lessons are paying off, she's really becoming very talented at this",
@@ -1374,7 +1374,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         $ TempFocus += 15 if P_Focus > 60 else 5
                                         
                                     else:                               #fast
-                                        $ Line = Line + renpy.random.choice(["She's begining to figure things out, her toes cause tingles as they caress the shaft", 
+                                        $ Line = Line + renpy.random.choice(["She's beginning to figure things out, her toes cause tingles as they caress the shaft", 
                                                 "She's still learning, but learning fast", 
                                                 "Her feet glide smoothly across your cock",
                                                 "She has a smooth motion going now, gentle and precise",
@@ -1447,7 +1447,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 
     # end E kissing                              /////////////////////////////////////////////////////////////////////////////
     else: #no Trigger was set, somehow
-        "No trigger was set, or it was '[Trigger]'. Please tell Oni what happend up to this point."
+        "No trigger was set, or it was '[Trigger]'. Please tell Oni what happened up to this point."
         $ Line = "Huh."
                             
     # Wrap-up
@@ -1477,7 +1477,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
 label Mystique_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0): 
     # The Mode can be T3 for Trigger 3 for a masturbation option, or T5/Trigger5 if it's setting a Threeway action. 
     # call Mystique_Self_Lines("T5",Trigger5) 
-    # This sets a Action if there isn't one, or sets an intitial line
+    # This sets a Action if there isn't one, or sets an initial line
     $ Line = 0
     if not Action or D20S >= 15: 
             if Trigger != "masturbation" and "passive" in newgirl["Mystique"].Traits:
@@ -1766,7 +1766,7 @@ label Mystique_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Opti
             elif Action == "vibrator pussy":
                     $ Line = "Mystique pulls out her vibrator and strokes it across her body. "      
             else: # Action == "fondle breasts"
-                    $ Line = "Mystique's hands slide up her body and begin to kneed her breasts. "
+                    $ Line = "Mystique's hands slide up her body and begin to knead her breasts. "
     elif Action == "hand": 
             $ Line = "Also, Mystique continues stroke your cock. "
     else:        
@@ -1790,7 +1790,7 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
     # By default, ActiveGirl will be the primary and this sequence will build text for what the secondary girl does.
     # In "lesbian" mode, ActiveGirl will be the secondary girl, and this sequence will build text for what the primary will do to her.
     
-    call NewGirl_Threeway_Set(Girl_ = "Mystique", Mode = Mode) from _call_NewGirl_Threeway_Set_4   #Picks a new activty on a 7-9 roll or when not set, otherwise returns
+    call NewGirl_Threeway_Set(Girl_ = "Mystique", Mode = Mode) from _call_NewGirl_Threeway_Set_4   #Picks a new activity on a 7-9 roll or when not set, otherwise returns
     
     if Mode == "lesbian":
             $ Action = Trigger3
@@ -2055,7 +2055,7 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                         ", rubbing it vigorously",
                                         ", squeezing it vigorously",
                                         ", pressing firmly into it",
-                                        ", kneeding it with slow undulating motions",
+                                        ", kneading it with slow undulating motions",
                                         ", moving with slow undulating motions"])  
                         else:
                                 $ Line = "Mystique continues to fondle " + ActiveGirl + "'s ass" 
@@ -2064,7 +2064,7 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                         ", rubbing it vigorously",
                                         ", squeezing it vigorously",
                                         ", pressing firmly into it",
-                                        ", kneeding it with slow undulating motions",
+                                        ", kneading it with slow undulating motions",
                                         ", moving with slow undulating motions"]) 
                             
                         

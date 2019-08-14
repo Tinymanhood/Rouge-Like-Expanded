@@ -1612,7 +1612,7 @@ label Emma_Love: #Emma_Update
         if E_Loc == bg_current or "Emma" in Party:
             "Suddenly, Emma says she wants to talk to you in her room and drags you over there."
         else:
-            "Emma shows up, hurridly says she wants to talk to you in her room and drags you over there."
+            "Emma shows up, hurriedly says she wants to talk to you in her room and drags you over there."
         $ bg_current = "bg emma"
     else:
             "Emma suddenly stares at you very intently."
@@ -1846,7 +1846,7 @@ label Emma_Love: #Emma_Update
             # If you're holding her
             "She squeezes you even tighter and makes a little whimper."
         else:
-            "She dives into your arms with a little squeek."
+            "She dives into your arms with a little squeak."
         if "lover" not in E_Petnames:
             ch_e "I love you too. . ."
             ch_e "I think I have for a while now."
@@ -1888,7 +1888,7 @@ label Emma_Love_Redux:
     $ E_DailyActions.append("relationship")
     if E_Event[6] >= 25:
             #if this is the second time through
-            ch_p "I hope you've forgeven me, I still love you."
+            ch_p "I hope you've forgiven me, I still love you."
             $ E_Love = Statupdate("Emma", "Love", E_Love, 95, 10) 
             if ApprovalCheck("Emma", 950, "L"):
                 $ Line = "love"
