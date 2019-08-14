@@ -1014,7 +1014,7 @@ label Kitty_Love:
         if K_Loc == bg_current or "Kitty" in Party:
             "Suddenly, Kitty says she wants to talk to you in her room and drags you over there."
         else:
-            "Kitty shows up, hurridly says she wants to talk to you in her room and drags you over there."
+            "Kitty shows up, hurriedly says she wants to talk to you in her room and drags you over there."
         $ bg_current = "bg kitty"
     else:
             "Kitty suddenly stares at you very intently."
@@ -1249,7 +1249,7 @@ label Kitty_Love:
             # If you're holding her
             "She squeezes you even tighter and makes a little whimper."
         else:
-            "She dives into your arms with a little squeek."
+            "She dives into your arms with a little squeak."
         if "lover" not in K_Petnames:
             ch_k "I love you too. . ."
             ch_k "I think I have for a while now."
@@ -1291,7 +1291,7 @@ label Kitty_Love_Redux:
     $ K_DailyActions.append("relationship")
     if K_Event[6] >= 25:
             #if this is the second time through
-            ch_p "I hope you've forgeven me, I still love you."
+            ch_p "I hope you've forgiven me, I still love you."
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 95, 10) 
             if ApprovalCheck("Kitty", 950, "L"):
                 $ Line = "love"

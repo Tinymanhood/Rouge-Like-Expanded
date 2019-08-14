@@ -23,7 +23,7 @@
             self.LikeKitty = 0
             self.LikeOtherGirl = {}
             self.Addict = 0 #how addicted she is
-            self.Addictionrate = 0 #How fast her addiciton rises
+            self.Addictionrate = 0 #How fast her addiction rises
             self.Resistance = 0 #how fast her rate falls
             self.Inventory = []    
             self.OCount = 0                #Orgasm counter

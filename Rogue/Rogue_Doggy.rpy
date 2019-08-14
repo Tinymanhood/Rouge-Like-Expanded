@@ -1027,7 +1027,7 @@ label R_GagPrep:
                 $ R_Mouth = "sucking"
                 "Rogue opens her mouth wide."
 
-                "You carefuly put the gag on her."
+                "You carefully put the gag on her."
             else:
                 $ R_Mouth = "sucking"
 
@@ -1596,7 +1596,7 @@ label R_Plug_Ass:
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 3)
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 1) 
-                            ch_r "Well, since you're be'in so nice about it, I guess we can give it a go. . ."
+                            ch_r "Well, since you're bein' so nice about it, I guess we can give it a go. . ."
                             jump RPA_Prep
                         "You pull back before you really get it in."                    
                         call RogueFace("bemused", 1) from _call_RogueFace_1186

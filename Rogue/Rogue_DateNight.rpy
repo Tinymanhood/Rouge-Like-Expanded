@@ -43,7 +43,7 @@ label Rogue_Date_Night:
                     "Ok, [R_Petname], you'd better."
                 else:
                     call RogueFace("angry") from _call_RogueFace_792
-                    "Yeah, I'm not buy'in that hogwash, [R_Petname]." 
+                    "Yeah, I'm not buyin' that hogwash, [R_Petname]." 
                     return
             "Yeah, so?":
                 if ApprovalCheck("Rogue", 1400):
@@ -233,7 +233,7 @@ label R_Date_Dinner:
         $ R_DailyActions.append("sex") 
     elif R_Blow and ApprovalCheck("Rogue", 1300) and Count >=10:
         "Halfway through the meal, Rogue gets a sly look on her face, then knocks her fork off the table."
-        "She ducks under the table after it, and unzips your pants. She then procedes to blow you for several minutes until you cum."
+        "She ducks under the table after it, and unzips your pants. She then proceeds to blow you for several minutes until you cum."
         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 6)
         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 2)
         $ R_RecentActions.append("blow")                      
@@ -362,7 +362,7 @@ label R_Date_Movies:
     if "romcom" in R_RecentActions:      
         $ Count += 2
         $ Line = renpy.random.choice(["You watch the movie, which is about an adorkable girl who can't choose between two hunky guys. She picks the other one.", 
-                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live hapily ever after.", 
+                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live happily ever after.", 
                     "In this movie, the lead goes to all her friend's weddings, but can't get it together herself. She dies alone. Just kidding, she gets married at the end.", 
                     "You watch the movie, in which a bunch of college girls go on a wild adventure and have lots of random sex.",
                     "This movie is about a girl who's convinced to live in a sex dungeon, and really seems to enjoy it.",
@@ -370,11 +370,11 @@ label R_Date_Movies:
     elif "action" in R_RecentActions: 
         $ Count += 1
         $ Line = renpy.random.choice(["You watch the movie, which is about an ex marine fighting aliens.", 
-                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live hapily ever after. There are also a lot of explosions.", 
+                    "You watch the movie, which is about a girl is mercilessly stalked by some weird guy until she eventually decides she loves him. They live happily ever after. There are also a lot of explosions.", 
                     "In this movie, giant robots are fighting animal mash-ups, with the fate of the world in the balance.", 
                     "You watch the movie, in which a team of non-mutant superhumans are apparently fighting some sort of silvery robots in Eastern Europe.",
                     "This movie is about a superhuman powerhouse that nearly wrecks a town, and yet is not arrested for it by the humans. Must be the hammer.",
-                    "This movie is about 90 minutes of constant explosions and lensflares."])
+                    "This movie is about 90 minutes of constant explosions and lens flares."])
     elif "horror" in R_RecentActions: 
         $ Count += 4
         $ Line = renpy.random.choice(["You watch the movie, which is about an adorkable girl who can't choose between two hunky guys. She picks the other one. The guys are a fishman and a skeleton.", 

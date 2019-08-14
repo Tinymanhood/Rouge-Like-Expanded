@@ -1030,7 +1030,7 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
                                 call EmmaFace("sly",1) from _call_EmmaFace_600
                                 ch_e "Yeah?  {i}Maybe{/i} you should have accidents like that more often."
                             call EmmaFace("smile") from _call_EmmaFace_601
-                            ch_e "It's cool, [E_Petname]. Eveybody makes mistakes. . . sometimes."
+                            ch_e "It's cool, [E_Petname]. Everybody makes mistakes. . . sometimes."
                     "Just you.":        
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 5)   
                             if ApprovalCheck("Emma", 1000) or ApprovalCheck("Emma", 700, "L"):      
@@ -4154,7 +4154,7 @@ label Emma_Clothes(Public=0,Bonus=0):
             $ E_Panties = 0  
             if E_Legs:
                 if Taboo or ApprovalCheck("Emma", 1100) or E_SeenPussy:
-                    "She pulls off her [E_Legs] then pulls her [Line] off, droping them to the ground, before putting them back on." 
+                    "She pulls off her [E_Legs] then pulls her [Line] off, dropping them to the ground, before putting them back on." 
                     call Emma_First_Bottomless from _call_Emma_First_Bottomless_18
                 else:
                     "She asks you to turn around. After a few seconds, you turn back to her as she drops the [Line] to the ground."               

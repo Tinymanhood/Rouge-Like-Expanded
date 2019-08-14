@@ -47,7 +47,7 @@ label Laura_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                     
             elif 2 < newgirl["Laura"].Hand <= 4:                       #third through 5th time
                         if Speed <= 1:                      #slow
-                            $ Line = Line + renpy.random.choice(["She's begining to figure things out, her fingers cause tingles as they caress the shaft", 
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure things out, her fingers cause tingles as they caress the shaft", 
                                     "She's still learning, but learning fast. Her hands sure are smooth", 
                                     "She has a smooth motion going now, gentle and precise",
                                     "Her lessons are paying off, she's really becoming very talented at this",
@@ -56,7 +56,7 @@ label Laura_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                             $ TempFocus += 15 if P_Focus > 60 else 5
                             
                         else:                               #fast
-                            $ Line = Line + renpy.random.choice(["She's begining to figure things out, her fingers cause tingles as they caress the shaft", 
+                            $ Line = Line + renpy.random.choice(["She's beginning to figure things out, her fingers cause tingles as they caress the shaft", 
                                     "She's still learning, but learning fast. Her hands sure are smooth", 
                                     "Her hands glide smoothly across your cock",
                                     "She has a smooth motion going now, gentle and precise",

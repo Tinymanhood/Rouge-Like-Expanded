@@ -229,7 +229,7 @@ init -1:
                              "Laura" : 500,
                             }
     default R_Addict = 0                #how addicted she is
-    default R_Addictionrate = 0         #How faster her addiciton rises
+    default R_Addictionrate = 0         #How faster her addiction rises
     default R_AddictStore = 0           #stores her base addiction level
     default R_Resistance = 0            #how fast her rate falls
     default R_OCount = 0                #Orgasm counter
@@ -373,7 +373,7 @@ init -1:
                              "Laura" : 500,
                             }
     default K_Addict = 0 #how addicted she is
-    default K_Addictionrate = 0 #How faster her addiciton rises
+    default K_Addictionrate = 0 #How faster her addiction rises
     default K_Resistance = 0 #how fast her rate falls
     default K_Inventory = []    
     default K_OCount = 0                #Orgasm counter
@@ -511,7 +511,7 @@ init -1:
                              "Laura" : 500,
                             }
     default E_Addict = 0 #how addicted she is
-    default E_Addictionrate = 0 #How faster her addiciton rises
+    default E_Addictionrate = 0 #How faster her addiction rises
     default E_Resistance = 0 #how fast her rate falls
     default E_Inventory = []    
     default E_OCount = 0                #Orgasm counter
@@ -1180,7 +1180,7 @@ label EventCalls:
                     jump Emma_Detention
                     return     
                     
-        #activates if you haven't done an addiciton event today    
+        #activates if you haven't done an addiction event today    
         if "addiction" not in R_DailyActions and R_Action >= 1:
                 #Activates if she needs her fix
                 if R_Resistance and R_Addict >= 60 and not R_Event[3]:

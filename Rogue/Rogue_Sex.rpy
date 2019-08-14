@@ -322,7 +322,7 @@ label Rogue_Cheat_Menu:
                 $ R_Obed = 1000
                 $ R_Lust = 50
                 $ R_Addict = 0 #how addicted she is
-                $ R_Addictionrate = 0 #How faster her addiciton rises
+                $ R_Addictionrate = 0 #How faster her addiction rises
                 $ R_Kissed = 1 #How many times they've kissed
                 $ R_Swallow = 0
         "50\%":
@@ -331,7 +331,7 @@ label Rogue_Cheat_Menu:
                 $ R_Obed = 500
                 $ R_Lust = 65
                 $ R_Addict = 0 #how addicted she is
-                $ R_Addictionrate = 10 #How faster her addiciton rises
+                $ R_Addictionrate = 10 #How faster her addiction rises
                 $ R_Kissed = 10 #How many times they've kissed
                 $ R_Swallow = 0
         "25\%":
@@ -340,7 +340,7 @@ label Rogue_Cheat_Menu:
                 $ R_Obed = 250
                 $ R_Lust = 85
                 $ R_Addict = 10 #how addicted she is
-                $ R_Addictionrate = 50 #How faster her addiciton rises
+                $ R_Addictionrate = 50 #How faster her addiction rises
                 $ R_Kissed = 10 #How many times they've kissed
                 $ R_Swallow = 0
         "Juice up":
@@ -1275,7 +1275,7 @@ label R_Masturbate: #(Situation = Situation):
                         $ Tempmod = 0                               # fix, add rogue auto stuff here
                         $ Trigger2 = 0
                 return            
-    #End if Rogue intitiates this action
+    #End if Rogue initiates this action
     
     #first time
     if not R_Mast:                                                                
@@ -1834,14 +1834,14 @@ label Rogue_Offhand(TempLine=0):
                         ". You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         ". Her legs twitch a bit as you press your thumb against her.",
                         ". She gasps as you reach under her and lightly stroke her ass.",
-                        ". You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        ". You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             else:
                 $ Line = renpy.random.choice([". You reach out and brush your hands across her ass.", 
                         ". You put your hand against her firm rear and grind against it.", 
                         ". You reach into her gap and she gasps as you slide your hand across and stroke her puckered hole.", 
                         ". Her legs twitch a bit as you press your thumb against her.",
                         ". She gasps as you reach under her and lightly stroke her ass.",
-                        ". You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks."])
+                        ". You slide a hand up her inner thigh, she moans a little as it slides between her cheeks."])
             $ PrimaryLust += 2 if R_Lust < 50 else 1
             $ TempFocus += 1 if P_Focus < 50 else 0  
             $ TempFocus += 1 if P_Focus < 80 else 0   
@@ -2128,7 +2128,7 @@ label Rogue_Taboo(Cnt= 1):
                     # She fails her inhibition checks
                     call RogueFace("surprised", 2) from _call_RogueFace_1615
                     if "spotted" not in R_RecentActions:    
-                        "Rogue bolts up with an embarassed look. She runs off while putting her clothes back on."  
+                        "Rogue bolts up with an embarrassed look. She runs off while putting her clothes back on."  
                         $ R_Rep -= 3 if R_Rep >= 30 else R_Rep            
                     else:
                         "With a sudden embarrassed start, Rogue panics. She takes off while throwing her clothes together."

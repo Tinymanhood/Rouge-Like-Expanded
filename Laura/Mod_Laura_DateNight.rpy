@@ -439,11 +439,11 @@ label Laura_Dinner_Sex(Previous=0,L_Bonus=0,Options=["nothing"]):
         else:
                 if _return == 1: #other girl is fine
                         "[Previous] shifts closer and wraps one arm around you, the other hand caressing Laura's cheek."
-                        "Laura then procedes to blow you for several minutes until you cum."
+                        "Laura then proceeds to blow you for several minutes until you cum."
                 elif _return == 2: #other girl is fine
-                        "She then procedes to blow you for several minutes until you cum, while [Previous] pretends to be occupied."
+                        "She then proceeds to blow you for several minutes until you cum, while [Previous] pretends to be occupied."
                 else: 
-                        "She then procedes to blow you for several minutes until you cum."
+                        "She then proceeds to blow you for several minutes until you cum."
                 $ newgirl["Laura"].Inbt = Statupdate("Laura", "Inbt", newgirl["Laura"].Inbt, 50, 6)
                 $ newgirl["Laura"].Inbt = Statupdate("Laura", "Inbt", newgirl["Laura"].Inbt, 80, 2)
                 $ newgirl["Laura"].RecentActions.append("blow")   

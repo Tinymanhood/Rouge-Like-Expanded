@@ -7,7 +7,7 @@ label Rogue_Addicted:
         if R_Loc == bg_current or "Rogue" in Party:
             "Out of the blue, Rogue says she wants to talk to you in your room and drags you over there."
         else:
-            "Rogue shows up, hurridly says she wants to talk to you in your room and drags you over there."
+            "Rogue shows up, hurriedly says she wants to talk to you in your room and drags you over there."
     else:
         "Rogue barges into your room in a tizzy."
     $ Taboo = 0
@@ -275,7 +275,7 @@ label Rogue_Addicted2:
         if R_Loc == bg_current or "Rogue" in Party:
             "Rogue suddenly stares at you intently, and says she wants to talk to you in your room and drags you over there."
         else:
-            "Rogue bursts in, hurridly says she wants to talk to you in your room and drags you over there."
+            "Rogue bursts in, hurriedly says she wants to talk to you in your room and drags you over there."
     else:
         "Rogue barges into your room with a manic look on her face."
     $ Taboo = 0

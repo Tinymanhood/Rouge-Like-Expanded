@@ -1595,7 +1595,7 @@ label Mystique_Love: #Mystique_Update
         if newgirl["Mystique"].Loc == bg_current or "Mystique" in Party:
             "Suddenly, Mystique says she wants to talk to you in her room and drags you over there."
         else:
-            "Mystique shows up, hurridly says she wants to talk to you in her room and drags you over there."
+            "Mystique shows up, hurriedly says she wants to talk to you in her room and drags you over there."
         $ bg_current = "bg Mystique"
     else:
             "Mystique suddenly stares at you very intently."
@@ -1829,7 +1829,7 @@ label Mystique_Love: #Mystique_Update
             # If you're holding her
             "She squeezes you even tighter and makes a little whimper."
         else:
-            "She dives into your arms with a little squeek."
+            "She dives into your arms with a little squeak."
         if "lover" not in newgirl["Mystique"].Petnames:
             ch_m "I love you too. . ."
             ch_m "I think I have for a while now."
@@ -1871,7 +1871,7 @@ label Mystique_Love_Redux:
     $ newgirl["Mystique"].DailyActions.append("relationship")
     if newgirl["Mystique"].Event[6] >= 25:
             #if this is the second time through
-            ch_p "I hope you've forgeven me, I still love you."
+            ch_p "I hope you've forgiven me, I still love you."
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 95, 10) 
             if ApprovalCheck("Mystique", 950, "L"):
                 $ Line = "love"

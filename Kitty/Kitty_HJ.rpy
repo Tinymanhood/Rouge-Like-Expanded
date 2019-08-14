@@ -1094,7 +1094,7 @@ label KTJ_Cycle: #Repeating strokes
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 2)
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 3) 
     
-    call Kitty_Offhand from _call_Kitty_Offhand_1                                                            #Offhand and reduce addiciton per stroke        
+    call Kitty_Offhand from _call_Kitty_Offhand_1                                                            #Offhand and reduce addiction per stroke        
     $ K_Addict -= 2          
     
     call Sex_Dialog("Kitty",Partner)
